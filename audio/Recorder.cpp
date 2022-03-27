@@ -4,6 +4,7 @@
 #include <QUrl>
 #include <QDebug>
 #include <QDir>
+#include <QDate>
 
 using namespace diaryth;
 
@@ -23,12 +24,19 @@ Recorder::Recorder()
 }
 
 
-
+//TODO нужно отлавливать состояние, когда началась запись и сигнализировать, чтобы пользователь избегал проглоченных первых слов
 void Recorder::start()
 {
-    QString directory = QDir::currentPath() + "/recorder/";
+    auto dateString = QDate::currentDate().toString("yy_MM_dd");
+    QString directory = QDir::currentPath() + "/recorder/" + dateString + "/";
 
-    _audioRecorder->setOutputLocation(QUrl::fromLocalFile( directory + "test.wav"));
+    QDir dir;
+    if (dir.exists(directory) == false) {
+        if (dir.mkdir(directory) == false)
+            qDebug() << "Failed to create recorder directory: " << directory;
+    }
+
+    _audioRecorder->setOutputLocation(QUrl::fromLocalFile(directory + "test.wav"));
 
     qDebug() << _audioRecorder->actualLocation().toString() << " : audio location";
 
