@@ -42,15 +42,20 @@ void Recorder::start()
             qDebug() << "Failed to create recorder directory: " << directory;
     }
 
+    auto currentDirectory = QDir::currentPath();
+
     dir.setCurrent(directory);
     auto listOfFiles = dir.entryInfoList(QDir::Files);
 
     auto timeString = QTime::currentTime().toString("HH_mm_ss");
     QString recordName = "record" + QString::number(listOfFiles.size() + 1) + "_" + timeString;
 
+    dir.setCurrent(currentDirectory);
+
     _audioRecorder->setOutputLocation(QUrl::fromLocalFile(directory + recordName));
     _audioRecorder->record();
 }
+
 
 
 QString Recorder::lastFilename() {
