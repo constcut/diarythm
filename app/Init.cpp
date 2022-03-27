@@ -78,7 +78,8 @@ void setPosixSignals() {
 
 
 
-int mainInit(int argc, char *argv[]) {
+int mainInit(int argc, char *argv[])
+{
 
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     qmlRegisterType<diaryth::ConsoleLogQML>("diaryth",1,0,"ConsoleLogView");
@@ -113,8 +114,12 @@ int mainInit(int argc, char *argv[]) {
 
 
     QDir dir;
-    if (dir.exists("records") == false) {
+    if (dir.exists("records") == false) { //AudioHandler records, later they would be removed from current project
         if (dir.mkdir("records") == false)
+            qDebug() << "Failed to create records directory";
+    }
+    if (dir.exists("recorder") == false) {
+        if (dir.mkdir("recorder") == false)
             qDebug() << "Failed to create records directory";
     }
 
