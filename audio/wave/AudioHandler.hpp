@@ -36,8 +36,6 @@ namespace diaryth {
         Q_INVOKABLE void loadOnlyWindow(const QString filename, const quint64 position, const quint64 window);
         Q_INVOKABLE void loadWindowPCM(const QByteArray window);
 
-        Q_INVOKABLE void mixRecordAndMidi();
-        Q_INVOKABLE void startMidiAndRecording();
 
         Q_INVOKABLE int getSampleRate() const {
             return _commonFormat.sampleRate();
@@ -56,31 +54,7 @@ namespace diaryth {
 
         void requestStopRecord();
         void requestStopPlayback();
-        void requestStopMidi();
 
-        Q_INVOKABLE void startMidiPlayer();
-        Q_INVOKABLE void stopMidiPlayer();
-        Q_INVOKABLE void setMidiPlayerSampleRate(const double sr) {
-            _midiFormat.setSampleRate(sr);
-            initMidiPlayer();
-        }
-        Q_INVOKABLE double getMidiPlayerSampleRate() const { return _midiFormat.sampleRate(); }
-
-        Q_INVOKABLE void openMidiFile(const QString filename);
-        Q_INVOKABLE void openTabFile(const QString filename);
-        Q_INVOKABLE void saveMidiToWav(const QString filename) const;
-
-        Q_INVOKABLE void openMidiFileEngine(const QString filename);
-        Q_INVOKABLE void startMidiFileEngine();
-        Q_INVOKABLE void stopMidiFileEngine();
-
-        Q_INVOKABLE void changeMidiRenderVolume(const double db) { _render.setVolumeDb(db); }
-        Q_INVOKABLE void changeMidiSoundfont(const QString filename) { _render.setSoundFont(filename); }
-        Q_INVOKABLE void changeMidiSampleRate(const double sr) { _render.setSampleRate(sr);}
-
-        Q_INVOKABLE QString getSoundfontFilename() const { return _render.getSoundFont(); }
-        Q_INVOKABLE double getMidiVolume() const { return _render.getVolumeDb(); }
-        Q_INVOKABLE double getMidiSampleRate() const { return _render.getSampleRate(); }
 
     private:
 
@@ -88,7 +62,6 @@ namespace diaryth {
 
         void initRecorder();
         void initPlayer();
-        void initMidiPlayer();
 
         std::unique_ptr<QAudioInput> _audioInput;
         std::unique_ptr<AudioReceiver> _audioReceiver;
@@ -104,15 +77,6 @@ namespace diaryth {
 
         bool _isPlaying = false;
         bool _isRecording = false;
-
-        std::unique_ptr<QAudioOutput> _midiOutput;
-        std::unique_ptr<AudioSpeaker> _midiPlayer;
-        QTimer _midiStopRequestTimer;
-
-        QByteArray _midiBufer;
-        QAudioFormat _midiFormat;
-
-        MidiRender _render;
     };
 
 }

@@ -24,7 +24,8 @@ AudioHandler::AudioHandler() {
 }
 
 
-void AudioHandler::initAudioHandler() {
+void AudioHandler::initAudioHandler()
+{
     _commonFormat.setSampleRate(44100);
     _commonFormat.setChannelCount(1);
     _commonFormat.setSampleSize(16); //The only format old Qt accepts on android :(
@@ -32,54 +33,22 @@ void AudioHandler::initAudioHandler() {
     _commonFormat.setByteOrder(QAudioFormat::LittleEndian);
     _commonFormat.setCodec("audio/pcm");
 
-    _midiFormat.setSampleRate(8000); //Its default in render
-    _midiFormat.setChannelCount(2);
-    _midiFormat.setSampleSize(16);
-    _midiFormat.setSampleType(QAudioFormat::SignedInt);
-    _midiFormat.setByteOrder(QAudioFormat::LittleEndian);
-    _midiFormat.setCodec("audio/pcm");
-
     initRecorder();
     initPlayer();
-    initMidiPlayer();
     _audioStopRequestTimer.setSingleShot(true);
     QObject::connect(&_audioStopRequestTimer, &QTimer::timeout, this, &AudioHandler::requestStopPlayback);
-    _midiStopRequestTimer.setSingleShot(true);
-    QObject::connect(&_midiStopRequestTimer, &QTimer::timeout, this, &AudioHandler::requestStopMidi);
 }
 
 
 
-
-void AudioHandler::startRecord() {
+void AudioHandler::startRecord()
+{
     if (_isPlaying || _isRecording)
         return;
     _isRecording = true;
     _prevBufferSize = _commonBufer.size();
     _audioReceiver->start();
     _audioInput->start(_audioReceiver.get());
-}
-
-
-void AudioHandler::startMidiAndRecording() {
-    if (_isPlaying || _isRecording)
-        return;
-    _isRecording = true;
-    _prevBufferSize = _commonBufer.size();
-    _audioReceiver->start();
-
-    const double sampleRate = _midiFormat.sampleRate();
-    const double bytesPerSample = _midiFormat.sampleSize() / 8.0;
-    const double msInSecond = 1000.0;
-    const double channels = 2.0;
-    const double ms = static_cast<double>(_midiBufer.size()) / (channels * bytesPerSample * sampleRate / msInSecond);
-    _midiPlayer->start();
-
-    //Вероятно потребуется общее устройство, и регистрация времени каждого семпла в момент получения
-    _audioInput->start(_audioReceiver.get());
-    _midiOutput->start(_midiPlayer.get());
-
-    _midiStopRequestTimer.start(ms);
 }
 
 
@@ -90,7 +59,8 @@ void AudioHandler::stopRecord() {
 }
 
 
-void AudioHandler::startPlayback() {
+void AudioHandler::startPlayback()
+{
     if (_isPlaying || _isRecording)
         return;
     _isPlaying = true;
@@ -112,11 +82,6 @@ void AudioHandler::stopPlayback() {
     _audioStopRequestTimer.stop();
 }
 
-
-void AudioHandler::initMidiPlayer() {
-    _midiPlayer = std::make_unique<AudioSpeaker>(_midiFormat, this, _midiBufer);
-    _midiOutput = std::make_unique<QAudioOutput>(QAudioDeviceInfo::defaultOutputDevice(), _midiFormat, nullptr);
-}
 
 
 void AudioHandler::initRecorder() {
@@ -180,24 +145,6 @@ void AudioHandler::loadFile(const QString filename) {
 }
 
 
-void AudioHandler::mixRecordAndMidi()
-{
-    qint16* record = reinterpret_cast<qint16*>(_commonBufer.data());
-    const qint16* midi = reinterpret_cast<const qint16*>(_midiBufer.constData());
-
-    //Must be measured 150+++ ms is so much - maybe Qt wouldn't work fine here
-    int pseudoRoundtrip = -7000; //Only for 44100 only on some device.. just hotfix attempt
-    //But maybe issue is in midi pattern playing
-
-    for (int i = 0; i < _commonBufer.size() / 2; ++i) {
-        if (i >= -pseudoRoundtrip)
-            record[i] += midi[i*2 + pseudoRoundtrip * 2] / 2
-                    + midi[i*2 + 1 + pseudoRoundtrip * 2] / 2;
-    }
-    //Doesn't work so simple, we have offset
-}
-
-
 void AudioHandler::saveFile(const QString filename) const {
     QFile f;
     f.setFileName(filename);
@@ -229,9 +176,6 @@ void AudioHandler::requestStopPlayback() {
     stopPlayback();
 }
 
-void AudioHandler::requestStopMidi() {
-    stopMidiPlayer();
-}
 
 void AudioHandler::requestPermission() const {
     ::requestAudioPermission();
@@ -276,65 +220,4 @@ void AudioHandler::deleteRecord(const QString filename) const {
 
 void AudioHandler::renameRecord(const QString filename, const QString newFilename) const {
     QFile::rename("records/" + filename, "records/" + newFilename);
-}
-
-
-void AudioHandler::startMidiPlayer() {
-    /*if (_isPlaying || _isRecording)
-        return;
-    _isPlaying = true;*/
-    const double sampleRate = _midiFormat.sampleRate();
-    const double bytesPerSample = _midiFormat.sampleSize() / 8.0;
-    const double msInSecond = 1000.0;
-    const double channels = 2.0;
-    const double ms = static_cast<double>(_midiBufer.size()) / (channels * bytesPerSample * sampleRate / msInSecond);
-    _midiPlayer->start();
-    _midiOutput->start(_midiPlayer.get());
-    _midiStopRequestTimer.start(ms);
-}
-
-
-void AudioHandler::stopMidiPlayer() {
-    _midiPlayer->stop();
-    _midiOutput->stop();
-    //_isPlaying = false;
-    _midiStopRequestTimer.stop();
-}
-
-
-void AudioHandler::openMidiFile(const QString filename) {
-    _render.openSoundFont();
-    _midiBufer = _render.renderShort(filename);
-}
-
-
-
-void AudioHandler::openMidiFileEngine(const QString filename) {
-    MidiEngine::getInst().closeFile();
-    MidiEngine::getInst().openFile(filename);
-}
-
-void AudioHandler::startMidiFileEngine() {
-    MidiEngine::getInst().startFile();
-}
-
-void AudioHandler::stopMidiFileEngine() {
-    MidiEngine::getInst().stopFile();
-}
-
-void AudioHandler::openTabFile(const QString filename) {
-    GTabLoader loader;
-    loader.open(filename.toStdString());
-    auto midi = exportMidi(loader.getTab().get(), 0);
-    midi->writeToFile("tab.mid");
-    _render.openSoundFont();
-    _midiBufer = _render.renderShort("tab.mid");
-}
-
-
-void AudioHandler::saveMidiToWav(const QString filename) const {
-    WavFile wav;
-    wav.open(filename, QIODevice::WriteOnly);
-    wav.writeHeader(_midiFormat.sampleRate(), _midiFormat.sampleSize(), _midiBufer.size(), _midiFormat.channelCount() == 2, false); //EH not float fuck stupid QT, not cute at all
-    wav.write(_midiBufer);
 }
