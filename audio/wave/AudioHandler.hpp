@@ -10,7 +10,6 @@
 #include "AudioReceiver.hpp"
 #include "AudioSpeaker.hpp"
 
-#include "midi/MidiRender.hpp"
 
 namespace diaryth {
 

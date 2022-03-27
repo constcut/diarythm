@@ -9,8 +9,6 @@
 #include "WavFile.hpp"
 
 
-#include "midi/MidiEngine.hpp"
-
 
 using namespace diaryth;
 

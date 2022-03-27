@@ -174,8 +174,8 @@ void Config::printValues() const
     qDebug()<<"Config printed";
 }
 
- void Config::addValue(std::string name, std::string val)
- {
+void Config::addValue(std::string name, std::string val)
+{
     if (values.count(name) == 0)
     {
         std::pair<std::string,std::string> newLine;
@@ -184,83 +184,12 @@ void Config::printValues() const
         values.insert(newLine);
        // std::map<std::string,std::string>:
     }
- }
+}
+
 
 void Config::checkConfig()
 {
-    addValue("TrackView.nextBeat",">>>");
-    addValue("TrackView.prevBeat","<<<");
-    addValue("TrackView.nextBar","x");
-    addValue("TrackView.prevBar","z");
-    addValue("TrackView.stringUp","^^^");
-    addValue("TrackView.stringDown","vvv");
-    //Add TabView.play -> space
-
-    addValue("TrackView.setPause","P"); //capital letters for qt default qml codes
-    addValue("TrackView.deleteNote","del");
-    addValue("TrackView.increaceDuration","Q");
-    addValue("TrackView.decreaceDuration","W");
-
-    addValue("Main.open","open");
-
-    addValue("colors.background","white");
-    addValue("colors.panBG","gray");
-
-    addValue("colors.default","black");
-    addValue("colors.curBar","black");
-    addValue("colors.curBeat","red");
-    addValue("colors.curString","lightgray");
-
-    addValue("colors.exceed","darkred");
-    addValue("colors.curTrack","blue");
-    addValue("colors.selection","lightgray");
-
-    addValue("colors.combo.background","gray"); //Reserved for future use
-    addValue("colors.combo.pressed","darkgray");
-    addValue("colors.combo.focus","white");
-    addValue("colors.combo.hover","darkblue");
-    addValue("colors.button.background","gray");
-    addValue("colors.button.pressed","darkgray");
-    addValue("colors.button.focus","white");
-    addValue("colors.button.hover","darkblue");
-    addValue("colors.button.bgspecial","darkgray");
-
-    addValue("effects.vibrato","vib");
-    addValue("effects.slide","sli");
-    addValue("effects.hammer","ham");
-    addValue("effects.letring","l.r.");
-    addValue("effects.palmmute","p.m.");
-    addValue("effects.harmonics","harm");
-    addValue("effects.trill","trill");
-    addValue("effects.tremolo","trem");
-    addValue("effects.stokatto","stok");
-    addValue("effects.fadein","f In");
-    addValue("effects.accent","acc");
-    addValue("TrackView.alwaysShowBarSign","0");
-
-    addValue("gestures","classic");
-    addValue("TrackView.largeNotes","1");
-    addValue("fullscreen","1");
-
-    addValue("metronome","0");
-
-    addValue("logs.tab","0"); //Configure
-
-    addValue("images","1");
-
-    addValue ("crashAutoSend","0"); //implement
-    addValue ("addRootCrashes","1");
-    addValue ("sdcardLogDebug","0");
-
-    addValue("iconsSet","1");
-    addValue("turnPinchZoomOn","0");
-
-    addValue("upsideDownNotes","1");
-    addValue("showNotesView","0");
-
-    addValue("midi.config","on"); //Maybe use default engine if one would like it
-    addValue("onloadBaseCheck","1");
-    addValue("zend","ofconfig");
+    addValue("field","value");
 }
 
 

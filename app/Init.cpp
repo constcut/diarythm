@@ -1,41 +1,28 @@
 #include "Init.hpp"
 
-//#include <QGuiApplication>
 #include <QApplication>
-
-
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <QTextCodec>
 #include <QFontDatabase>
 #include <QDir>
-
 #include <QTemporaryDir>
 #include <QStandardPaths>
 #include <QDateTime>
 
-
+#include <fstream>
 #include <signal.h>
 
 #include "app/log.hpp"
+
 #include "app/LogHandler.hpp"
-
-
-//TODO find nicer way to register components - maybe move all registration in sepparated header
 #include "audio/wave/AudioHandler.hpp"
 #include "audio/wave/WaveShape.hpp"
 #include "audio/spectrum/Spectrograph.hpp"
 #include "audio/spectrum/Cepstrumgraph.hpp"
-
 #include "audio/features/ACFgraph.hpp"
 #include "app/StretchImage.hpp"
-
-//#include "music/graphicmap.h"
-#include "midi/MidiFile.hpp"
-
 #include "app/Config.hpp"
-
-#include "tab/tools/Commands.hpp"
 
 
 using namespace std;
@@ -88,8 +75,6 @@ void setPosixSignals() {
 
 
 
-
-
 int mainInit(int argc, char *argv[]) {
 
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
@@ -124,17 +109,10 @@ int mainInit(int argc, char *argv[]) {
     qmlRegisterType<diaryth::CepstrumgraphQML>("diaryth", 1, 0,"Cepstrumgraph");
 
 
-    qmlRegisterUncreatableMetaObject(diaryth::staticMetaObject,
-        "diaryth", 1, 0, "Tab", "Error: object creation for enum not supported");
-
     QDir dir;
     if (dir.exists("records") == false) {
         if (dir.mkdir("records") == false)
             qDebug() << "Failed to create records directory";
-    }
-    if (dir.exists("tests") == false) {
-        if (dir.mkdir("tests") == false)
-            qDebug() << "Failed to create tests directory";
     }
 
 
