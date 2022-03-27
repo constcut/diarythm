@@ -28,8 +28,6 @@ SOURCES += \
     app/Config.cpp \
     app/Init.cpp \
     app/LogHandler.cpp \
-    app/Regression.cpp \
-    app/Tests.cpp \
     audio/features/ACFgraph.cpp \
     audio/spectrum/Cepstrumgraph.cpp \
     audio/wave/AudioHandler.cpp \
@@ -130,9 +128,7 @@ HEADERS += \
     app/Config.hpp \
     app/Init.hpp \
     app/LogHandler.hpp \
-    app/Regression.hpp \
     app/StretchImage.hpp \
-    app/Tests.hpp \
     app/log.hpp \
     audio/features/ACFgraph.hpp \
     audio/features/PeaksOperations.hpp \

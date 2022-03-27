@@ -40,9 +40,6 @@
 
 #include "app/Config.hpp"
 
-#include "app/Tests.hpp"
-#include "app/Regression.hpp"
-
 #include "tab/ui/TabViews.hpp"
 
 #include "tab/tools/Commands.hpp"
@@ -115,6 +112,7 @@ int mainInit(int argc, char *argv[]) {
 
     qDebug() << "Current working path "<<QDir::currentPath();
     int fontId = QFontDatabase::addApplicationFont(":/fonts/prefont.ttf");
+
     QStringList famList = QFontDatabase::applicationFontFamilies(fontId) ;
     qDebug() << famList << " font families for id "<<fontId;
     if (famList.isEmpty() == false)
