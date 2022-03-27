@@ -82,11 +82,6 @@ Item {
                     }
                 }
             }
-            RowLayout {
-                MidiRenderSettings {
-                    id: midiSettings
-                }
-            }
         }
     }
 
