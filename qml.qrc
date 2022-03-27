@@ -10,5 +10,6 @@
         <file>qml/FiltersQML.qml</file>
         <file>qml/CepstrumQML.qml</file>
         <file>qml/config.qml</file>
+        <file>qml/recorder.qml</file>
     </qresource>
 </RCC>
