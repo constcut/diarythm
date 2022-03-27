@@ -44,26 +44,25 @@ void Recorder::start()
     QString recordName = "record" + QString::number(listOfFiles.size() + 1) + "_" + timeString;
 
     _audioRecorder->setOutputLocation(QUrl::fromLocalFile(directory + recordName));
-
-    //qDebug() << _audioRecorder->actualLocation().toString() << " : audio location"; //TODO getter
-
     _audioRecorder->record();
 }
 
 
-void Recorder::pause()
-{
+QString Recorder::lastFilename() {
+    return _audioRecorder->actualLocation().toString();
+}
+
+
+void Recorder::pause() {
     _audioRecorder->pause();
 }
 
 
-void Recorder::stop()
-{
+void Recorder::stop() {
     _audioRecorder->stop();
 }
 
 
-void Recorder::clear()
-{
+void Recorder::clear() {
 
 }
