@@ -5,6 +5,7 @@
 #include <QDebug>
 #include <QDir>
 #include <QDate>
+#include <QTime>
 
 using namespace diaryth;
 
@@ -36,9 +37,15 @@ void Recorder::start()
             qDebug() << "Failed to create recorder directory: " << directory;
     }
 
-    _audioRecorder->setOutputLocation(QUrl::fromLocalFile(directory + "test.wav"));
+    dir.setCurrent(directory);
+    auto listOfFiles = dir.entryInfoList(QDir::Files);
 
-    qDebug() << _audioRecorder->actualLocation().toString() << " : audio location";
+    auto timeString = QTime::currentTime().toString("HH_mm_ss");
+    QString recordName = "record" + QString::number(listOfFiles.size() + 1) + "_" + timeString;
+
+    _audioRecorder->setOutputLocation(QUrl::fromLocalFile(directory + recordName));
+
+    qDebug() << _audioRecorder->actualLocation().toString() << " : audio location"; //TODO getter
 
     _audioRecorder->record();
 }
