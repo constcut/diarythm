@@ -73,16 +73,14 @@ void Recorder::stop() {
 }
 
 
-void Recorder::clear()
+void Recorder::cancel()
 {
     _audioRecorder->stop();
 
     QString fn = lastFilename().mid(8); //Remove file:///
+    QFile file(fn);
 
-    qDebug() << "LAST FILE NAME" << fn;
-
-    QFile file;
-    if (file.remove(fn) == false) {
+    if (file.remove(fn) == false)
         qDebug() << "Failed to remove: " << fn;
-    }
+
 }
