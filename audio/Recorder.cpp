@@ -45,7 +45,7 @@ void Recorder::start()
 
     _audioRecorder->setOutputLocation(QUrl::fromLocalFile(directory + recordName));
 
-    qDebug() << _audioRecorder->actualLocation().toString() << " : audio location"; //TODO getter
+    //qDebug() << _audioRecorder->actualLocation().toString() << " : audio location"; //TODO getter
 
     _audioRecorder->record();
 }
