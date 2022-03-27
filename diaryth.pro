@@ -173,6 +173,7 @@ DISTFILES += \
     README.md \
     qml/config.qml \
     qml/patternInput.qml \
+    qml/recorder.qml \
     res/TODO \
     Tablature.qml \
     PianoMap.qml \

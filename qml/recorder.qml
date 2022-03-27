@@ -8,11 +8,13 @@ Item {
 
     RowLayout {
         spacing: 10
+
+
         ToolButton {
-            property bool recording: false
-            text: recording ? "Start" : "Pause"
+            //property bool recording: false
+            text: "Start" //recording ? "Start" : "Pause"
             onClicked: {
-                recording = !recording
+                //recording = !recording
             }
         }
 
@@ -22,7 +24,11 @@ Item {
 
 
         ToolButton {
-            text: "Stop and clear"
+            text: "Pause"
+        }
+
+        ToolButton {
+            text: "Clear"
         }
 
         ToolButton {
