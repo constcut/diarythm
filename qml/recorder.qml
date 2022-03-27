@@ -15,16 +15,22 @@ Item {
             text: "Start" //recording ? "Start" : "Pause"
             onClicked: {
                 //recording = !recording
+                recorder.start()
             }
         }
 
         ToolButton {
             text: "Stop and save"
+            onClicked:  {
+                recorder.stop()
+            }
         }
-
 
         ToolButton {
             text: "Pause"
+            onClicked:  {
+                recorder.pause()
+            }
         }
 
         ToolButton {

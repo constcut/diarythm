@@ -2,6 +2,7 @@
 
 #include <QAudioEncoderSettings>
 #include <QUrl>
+#include <QDebug>
 
 using namespace diaryth;
 
@@ -22,7 +23,7 @@ Recorder::Recorder()
 
 
 
-void Recorder::record()
+void Recorder::start()
 {
     _audioRecorder->setOutputLocation(QUrl::fromLocalFile("test.wav"));
     _audioRecorder->record();
