@@ -75,13 +75,7 @@ SOURCES += \
     #libs/wavelet/wavefunc.c \
     #libs/wavelet/wavelib.c \
     #libs/wavelet/wtmath.c \
-    main.cpp \
-    midi/MidiEngine.cpp \
-    midi/MidiFile.cpp \
-    midi/MidiMessage.cpp \
-    midi/MidiRender.cpp \
-    midi/MidiTrack.cpp \
-    midi/NBytesInt.cpp
+    main.cpp
 
 RESOURCES += qml.qrc \
     res/fonts.qrc
@@ -157,7 +151,7 @@ HEADERS += \
     libs/kiss/kiss_fft_log.h \
     libs/kiss/kiss_fftnd.h \
     libs/kiss/kiss_fftndr.h \
-    libs/kiss/kiss_fftr.h \
+    libs/kiss/kiss_fftr.h
     #libs/wavelet/conv.h \
     #libs/wavelet/cwt.h \
     #libs/wavelet/cwtmath.h \
@@ -168,13 +162,6 @@ HEADERS += \
     #libs/wavelet/wavefunc.h \
     #libs/wavelet/wavelib.h \
     #libs/wavelet/wtmath.h \
-    midi/MidiEngine.hpp \
-    midi/MidiFile.hpp \
-    midi/MidiMessage.hpp \
-    midi/MidiRender.hpp \
-    midi/MidiTrack.hpp \
-    midi/MidiUtils.hpp \
-    midi/NBytesInt.hpp
 
 
 DISTFILES += \

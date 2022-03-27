@@ -8,10 +8,6 @@
 #include "app/AndroidTools.hpp"
 #include "WavFile.hpp"
 
-//#include "midi/MidiRender.hpp"
-#include "tab/Tab.hpp"
-#include "tab/tools/TabLoader.hpp"
-#include "tab/tools/MidiExport.hpp"
 
 #include "midi/MidiEngine.hpp"
 
