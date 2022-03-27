@@ -245,16 +245,12 @@ DISTFILES += \
     qml/CepstrumQML.qml \
     qml/ConsoleLog.qml \
     qml/FiltersQML.qml \
-    qml/MidiRenderSettings.qml \
-    qml/PianoMap.qml \
     qml/STFTQML.qml \
     qml/WaveshapeQML.qml \
     qml/audioHandler.qml \
     qml/consoleLog.qml \
-    qml/main.qml \
-    qml/midiPlayer.qml \
-    qml/tablature.qml \
-    qml/tapper.qml
+    qml/main.qml
+
 
 ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
 
