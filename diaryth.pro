@@ -112,9 +112,7 @@ SOURCES += \
     tab/ui/TrackView.cpp
 
 RESOURCES += qml.qrc \
-    res/fonts.qrc \
-    res/icons.qrc \
-    res/icons2.qrc
+    res/fonts.qrc
 
 
 QML_IMPORT_PATH =
