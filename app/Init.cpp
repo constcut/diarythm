@@ -121,10 +121,15 @@ int mainInit(int argc, char *argv[]) {
 
     QTextCodec::setCodecForLocale(QTextCodec::codecForName("Windows-1251")); //Настройки //KOI8-R //ISO 8859-5 //UTF-8 //Windows-1251
     QQmlApplicationEngine engine;
+
     diaryth::AudioHandler audio;
+    diaryth::Recorder recorder;
     diaryth::ConfigQML config;
+
     engine.rootContext()->setContextProperty("audio", &audio);
+    engine.rootContext()->setContextProperty("recorder", &recorder);
     engine.rootContext()->setContextProperty("aconfig", &config);
+
     engine.load(QUrl(QStringLiteral("qrc:/qml/main.qml")));
     if (engine.rootObjects().isEmpty())
         return -1;

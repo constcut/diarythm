@@ -1,4 +1,4 @@
-#include "Recorder.h"
+#include "Recorder.hpp"
 
 #include <QAudioEncoderSettings>
 #include <QUrl>
