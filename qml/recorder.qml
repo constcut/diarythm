@@ -35,6 +35,9 @@ Item {
 
         ToolButton {
             text: "Clear"
+            onClicked: {
+                recorder.clear()
+            }
         }
 
         ToolButton {

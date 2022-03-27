@@ -23,6 +23,8 @@ namespace diaryth {
         Q_INVOKABLE void stop();
         Q_INVOKABLE void clear();
 
+        Q_INVOKABLE QString lastFilename();
+
 
     private:
 

@@ -1,11 +1,16 @@
 #include "Recorder.hpp"
 
 #include <QAudioEncoderSettings>
+
 #include <QUrl>
-#include <QDebug>
 #include <QDir>
+#include <QFile>
+
 #include <QDate>
 #include <QTime>
+
+#include <QDebug>
+
 
 using namespace diaryth;
 
@@ -63,6 +68,10 @@ void Recorder::stop() {
 }
 
 
-void Recorder::clear() {
+void Recorder::clear()
+{
+    _audioRecorder->stop();
 
+    QFile file;
+    file.remove(lastFilename());
 }
