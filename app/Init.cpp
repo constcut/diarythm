@@ -112,8 +112,6 @@ int mainInit(int argc, char *argv[]) {
     app.setOrganizationDomain("accumerite.ru");
 
     Q_INIT_RESOURCE(fonts);
-    Q_INIT_RESOURCE(soundfonts);
-    Q_INIT_RESOURCE(tests);
 
     qDebug() << "Current working path "<<QDir::currentPath();
     int fontId = QFontDatabase::addApplicationFont(":/fonts/prefont.ttf");
