@@ -1,0 +1,3 @@
+# Diaryth
+
+Diary for psychotherapy

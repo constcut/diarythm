@@ -1,0 +1,20 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/consoleLog.qml</file>
+        <file>qml/main.qml</file>
+        <file>qml/PianoMap.qml</file>
+        <file>qml/audioHandler.qml</file>
+        <file>qml/WaveshapeQML.qml</file>
+        <file>qml/tapper.qml</file>
+        <file>qml/MidiRenderSettings.qml</file>
+        <file>qml/midiPlayer.qml</file>
+        <file>qml/ACFQML.qml</file>
+        <file>qml/STFTQML.qml</file>
+        <file>qml/CQTQML.qml</file>
+        <file>qml/FiltersQML.qml</file>
+        <file>qml/CepstrumQML.qml</file>
+        <file>qml/tablature.qml</file>
+        <file>qml/patternInput.qml</file>
+        <file>qml/config.qml</file>
+    </qresource>
+</RCC>
