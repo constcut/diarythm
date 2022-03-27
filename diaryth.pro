@@ -66,7 +66,6 @@ SOURCES += \
     libs/kiss/kiss_fftnd.c \
     libs/kiss/kiss_fftndr.c \
     libs/kiss/kiss_fftr.c \
-    libs/sf/tsf.cpp \
     #libs/wavelet/conv.c \
     #libs/wavelet/cwt.c \
     #libs/wavelet/cwtmath.c \
@@ -192,8 +191,6 @@ HEADERS += \
     midi/MidiTrack.hpp \
     midi/MidiUtils.hpp \
     midi/NBytesInt.hpp \
-    libs/sf/tml.h \
-    libs/sf/tsf.h \
     tab/Bar.hpp \
     tab/Beat.hpp \
     tab/BeatStructs.hpp \
