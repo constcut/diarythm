@@ -99,7 +99,7 @@ HEADERS += \
     app/LogHandler.hpp \
     app/StretchImage.hpp \
     app/log.hpp \
-    audio/Recorder.h \
+    audio/Recorder.hpp \
     audio/features/ACFgraph.hpp \
     audio/features/PeaksOperations.hpp \
     audio/features/WindowFunction.hpp \

@@ -16,18 +16,21 @@
 #include "app/log.hpp"
 
 #include "app/LogHandler.hpp"
+#include "app/Config.hpp"
+#include "app/StretchImage.hpp"
+
 #include "audio/wave/AudioHandler.hpp"
 #include "audio/wave/WaveShape.hpp"
 #include "audio/spectrum/Spectrograph.hpp"
 #include "audio/spectrum/Cepstrumgraph.hpp"
 #include "audio/features/ACFgraph.hpp"
-#include "app/StretchImage.hpp"
-#include "app/Config.hpp"
+
+#include "audio/Recorder.hpp"
+
 
 
 using namespace std;
 using namespace diaryth;
-
 
 
 void posix_death_signal(int signum)
