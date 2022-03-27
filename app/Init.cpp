@@ -27,14 +27,9 @@
 #include "audio/spectrum/Spectrograph.hpp"
 #include "audio/spectrum/Cepstrumgraph.hpp"
 
-#include "music/PianoRoll.hpp"
-#include "music/PatternLine.hpp"
-#include "music/PatternReceiver.hpp"
-
 #include "audio/features/ACFgraph.hpp"
 #include "app/StretchImage.hpp"
 
-#include "music/Tapper.hpp"
 //#include "music/graphicmap.h"
 #include "midi/MidiFile.hpp"
 
@@ -124,15 +119,10 @@ int mainInit(int argc, char *argv[]) {
 
     qmlRegisterType<diaryth::WaveshapeQML>("diaryth", 1, 0, "Waveshape");
     qmlRegisterType<diaryth::SpectrographQML>("diaryth", 1, 0,"Spectrograph");
-    qmlRegisterType<diaryth::Tapper>("diaryth", 1, 0,"Tapper");
     qmlRegisterType<diaryth::ACGraphQML>("diaryth", 1, 0,"ACgraph");
     qmlRegisterType<diaryth::StretchImageQML>("diaryth", 1, 0,"StretchImage");
     qmlRegisterType<diaryth::CepstrumgraphQML>("diaryth", 1, 0,"Cepstrumgraph");
 
-
-    qmlRegisterType<diaryth::PianoRoll>("diaryth", 1, 0, "PianoRoll");
-    qmlRegisterType<diaryth::PatternLine>("diaryth", 1, 0, "PatternLine");
-    qmlRegisterType<diaryth::PatternReceiver>("diaryth", 1, 0, "PatternReceiver");
 
     qmlRegisterUncreatableMetaObject(diaryth::staticMetaObject,
         "diaryth", 1, 0, "Tab", "Error: object creation for enum not supported");
