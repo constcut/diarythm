@@ -28,6 +28,7 @@ SOURCES += \
     app/Config.cpp \
     app/Init.cpp \
     app/LogHandler.cpp \
+    audio/Recorder.cpp \
     audio/features/ACFgraph.cpp \
     audio/spectrum/Cepstrumgraph.cpp \
     audio/wave/AudioHandler.cpp \
@@ -98,6 +99,7 @@ HEADERS += \
     app/LogHandler.hpp \
     app/StretchImage.hpp \
     app/log.hpp \
+    audio/Recorder.h \
     audio/features/ACFgraph.hpp \
     audio/features/PeaksOperations.hpp \
     audio/features/WindowFunction.hpp \
