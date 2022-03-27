@@ -81,14 +81,7 @@ SOURCES += \
     midi/MidiMessage.cpp \
     midi/MidiRender.cpp \
     midi/MidiTrack.cpp \
-    midi/NBytesInt.cpp \
-    tab/Bar.cpp \
-    tab/Beat.cpp \
-    tab/Effects.cpp \
-    tab/Note.cpp \
-    tab/Tab.cpp \
-    tab/Track.cpp \
-    tab/tools/track_com.cpp
+    midi/NBytesInt.cpp
 
 RESOURCES += qml.qrc \
     res/fonts.qrc
@@ -181,18 +174,7 @@ HEADERS += \
     midi/MidiRender.hpp \
     midi/MidiTrack.hpp \
     midi/MidiUtils.hpp \
-    midi/NBytesInt.hpp \
-    tab/Bar.hpp \
-    tab/Beat.hpp \
-    tab/BeatStructs.hpp \
-    tab/Chain.hpp \
-    tab/Effects.hpp \
-    tab/Note.hpp \
-    tab/NoteStructs.hpp \
-    tab/Tab.hpp \
-    tab/TabStructs.hpp \
-    tab/Track.hpp \
-    tab/TrackStructs.hpp
+    midi/NBytesInt.hpp
 
 
 DISTFILES += \
