@@ -25,7 +25,10 @@ Recorder::Recorder()
 
 void Recorder::start()
 {
-    _audioRecorder->setOutputLocation(QUrl::fromLocalFile("test.wav"));
+    _audioRecorder->setOutputLocation(QUrl::fromLocalFile("C:\\dev\\testing\\test.wav"));
+
+    qDebug() << _audioRecorder->actualLocation().toString() << " : audio location";
+
     _audioRecorder->record();
 }
 
