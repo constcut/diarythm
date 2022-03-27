@@ -77,6 +77,12 @@ void Recorder::clear()
 {
     _audioRecorder->stop();
 
+    QString fn = lastFilename().mid(8); //Remove file:///
+
+    qDebug() << "LAST FILE NAME" << fn;
+
     QFile file;
-    file.remove(lastFilename());
+    if (file.remove(fn) == false) {
+        qDebug() << "Failed to remove: " << fn;
+    }
 }
