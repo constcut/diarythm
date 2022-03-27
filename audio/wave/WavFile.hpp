@@ -45,7 +45,7 @@
 #include <QFile>
 #include <QAudioFormat>
 
-namespace aurals {
+namespace diaryth {
 
     class WavFile : public QFile {
     public:

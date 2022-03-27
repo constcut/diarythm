@@ -3,7 +3,7 @@
 
 
 
-namespace aurals {
+namespace diaryth {
 
 
     bool checkHasRegression();

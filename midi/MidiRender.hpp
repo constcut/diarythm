@@ -13,7 +13,7 @@
 struct tml_message;
 struct tsf;
 
-namespace aurals {
+namespace diaryth {
 
     class MidiRender
     {

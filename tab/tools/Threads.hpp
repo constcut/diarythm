@@ -7,7 +7,7 @@
 #include <QThread>
 
 
-namespace aurals {
+namespace diaryth {
 
 
     class Tab;

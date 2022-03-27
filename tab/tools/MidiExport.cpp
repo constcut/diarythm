@@ -6,10 +6,10 @@ bool midiExportLog = false;
 #include <QDebug>
 
 
-using namespace aurals;
+using namespace diaryth;
 
 
-std::unique_ptr<MidiFile> aurals::exportMidi(Tab* tab, size_t shiftTheCursor) {
+std::unique_ptr<MidiFile> diaryth::exportMidi(Tab* tab, size_t shiftTheCursor) {
     auto output = std::make_unique<MidiFile>();
     //time line track
     {
@@ -158,7 +158,7 @@ std::unique_ptr<MidiFile> aurals::exportMidi(Tab* tab, size_t shiftTheCursor) {
 
 
 
-void aurals::exportTrack(Track* track, MidiTrack* midiTrack, size_t channel, size_t shiftCursorBar) {
+void diaryth::exportTrack(Track* track, MidiTrack* midiTrack, size_t channel, size_t shiftCursorBar) {
 
     size_t instrument = track->getInstrument();
     std::uint8_t midiPan = midiTrack->calcMidiPanoramFromTab(track->getPan());
@@ -217,7 +217,7 @@ void aurals::exportTrack(Track* track, MidiTrack* midiTrack, size_t channel, siz
 }
 
 
-void aurals::exportBeat(Beat* beat, MidiTrack* midiTrack, size_t channel, short specialRhy) {
+void diaryth::exportBeat(Beat* beat, MidiTrack* midiTrack, size_t channel, short specialRhy) {
 
     uint8_t dur = beat->getDuration();
     uint8_t det = beat->getDurationDetail();
@@ -332,7 +332,7 @@ void aurals::exportBeat(Beat* beat, MidiTrack* midiTrack, size_t channel, short 
 
 
 
-bool aurals::exportSingalsFromNoteOn(Note* note, MidiTrack* midiTrack, std::uint8_t channel) {
+bool diaryth::exportSingalsFromNoteOn(Note* note, MidiTrack* midiTrack, std::uint8_t channel) {
     std::uint8_t noteState = note->getState();
 
     if ((noteState==Note::leegNote) || (noteState==Note::leegedLeeg))
@@ -388,7 +388,7 @@ bool aurals::exportSingalsFromNoteOn(Note* note, MidiTrack* midiTrack, std::uint
 
 
 
-bool aurals::exportSingalsFromNoteOff(Note* note, MidiTrack* midiTrack, std::uint8_t channel) {
+bool diaryth::exportSingalsFromNoteOff(Note* note, MidiTrack* midiTrack, std::uint8_t channel) {
 
     if (note->getEffects().getEffectAt(Effect::LetRing))
         return false;
@@ -421,7 +421,7 @@ bool aurals::exportSingalsFromNoteOff(Note* note, MidiTrack* midiTrack, std::uin
 }
 
 
-void aurals::exportPostEffect(Beat* beat, MidiTrack* midiTrack, std::uint8_t channel) {
+void diaryth::exportPostEffect(Beat* beat, MidiTrack* midiTrack, std::uint8_t channel) {
 
     for (size_t i =0; i < beat->size(); ++i)
     {
@@ -519,7 +519,7 @@ void aurals::exportPostEffect(Beat* beat, MidiTrack* midiTrack, std::uint8_t cha
 
 
 
-void aurals::pushBendToTrack(BendPoints* bend, MidiTrack* midiTrack, std::uint8_t channel) {
+void diaryth::pushBendToTrack(BendPoints* bend, MidiTrack* midiTrack, std::uint8_t channel) {
     short rOffset = midiTrack->getAccum();
     midiTrack->flushAccum();
 

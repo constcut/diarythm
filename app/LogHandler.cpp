@@ -1,6 +1,6 @@
 #include "LogHandler.hpp"
 
-using namespace aurals;
+using namespace diaryth;
 
 LogHandler& LogHandler::getInstance() {
     static LogHandler handler;

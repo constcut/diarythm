@@ -46,7 +46,7 @@
 
 QT_FORWARD_DECLARE_CLASS(QAudioFormat)
 
-namespace aurals {
+namespace diaryth {
 
     qint64 audioDuration(const QAudioFormat &format, const qint64 bytes);
     qint64 audioLength(const QAudioFormat &format, const qint64 microSeconds);

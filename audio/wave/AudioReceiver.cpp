@@ -4,7 +4,7 @@
 
 #include "AudioHandler.hpp"
 
-using namespace aurals;
+using namespace diaryth;
 
 AudioReceiver::AudioReceiver(const QAudioFormat& format, QObject *parent, QByteArray& commonBufer)
     :   QIODevice(parent)

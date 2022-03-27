@@ -4,7 +4,7 @@
 #include "audio/features/WindowFunction.hpp"
 
 
-using namespace aurals;
+using namespace diaryth;
 
 
 bool ACGraphQML::loadByteArray(QByteArray analyseData) {

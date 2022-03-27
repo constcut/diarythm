@@ -7,7 +7,7 @@
 #include <fstream>
 
 
-namespace aurals {
+namespace diaryth {
 
 
     class MidiTrack : public std::vector<MidiMessage> {

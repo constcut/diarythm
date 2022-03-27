@@ -8,7 +8,7 @@
 #include <complex>
 
 
-using namespace aurals;
+using namespace diaryth;
 
 
 void YinPP::calcBasicACF(const float* buffer) {

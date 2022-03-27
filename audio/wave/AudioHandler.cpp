@@ -16,7 +16,7 @@
 #include "midi/MidiEngine.hpp"
 
 
-using namespace aurals;
+using namespace diaryth;
 
 
 AudioHandler::AudioHandler() {

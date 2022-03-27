@@ -6,7 +6,7 @@
 #include "libs/sf/tml.h"
 
 
-using namespace aurals;
+using namespace diaryth;
 
 
 MidiRender::MidiRender()

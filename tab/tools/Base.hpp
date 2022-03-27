@@ -15,7 +15,7 @@
 
 
 
-namespace aurals {
+namespace diaryth {
 
 
     class BaseStatistics {

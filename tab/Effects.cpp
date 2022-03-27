@@ -2,7 +2,7 @@
 //.....................Effects.........................................
 
 
-using namespace aurals;
+using namespace diaryth;
 
 ABitArray::ABitArray():bits(0) {}
 

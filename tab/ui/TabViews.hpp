@@ -14,7 +14,7 @@
 #include "app/AndroidTools.hpp"
 
 
-namespace aurals {
+namespace diaryth {
 
 
     //refact функции в отдельный хэдер

@@ -7,7 +7,7 @@ extern bool midiLog;
 
 
 
-using namespace aurals;
+using namespace diaryth;
 
 NBytesInt::NBytesInt(uint32_t source) {
     if (source == 0) {

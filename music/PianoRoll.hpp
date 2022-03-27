@@ -6,7 +6,7 @@
 #include "midi/MidiFile.hpp"
 
 
-namespace aurals {
+namespace diaryth {
 
 
     struct RollNote {
@@ -86,7 +86,7 @@ namespace aurals {
         int _bpm = 120;
 
 
-        aurals::MidiFile _mid;
+        diaryth::MidiFile _mid;
 
         size_t _currentTrack = 1;
         int _currentInstrument = 0;

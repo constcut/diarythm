@@ -7,7 +7,7 @@
 #include "Effects.hpp"
 
 
-namespace aurals {
+namespace diaryth {
 
 
     class Beat;

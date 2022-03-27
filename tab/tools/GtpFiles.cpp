@@ -4,7 +4,7 @@
 #include <fstream>
 
 
-using namespace aurals;
+using namespace diaryth;
 
 
 bool gtpLog = false;

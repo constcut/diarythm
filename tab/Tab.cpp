@@ -9,7 +9,7 @@
 
 bool tabLog = false;
 
-using namespace aurals;
+using namespace diaryth;
 
 
 void Tab::connectTracks(){

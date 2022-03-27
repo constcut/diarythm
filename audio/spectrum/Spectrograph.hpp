@@ -53,7 +53,7 @@
 #include "audio/features/FeatureExtractor.hpp"
 
 
-namespace aurals {
+namespace diaryth {
 
     class SpectrographPainter {
 
@@ -190,9 +190,9 @@ namespace aurals {
 
     public slots:
         void spectrumChanged(const qint64 position, const qint64 length,
-                             const aurals::FrequencySpectrum &spectrum);
+                             const diaryth::FrequencySpectrum &spectrum);
 
-        void spectrumChanged(const aurals::FrequencySpectrum &spectrum);
+        void spectrumChanged(const diaryth::FrequencySpectrum &spectrum);
 
     signals:
         void spectrumCalculated();

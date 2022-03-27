@@ -7,7 +7,7 @@
 #include "app/Config.hpp"
 
 
-using namespace aurals;
+using namespace diaryth;
 
 
 void TrackView::setFromTab(QObject* pa, int trackIdx) {

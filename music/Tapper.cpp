@@ -4,7 +4,7 @@
 
 #include "midi/MidiFile.hpp"
 
-using namespace aurals;
+using namespace diaryth;
 using namespace std;
 
 

@@ -5,7 +5,7 @@
 #include "libs/cqt/dsp/FFT.h"
 
 
-using namespace aurals;
+using namespace diaryth;
 
 
 bool CepstrumgraphQML::loadByteArray(QByteArray analyseData) {

@@ -3,7 +3,7 @@
 
 #include "../Tab.hpp"
 
-namespace aurals {
+namespace diaryth {
 
     class GmyFile
     {

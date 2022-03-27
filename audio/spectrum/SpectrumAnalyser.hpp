@@ -59,7 +59,7 @@ class FFTRealWrapper;
 class SpectrumAnalyserThreadPrivate;
 
 
-namespace aurals {
+namespace diaryth {
 
     class SpectrumAnalyserThread : public QObject {
         Q_OBJECT
@@ -84,7 +84,7 @@ namespace aurals {
        void calculateSpectrumFloat(const QByteArray &buffer);
 
     signals:
-        void calculationComplete(const aurals::FrequencySpectrum &spectrum);
+        void calculationComplete(const diaryth::FrequencySpectrum &spectrum);
 
     private:
         void calculateWindow();
@@ -94,7 +94,7 @@ namespace aurals {
 
         std::unique_ptr<FFTReal> _fft;
         int _numSamples;
-        aurals::WindowFunction _windowFunction;
+        diaryth::WindowFunction _windowFunction;
         bool _halfCut = false;
 
         int _filterIdx = -1;
@@ -139,10 +139,10 @@ namespace aurals {
         void setFilter(int idx, double freq) { _thread->setFilter(idx, freq); }
 
     signals:
-        void spectrumChanged(const aurals::FrequencySpectrum &spectrum);
+        void spectrumChanged(const diaryth::FrequencySpectrum &spectrum);
 
     private slots:
-        void calculationComplete(const aurals::FrequencySpectrum &spectrum);
+        void calculationComplete(const diaryth::FrequencySpectrum &spectrum);
 
     private:
         void calculateWindow();

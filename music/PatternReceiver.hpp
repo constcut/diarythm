@@ -8,7 +8,7 @@
 #include "PatternLine.hpp"
 
 
-namespace aurals {
+namespace diaryth {
 
 
     struct MiniMidi { //TODO общий для PianoRoll - вынести на рефакторинге

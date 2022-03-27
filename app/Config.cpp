@@ -6,10 +6,10 @@
 #include <iostream>
 
 
-using namespace aurals;
+using namespace diaryth;
 
 
-void aurals::initGlobals()
+void diaryth::initGlobals()
 {
     Config& conf = Config::getInst();
 
@@ -40,7 +40,7 @@ void aurals::initGlobals()
 }
 
 
-void aurals::setTestLocation(std::string newTL)
+void diaryth::setTestLocation(std::string newTL)
 {
     std::string invertedLocation="";
 

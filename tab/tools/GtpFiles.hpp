@@ -4,7 +4,7 @@
 #include "../Tab.hpp"
 
 
-namespace aurals {
+namespace diaryth {
 
 
     void readBend(std::ifstream *file, BendPoints *bend);

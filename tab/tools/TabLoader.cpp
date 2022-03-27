@@ -7,7 +7,7 @@
 #include "tab/tools/GtpFiles.hpp"
 
 
-using namespace aurals;
+using namespace diaryth;
 
 
 bool GTabLoader::open(std::string fileName)

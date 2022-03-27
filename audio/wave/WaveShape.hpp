@@ -51,7 +51,7 @@
 
 #include "WaveContour.hpp"
 
-namespace aurals {
+namespace diaryth {
 
 
     class WaveshapePainter  {

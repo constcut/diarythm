@@ -44,7 +44,7 @@
 
 #include <QtCore/QVector>
 
-namespace aurals {
+namespace diaryth {
 
 
     class FrequencySpectrum {

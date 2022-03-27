@@ -7,7 +7,7 @@
 
 
 
-namespace aurals {
+namespace diaryth {
 
     class BarView
     {

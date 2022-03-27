@@ -17,7 +17,7 @@
 
 
 
-namespace aurals {
+namespace diaryth {
 
 
     enum CommandPack { //Типы комманд

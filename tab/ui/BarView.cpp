@@ -3,7 +3,7 @@
 
 #include "app/Config.hpp"
 
-using namespace aurals;
+using namespace diaryth;
 
 
 ///////////Bars------------------------------

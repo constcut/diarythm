@@ -11,7 +11,7 @@
 #include "Track.hpp"
 
 
-namespace aurals {
+namespace diaryth {
 
     int updateDurationWithDetail(std::uint8_t detail, int base);
 

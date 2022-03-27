@@ -11,7 +11,7 @@
 #include "tab/tools/Threads.hpp"
 
 
-namespace aurals {
+namespace diaryth {
 
     class TabView;
     using ViewPull = std::vector<BarView>;

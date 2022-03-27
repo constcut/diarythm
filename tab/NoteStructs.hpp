@@ -5,7 +5,7 @@
 #include <cstdint>
 
 
-namespace aurals {
+namespace diaryth {
 
 
     struct BendPointGPOld

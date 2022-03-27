@@ -8,7 +8,7 @@
 #include "MidiTrack.hpp"
 
 
-namespace aurals {
+namespace diaryth {
 
     class MidiFile : public std::vector<MidiTrack> {
 

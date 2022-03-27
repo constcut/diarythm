@@ -12,7 +12,7 @@
 
 #include "midi/MidiRender.hpp"
 
-namespace aurals {
+namespace diaryth {
 
 
     class AudioHandler : public QObject

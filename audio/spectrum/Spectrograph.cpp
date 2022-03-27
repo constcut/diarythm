@@ -51,7 +51,7 @@
 #include "audio/wave/AudioUtils.hpp"
 
 
-using namespace aurals;
+using namespace diaryth;
 
 
 SpectrographPainter::SpectrographPainter() : _barSelected(-1),
@@ -410,7 +410,7 @@ void SpectrographPainter::findPeaks() {
     std::vector<double> amps;
     for (auto& bar: _bars)
         amps.push_back(bar.value);
-    auto peaks = aurals::peakIndexes<double>(amps, 6.0);
+    auto peaks = diaryth::peakIndexes<double>(amps, 6.0);
 
     bool searchTinyPeaks = true;
     if (searchTinyPeaks) {
@@ -464,8 +464,8 @@ void SpectrographPainter::classifySlope() {
 
 SpectrographQML::SpectrographQML([[maybe_unused]] QQuickItem* parent) :  _samplesAmount(4096) {
     setParams(400, 20.0, 5000.0);
-    QObject::connect(&_analyser,SIGNAL(spectrumChanged(aurals::FrequencySpectrum)),
-                     this,SLOT(spectrumChanged(aurals::FrequencySpectrum)));
+    QObject::connect(&_analyser,SIGNAL(spectrumChanged(diaryth::FrequencySpectrum)),
+                     this,SLOT(spectrumChanged(diaryth::FrequencySpectrum)));
 }
 
 
@@ -485,13 +485,13 @@ void SpectrographQML::updateBars() {
 }
 
 void SpectrographQML::spectrumChanged([[maybe_unused]] const qint64 position, [[maybe_unused]] const qint64 length,
-                                      const aurals::FrequencySpectrum &spectrum) {
+                                      const diaryth::FrequencySpectrum &spectrum) {
     _spectrum = spectrum;
     SpectrographQML::updateBars();
 }
 
 
-void SpectrographQML::spectrumChanged(const aurals::FrequencySpectrum &spectrum) {
+void SpectrographQML::spectrumChanged(const diaryth::FrequencySpectrum &spectrum) {
     _spectrum = spectrum;
     SpectrographQML::updateBars();
 }

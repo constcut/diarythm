@@ -11,7 +11,7 @@
 #include "audio/features/WindowFunction.hpp"
 
 
-namespace aurals {
+namespace diaryth {
 
 
 

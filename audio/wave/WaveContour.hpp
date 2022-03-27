@@ -3,7 +3,7 @@
 
 #include <QAudioFormat>
 
-namespace aurals {
+namespace diaryth {
 
     class WaveContour  {
 

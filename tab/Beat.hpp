@@ -10,7 +10,7 @@
 #include "Note.hpp"
 
 
-namespace aurals {
+namespace diaryth {
 
 
     class Bar;

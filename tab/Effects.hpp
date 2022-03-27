@@ -6,7 +6,7 @@
 #include <map>
 
 
-namespace aurals {
+namespace diaryth {
 
 
     enum class Effect {

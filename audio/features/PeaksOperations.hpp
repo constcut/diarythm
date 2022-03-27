@@ -10,7 +10,7 @@
 #include <cmath>
 #include <unordered_map>
 
-namespace aurals {
+namespace diaryth {
 
 
     template <class T>

@@ -5,7 +5,7 @@
 #include <QAudioFormat>
 
 
-namespace aurals {
+namespace diaryth {
 
     class AudioSpeaker : public QIODevice
     {

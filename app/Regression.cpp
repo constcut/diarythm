@@ -15,10 +15,10 @@
 #include "app/Config.hpp"
 
 
-using namespace aurals;
+using namespace diaryth;
 
 
-bool aurals::checkHasRegression() {
+bool diaryth::checkHasRegression() {
 
     std::unordered_map<size_t, size_t> groupLength = {
         {1, 12},
@@ -260,7 +260,7 @@ void macroTrackTest3() {
 #include <QtGlobal>
 
 
-void aurals::runRegressionTests() {
+void diaryth::runRegressionTests() {
     //greatCheckScenarioCase(1, 1, 12, 4);
     //greatCheckScenarioCase(2, 1, 38, 4);
     if (checkHasRegression()) {
@@ -286,7 +286,7 @@ void aurals::runRegressionTests() {
 
 
 
-bool aurals::checkMidiIORegression() {
+bool diaryth::checkMidiIORegression() {
 
     bool fine = true;
 

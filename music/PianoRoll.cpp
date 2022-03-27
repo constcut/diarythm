@@ -2,7 +2,7 @@
 #include <QPainter>
 #include <QDebug>
 
-using namespace aurals;
+using namespace diaryth;
 
 
 void PianoRoll::loadMidi(QString filename)

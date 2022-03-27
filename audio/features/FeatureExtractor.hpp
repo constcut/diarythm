@@ -5,7 +5,7 @@
 #include <utility>
 
 
-namespace aurals {
+namespace diaryth {
 
     double calc_RMS(const float* data, const size_t len);
     double calc_dB(const float* data, const size_t len);

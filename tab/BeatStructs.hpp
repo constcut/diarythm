@@ -4,7 +4,7 @@
 #include <vector>
 #include <cinttypes>
 
-namespace aurals {
+namespace diaryth {
 
 
     struct SingleChange {

@@ -3,7 +3,7 @@
 
 #include <QDirIterator>
 
-using namespace aurals;
+using namespace diaryth;
 
 auto addToMap = [](auto& container, auto value) {
     if (container.count(value))

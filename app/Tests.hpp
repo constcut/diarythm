@@ -3,7 +3,7 @@
 
 #include <string>
 
-namespace aurals {
+namespace diaryth {
 
     class Config;
 

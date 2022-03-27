@@ -10,7 +10,7 @@ ApplicationWindow {
 
     id: thatWindow
     visible: true
-    title: "aurals"
+    title: "diaryth"
 
     x: 30
     y: 50

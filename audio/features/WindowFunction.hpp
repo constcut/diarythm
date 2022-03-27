@@ -3,7 +3,7 @@
 
 #include <cmath>
 
-namespace aurals {
+namespace diaryth {
 
 
     enum WindowFunction {

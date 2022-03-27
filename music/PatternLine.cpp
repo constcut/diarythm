@@ -6,7 +6,7 @@
 
 #include <cmath>
 
-using namespace aurals;
+using namespace diaryth;
 
 void PatternLine::paint(QPainter* painter) {
 

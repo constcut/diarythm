@@ -3,7 +3,7 @@
 
 
 
-namespace aurals {
+namespace diaryth {
 
 
     class Bar;

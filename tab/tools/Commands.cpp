@@ -5,7 +5,7 @@
 
 #include <QDebug>
 
-using namespace aurals;
+using namespace diaryth;
 
 
 
@@ -156,14 +156,14 @@ std::ifstream& operator>>(std::ifstream& is, MacroCommand& macro) {
 }
 
 
-void aurals::saveMacroComannds(const std::vector<MacroCommand>& commands, std::ofstream& os) {
+void diaryth::saveMacroComannds(const std::vector<MacroCommand>& commands, std::ofstream& os) {
 
     for (const auto& command: commands)
         std::visit([&os](const auto& command){ os << command; }, command);
 }
 
 
-std::vector<MacroCommand> aurals::loadMacroCommands(std::ifstream& is) {
+std::vector<MacroCommand> diaryth::loadMacroCommands(std::ifstream& is) {
     std::vector<MacroCommand> commands;
     while (is.eof() == false) {
         MacroCommand macro;

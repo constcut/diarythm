@@ -8,7 +8,7 @@
 
 #include "app/log.hpp"
 
-namespace aurals {
+namespace diaryth {
 
     class LogHandler : public QObject
     {

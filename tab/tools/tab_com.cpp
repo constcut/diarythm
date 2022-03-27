@@ -9,7 +9,7 @@
 #include <QDebug>
 
 
-using namespace aurals;
+using namespace diaryth;
 
 
 //TODO prepare undo operations

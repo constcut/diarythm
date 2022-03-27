@@ -41,14 +41,14 @@
 #include <QAudioFormat>
 #include "AudioUtils.hpp"
 
-using namespace aurals;
+using namespace diaryth;
 
-qint64 aurals::audioDuration(const QAudioFormat &format, const qint64 bytes) {
+qint64 diaryth::audioDuration(const QAudioFormat &format, const qint64 bytes) {
     return (bytes * 1000000) /
         (format.sampleRate() * format.channelCount() * (format.sampleSize() / 8));
 }
 
-qint64 aurals::audioLength(const QAudioFormat &format, const qint64 microSeconds) {
+qint64 diaryth::audioLength(const QAudioFormat &format, const qint64 microSeconds) {
    qint64 result = (format.sampleRate() * format.channelCount() * (format.sampleSize() / 8))
        * microSeconds / 1000000;
    result -= result % (format.channelCount() * format.sampleSize());
@@ -56,7 +56,7 @@ qint64 aurals::audioLength(const QAudioFormat &format, const qint64 microSeconds
 }
 
 
-QString aurals::formatToString(const QAudioFormat &format) {
+QString diaryth::formatToString(const QAudioFormat &format) {
     QString result;
 
     if (QAudioFormat() != format) {
@@ -103,13 +103,13 @@ QString aurals::formatToString(const QAudioFormat &format) {
 }
 
 
-bool aurals::isPCM(const QAudioFormat &format) {
+bool diaryth::isPCM(const QAudioFormat &format) {
     return (format.codec() == "audio/pcm");
 }
 
 
-bool aurals::isPCMS16LE(const QAudioFormat &format) {
-    return aurals::isPCM(format) &&
+bool diaryth::isPCMS16LE(const QAudioFormat &format) {
+    return diaryth::isPCM(format) &&
            format.sampleType() == QAudioFormat::SignedInt &&
            format.sampleSize() == 16 &&
            format.byteOrder() == QAudioFormat::LittleEndian;
@@ -118,10 +118,10 @@ bool aurals::isPCMS16LE(const QAudioFormat &format) {
 const qint16  PCMS16MaxValue     =  32767;
 const quint16 PCMS16MaxAmplitude =  32768; // because minimum is -32768
 
-qreal aurals::pcmToReal(const qint16 pcm) {
+qreal diaryth::pcmToReal(const qint16 pcm) {
     return qreal(pcm) / PCMS16MaxAmplitude;
 }
 
-qint16 aurals::realToPcm(const qreal real) {
+qint16 diaryth::realToPcm(const qreal real) {
     return real * PCMS16MaxValue;
 }

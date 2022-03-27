@@ -7,7 +7,7 @@
 #include <vector>
 
 
-namespace aurals {
+namespace diaryth {
 
     struct PatternBrick {
         //velocity + other effects?

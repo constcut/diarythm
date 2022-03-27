@@ -13,7 +13,7 @@
 #include <QDebug>
 
 
-namespace aurals {
+namespace diaryth {
 
 
     void setTestLocation(std::string newTL);

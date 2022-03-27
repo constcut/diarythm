@@ -40,7 +40,7 @@
 
 #include "FrequencySpectrum.hpp"
 
-using namespace aurals;
+using namespace diaryth;
 
 FrequencySpectrum::FrequencySpectrum(int numPoints)
     :   _elements(numPoints)

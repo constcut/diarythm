@@ -47,7 +47,7 @@
 #include <QDebug>
 
 
-using namespace aurals;
+using namespace diaryth;
 
 
 struct chunk {

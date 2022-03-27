@@ -3,12 +3,12 @@
 #include <iostream>
 #include <QDebug>
 
-using namespace aurals;
+using namespace diaryth;
 
 bool barLog = false;
 
 
-int aurals::translateDenum(std::uint8_t den)
+int diaryth::translateDenum(std::uint8_t den)
 {
     switch (den)
     {
@@ -24,7 +24,7 @@ int aurals::translateDenum(std::uint8_t den)
 }
 
 
-int aurals::translaeDuration(std::uint8_t dur)
+int diaryth::translaeDuration(std::uint8_t dur)
 {
     switch (dur)
     {
@@ -40,7 +40,7 @@ int aurals::translaeDuration(std::uint8_t dur)
 }
 
 
-int aurals::updateDurationWithDetail(std::uint8_t detail, int base)
+int diaryth::updateDurationWithDetail(std::uint8_t detail, int base)
 {
     int result = base;
 

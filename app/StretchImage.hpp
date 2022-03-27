@@ -5,7 +5,7 @@
 #include <QPainter>
 #include <QVariant>
 
-namespace aurals {
+namespace diaryth {
 
     class StretchImageQML: public QQuickPaintedItem
     {

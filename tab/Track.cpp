@@ -6,7 +6,7 @@
 bool trackLog = false;
 
 
-using namespace aurals;
+using namespace diaryth;
 
 
 

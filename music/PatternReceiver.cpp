@@ -12,7 +12,7 @@
 
 #include "midi/MidiFile.hpp"
 
-using namespace aurals;
+using namespace diaryth;
 
 
 void PatternReceiver::paint(QPainter* painter) {

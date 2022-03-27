@@ -4,7 +4,7 @@
 #include <limits.h>
 #include <cstddef>
 
-namespace aurals {
+namespace diaryth {
 
     template <typename T>
     T swapEndian(T u) {

@@ -5,7 +5,7 @@
 #include <memory>
 
 
-namespace aurals {
+namespace diaryth {
 
 
     template <typename Child, typename Parent> class ChainContainer

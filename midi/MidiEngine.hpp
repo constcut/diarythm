@@ -12,7 +12,7 @@
     #include "windows.h" //for lib mm
 #endif
 
-namespace aurals {
+namespace diaryth {
 
     class MidiEngine : public QThread
     {
@@ -24,7 +24,7 @@ namespace aurals {
         #endif
          static bool opened;
 
-       aurals::MidiTrack *_toPlay;
+       diaryth::MidiTrack *_toPlay;
        bool _playNotes;
        bool _emitSignal;
 
@@ -49,9 +49,9 @@ namespace aurals {
 
         virtual void run() override;
 
-        static void sendSignal(const aurals::MidiMessage &signal);
+        static void sendSignal(const diaryth::MidiMessage &signal);
         static void sendSignalShort(const uint8_t status, const int uint8_t1=-1, const int uint8_t2=-1);
-        static void sendSignalLong(const aurals::MidiMessage &signal);
+        static void sendSignalLong(const diaryth::MidiMessage &signal);
 
         static void sendSignalShortDelay(const int msdelay, const uint8_t status,
                                          const int uint8_t1=-1, const int uint8_t2=-1);

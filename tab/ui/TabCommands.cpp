@@ -23,7 +23,7 @@
 
 
 
-using namespace aurals;
+using namespace diaryth;
 
 
 void changeBarSignsQt(Track* pTrack) {

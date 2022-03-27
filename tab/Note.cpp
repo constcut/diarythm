@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-using namespace aurals;
+using namespace diaryth;
 
 
 void Note::clone(Note *from)

@@ -2,7 +2,7 @@
 
 #include <QPainter>
 
-using namespace aurals;
+using namespace diaryth;
 
 
 int GraphicMap::getAssociation(const int x, const int y) const{

@@ -16,7 +16,7 @@
 
 
 
-using namespace aurals;
+using namespace diaryth;
 
 
 WaveContour::WaveContour(QString filename) {
@@ -78,10 +78,10 @@ void WaveContour::calculateRms() {
     calcRms(8.0, _8RmsLine);
 
     std::vector<double> stdRms(_rmsLine.begin(), _rmsLine.end());
-    _rmsHigh = aurals::peakIndexes<double>(stdRms, _peakSensetivity);
+    _rmsHigh = diaryth::peakIndexes<double>(stdRms, _peakSensetivity);
     for (auto& s: stdRms)
         s *= -1;
-    _rmsLow = aurals::peakIndexes<double>(stdRms, _peakSensetivity);
+    _rmsLow = diaryth::peakIndexes<double>(stdRms, _peakSensetivity);
 }
 
 

@@ -5,7 +5,7 @@
 #include "Beat.hpp"
 
 
-namespace aurals {
+namespace diaryth {
 
 
     int translateDenum(std::uint8_t den);

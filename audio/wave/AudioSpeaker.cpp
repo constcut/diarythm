@@ -5,7 +5,7 @@
 
 #include "AudioHandler.hpp"
 
-using namespace aurals;
+using namespace diaryth;
 
 AudioSpeaker::AudioSpeaker(const QAudioFormat &format, QObject *parent, QByteArray& commonBufer)
     :   QIODevice(parent)

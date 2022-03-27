@@ -6,7 +6,7 @@
 #include "tab/Tab.hpp"
 
 
-namespace aurals {
+namespace diaryth {
 
 
     class GTabLoader

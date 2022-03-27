@@ -5,7 +5,7 @@
 #include <list>
 #include <string>
 
-namespace aurals {
+namespace diaryth {
 
     struct MidiChannelInfo
     {

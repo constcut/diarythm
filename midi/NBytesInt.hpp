@@ -5,7 +5,7 @@
 #include <deque>
 #include <fstream>
 
-namespace aurals {
+namespace diaryth {
 
     class NBytesInt : public std::deque<uint8_t> {
 

@@ -50,7 +50,7 @@
 #include "audio/features/FeatureExtractor.hpp"
 
 
-using namespace aurals;
+using namespace diaryth;
 
 
 void WaveshapeQML::paint(QPainter *painter) {

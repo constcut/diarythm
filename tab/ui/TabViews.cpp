@@ -15,10 +15,10 @@
 #include <QDebug>
 
 
-using namespace aurals;
+using namespace diaryth;
 
 
-int aurals::translateDefaulColor(const std::string& confParam){
+int diaryth::translateDefaulColor(const std::string& confParam){
     int numColor = -1;
     if (confParam == "black") numColor = 0;
     if (confParam == "red") numColor = 1;
@@ -41,9 +41,9 @@ int aurals::translateDefaulColor(const std::string& confParam){
 }
 
 
-void aurals::changeColor(const std::string& color, QPainter* src)
+void diaryth::changeColor(const std::string& color, QPainter* src)
 {
-    int colorS = aurals::translateDefaulColor(color);
+    int colorS = diaryth::translateDefaulColor(color);
     switch (colorS)
     {
         case 0: src->setPen(Qt::black); break;
@@ -68,7 +68,7 @@ void aurals::changeColor(const std::string& color, QPainter* src)
 }
 
 
-void aurals::drawEllipse(QColor c, QPainter *painter, int x, int y, int w, int h) {
+void diaryth::drawEllipse(QColor c, QPainter *painter, int x, int y, int w, int h) {
     QBrush startBra = painter->brush();
     painter->setBrush(c);
     painter->drawEllipse(x,y,w,h);
@@ -77,7 +77,7 @@ void aurals::drawEllipse(QColor c, QPainter *painter, int x, int y, int w, int h
 
 
 
-void aurals::drawEllipse(QPainter *painter, int x, int y, int w, int h) {
+void diaryth::drawEllipse(QPainter *painter, int x, int y, int w, int h) {
     painter->drawEllipse(x,y,w,h);
 }
 
@@ -168,13 +168,13 @@ void TabView::paint(QPainter *painter) //Ugly function, removed all but bars, an
                break;
 
             if (i == _pTab->getCurrentTrack())
-                aurals::changeColor(CONF_PARAM("colors.curTrack"), painter);
+                diaryth::changeColor(CONF_PARAM("colors.curTrack"), painter);
 
             painter->drawText(20, yPos,trackVal.c_str());
             painter->drawRect(7, yPos-10, 10, 10);
 
             if (i == _pTab->getCurrentTrack())
-               aurals::changeColor(CONF_PARAM("colors.default"), painter);
+               diaryth::changeColor(CONF_PARAM("colors.default"), painter);
 
             std::uint8_t trackStat = _pTab->at(i)->getStatus();
 

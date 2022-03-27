@@ -9,7 +9,7 @@
 //http://www.music.mcgill.ca/~ich/classes/mumt306/StandardMIDIfileformat.html
 //https://www.usb.org/sites/default/files/midi10.pdf
 
-namespace aurals {
+namespace diaryth {
 
 
     enum MidiEvent {

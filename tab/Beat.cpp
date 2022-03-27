@@ -2,7 +2,7 @@
 #include <iostream>
 
 
-using namespace aurals;
+using namespace diaryth;
 
 
 void BendPoints::insertNewPoint(BendPoint bendPoint)

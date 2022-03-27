@@ -9,7 +9,7 @@
 #include "Bar.hpp"
 
 
-namespace aurals {
+namespace diaryth {
 
 
     class Tab;

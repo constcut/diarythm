@@ -1,5 +1,5 @@
 import QtQuick 2.0
-import aurals 1.0
+import diaryth 1.0
 
 Item {
     Piano {

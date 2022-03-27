@@ -4,7 +4,7 @@
 #include <QIODevice>
 #include <QAudioFormat>
 
-namespace aurals {
+namespace diaryth {
 
     class AudioReceiver : public QIODevice
     {

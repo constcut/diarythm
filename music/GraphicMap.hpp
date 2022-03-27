@@ -5,7 +5,7 @@
 #include <QList>
 #include <QQuickPaintedItem>
 
-namespace aurals {
+namespace diaryth {
 
     struct GraphicElement  {
       int x,y,w,h;

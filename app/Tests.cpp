@@ -26,10 +26,10 @@
 QElapsedTimer timer;
 
 
-using namespace aurals;
+using namespace diaryth;
 
 
-int aurals::getTime()
+int diaryth::getTime()
 {
     //QTime time;
 
@@ -260,7 +260,7 @@ bool greatCheck()
 
 
 
-bool aurals::greatCheckScenarioCase(uint32_t scen, uint32_t from, uint32_t to, uint32_t v)
+bool diaryth::greatCheckScenarioCase(uint32_t scen, uint32_t from, uint32_t to, uint32_t v)
 {
     if (scen == 4)
         return false; //yet not in resourses
@@ -315,7 +315,7 @@ bool aurals::greatCheckScenarioCase(uint32_t scen, uint32_t from, uint32_t to, u
     return true;
 }
 
-void aurals::connectConfigs(Config& config)
+void diaryth::connectConfigs(Config& config)
 {
     config.connectLog(&tabLog,0,"tab");
     config.connectLog(&midiLog,2,"midi");
@@ -323,6 +323,6 @@ void aurals::connectConfigs(Config& config)
 }
 
 
-bool aurals::testScenario() {
+bool diaryth::testScenario() {
     return greatCheck();
 }

@@ -2,7 +2,7 @@
 #include "app/LogHandler.hpp"
 
 
-using namespace aurals;
+using namespace diaryth;
 
 int main(int argc, char *argv[])
 {

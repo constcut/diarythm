@@ -10,7 +10,7 @@
 #include <QVariant>
 
 
-namespace aurals {
+namespace diaryth {
 
     class Clipboard : public QObject
     {

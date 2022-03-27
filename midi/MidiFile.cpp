@@ -4,7 +4,7 @@
 
 #include "MidiUtils.hpp"
 
-using namespace aurals;
+using namespace diaryth;
 
 bool midiLog = false;
 
