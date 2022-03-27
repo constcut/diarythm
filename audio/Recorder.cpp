@@ -3,6 +3,7 @@
 #include <QAudioEncoderSettings>
 #include <QUrl>
 #include <QDebug>
+#include <QDir>
 
 using namespace diaryth;
 
@@ -25,7 +26,9 @@ Recorder::Recorder()
 
 void Recorder::start()
 {
-    _audioRecorder->setOutputLocation(QUrl::fromLocalFile("C:\\dev\\testing\\test.wav"));
+    QString directory = QDir::currentPath() + "/recorder/";
+
+    _audioRecorder->setOutputLocation(QUrl::fromLocalFile( directory + "test.wav"));
 
     qDebug() << _audioRecorder->actualLocation().toString() << " : audio location";
 
