@@ -26,7 +26,7 @@ ApplicationWindow {
             thatWindow.height = 600
         }
 
-        mainLoader.setSource("midiPlayer.qml")
+        mainLoader.setSource("audioHandler.qml")
     }
 
 
@@ -70,28 +70,6 @@ ApplicationWindow {
         MenuItem {
             text: "Audio"
             onTriggered: mainLoader.setSource("audioHandler.qml")
-        }
-        MenuItem {
-            text: "Tab"
-            onTriggered: {
-                mainLoader.setSource("tablature.qml")
-                mainLoader.focus = true
-            }
-        }
-        MenuItem {
-            text: "Midi"
-            onTriggered: {
-                mainLoader.setSource("midiPlayer.qml")
-                mainLoader.focus = true
-            }
-        }
-        MenuItem {
-            text: "Tap"
-            onTriggered: mainLoader.setSource("tapper.qml")
-        }
-        MenuItem {
-            text: "Pattern"
-            onTriggered: mainLoader.setSource("patternInput.qml")
         }
         MenuItem {
             id: exitMenuItem
