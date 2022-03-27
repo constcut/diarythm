@@ -88,15 +88,6 @@ SOURCES += \
     tab/Note.cpp \
     tab/Tab.cpp \
     tab/Track.cpp \
-    tab/tools/Base.cpp \
-    tab/tools/Commands.cpp \
-    tab/tools/GmyFile.cpp \
-    tab/tools/GtpFiles.cpp \
-    tab/tools/MidiExport.cpp \
-    tab/tools/TabClipboard.cpp \
-    tab/tools/TabLoader.cpp \
-    tab/tools/Threads.cpp \
-    tab/tools/tab_com.cpp \
     tab/tools/track_com.cpp
 
 RESOURCES += qml.qrc \
@@ -201,15 +192,7 @@ HEADERS += \
     tab/Tab.hpp \
     tab/TabStructs.hpp \
     tab/Track.hpp \
-    tab/TrackStructs.hpp \
-    tab/tools/Base.hpp \
-    tab/tools/Commands.hpp \
-    tab/tools/GmyFile.hpp \
-    tab/tools/GtpFiles.hpp \
-    tab/tools/MidiExport.hpp \
-    tab/tools/TabClipboard.hpp \
-    tab/tools/TabLoader.hpp \
-    tab/tools/Threads.hpp
+    tab/TrackStructs.hpp
 
 
 DISTFILES += \
