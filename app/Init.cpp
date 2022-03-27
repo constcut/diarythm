@@ -40,8 +40,6 @@
 
 #include "app/Config.hpp"
 
-#include "tab/ui/TabViews.hpp"
-
 #include "tab/tools/Commands.hpp"
 
 
@@ -131,9 +129,7 @@ int mainInit(int argc, char *argv[]) {
     qmlRegisterType<diaryth::StretchImageQML>("diaryth", 1, 0,"StretchImage");
     qmlRegisterType<diaryth::CepstrumgraphQML>("diaryth", 1, 0,"Cepstrumgraph");
 
-    qmlRegisterType<diaryth::TabView>("diaryth", 1, 0, "TabView");
-    qmlRegisterType<diaryth::TrackView>("diaryth", 1, 0, "TrackView");
-    //qmlRegisterType<diaryth::BarView>("diaryth", 1, 0, "BarView");
+
     qmlRegisterType<diaryth::PianoRoll>("diaryth", 1, 0, "PianoRoll");
     qmlRegisterType<diaryth::PatternLine>("diaryth", 1, 0, "PatternLine");
     qmlRegisterType<diaryth::PatternReceiver>("diaryth", 1, 0, "PatternReceiver");

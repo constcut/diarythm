@@ -103,11 +103,7 @@ SOURCES += \
     tab/tools/TabLoader.cpp \
     tab/tools/Threads.cpp \
     tab/tools/tab_com.cpp \
-    tab/tools/track_com.cpp \
-    tab/ui/BarView.cpp \
-    tab/ui/TabCommands.cpp \
-    tab/ui/TabViews.cpp \
-    tab/ui/TrackView.cpp
+    tab/tools/track_com.cpp
 
 RESOURCES += qml.qrc \
     res/fonts.qrc
@@ -226,10 +222,7 @@ HEADERS += \
     tab/tools/MidiExport.hpp \
     tab/tools/TabClipboard.hpp \
     tab/tools/TabLoader.hpp \
-    tab/tools/Threads.hpp \
-    tab/ui/BarView.hpp \
-    tab/ui/TabViews.hpp \
-    tab/ui/TrackView.hpp
+    tab/tools/Threads.hpp
 
 
 DISTFILES += \
