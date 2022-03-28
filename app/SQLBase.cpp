@@ -205,3 +205,26 @@ QVariantList SQLBase::findByNameMask(QString nameMask)
 
     return records;
 }
+
+
+QVariantList SQLBase::findByTagMask(QString tagMask)
+{
+    QString findRequest =
+            QString("SELECT * FROM audio WHERE tags LIKE '%%1%';") //Для древовидных тэгов
+            .arg(tagMask);
+
+    QSqlQuery recordsQuery = executeRequest(findRequest);
+
+    QVariantList records;
+
+    while(recordsQuery.next()) //TODO sub-function to cover all same things (refactoring)
+    {
+        QStringList singleRecord;
+        for (int i = 1; i <= audioFieldsCount; ++i)
+            singleRecord << recordsQuery.value(i).toString();
+
+        records << singleRecord;
+    }
+
+    return records;
+}

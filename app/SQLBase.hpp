@@ -34,6 +34,7 @@ namespace diaryth {
         QVariantList findRecords(QString date);
 
         QVariantList findByNameMask(QString nameMask);
+        QVariantList findByTagMask(QString tagMask);
 
 
     private:
