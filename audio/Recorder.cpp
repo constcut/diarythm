@@ -95,5 +95,5 @@ void Recorder::cancel()
 void Recorder::processBuffer(const QAudioBuffer& buffer)
 {
     _durationMicroSeconds += buffer.duration();
-    //qDebug() << "Time ms: " << _durationMicroSeconds / 1000;
+    emit timeUpdate(_durationMicroSeconds / 1000);
 }

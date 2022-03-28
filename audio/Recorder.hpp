@@ -29,6 +29,9 @@ namespace diaryth {
     public slots:
         void processBuffer(const QAudioBuffer& buffer);
 
+    signals:
+        void timeUpdate(quint64 ms);
+
     private:
 
         std::unique_ptr<QAudioProbe> _audioProbe;

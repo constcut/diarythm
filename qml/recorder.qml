@@ -49,7 +49,16 @@ Item {
         }
 
         Text {
+            id: timeText
             text: "Time"
+        }
+    }
+
+    Connections {
+        target: recorder
+
+        onTimeUpdate : {
+            timeText.text = ms
         }
     }
 
