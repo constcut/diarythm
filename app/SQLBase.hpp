@@ -47,7 +47,7 @@ namespace diaryth {
 
         QVariantList fillRecordsSearchResults(QSqlQuery& query);
 
-        void logIfError(QSqlQuery& query, const QString& request);
+        bool logIfError(QSqlQuery& query, const QString& request);
 
         const int audioFieldsCount = 7; //Later use walkaround with query.last() and query.at() + 1
 

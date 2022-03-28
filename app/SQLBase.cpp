@@ -113,22 +113,22 @@ int SQLBase::recordsMaxLocalId(QString date)
 
     QSqlQuery maxIdQuery = executeRequest(requestMaxId);
 
-    if (maxIdQuery.lastError().text().isEmpty() == false)
-        qDebug() << "MaxLocalId request failed " << requestMaxId
-                 << "\n Error: " << maxIdQuery.lastError();
-    else
-        if (maxIdQuery.next())
+    if (logIfError(maxIdQuery, requestMaxId) == false
+            && maxIdQuery.next())
             return maxIdQuery.value(0).toInt();
 
     return -1;
 }
 
 
-void SQLBase::logIfError(QSqlQuery& query, const QString &request)
+bool SQLBase::logIfError(QSqlQuery& query, const QString &request)
 {
-    if (query.lastError().text().isEmpty() == false)
+    if (query.lastError().text().isEmpty() == false) {
         qDebug() << "Update request failed " << request
                  << "\n Error: " << query.lastError();
+        return true;
+    }
+    return false;
 }
 
 
