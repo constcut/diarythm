@@ -129,4 +129,13 @@ int SQLBase::recordsMaxLocalId(QString date)
 }
 
 
+int SQLBase::getTotalRecords()
+{
+    QString requestTotalRecords = "SELECT COUNT(audioId) FROM audio";
+    QSqlQuery totalRecordsQuery = executeRequest(requestTotalRecords);
 
+    if (totalRecordsQuery.next())
+        return totalRecordsQuery.value(0).toInt();
+
+    return 0;
+}
