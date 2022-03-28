@@ -18,6 +18,7 @@
 #include "app/LogHandler.hpp"
 #include "app/Config.hpp"
 #include "app/StretchImage.hpp"
+#include "app/SQLBase.hpp"
 
 #include "audio/wave/AudioHandler.hpp"
 #include "audio/wave/WaveShape.hpp"
@@ -130,6 +131,9 @@ int mainInit(int argc, char *argv[])
     diaryth::AudioHandler audio;
     diaryth::Recorder recorder;
     diaryth::ConfigQML config;
+    diaryth::SQLBase sqlBase;
+
+    qDebug() << "Create tables: " << sqlBase.createTablesIfNeeded();
 
     engine.rootContext()->setContextProperty("audio", &audio);
     engine.rootContext()->setContextProperty("recorder", &recorder);

@@ -29,6 +29,7 @@ SOURCES += \
     app/Config.cpp \
     app/Init.cpp \
     app/LogHandler.cpp \
+    app/SQLBase.cpp \
     audio/Recorder.cpp \
     audio/features/ACFgraph.cpp \
     audio/spectrum/Cepstrumgraph.cpp \
@@ -98,6 +99,7 @@ HEADERS += \
     app/Config.hpp \
     app/Init.hpp \
     app/LogHandler.hpp \
+    app/SQLBase.hpp \
     app/StretchImage.hpp \
     app/log.hpp \
     audio/Recorder.hpp \
