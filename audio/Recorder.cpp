@@ -33,9 +33,11 @@ Recorder::Recorder()
     connect(_audioProbe.get(), SIGNAL(audioBufferProbed(QAudioBuffer)),
             this, SLOT(processBuffer(QAudioBuffer)));
 
-    //TODO set default values to apply on setters
-    qDebug() << getInputDevice() << " " << getAudioCodec() << " " << getFileContainer()
-             << " " << getSampleRate();
+
+    _defaultInput = getInputDevice();
+    _defaultCodec = getAudioCodec();
+    _defaultContainer = getFileContainer();
+    _defaultSampleRate = getSampleRate();
 }
 
 

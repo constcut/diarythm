@@ -51,7 +51,10 @@ namespace diaryth {
 
         quint64 _durationMicroSeconds;
 
-
+        QString _defaultInput;
+        QString _defaultCodec;
+        QString _defaultContainer;
+        int _defaultSampleRate;
 
     };
 
