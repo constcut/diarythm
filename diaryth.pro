@@ -1,5 +1,6 @@
-QT += quick multimedia core widgets
+QT += sql quick multimedia core
 CONFIG += c++17
+
 
 #Doesn't work on windows
 linux:Debug:CONFIG += sanitizer sanitize_address sanitize_memory sanitize_undefined
