@@ -17,11 +17,18 @@ namespace diaryth {
 
         QSqlQuery executeRequest(const QString& requestBody);
 
+        //TODO const& for QString
+
         void addAudioRecord(QString date, QString time, int localId,
                             QString name, quint64 durationMs);
 
         void editAudioRecord(QString date, int localId,
                              QString tags, QString description);
+
+        void removeAudioRecord(QString date, int localId);
+
+        int maxLocalId(QString date);
+        int getTotalRecords();
 
     private:
 
