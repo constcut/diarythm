@@ -19,25 +19,25 @@ namespace diaryth {
 
         //TODO const& for QString
 
-        void addAudioRecord(QString date, QString time, int localId,
+        Q_INVOKABLE void addAudioRecord(QString date, QString time, int localId,
                             QString name, quint64 durationMs);
 
-        void editAudioRecord(QString date, int localId,
+        Q_INVOKABLE void editAudioRecord(QString date, int localId,
                              QString tags, QString description);
 
-        void removeAudioRecord(QString date, int localId);
+        Q_INVOKABLE void removeAudioRecord(QString date, int localId);
 
-        int recordsMaxLocalId(QString date);
-        int getTotalRecords();
+        Q_INVOKABLE int recordsMaxLocalId(QString date);
+        Q_INVOKABLE int getTotalRecords();
 
-        QStringList findSingleRecord(QString date, int localId);
-        QVariantList findRecords(QString date);
+        Q_INVOKABLE QStringList findSingleRecord(QString date, int localId);
+        Q_INVOKABLE QVariantList findRecords(QString date);
 
-        QVariantList findByNameMask(QString nameMask);
-        QVariantList findByTagMask(QString tagMask);
+        Q_INVOKABLE QVariantList findByNameMask(QString nameMask);
+        Q_INVOKABLE QVariantList findByTagMask(QString tagMask);
 
-        QVariantList findByNameMaskAndDate(QString date, QString nameMask);
-        QVariantList findByTagMaskAndDate(QString date, QString tagMask);
+        Q_INVOKABLE QVariantList findByNameMaskAndDate(QString date, QString nameMask);
+        Q_INVOKABLE QVariantList findByTagMaskAndDate(QString date, QString tagMask);
 
 
     private:
