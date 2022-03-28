@@ -33,10 +33,13 @@ namespace diaryth {
         QStringList findSingleRecord(QString date, int localId);
         QVariantList findRecords(QString date);
 
+
     private:
 
         QSqlError initBase();
         void createTablesIfNeeded();
+
+        const int audioFieldsCount = 7; //Later use walkaround with query.last() and query.at() + 1
 
     };
 

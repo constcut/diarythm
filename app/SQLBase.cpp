@@ -154,7 +154,7 @@ QStringList SQLBase::findSingleRecord(QString date, int localId)
     QStringList singleRecord;
 
     if (singleRecordQuery.next())
-        for (int i = 1; i < 8; ++i) //TODO const или лучше найти способ получить из Q
+        for (int i = 1; i <= audioFieldsCount; ++i)
             singleRecord << singleRecordQuery.value(i).toString();
 
     return singleRecord;
@@ -174,7 +174,7 @@ QVariantList SQLBase::findRecords(QString date)
     while(recordsQuery.next())
     {
         QStringList singleRecord;
-        for (int i = 1; i < 8; ++i) //TODO const или лучше найти способ получить из Q
+        for (int i = 1; i <= audioFieldsCount; ++i)
             singleRecord << recordsQuery.value(i).toString();
 
         records << singleRecord;
