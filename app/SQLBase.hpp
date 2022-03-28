@@ -27,7 +27,7 @@ namespace diaryth {
 
         void removeAudioRecord(QString date, int localId);
 
-        int maxLocalId(QString date);
+        int recordsMaxLocalId(QString date);
         int getTotalRecords();
 
     private:

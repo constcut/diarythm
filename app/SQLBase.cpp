@@ -104,7 +104,29 @@ void SQLBase::removeAudioRecord(QString date, int localId)
 
     QSqlQuery deleteQuery = executeRequest(deleteAudioRequest);
 
-    if (deleteQuery.lastError().text().isEmpty() == false)
-        qDebug() << "Delete request failed " << deleteAudioRequest
+    if (deleteQuery.lastError().text().isEmpty() == false) //TODO sub-function
+        qDebug() << "Remove request failed " << deleteAudioRequest
                  << "\n Error: " << deleteQuery.lastError();
 }
+
+
+int SQLBase::recordsMaxLocalId(QString date)
+{
+    QString requestMaxId =
+            QString("SELECT MAX(localId) FROM audio WHERE datePart='%1';")
+            .arg(date);
+
+    QSqlQuery maxIdQuery = executeRequest(requestMaxId);
+
+    if (maxIdQuery.lastError().text().isEmpty() == false)
+        qDebug() << "MaxLocalId request failed " << requestMaxId
+                 << "\n Error: " << maxIdQuery.lastError();
+    else
+        if (maxIdQuery.next())
+            return maxIdQuery.value(0).toInt();
+
+    return -1;
+}
+
+
+
