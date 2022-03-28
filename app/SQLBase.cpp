@@ -90,12 +90,8 @@ void SQLBase::editAudioRecord(QString date, int localId,
             .arg(tags).arg(description).arg(date).arg(localId);
 
     QSqlQuery updateQuery = executeRequest(updateAudioRequest);
-
-    if (updateQuery.lastError().text().isEmpty() == false)
-        qDebug() << "Update request failed " << updateAudioRequest
-                 << "\n Error: " << updateQuery.lastError();
+    logIfError(updateQuery, updateAudioRequest);
 }
-
 
 
 void SQLBase::removeAudioRecord(QString date, int localId)
@@ -105,10 +101,7 @@ void SQLBase::removeAudioRecord(QString date, int localId)
             .arg(date).arg(localId);
 
     QSqlQuery deleteQuery = executeRequest(deleteAudioRequest);
-
-    if (deleteQuery.lastError().text().isEmpty() == false) //TODO sub-function
-        qDebug() << "Remove request failed " << deleteAudioRequest
-                 << "\n Error: " << deleteQuery.lastError();
+    logIfError(deleteQuery, deleteAudioRequest);
 }
 
 
@@ -128,6 +121,14 @@ int SQLBase::recordsMaxLocalId(QString date)
             return maxIdQuery.value(0).toInt();
 
     return -1;
+}
+
+
+void SQLBase::logIfError(QSqlQuery& query, const QString &request)
+{
+    if (query.lastError().text().isEmpty() == false)
+        qDebug() << "Update request failed " << request
+                 << "\n Error: " << query.lastError();
 }
 
 
