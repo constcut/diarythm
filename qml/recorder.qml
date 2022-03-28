@@ -36,7 +36,7 @@ Item {
         ToolButton {
             text: "Cancel"
             onClicked: {
-                recorder.clear()
+                recorder.cancel()
             }
         }
 
