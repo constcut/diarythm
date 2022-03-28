@@ -19,9 +19,10 @@ QSqlError SQLBase::initBase()
     if (!db.open())
         return db.lastError();
 
+    qDebug() << "List of existing sql tables";
     const QStringList tables = db.tables();
-    for (int i = 0; i < tables.size(); ++i)
-        qDebug() << "Table: " << tables[i];
+    for (const auto& table: tables)
+        qDebug() << ":" << table;
 
     /*if (tables.contains("audio", Qt::CaseInsensitive)
         && tables.contains("text", Qt::CaseInsensitive))
@@ -43,7 +44,9 @@ QSqlQuery SQLBase::executeRequest(const QString& requestBody)
 
 void SQLBase::createTablesIfNeeded() {
 
-    qDebug() << initBase(); //TODO Только когда была ошибка
+    auto initResult = initBase();
+    if (initResult.text().isEmpty() == false)
+        qDebug() << "Init base error: " << initResult;
 
     const QString audioTableCreate("CREATE TABLE IF NOT EXISTS audio ("
                            "audioId integer primary key autoincrement NOT NULL,"
@@ -55,7 +58,7 @@ void SQLBase::createTablesIfNeeded() {
                            "tags text,"
                            "description text);");
 
-    QSqlQuery audioTableRequest = executeRequest(audioTableCreate);
+    executeRequest(audioTableCreate); //QSqlQuery audioTableRequest =
 
     const QString textTableCreate("CREATE TABLE IF NOT EXISTS texts ("
                            "textId integer primary key autoincrement NOT NULL,"
@@ -67,7 +70,7 @@ void SQLBase::createTablesIfNeeded() {
                            "tags text,"
                            "description text);");
 
-    QSqlQuery textTableRequest = executeRequest(textTableCreate);
+    executeRequest(textTableCreate); //QSqlQuery textTableRequest =
 }
 
 
