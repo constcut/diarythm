@@ -13,15 +13,14 @@ namespace diaryth {
         Q_OBJECT
 
     public:
-        SQLBase() = default;
+        SQLBase();
 
         QSqlQuery executeRequest(const QString& requestBody);
-
-        void createTablesIfNeeded();
 
     private:
 
         QSqlError initBase();
+        void createTablesIfNeeded();
 
     };
 

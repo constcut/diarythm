@@ -133,8 +133,6 @@ int mainInit(int argc, char *argv[])
     diaryth::ConfigQML config;
     diaryth::SQLBase sqlBase;
 
-    sqlBase.createTablesIfNeeded();
-
     engine.rootContext()->setContextProperty("audio", &audio);
     engine.rootContext()->setContextProperty("recorder", &recorder);
     engine.rootContext()->setContextProperty("aconfig", &config);
@@ -142,7 +140,6 @@ int mainInit(int argc, char *argv[])
     engine.load(QUrl(QStringLiteral("qrc:/qml/main.qml")));
     if (engine.rootObjects().isEmpty())
         return -1;
-
 
     int res = 0;
     try {

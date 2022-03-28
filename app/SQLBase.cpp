@@ -6,6 +6,11 @@
 using namespace diaryth;
 
 
+SQLBase::SQLBase() {
+    createTablesIfNeeded();
+}
+
+
 QSqlError SQLBase::initBase()
 {
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
