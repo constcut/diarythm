@@ -17,6 +17,12 @@ namespace diaryth {
 
         QSqlQuery executeRequest(const QString& requestBody);
 
+        void addAudioRecord(QString date, QString time, int localId,
+                            QString name, quint64 durationMs);
+
+        void editAudioRecord(QString date, int localId,
+                             QString tags, QString description);
+
     private:
 
         QSqlError initBase();
