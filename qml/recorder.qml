@@ -45,6 +45,7 @@ Item {
         }
 
         Text {
+            id: dbsText
             text: "Volume lvl"
         }
 
@@ -57,8 +58,12 @@ Item {
     Connections {
         target: recorder
 
-        onTimeUpdate : {
+        onTimeUpdate: {
             timeText.text = ms
+        }
+
+        onDbsUpdate: {
+            dbsText.text = dbs
         }
     }
 

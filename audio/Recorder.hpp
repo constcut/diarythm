@@ -31,6 +31,7 @@ namespace diaryth {
 
     signals:
         void timeUpdate(quint64 ms);
+        void dbsUpdate(qreal dbs);
 
     private:
 
