@@ -194,6 +194,17 @@ QVariantList SQLBase::findByTagMask(QString tagMask)
 }
 
 
+QVariantList SQLBase::findByNameMaskAndDate(QString date, QString nameMask)
+{
+    QString findRequest =
+            QString("SELECT * FROM audio WHERE datePart='%1' AND audioName LIKE '%2%';")
+            .arg(date).arg(nameMask);
+
+    QSqlQuery recordsQuery = executeRequest(findRequest);
+    return fillRecordsSearchResults(recordsQuery);
+}
+
+
 QVariantList SQLBase::fillRecordsSearchResults(QSqlQuery& query)
 {
      QVariantList records;
@@ -209,3 +220,5 @@ QVariantList SQLBase::fillRecordsSearchResults(QSqlQuery& query)
 
      return records;
 }
+
+
