@@ -58,11 +58,11 @@ Item {
     Connections {
         target: recorder
 
-        onTimeUpdate: {
+        function onTimeUpdate(ms) {
             timeText.text = ms
         }
 
-        onDbsUpdate: {
+        function onDbsUpdate(dbs) {
             dbsText.text = dbs
         }
     }
