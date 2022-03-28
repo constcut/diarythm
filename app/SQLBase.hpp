@@ -17,7 +17,7 @@ namespace diaryth {
 
         QSqlQuery executeRequest(const QString& requestBody);
 
-        bool createTablesIfNeeded();
+        void createTablesIfNeeded();
 
     private:
 

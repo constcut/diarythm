@@ -36,9 +36,9 @@ QSqlQuery SQLBase::executeRequest(const QString& requestBody)
 }
 
 
-bool SQLBase::createTablesIfNeeded() {
+void SQLBase::createTablesIfNeeded() {
 
-    qDebug() << initBase(); //Только когда была ошибка
+    qDebug() << initBase(); //TODO Только когда была ошибка
 
     const QString audioTableCreate("CREATE TABLE IF NOT EXISTS audio ("
                            "audioId integer primary key autoincrement NOT NULL,"
@@ -52,7 +52,17 @@ bool SQLBase::createTablesIfNeeded() {
 
     QSqlQuery audioTableRequest = executeRequest(audioTableCreate);
 
-    return audioTableRequest.isValid();
+    const QString textTableCreate("CREATE TABLE IF NOT EXISTS texts ("
+                           "textId integer primary key autoincrement NOT NULL,"
+                           "datePart text NOT NULL,"
+                           "timePart text NOT NULL,"
+                           "localId integer NOT NULL,"
+                           "textName text NOT NULL,"
+                           "textValue text NOT NULL,"
+                           "tags text,"
+                           "description text);");
+
+    QSqlQuery textTableRequest = executeRequest(textTableCreate);
 }
 
 

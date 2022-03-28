@@ -133,7 +133,7 @@ int mainInit(int argc, char *argv[])
     diaryth::ConfigQML config;
     diaryth::SQLBase sqlBase;
 
-    qDebug() << "Create tables: " << sqlBase.createTablesIfNeeded();
+    sqlBase.createTablesIfNeeded();
 
     engine.rootContext()->setContextProperty("audio", &audio);
     engine.rootContext()->setContextProperty("recorder", &recorder);
