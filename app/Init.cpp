@@ -1,6 +1,6 @@
 #include "Init.hpp"
 
-#include <QApplication>
+#include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <QTextCodec>
@@ -84,7 +84,7 @@ int mainInit(int argc, char *argv[])
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     qmlRegisterType<diaryth::ConsoleLogQML>("diaryth",1,0,"ConsoleLogView");
 
-    QApplication app(argc, argv);
+    QGuiApplication app(argc, argv); //QApplication if widgets are used
 
     app.setApplicationName("diaryth");
     app.setOrganizationName("accumerite");
