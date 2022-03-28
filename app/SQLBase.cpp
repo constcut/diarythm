@@ -72,8 +72,24 @@ void SQLBase::createTablesIfNeeded() {
 void SQLBase::addAudioRecord(QString date, QString time, int localId,
                              QString name, quint64 durationMs)
 {
-    QString addRequestBody = QString("INSERT INTO audio (datePart, timePart, localId, audioName, durationMs) "
+    QString addAudioRequest = QString("INSERT INTO audio (datePart, timePart, localId, audioName, durationMs) "
     "VALUES('%1','%2','%3','%4','%5');").arg(date).arg(time).arg(localId).arg(name).arg(durationMs);
 
-    executeRequest(addRequestBody); //QSqlQuery addRequest =
+    executeRequest(addAudioRequest); //QSqlQuery addRequest =
+}
+
+
+void SQLBase::editAudioRecord(QString date, int localId,
+                              QString tags, QString description)
+{
+    QString updateAudioRequest =
+            QString("UPDATE audio SET tags='%1', description='%2' "
+                    "WHERE datePart='%4' AND localId='%5';")
+            .arg(tags).arg(description).arg(date).arg(localId);
+
+    QSqlQuery updateRequest = executeRequest(updateAudioRequest);
+
+    if (updateRequest.lastError().text().isEmpty() == false)
+        qDebug() << "Update request failed " << updateAudioRequest
+                 << "\n Error: " << updateRequest.lastError();
 }
