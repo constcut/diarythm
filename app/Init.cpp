@@ -136,6 +136,7 @@ int mainInit(int argc, char *argv[])
     engine.rootContext()->setContextProperty("audio", &audio);
     engine.rootContext()->setContextProperty("recorder", &recorder);
     engine.rootContext()->setContextProperty("aconfig", &config);
+    engine.rootContext()->setContextProperty("sqlBase", &sqlBase);
 
     engine.load(QUrl(QStringLiteral("qrc:/qml/main.qml")));
     if (engine.rootObjects().isEmpty())
