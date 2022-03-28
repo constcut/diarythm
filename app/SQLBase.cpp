@@ -168,19 +168,7 @@ QVariantList SQLBase::findRecords(QString date)
             .arg(date);
 
     QSqlQuery recordsQuery = executeRequest(requestRecords);
-
-    QVariantList records;
-
-    while(recordsQuery.next()) //TODO sub-function to cover all same things (refactoring)
-    {
-        QStringList singleRecord;
-        for (int i = 1; i <= audioFieldsCount; ++i)
-            singleRecord << recordsQuery.value(i).toString();
-
-        records << singleRecord;
-    }
-
-    return records;
+    return fillRecordsSearchResults(recordsQuery);
 }
 
 
@@ -191,19 +179,7 @@ QVariantList SQLBase::findByNameMask(QString nameMask)
             .arg(nameMask);
 
     QSqlQuery recordsQuery = executeRequest(findRequest);
-
-    QVariantList records;
-
-    while(recordsQuery.next()) //TODO sub-function to cover all same things (refactoring)
-    {
-        QStringList singleRecord;
-        for (int i = 1; i <= audioFieldsCount; ++i)
-            singleRecord << recordsQuery.value(i).toString();
-
-        records << singleRecord;
-    }
-
-    return records;
+    return fillRecordsSearchResults(recordsQuery);
 }
 
 
@@ -214,17 +190,22 @@ QVariantList SQLBase::findByTagMask(QString tagMask)
             .arg(tagMask);
 
     QSqlQuery recordsQuery = executeRequest(findRequest);
+    return fillRecordsSearchResults(recordsQuery);
+}
 
-    QVariantList records;
 
-    while(recordsQuery.next()) //TODO sub-function to cover all same things (refactoring)
-    {
-        QStringList singleRecord;
-        for (int i = 1; i <= audioFieldsCount; ++i)
-            singleRecord << recordsQuery.value(i).toString();
+QVariantList SQLBase::fillRecordsSearchResults(QSqlQuery& query)
+{
+     QVariantList records;
 
-        records << singleRecord;
-    }
+     while(query.next())
+     {
+         QStringList singleRecord;
+         for (int i = 1; i <= audioFieldsCount; ++i)
+             singleRecord << query.value(i).toString();
 
-    return records;
+         records << singleRecord;
+     }
+
+     return records;
 }

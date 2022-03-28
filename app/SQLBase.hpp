@@ -42,6 +42,8 @@ namespace diaryth {
         QSqlError initBase();
         void createTablesIfNeeded();
 
+        QVariantList fillRecordsSearchResults(QSqlQuery& query);
+
         const int audioFieldsCount = 7; //Later use walkaround with query.last() and query.at() + 1
 
     };
