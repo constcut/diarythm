@@ -172,3 +172,47 @@ QString Recorder::getFileContainer() {
 int Recorder::getSampleRate() {
     return _audioRecorder->audioSettings().sampleRate();
 }
+
+
+void Recorder::setInputDevice(QString device)
+{
+    if (device == "Default")
+        _audioRecorder->setAudioInput(_defaultInput);
+    else
+        _audioRecorder->setAudioInput(device);
+}
+
+
+void Recorder::setAudioCodec(QString codec)
+{
+    auto audioSettings = _audioRecorder->audioSettings();
+
+    if (codec == "Default")
+        audioSettings.setCodec(_defaultCodec);
+    else
+        audioSettings.setCodec(codec);
+
+    _audioRecorder->setAudioSettings(audioSettings);
+}
+
+
+void Recorder::setFileContainer(QString container)
+{
+    if (container == "Default")
+        _audioRecorder->setContainerFormat(_defaultContainer);
+    else
+        _audioRecorder->setContainerFormat(container);
+}
+
+
+void Recorder::setSampleRate(QString sampleRate)
+{
+    auto audioSettings = _audioRecorder->audioSettings();
+
+    if (sampleRate == "Default")
+        audioSettings.setSampleRate(_defaultSampleRate);
+    else
+        audioSettings.setSampleRate(sampleRate.toInt());
+
+    _audioRecorder->setAudioSettings(audioSettings);
+}

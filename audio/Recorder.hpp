@@ -30,12 +30,17 @@ namespace diaryth {
         Q_INVOKABLE QStringList fileContainers();
         Q_INVOKABLE QStringList sampleRates();
 
+        //TODO: Bit-rate + quality
+
         Q_INVOKABLE QString getInputDevice();
         Q_INVOKABLE QString getAudioCodec();
         Q_INVOKABLE QString getFileContainer();
         Q_INVOKABLE int getSampleRate();
 
-        //TODO quality, bit rate
+        Q_INVOKABLE void setInputDevice(QString device);
+        Q_INVOKABLE void setAudioCodec(QString codec);
+        Q_INVOKABLE void setFileContainer(QString container);
+        Q_INVOKABLE void setSampleRate(QString sampleRate);
 
     public slots:
         void processBuffer(const QAudioBuffer& buffer);
