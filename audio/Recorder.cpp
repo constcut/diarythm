@@ -27,10 +27,14 @@ Recorder::Recorder()
 
     _audioRecorder->setEncodingSettings(audioSettings);
     //Set volume?
+    _audioProbe->setSource(_audioRecorder.get());
+
+    connect(_audioProbe.get(), SIGNAL(audioBufferProbed(QAudioBuffer)),
+            this, SLOT(processBuffer(QAudioBuffer)));
 }
 
 
-//TODO нужно отлавливать состояние, когда началась запись и сигнализировать, чтобы пользователь избегал проглоченных первых слов
+
 void Recorder::start()
 {
     auto dateString = QDate::currentDate().toString("yy_MM_dd");
@@ -52,10 +56,11 @@ void Recorder::start()
 
     dir.setCurrent(currentDirectory);
 
+    _durationMicroSeconds = 0;
+
     _audioRecorder->setOutputLocation(QUrl::fromLocalFile(directory + recordName));
     _audioRecorder->record();
 }
-
 
 
 QString Recorder::lastFilename() {
@@ -83,4 +88,12 @@ void Recorder::cancel()
     if (file.remove(fn) == false)
         qDebug() << "Failed to remove: " << fn;
 
+}
+
+
+//TODO нужно отлавливать состояние, когда началась запись и сигнализировать, чтобы пользователь избегал проглоченных первых слов
+void Recorder::processBuffer(const QAudioBuffer& buffer)
+{
+    _durationMicroSeconds += buffer.duration();
+    //qDebug() << "Time ms: " << _durationMicroSeconds / 1000;
 }

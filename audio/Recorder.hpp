@@ -21,16 +21,20 @@ namespace diaryth {
         Q_INVOKABLE void start();
         Q_INVOKABLE void pause();
         Q_INVOKABLE void stop();
-        Q_INVOKABLE void clear();
+        Q_INVOKABLE void cancel();
 
         Q_INVOKABLE QString lastFilename();
 
+
+    public slots:
+        void processBuffer(const QAudioBuffer& buffer);
 
     private:
 
         std::unique_ptr<QAudioProbe> _audioProbe;
         std::unique_ptr<QAudioRecorder> _audioRecorder;
 
+        quint64 _durationMicroSeconds;
     };
 
 
