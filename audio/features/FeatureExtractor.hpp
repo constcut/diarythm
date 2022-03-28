@@ -10,6 +10,9 @@ namespace diaryth {
     double calc_RMS(const float* data, const size_t len);
     double calc_dB(const float* data, const size_t len);
 
+    double calc_RMS(const int16_t* samples, const size_t len);
+    double calc_dB(const int16_t* samples, const size_t len);
+
     double calc_MidiCents(const double f0);
     double calc_MidiCentsCustom(const double f0, const double tuneFreq = 440.0,
                                 const int midiTune = 69);

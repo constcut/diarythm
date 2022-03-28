@@ -7,8 +7,10 @@
 #include <QDebug>
 
 #include "Yin.hpp"
+#include "audio/wave/AudioUtils.hpp"
 
 using namespace diaryth;
+
 
 double diaryth::calc_RMS(const float* data, const size_t len) {
     double squareAmpSum = 0.0;
@@ -18,8 +20,29 @@ double diaryth::calc_RMS(const float* data, const size_t len) {
 }
 
 
+double diaryth::calc_RMS(const int16_t* samples, const size_t len) {
+    double squareAmpSum = 0.0;
+
+    for (size_t i = 0; i < len; ++i) {
+        const double normData = pcmToReal(samples[i]);
+        squareAmpSum += normData * normData;
+    }
+
+    return  std::sqrt(squareAmpSum / static_cast<double>(len));
+}
+
+
 double diaryth::calc_dB(const float* data, const size_t len) {
     auto rms = calc_RMS(data, len);
+    if (rms == 0.0)
+        return -120.0;
+    auto dbs = 20.0 * log10(rms);
+    return dbs;
+}
+
+
+double diaryth::calc_dB(const int16_t* samples, const size_t len) {
+    auto rms = calc_RMS(samples, len);
     if (rms == 0.0)
         return -120.0;
     auto dbs = 20.0 * log10(rms);
