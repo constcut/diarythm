@@ -11,6 +11,7 @@
 
 #include <QDebug>
 
+#include "audio/features/FeatureExtractor.hpp"
 
 using namespace diaryth;
 
@@ -96,4 +97,11 @@ void Recorder::processBuffer(const QAudioBuffer& buffer)
 {
     _durationMicroSeconds += buffer.duration();
     emit timeUpdate(_durationMicroSeconds / 1000);
+
+    const int16_t* samples = reinterpret_cast<const int16_t*>(buffer.data());
+    const int bitsInByte = 8;
+    const int length = buffer.byteCount() / ( buffer.format().sampleSize() / bitsInByte);
+
+    const double dbs = calc_dB(samples, length);
+    emit dbsUpdate(dbs);
 }
