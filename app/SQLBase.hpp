@@ -31,6 +31,7 @@ namespace diaryth {
         int getTotalRecords();
 
         QStringList findSingleRecord(QString date, int localId);
+        QVariantList findRecords(QString date);
 
     private:
 

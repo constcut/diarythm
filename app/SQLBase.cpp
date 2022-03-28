@@ -159,3 +159,26 @@ QStringList SQLBase::findSingleRecord(QString date, int localId)
 
     return singleRecord;
 }
+
+
+QVariantList SQLBase::findRecords(QString date)
+{
+    QString requestRecords =
+            QString("SELECT * FROM audio WHERE datePart='%1';")
+            .arg(date);
+
+    QSqlQuery recordsQuery = executeRequest(requestRecords);
+
+    QVariantList records;
+
+    while(recordsQuery.next())
+    {
+        QStringList singleRecord;
+        for (int i = 1; i < 8; ++i) //TODO const или лучше найти способ получить из Q
+            singleRecord << recordsQuery.value(i).toString();
+
+        records << singleRecord;
+    }
+
+    return records;
+}
