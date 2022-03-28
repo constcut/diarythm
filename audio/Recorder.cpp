@@ -59,6 +59,13 @@ void Recorder::start()
 
     _durationMicroSeconds = 0;
 
+    //Testing
+    inputDevices();
+    audioCodecs();
+    fileContainers();
+    sampleRates();
+    //Testing
+
     _audioRecorder->setOutputLocation(QUrl::fromLocalFile(directory + recordName));
     _audioRecorder->record();
 }
@@ -109,4 +116,40 @@ void Recorder::processBuffer(const QAudioBuffer& buffer)
 
     const double dbs = calc_dB(samples, length);
     emit dbsUpdate(dbs);
+}
+
+
+
+QStringList Recorder::inputDevices()
+{
+    QStringList list = {"Default"};
+    list.append(_audioRecorder->audioInputs());
+    return list;
+}
+
+
+QStringList Recorder::audioCodecs()
+{
+    QStringList list = {"Default"};
+    list.append(_audioRecorder->supportedAudioCodecs());
+    return list;
+}
+
+
+QStringList Recorder::fileContainers()
+{
+    QStringList list = {"Default"};
+    list.append(_audioRecorder->supportedContainers());
+    return list;
+}
+
+
+QStringList Recorder::sampleRates()
+{
+    QStringList list = {"Default"};
+
+    for (int sampleRate: _audioRecorder->supportedAudioSampleRates())
+       list.append(QString::number(sampleRate));
+
+    return list;
 }

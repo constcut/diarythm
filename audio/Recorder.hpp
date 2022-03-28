@@ -25,6 +25,10 @@ namespace diaryth {
 
         Q_INVOKABLE QString lastFilename();
 
+        Q_INVOKABLE QStringList inputDevices();
+        Q_INVOKABLE QStringList audioCodecs();
+        Q_INVOKABLE QStringList fileContainers();
+        Q_INVOKABLE QStringList sampleRates();
 
     public slots:
         void processBuffer(const QAudioBuffer& buffer);
