@@ -32,6 +32,10 @@ Recorder::Recorder()
 
     connect(_audioProbe.get(), SIGNAL(audioBufferProbed(QAudioBuffer)),
             this, SLOT(processBuffer(QAudioBuffer)));
+
+    //TODO set default values to apply on setters
+    qDebug() << getInputDevice() << " " << getAudioCodec() << " " << getFileContainer()
+             << " " << getSampleRate();
 }
 
 
@@ -58,13 +62,6 @@ void Recorder::start()
     dir.setCurrent(currentDirectory);
 
     _durationMicroSeconds = 0;
-
-    //Testing
-    inputDevices();
-    audioCodecs();
-    fileContainers();
-    sampleRates();
-    //Testing
 
     _audioRecorder->setOutputLocation(QUrl::fromLocalFile(directory + recordName));
     _audioRecorder->record();
@@ -152,4 +149,24 @@ QStringList Recorder::sampleRates()
        list.append(QString::number(sampleRate));
 
     return list;
+}
+
+
+QString Recorder::getInputDevice() {
+    return _audioRecorder->audioInput();
+}
+
+
+QString Recorder::getAudioCodec() {
+    return _audioRecorder->audioSettings().codec();
+}
+
+
+QString Recorder::getFileContainer() {
+    return _audioRecorder->containerFormat();
+}
+
+
+int Recorder::getSampleRate() {
+    return _audioRecorder->audioSettings().sampleRate();
 }

@@ -30,6 +30,13 @@ namespace diaryth {
         Q_INVOKABLE QStringList fileContainers();
         Q_INVOKABLE QStringList sampleRates();
 
+        Q_INVOKABLE QString getInputDevice();
+        Q_INVOKABLE QString getAudioCodec();
+        Q_INVOKABLE QString getFileContainer();
+        Q_INVOKABLE int getSampleRate();
+
+        //TODO quality, bit rate
+
     public slots:
         void processBuffer(const QAudioBuffer& buffer);
 
@@ -43,6 +50,9 @@ namespace diaryth {
         std::unique_ptr<QAudioRecorder> _audioRecorder;
 
         quint64 _durationMicroSeconds;
+
+
+
     };
 
 
