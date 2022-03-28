@@ -98,9 +98,6 @@ void Recorder::cancel()
 }
 
 
-//TODO нужно отлавливать состояние, когда началась запись и сигнализировать, чтобы пользователь избегал проглоченных первых слов
-//P.s. можно реализовать на QML стороне, тк после нажатия на кнопку - первый сигнал пришедший - маркер начала
-
 void Recorder::processBuffer(const QAudioBuffer& buffer)
 {
     _durationMicroSeconds += buffer.duration();

@@ -30,8 +30,6 @@ namespace diaryth {
         Q_INVOKABLE QStringList fileContainers();
         Q_INVOKABLE QStringList sampleRates();
 
-        //TODO: Bit-rate + quality
-
         Q_INVOKABLE QString getInputDevice();
         Q_INVOKABLE QString getAudioCodec();
         Q_INVOKABLE QString getFileContainer();
