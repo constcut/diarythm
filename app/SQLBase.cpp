@@ -87,7 +87,7 @@ void SQLBase::editAudioRecord(QString date, int localId,
     QString updateAudioRequest =
             QString("UPDATE audio SET tags='%1', description='%2' "
                     "WHERE datePart='%4' AND localId='%5';")
-            .arg(tags).arg(description).arg(date).arg(localId);
+            .arg(tags, description, date).arg(localId);
 
     QSqlQuery updateQuery = executeRequest(updateAudioRequest);
     logIfError(updateQuery, updateAudioRequest);
