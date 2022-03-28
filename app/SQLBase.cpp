@@ -24,20 +24,15 @@ QSqlError SQLBase::initBase()
     for (const auto& table: tables)
         qDebug() << ":" << table;
 
-    /*if (tables.contains("audio", Qt::CaseInsensitive)
-        && tables.contains("text", Qt::CaseInsensitive))
-        return QSqlError();*/
-
     return QSqlError();
 }
 
 
 QSqlQuery SQLBase::executeRequest(const QString& requestBody)
 {
-    //lastRequestBody = requestBody;
     QSqlQuery request;
     if (request.exec(requestBody) == false)
-        qDebug() << "Request error: " << requestBody;  //notifySqlError(request);
+        qDebug() << "Request error: " << request.lastError() << " for " << requestBody;
     return request;
 }
 
