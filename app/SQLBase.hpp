@@ -30,6 +30,8 @@ namespace diaryth {
         int recordsMaxLocalId(QString date);
         int getTotalRecords();
 
+        QStringList findSingleRecord(QString date, int localId);
+
     private:
 
         QSqlError initBase();

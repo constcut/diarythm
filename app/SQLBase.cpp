@@ -76,6 +76,8 @@ void SQLBase::addAudioRecord(QString date, QString time, int localId,
     "VALUES('%1','%2','%3','%4','%5');").arg(date).arg(time).arg(localId).arg(name).arg(durationMs);
 
     executeRequest(addAudioRequest); //QSqlQuery addQuery =
+
+    //Вероятно в начале была бы полезна проверка, что пары date + localId ещё нет
 }
 
 
@@ -138,4 +140,22 @@ int SQLBase::getTotalRecords()
         return totalRecordsQuery.value(0).toInt();
 
     return 0;
+}
+
+
+QStringList SQLBase::findSingleRecord(QString date, int localId)
+{
+    QString requestSingleRecord =
+            QString("SELECT * FROM audio WHERE datePart='%1' AND localId='%2';")
+            .arg(date).arg(localId);
+
+    QSqlQuery singleRecordQuery = executeRequest(requestSingleRecord);
+
+    QStringList singleRecord;
+
+    if (singleRecordQuery.next())
+        for (int i = 1; i < 8; ++i) //TODO const или лучше найти способ получить из Q
+            singleRecord << singleRecordQuery.value(i).toString();
+
+    return singleRecord;
 }
