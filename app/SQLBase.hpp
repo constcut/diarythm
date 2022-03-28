@@ -33,6 +33,8 @@ namespace diaryth {
         QStringList findSingleRecord(QString date, int localId);
         QVariantList findRecords(QString date);
 
+        QVariantList findByNameMask(QString nameMask);
+
 
     private:
 

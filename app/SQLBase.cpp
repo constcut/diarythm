@@ -171,7 +171,30 @@ QVariantList SQLBase::findRecords(QString date)
 
     QVariantList records;
 
-    while(recordsQuery.next())
+    while(recordsQuery.next()) //TODO sub-function to cover all same things (refactoring)
+    {
+        QStringList singleRecord;
+        for (int i = 1; i <= audioFieldsCount; ++i)
+            singleRecord << recordsQuery.value(i).toString();
+
+        records << singleRecord;
+    }
+
+    return records;
+}
+
+
+QVariantList SQLBase::findByNameMask(QString nameMask)
+{
+    QString findRequest =
+            QString("SELECT * FROM audio WHERE audioName LIKE '%1%';")
+            .arg(nameMask);
+
+    QSqlQuery recordsQuery = executeRequest(findRequest);
+
+    QVariantList records;
+
+    while(recordsQuery.next()) //TODO sub-function to cover all same things (refactoring)
     {
         QStringList singleRecord;
         for (int i = 1; i <= audioFieldsCount; ++i)
