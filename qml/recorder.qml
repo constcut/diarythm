@@ -75,13 +75,15 @@ Item {
             {
                 currentDateText.text = selectedDate //Walkaround
                 var date = currentDateText.text.substring(0, 10)
-                console.log("date: " , date)
                 var records = sqlBase.findRecords(date)
                 console.log("records", records)
 
                 recordsModel.clear()
-                recordsModel.append({"name":"a"});
-                recordsModel.append({"name":"b"});
+
+                for (var i = 0; i < records.length; ++i) {
+                    var record = records[i]
+                    recordsModel.append({"name":record[3]});
+                }
 
             }
         }
