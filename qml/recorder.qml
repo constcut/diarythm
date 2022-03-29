@@ -162,6 +162,7 @@ Item {
                 }
                 onDoubleClicked: {
                     //Открыть окно единичной записи
+                    recorder.playFile()
                 }
                 onPressAndHold: {
                     //Меню

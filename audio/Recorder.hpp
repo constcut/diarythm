@@ -41,8 +41,13 @@ namespace diaryth {
         Q_INVOKABLE void setFileContainer(QString container);
         Q_INVOKABLE void setSampleRate(QString sampleRate);
 
+        //Возможно стоит перенести потом в другой класс
+        Q_INVOKABLE void playFile();
+
     public slots:
         void processBuffer(const QAudioBuffer& buffer);
+
+        void playerPositionChanged(qint64 ms);
 
     signals:
         void timeUpdate(quint64 ms);

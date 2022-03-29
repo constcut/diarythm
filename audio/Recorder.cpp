@@ -11,6 +11,10 @@
 #include "app/SQLBase.hpp"
 #include "audio/features/FeatureExtractor.hpp"
 
+//Test
+#include <QMediaPlayer>
+//Test
+
 
 using namespace diaryth;
 
@@ -212,4 +216,23 @@ void Recorder::setSampleRate(QString sampleRate)
         audioSettings.setSampleRate(sampleRate.toInt());
 
     _audioRecorder->setAudioSettings(audioSettings);
+}
+
+
+void Recorder::playFile()
+{
+    auto player = new QMediaPlayer;
+
+    connect(player, SIGNAL(positionChanged(qint64)),
+            this, SLOT(playerPositionChanged(qint64)));
+
+    player->setMedia(QUrl::fromLocalFile(
+    "C:\\dev\\2022\\build-diaryth-Desktop_Qt_5_15_2_MinGW_64_bit-Debug\\recorder\\2022-03-29\\4.wav"));
+    player->setVolume(50);
+    player->play();
+
+}
+
+void Recorder::playerPositionChanged(qint64 ms) {
+    emit timeUpdate(ms);
 }
