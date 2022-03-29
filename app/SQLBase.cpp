@@ -68,6 +68,8 @@ void SQLBase::createTablesIfNeeded() {
                            "tags text,"
                            "description text);");
 
+    //Если разрешить редактирование текста, возможно стоит завести таблицу, где хранить несколько последних версий
+
     executeRequest(textTableCreate); //QSqlQuery textTableQuery =
 }
 
@@ -293,13 +295,13 @@ int SQLBase::getTextsMaxLocalId(QString date) //TODO refact (дублирова�
 }
 
 
-int SQLBase::getTotalTexts()
+int SQLBase::getTotalTexts() //TODO refact (дублирование кода с audio версией)
 {
-    QString requestTotalRecords = "SELECT COUNT(textId) FROM texts";
-    QSqlQuery totalRecordsQuery = executeRequest(requestTotalRecords);
+    QString requestTotalTexts = "SELECT COUNT(textId) FROM texts";
+    QSqlQuery totalTextsQuery = executeRequest(requestTotalTexts);
 
-    if (totalRecordsQuery.next())
-        return totalRecordsQuery.value(0).toInt();
+    if (totalTextsQuery.next())
+        return totalTextsQuery.value(0).toInt();
 
     return 0;
 }
@@ -315,7 +317,7 @@ QStringList SQLBase::findSingleText(QString date, int localId)
     QStringList singleText;
 
     if (singleTextQuery.next())
-        for (int i = 1; i <= audioFieldsCount; ++i)
+        for (int i = 1; i <= textFieldsCount; ++i)
             singleText << singleTextQuery.value(i).toString();
 
     return singleText;
