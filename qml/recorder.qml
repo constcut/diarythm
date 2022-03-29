@@ -147,13 +147,16 @@ Item {
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
+                    wrapper.ListView.view.currentIndex = index
+                    //recordsModel.filename = name
 
+                    //TODO сохранить тут все свойста, для последующей обработки
                 }
                 onDoubleClicked: {
-
+                    //Открыть окно единичной записи
                 }
                 onPressAndHold: {
-
+                    //Меню
                 }
             }
         }
