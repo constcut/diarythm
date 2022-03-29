@@ -11,5 +11,6 @@
         <file>qml/CepstrumQML.qml</file>
         <file>qml/config.qml</file>
         <file>qml/recorder.qml</file>
+        <file>qml/SingleRecord.qml</file>
     </qresource>
 </RCC>

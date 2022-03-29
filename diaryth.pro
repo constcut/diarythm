@@ -174,6 +174,7 @@ DISTFILES += \
     LICENSE \
     OpenTab.qml \
     README.md \
+    qml/SingleRecord.qml \
     qml/config.qml \
     qml/patternInput.qml \
     qml/recorder.qml \
