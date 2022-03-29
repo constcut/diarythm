@@ -11,10 +11,6 @@
 #include "app/SQLBase.hpp"
 #include "audio/features/FeatureExtractor.hpp"
 
-//Test
-#include <QMediaPlayer>
-//Test
-
 
 using namespace diaryth;
 
@@ -34,11 +30,14 @@ Recorder::Recorder(SQLBase &database) : _database(database)
     connect(_audioProbe.get(), SIGNAL(audioBufferProbed(QAudioBuffer)),
             this, SLOT(processBuffer(QAudioBuffer)));
 
-
     _defaultInput = getInputDevice();
     _defaultCodec = getAudioCodec();
     _defaultContainer = getFileContainer();
     _defaultSampleRate = getSampleRate();
+
+    _audioPlayer = std::make_unique<QMediaPlayer>();
+    connect(_audioPlayer.get(), SIGNAL(positionChanged(qint64)),
+            this, SLOT(playerPositionChanged(qint64)));
 }
 
 
@@ -221,18 +220,14 @@ void Recorder::setSampleRate(QString sampleRate)
 
 void Recorder::playFile()
 {
-    auto player = new QMediaPlayer;
-
-    connect(player, SIGNAL(positionChanged(qint64)),
-            this, SLOT(playerPositionChanged(qint64)));
-
-    player->setMedia(QUrl::fromLocalFile(
+    //? Stop if playing?
+    _audioPlayer->setMedia(QUrl::fromLocalFile(
     "C:\\dev\\2022\\build-diaryth-Desktop_Qt_5_15_2_MinGW_64_bit-Debug\\recorder\\2022-03-29\\4.wav"));
-    player->setVolume(50);
-    player->play();
-
+    _audioPlayer->setVolume(50);
+    _audioPlayer->play();
 }
 
+
 void Recorder::playerPositionChanged(qint64 ms) {
-    emit timeUpdate(ms);
+    emit timeUpdate(ms); //Far from perfect try audio probe?
 }

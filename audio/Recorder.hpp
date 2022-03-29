@@ -6,6 +6,7 @@
 #include <QObject>
 #include <QAudioProbe>
 #include <QAudioRecorder>
+#include <QMediaPlayer> //Move it later
 
 
 namespace diaryth {
@@ -41,13 +42,13 @@ namespace diaryth {
         Q_INVOKABLE void setFileContainer(QString container);
         Q_INVOKABLE void setSampleRate(QString sampleRate);
 
-        //Возможно стоит перенести потом в другой класс
-        Q_INVOKABLE void playFile();
+
+        Q_INVOKABLE void playFile(); //Move it later
 
     public slots:
         void processBuffer(const QAudioBuffer& buffer);
 
-        void playerPositionChanged(qint64 ms);
+        void playerPositionChanged(qint64 ms); //Move it later (and replace with probe)
 
     signals:
         void timeUpdate(quint64 ms);
@@ -57,6 +58,8 @@ namespace diaryth {
 
         std::unique_ptr<QAudioProbe> _audioProbe;
         std::unique_ptr<QAudioRecorder> _audioRecorder;
+
+        std::unique_ptr<QMediaPlayer> _audioPlayer;
 
         quint64 _durationMicroSeconds;
         QString _lastDateString;
