@@ -20,14 +20,12 @@ Recorder::Recorder()
 {
     _audioProbe = std::make_unique<QAudioProbe>();
     _audioRecorder = std::make_unique<QAudioRecorder>();
-    //TODO audio probe connection for recorder
 
     QAudioEncoderSettings audioSettings;
     audioSettings.setCodec("audio/pcm");
     audioSettings.setQuality(QMultimedia::HighQuality);
 
-    _audioRecorder->setEncodingSettings(audioSettings);
-    //Set volume?
+    _audioRecorder->setEncodingSettings(audioSettings); //We can also set volume here
     _audioProbe->setSource(_audioRecorder.get());
 
     connect(_audioProbe.get(), SIGNAL(audioBufferProbed(QAudioBuffer)),
@@ -44,7 +42,7 @@ Recorder::Recorder()
 
 void Recorder::start()
 {
-    auto dateString = QDate::currentDate().toString("yy_MM_dd");
+    auto dateString = QDate::currentDate().toString("yy-MM-dd");
     QString directory = QDir::currentPath() + "/recorder/" + dateString + "/";
 
     QDir dir;
@@ -53,15 +51,15 @@ void Recorder::start()
             qDebug() << "Failed to create recorder directory: " << directory;
     }
 
-    auto currentDirectory = QDir::currentPath();
+    auto prevDirectory = QDir::currentPath();
 
     dir.setCurrent(directory);
     auto listOfFiles = dir.entryInfoList(QDir::Files);
+    QString recordName = QString::number(listOfFiles.size());
 
     auto timeString = QTime::currentTime().toString("HH_mm_ss");
-    QString recordName = "record" + QString::number(listOfFiles.size() + 1) + "_" + timeString;
 
-    dir.setCurrent(currentDirectory);
+    dir.setCurrent(prevDirectory);
 
     _durationMicroSeconds = 0;
 

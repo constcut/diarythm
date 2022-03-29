@@ -129,9 +129,10 @@ int mainInit(int argc, char *argv[])
     QQmlApplicationEngine engine;
 
     diaryth::AudioHandler audio;
-    diaryth::Recorder recorder;
     diaryth::ConfigQML config;
     diaryth::SQLBase sqlBase;
+
+    diaryth::Recorder recorder;
 
     engine.rootContext()->setContextProperty("audio", &audio);
     engine.rootContext()->setContextProperty("recorder", &recorder);
