@@ -80,10 +80,6 @@ Item {
                 var records = sqlBase.findRecords(date)
                 console.log("records", records)
             }
-
-            Component.onCompleted: {
-                calendar.selectedDateChanged()
-            }
         }
 
     }
