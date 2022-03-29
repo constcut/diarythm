@@ -20,13 +20,13 @@
 #include "app/StretchImage.hpp"
 #include "app/SQLBase.hpp"
 
-
-
-#include "audio/wave/AudioHandler.hpp"
-#include "audio/wave/WaveShape.hpp"
-#include "audio/spectrum/Spectrograph.hpp"
-#include "audio/spectrum/Cepstrumgraph.hpp"
-#include "audio/features/ACFgraph.hpp"
+#ifdef AuralsLegacy
+    #include "audio/wave/AudioHandler.hpp"
+    #include "audio/wave/WaveShape.hpp"
+    #include "audio/spectrum/Spectrograph.hpp"
+    #include "audio/spectrum/Cepstrumgraph.hpp"
+    #include "audio/features/ACFgraph.hpp"
+#endif
 
 #include "audio/Recorder.hpp"
 
@@ -108,13 +108,13 @@ int mainInit(int argc, char *argv[])
     Config::getInst().checkConfig();
 
     qmlRegisterType<diaryth::ConfigTableModel>("diaryth", 1, 0, "ConfigTableModel");
-
+#ifdef AuralsLegacy
     qmlRegisterType<diaryth::WaveshapeQML>("diaryth", 1, 0, "Waveshape");
     qmlRegisterType<diaryth::SpectrographQML>("diaryth", 1, 0,"Spectrograph");
     qmlRegisterType<diaryth::ACGraphQML>("diaryth", 1, 0,"ACgraph");
     qmlRegisterType<diaryth::StretchImageQML>("diaryth", 1, 0,"StretchImage");
     qmlRegisterType<diaryth::CepstrumgraphQML>("diaryth", 1, 0,"Cepstrumgraph");
-
+#endif
 
     QDir dir;
     if (dir.exists("records") == false) { //AudioHandler records, later they would be removed from current project
@@ -130,12 +130,15 @@ int mainInit(int argc, char *argv[])
     QTextCodec::setCodecForLocale(QTextCodec::codecForName("Windows-1251")); //Настройки //KOI8-R //ISO 8859-5 //UTF-8 //Windows-1251
     QQmlApplicationEngine engine;
 
+#ifdef AuralsLegacy
     diaryth::AudioHandler audio;
+    engine.rootContext()->setContextProperty("audio", &audio);
+#endif
+
     diaryth::ConfigQML config;
     diaryth::SQLBase sqlBase;
     diaryth::Recorder recorder(sqlBase);
 
-    engine.rootContext()->setContextProperty("audio", &audio);
     engine.rootContext()->setContextProperty("recorder", &recorder);
     engine.rootContext()->setContextProperty("aconfig", &config);
     engine.rootContext()->setContextProperty("sqlBase", &sqlBase);

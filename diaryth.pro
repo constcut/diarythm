@@ -1,11 +1,16 @@
 QT += sql quick multimedia core
 CONFIG += c++17
 
-CONFIG += AuralsLegacy
+#CONFIG += AuralsLegacy
+
+AuralsLegacy {
+    DEFINES += "AuralsLegacy=\"1\""
+}
+
 
 #Doesn't work on windows
-linux:Debug:CONFIG += sanitizer sanitize_address sanitize_memory sanitize_undefined
-#sanitize_thread
+linux:Debug:CONFIG += sanitizer sanitize_address sanitize_memory sanitize_undefined #sanitize_thread
+
 
 QMAKE_CXXFLAGS_RELEASE += -O3
 
@@ -32,17 +37,23 @@ SOURCES += \
     audio/Recorder.cpp \
     audio/features/FeatureExtractor.cpp \
     audio/features/Yin.cpp \
+    audio/wave/AudioUtils.cpp \
+    libs/kiss/kfc.c \
+    libs/kiss/kiss_fft.c \
+    libs/kiss/kiss_fftnd.c \
+    libs/kiss/kiss_fftndr.c \
+    libs/kiss/kiss_fftr.c \
     main.cpp
 
 
 AuralsLegacy {
+
 SOURCES += \
     audio/features/ACFgraph.cpp \
     audio/spectrum/Cepstrumgraph.cpp \
     audio/wave/AudioHandler.cpp \
     audio/wave/AudioReceiver.cpp \
     audio/wave/AudioSpeaker.cpp \
-    audio/wave/AudioUtils.cpp \
     audio/spectrum/FrequencySpectrum.cpp \
     audio/spectrum/Spectrograph.cpp \
     audio/spectrum/SpectrumAnalyser.cpp \
@@ -68,11 +79,6 @@ SOURCES += \
     libs/filters/Custom.cpp \
     libs/filters/PoleFilter.cpp \
     libs/filters/RBJ.cpp \
-    libs/kiss/kfc.c \
-    libs/kiss/kiss_fft.c \
-    libs/kiss/kiss_fftnd.c \
-    libs/kiss/kiss_fftndr.c \
-    libs/kiss/kiss_fftr.c \
     #libs/wavelet/conv.c \
     #libs/wavelet/cwt.c \
     #libs/wavelet/cwtmath.c \
@@ -129,13 +135,6 @@ HEADERS += \
     libs/filters/RBJ.h \
     libs/filters/State.h \
     libs/filters/Types.h \
-    libs/kiss/_kiss_fft_guts.h \
-    libs/kiss/kfc.h \
-    libs/kiss/kiss_fft.h \
-    libs/kiss/kiss_fft_log.h \
-    libs/kiss/kiss_fftnd.h \
-    libs/kiss/kiss_fftndr.h \
-    libs/kiss/kiss_fftr.h
     #libs/wavelet/conv.h \
     #libs/wavelet/cwt.h \
     #libs/wavelet/cwtmath.h \
@@ -178,6 +177,13 @@ HEADERS += \
     audio/Recorder.hpp \
     audio/features/FeatureExtractor.hpp \
     audio/features/Yin.hpp \
+    libs/kiss/_kiss_fft_guts.h \
+    libs/kiss/kfc.h \
+    libs/kiss/kiss_fft.h \
+    libs/kiss/kiss_fft_log.h \
+    libs/kiss/kiss_fftnd.h \
+    libs/kiss/kiss_fftndr.h \
+    libs/kiss/kiss_fftr.h
 
 
 
