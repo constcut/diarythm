@@ -8,6 +8,18 @@ import QtQuick.Controls 1.4 as Quick1
 Item {
     id: recorderItem
 
+    function fillListWithRecords(records) {
+        recordsModel.clear()
+
+        for (var i = 0; i < records.length; ++i)
+        {
+            var record = records[i]
+            recordsModel.append({"name":record[3], "date": record[0],
+                                "time": record[1], "id": record[2]});
+        }
+    }
+
+
     ColumnLayout
     {
         spacing: 10
@@ -67,27 +79,65 @@ Item {
             }
         }
 
-        Quick1.Calendar
+        RowLayout
         {
-            id: calendar
+            spacing: 10
 
-            onSelectedDateChanged:
+            Quick1.Calendar
             {
-                currentDateText.text = selectedDate //Walkaround
-                var date = currentDateText.text.substring(0, 10)
-                var records = sqlBase.findRecords(date)
-                console.log("records", records)
+                id: calendar
 
-                recordsModel.clear()
-
-                for (var i = 0; i < records.length; ++i)
+                onSelectedDateChanged:
                 {
-                    var record = records[i]
-                    recordsModel.append({"name":record[3], "date": record[0],
-                                        "time": record[1], "id": record[2]});
+                    currentDateText.text = selectedDate //Walkaround
+                    var date = currentDateText.text.substring(0, 10)
+                    var records = sqlBase.findRecords(date)
+                    recorderItem.fillListWithRecords(records)
+                }
+            }
+
+            TextField {
+                id: searchBox
+                placeholderText: "Search string"
+
+                onEditingFinished: {
+                    search()
                 }
 
+                function search() {
+
+                    var foundRecords = []
+
+                    if (searchByName.checked) {
+                        foundRecords = sqlBase.findByNameMask(searchBox.text)
+                    }
+                    else {
+                        foundRecords = sqlBase.findByTagMask(searchBox.text)
+                    }
+
+                    recorderItem.fillListWithRecords(foundRecords)
+                }
             }
+
+            RadioButton {
+                id: searchByName
+                checked: true
+                text: "name"
+            }
+
+            RadioButton {
+                id: searchByTag
+                text: "tag"
+            }
+
+
+            Button {
+                text: "Search"
+                onClicked: {
+                    searchBox.search()
+                }
+            }
+
         }
 
 
