@@ -43,6 +43,8 @@ namespace diaryth {
         Q_INVOKABLE void addText(QString name, QString text, QString tags, QString description);
         Q_INVOKABLE void editText(QString date, int localId, QString name, QString tags, QString description);
 
+        Q_INVOKABLE void removeText(QString date, int localId);
+
         Q_INVOKABLE int getTextsMaxLocalId(QString date);
         Q_INVOKABLE int getTotalTexts();
 

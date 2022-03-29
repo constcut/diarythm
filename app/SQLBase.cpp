@@ -266,6 +266,17 @@ void SQLBase::editText(QString date, int localId, QString name, //TODO refact (�
 }
 
 
+void SQLBase::removeText(QString date, int localId) //TODO refact (дублирование кода с audio версией)
+{
+    QString deleteAudioRequest =
+            QString("DELETE FROM texts WHERE datePart='%1' AND localId='%2';")
+            .arg(date).arg(localId);
+
+    QSqlQuery deleteQuery = executeRequest(deleteAudioRequest);
+    logIfError(deleteQuery, deleteAudioRequest);
+}
+
+
 int SQLBase::getTextsMaxLocalId(QString date) //TODO refact (дублирование кода с audio версией)
 {
     QString requestMaxId =
