@@ -50,15 +50,9 @@ void Recorder::start()
             qDebug() << "Failed to create recorder directory: " << directory;
     }
 
-    auto prevDirectory = QDir::currentPath();
-
-    dir.setCurrent(directory);
-    auto listOfFiles = dir.entryInfoList(QDir::Files);
-    QString recordName = QString::number(listOfFiles.size());
-
-    auto timeString = QTime::currentTime().toString("HH_mm_ss");
-
-    dir.setCurrent(prevDirectory);
+    auto timeString = QTime::currentTime().toString("HH:mm:ss");
+    const int nextRecordId = _database.getRecordsMaxLocalId(dateString) + 1;
+    QString recordName = QString::number(nextRecordId);
 
     _durationMicroSeconds = 0;
 

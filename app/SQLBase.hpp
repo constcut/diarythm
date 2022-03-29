@@ -27,7 +27,7 @@ namespace diaryth {
 
         Q_INVOKABLE void removeAudioRecord(QString date, int localId);
 
-        Q_INVOKABLE int recordsMaxLocalId(QString date);
+        Q_INVOKABLE int getRecordsMaxLocalId(QString date);
         Q_INVOKABLE int getTotalRecords();
 
         Q_INVOKABLE QStringList findSingleRecord(QString date, int localId);

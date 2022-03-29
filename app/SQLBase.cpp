@@ -105,7 +105,7 @@ void SQLBase::removeAudioRecord(QString date, int localId)
 }
 
 
-int SQLBase::recordsMaxLocalId(QString date)
+int SQLBase::getRecordsMaxLocalId(QString date)
 {
     QString requestMaxId =
             QString("SELECT MAX(localId) FROM audio WHERE datePart='%1';")
