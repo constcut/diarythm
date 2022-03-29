@@ -12,5 +12,6 @@
         <file>qml/config.qml</file>
         <file>qml/recorder.qml</file>
         <file>qml/SingleRecord.qml</file>
+        <file>qml/text.qml</file>
     </qresource>
 </RCC>

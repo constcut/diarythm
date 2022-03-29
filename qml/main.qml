@@ -26,7 +26,7 @@ ApplicationWindow {
             mainWindow.height = 600
         }
 
-        mainLoader.setSource("recorder.qml")
+        mainLoader.setSource("text.qml") //"recorder.qml"
     }
 
 
@@ -74,6 +74,10 @@ ApplicationWindow {
         MenuItem {
             text: "Recorder"
             onTriggered: mainLoader.setSource("recorder.qml")
+        }
+        MenuItem {
+            text: "Text"
+            onTriggered: mainLoader.setSource("text.qml")
         }
         MenuItem {
             id: exitMenuItem

@@ -197,6 +197,7 @@ DISTFILES += \
     qml/config.qml \
     qml/patternInput.qml \
     qml/recorder.qml \
+    qml/text.qml \
     res/TODO \
     Tablature.qml \
     PianoMap.qml \
