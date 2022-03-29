@@ -131,8 +131,7 @@ int mainInit(int argc, char *argv[])
     diaryth::AudioHandler audio;
     diaryth::ConfigQML config;
     diaryth::SQLBase sqlBase;
-
-    diaryth::Recorder recorder;
+    diaryth::Recorder recorder(sqlBase);
 
     engine.rootContext()->setContextProperty("audio", &audio);
     engine.rootContext()->setContextProperty("recorder", &recorder);

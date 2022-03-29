@@ -1,22 +1,21 @@
 #include "Recorder.hpp"
 
 #include <QAudioEncoderSettings>
-
 #include <QUrl>
 #include <QDir>
 #include <QFile>
-
 #include <QDate>
 #include <QTime>
-
 #include <QDebug>
 
+#include "app/SQLBase.hpp"
 #include "audio/features/FeatureExtractor.hpp"
+
 
 using namespace diaryth;
 
 
-Recorder::Recorder()
+Recorder::Recorder(SQLBase &database) : _database(database)
 {
     _audioProbe = std::make_unique<QAudioProbe>();
     _audioRecorder = std::make_unique<QAudioRecorder>();

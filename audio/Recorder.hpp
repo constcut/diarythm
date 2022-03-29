@@ -10,13 +10,14 @@
 
 namespace diaryth {
 
+    class SQLBase;
 
     class Recorder : public QObject
     {
         Q_OBJECT
 
     public:
-        Recorder();
+        Recorder(SQLBase& database);
 
         Q_INVOKABLE void start();
         Q_INVOKABLE void pause();
@@ -58,6 +59,8 @@ namespace diaryth {
         QString _defaultCodec;
         QString _defaultContainer;
         int _defaultSampleRate;
+
+        SQLBase& _database;
 
     };
 
