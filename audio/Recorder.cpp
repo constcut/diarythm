@@ -147,7 +147,9 @@ QStringList Recorder::sampleRates()
 {
     QStringList list = {"Default"};
 
-    for (int sampleRate: _audioRecorder->supportedAudioSampleRates())
+    auto supportedSampleRates = _audioRecorder->supportedAudioSampleRates();
+
+    for (int sampleRate: supportedSampleRates)
        list.append(QString::number(sampleRate));
 
     return list;
