@@ -40,7 +40,7 @@ namespace diaryth {
         Q_INVOKABLE QVariantList findRecordsByTagMaskAndDate(QString date, QString tagMask);
 
 
-
+        Q_INVOKABLE void addText(QString name, QString text, QString tags, QString description);
 
 
     private:

@@ -3,6 +3,9 @@
 #include <QDebug>
 #include <QSqlError>
 
+#include <QDate>
+#include <QTime>
+
 using namespace diaryth;
 
 
@@ -232,4 +235,20 @@ QVariantList SQLBase::fillRecordsSearchResults(QSqlQuery& query)
      return records;
 }
 
+
+
+
+void SQLBase::addText(QString name, QString text, QString tags, QString description)
+{
+    auto date = QDate::currentDate().toString("yyyy-MM-dd");
+    auto time = QTime::currentTime().toString("HH:mm:ss");
+
+    int localId = 0; //Пока что заглушка
+
+    QString addTextRequest =
+            QString("INSERT INTO texts (datePart, timePart, localId, textName, textValue, tags, description) "
+    "VALUES('%1','%2','%3','%4','%5','%6','%7');").arg(date,time).arg(localId).arg(name, text, tags, description);
+
+    executeRequest(addTextRequest);
+}
 
