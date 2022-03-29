@@ -42,13 +42,20 @@ Item {
             id: view
             width: textRecordsItem.width - 10
             height: textRecordsItem.height - 100
+            clip: true
+
+            implicitWidth: 650
 
             TextArea {
+
+                implicitWidth: parent.width
+
                 id: textArea
                 text: ""
                 placeholderText: "Input text here"
             }
 
+            ScrollBar.vertical.policy: ScrollBar.AlwaysOn
         }
     }
 
