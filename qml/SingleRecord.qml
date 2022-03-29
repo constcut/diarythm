@@ -13,6 +13,9 @@ Item {
 
     ColumnLayout
     {
+        x: 40
+        y: 40
+
         spacing: 10
 
         Text {
@@ -24,6 +27,28 @@ Item {
         Text {
             id: durationMsText
         }
+
+        TextField {
+            id: tagsField
+            placeholderText: "tags"
+        }
+        TextField {
+            id: descriptionField
+            placeholderText: "description"
+        }
+        Button {
+            text: "Save"
+            onClicked: {
+                sqlBase.editAudioRecord(singleRecordItem.date, singleRecordItem.localIdx,
+                                        tagsField.text, descriptionField.text)
+            }
+        }
+        Button {
+            text: "Play"
+            onClicked: {
+                recorder.playFile(singleRecordItem.date, singleRecordItem.localIdx)
+            }
+        }
     }
 
 
@@ -34,8 +59,11 @@ Item {
                                      singleRecordItem.localIdx)
 
         dateTimeText.text = record[0] + " T " + record[1]
-        nameText.text = record[2]
-        durationMsText.text = record[3]
+        nameText.text = record[3]
+        durationMsText.text = record[4]
+
+        tagsField.text = record[5]
+        descriptionField.text = record[6]
     }
 
 

@@ -163,7 +163,6 @@ Item {
                 onDoubleClicked: {
                     //Открыть окно единичной записи
                      mainWindow.requestSingleRecord(recordsModel.lastDate, recordsModel.lastLocalId);
-
                 }
                 onPressAndHold: {
                     //Меню
