@@ -82,7 +82,8 @@ Item {
 
                 for (var i = 0; i < records.length; ++i) {
                     var record = records[i]
-                    recordsModel.append({"name":record[3]});
+                    recordsModel.append({"name":record[3], "date": record[0],
+                                        "time": record[1], "id": record[2]});
                 }
 
             }
@@ -135,7 +136,7 @@ Item {
             height: 35
             Column {
                 Text {
-                    text: name
+                    text: name + " " + date + " " + time + " " + id
                 }
             }
             states: State {
