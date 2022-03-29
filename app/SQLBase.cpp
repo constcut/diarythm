@@ -68,7 +68,7 @@ void SQLBase::createTablesIfNeeded() {
     executeRequest(textTableCreate); //QSqlQuery textTableQuery =
 }
 
-
+//Возможно разумно убрать date & time и формировать их прямо тут да и localId
 void SQLBase::addAudioRecord(QString date, QString time, int localId,
                              QString name, quint64 durationMs)
 {
@@ -172,7 +172,7 @@ QVariantList SQLBase::findRecords(QString date)
 }
 
 
-QVariantList SQLBase::findByNameMask(QString nameMask)
+QVariantList SQLBase::findRecordsByNameMask(QString nameMask)
 {
     QString findRequest =
             QString("SELECT * FROM audio WHERE audioName LIKE '%%1%';")
@@ -183,7 +183,7 @@ QVariantList SQLBase::findByNameMask(QString nameMask)
 }
 
 
-QVariantList SQLBase::findByTagMask(QString tagMask)
+QVariantList SQLBase::findRecordsByTagMask(QString tagMask)
 {
     QString findRequest =
             QString("SELECT * FROM audio WHERE tags LIKE '%%1%';") //Для древовидных тэгов
@@ -194,7 +194,7 @@ QVariantList SQLBase::findByTagMask(QString tagMask)
 }
 
 
-QVariantList SQLBase::findByNameMaskAndDate(QString date, QString nameMask)
+QVariantList SQLBase::findRecordsByNameMaskAndDate(QString date, QString nameMask)
 {
     QString findRequest =
             QString("SELECT * FROM audio WHERE datePart='%1' AND audioName LIKE '%%2%';")
@@ -205,7 +205,7 @@ QVariantList SQLBase::findByNameMaskAndDate(QString date, QString nameMask)
 }
 
 
-QVariantList SQLBase::findByTagMaskAndDate(QString date, QString tagMask)
+QVariantList SQLBase::findRecordsByTagMaskAndDate(QString date, QString tagMask)
 {
     QString findRequest =
             QString("SELECT * FROM audio WHERE datePart='%1' AND tags LIKE '%%2%';")

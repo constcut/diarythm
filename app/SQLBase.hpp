@@ -33,11 +33,14 @@ namespace diaryth {
         Q_INVOKABLE QStringList findSingleRecord(QString date, int localId);
         Q_INVOKABLE QVariantList findRecords(QString date);
 
-        Q_INVOKABLE QVariantList findByNameMask(QString nameMask);
-        Q_INVOKABLE QVariantList findByTagMask(QString tagMask);
+        Q_INVOKABLE QVariantList findRecordsByNameMask(QString nameMask);
+        Q_INVOKABLE QVariantList findRecordsByTagMask(QString tagMask);
 
-        Q_INVOKABLE QVariantList findByNameMaskAndDate(QString date, QString nameMask);
-        Q_INVOKABLE QVariantList findByTagMaskAndDate(QString date, QString tagMask);
+        Q_INVOKABLE QVariantList findRecordsByNameMaskAndDate(QString date, QString nameMask);
+        Q_INVOKABLE QVariantList findRecordsByTagMaskAndDate(QString date, QString tagMask);
+
+
+
 
 
     private:

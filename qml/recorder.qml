@@ -111,18 +111,18 @@ Item {
                     if (useDateInSearch.checked)
                     {
                         if (searchByName.checked)
-                            foundRecords = sqlBase.findByNameMaskAndDate(
+                            foundRecords = sqlBase.findRecordsByNameMaskAndDate(
                                         currentDateText.text, searchBox.text)
                         else
-                            foundRecords = sqlBase.findByTagMaskAndDate(
+                            foundRecords = sqlBase.findRecordsByTagMaskAndDate(
                                         currentDateText.text, searchBox.text)
                     }
                     else
                     {
                         if (searchByName.checked)
-                            foundRecords = sqlBase.findByNameMask(searchBox.text)
+                            foundRecords = sqlBase.findRecordsByNameMask(searchBox.text)
                         else
-                            foundRecords = sqlBase.findByTagMask(searchBox.text)
+                            foundRecords = sqlBase.findRecordsByTagMask(searchBox.text)
                     }
 
                     recorderItem.fillListWithRecords(foundRecords)
