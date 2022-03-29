@@ -252,7 +252,21 @@ void SQLBase::addText(QString name, QString text, QString tags, QString descript
     executeRequest(addTextRequest);
 }
 
-int SQLBase::getTextsMaxLocalId(QString date) //TODO refact
+
+void SQLBase::editText(QString date, int localId, QString name, //TODO refact (дублирование кода с audio версией)
+                       QString tags, QString description)
+{
+    QString updateTextRequest =
+            QString("UPDATE texts SET tags='%1', description='%2', textName='%3' "
+                    "WHERE datePart='%4' AND localId='%5';")
+            .arg(tags, description, name, date).arg(localId);
+
+    QSqlQuery updateQuery = executeRequest(updateTextRequest);
+    logIfError(updateQuery, updateTextRequest);
+}
+
+
+int SQLBase::getTextsMaxLocalId(QString date) //TODO refact (дублирование кода с audio версией)
 {
     QString requestMaxId =
             QString("SELECT MAX(localId) FROM texts WHERE datePart='%1';")
@@ -266,6 +280,7 @@ int SQLBase::getTextsMaxLocalId(QString date) //TODO refact
 
     return 0;
 }
+
 
 int SQLBase::getTotalTexts()
 {
