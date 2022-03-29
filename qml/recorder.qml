@@ -90,8 +90,8 @@ Item {
                 onSelectedDateChanged:
                 {
                     currentDateText.text = selectedDate //Walkaround
-                    var date = currentDateText.text.substring(0, 10)
-                    var records = sqlBase.findRecords(date)
+                    currentDateText.text = currentDateText.text.substring(0, 10)
+                    var records = sqlBase.findRecords(currentDateText.text)
                     recorderItem.fillListWithRecords(records)
                 }
             }
@@ -104,15 +104,25 @@ Item {
                     search()
                 }
 
-                function search() {
-
+                function search()
+                {
                     var foundRecords = []
 
-                    if (searchByName.checked) {
-                        foundRecords = sqlBase.findByNameMask(searchBox.text)
+                    if (useDateInSearch.checked)
+                    {
+                        if (searchByName.checked)
+                            foundRecords = sqlBase.findByNameMaskAndDate(
+                                        currentDateText.text, searchBox.text)
+                        else
+                            foundRecords = sqlBase.findByTagMaskAndDate(
+                                        currentDateText.text, searchBox.text)
                     }
-                    else {
-                        foundRecords = sqlBase.findByTagMask(searchBox.text)
+                    else
+                    {
+                        if (searchByName.checked)
+                            foundRecords = sqlBase.findByNameMask(searchBox.text)
+                        else
+                            foundRecords = sqlBase.findByTagMask(searchBox.text)
                     }
 
                     recorderItem.fillListWithRecords(foundRecords)
@@ -128,6 +138,12 @@ Item {
             RadioButton {
                 id: searchByTag
                 text: "tag"
+            }
+
+            CheckBox {
+                id: useDateInSearch
+                text: "Use date in search"
+                checked: true
             }
 
 
