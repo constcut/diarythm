@@ -162,7 +162,7 @@ Item {
                 }
                 onDoubleClicked: {
                     //Открыть окно единичной записи
-                    recorder.playFile()
+                    recorder.playFile(recordsModel.lastDate, recordsModel.lastLocalId)
                 }
                 onPressAndHold: {
                     //Меню

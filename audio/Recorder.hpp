@@ -43,7 +43,7 @@ namespace diaryth {
         Q_INVOKABLE void setSampleRate(QString sampleRate);
 
 
-        Q_INVOKABLE void playFile(); //Move it later
+        Q_INVOKABLE void playFile(QString date, int localId); //Move it later
 
     public slots:
         void processBuffer(const QAudioBuffer& buffer);

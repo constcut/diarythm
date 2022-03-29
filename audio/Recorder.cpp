@@ -218,11 +218,14 @@ void Recorder::setSampleRate(QString sampleRate)
 }
 
 
-void Recorder::playFile()
+void Recorder::playFile(QString date, int localId)
 {
     //? Stop if playing?
-    _audioPlayer->setMedia(QUrl::fromLocalFile(
-    "C:\\dev\\2022\\build-diaryth-Desktop_Qt_5_15_2_MinGW_64_bit-Debug\\recorder\\2022-03-29\\4.wav"));
+
+    QString filePath = QDir::currentPath() + "/recorder/" + date + "/"
+            + QString::number(localId) + ".wav";
+
+    _audioPlayer->setMedia(QUrl::fromLocalFile(filePath));
     _audioPlayer->setVolume(50);
     _audioPlayer->play();
 }
