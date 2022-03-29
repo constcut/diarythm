@@ -73,10 +73,9 @@ void SQLBase::addAudioRecord(QString date, QString time, int localId,
                              QString name, quint64 durationMs)
 {
     QString addAudioRequest = QString("INSERT INTO audio (datePart, timePart, localId, audioName, durationMs) "
-    "VALUES('%1','%2','%3','%4','%5');").arg(date).arg(time).arg(localId).arg(name).arg(durationMs);
+    "VALUES('%1','%2','%3','%4','%5');").arg(date,time).arg(localId).arg(name).arg(durationMs);
 
     executeRequest(addAudioRequest); //QSqlQuery addQuery =
-
     //Вероятно в начале была бы полезна проверка, что пары date + localId ещё нет
 }
 
