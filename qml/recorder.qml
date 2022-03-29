@@ -6,11 +6,10 @@ import QtQuick.Dialogs 1.1
 import QtQuick.Controls 1.4 as Quick1
 
 Item {
-    id: audioHandlerItem
+    id: recorderItem
 
     ColumnLayout
     {
-
         spacing: 10
 
         RowLayout
@@ -79,10 +78,88 @@ Item {
                 console.log("date: " , date)
                 var records = sqlBase.findRecords(date)
                 console.log("records", records)
+
+                recordsModel.clear()
+                recordsModel.append({"name":"a"});
+                recordsModel.append({"name":"b"});
+
             }
         }
 
+
+        ListModel {
+            id: recordsModel
+        }
+
+
+        Rectangle
+        {
+            id: listViewRectangle
+            width: 600
+            height: 300
+            ListView
+            {
+                id: recordsList
+                clip: true
+                anchors.fill: parent
+                model: recordsModel
+                Behavior on y { NumberAnimation{ duration: 200 } }
+                onContentYChanged: {} //When implement search bar copy behavior
+                delegate: recordDeligate
+                highlight: highlightBar
+                focus:  true
+                ScrollBar.vertical: ScrollBar {}
+            }
+        }
     }
+
+
+    Component {
+        id: highlightBar
+        Rectangle {
+            id: highlightBarRect
+            width: 200; height: 50
+            color: "#88FF88"
+            y: recordsList.currentItem == null ? 0 : recordsList.currentItem.y
+            Behavior on y { SpringAnimation { spring: 2; damping: 0.3 } }
+        }
+    }
+
+    Component {
+        id: recordDeligate
+        Item {
+            id: wrapper
+            width: recordsList.width
+            height: 35
+            Column {
+                Text {
+                    text: name
+                }
+            }
+            states: State {
+                name: "Current"
+                when: wrapper.ListView.isCurrentItem
+                PropertyChanges { target: wrapper; x: 20 }
+            }
+            transitions: Transition {
+                NumberAnimation { properties: "x"; duration: 200 }
+            }
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+
+                }
+                onDoubleClicked: {
+
+                }
+                onPressAndHold: {
+
+                }
+            }
+        }
+    }
+
+
 
     Connections {
         target: recorder
