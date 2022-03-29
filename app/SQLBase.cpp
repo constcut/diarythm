@@ -252,3 +252,28 @@ void SQLBase::addText(QString name, QString text, QString tags, QString descript
     executeRequest(addTextRequest);
 }
 
+int SQLBase::getTextsMaxLocalId(QString date) //TODO refact
+{
+    QString requestMaxId =
+            QString("SELECT MAX(localId) FROM texts WHERE datePart='%1';")
+            .arg(date);
+
+    QSqlQuery maxIdQuery = executeRequest(requestMaxId);
+
+    if (logIfError(maxIdQuery, requestMaxId) == false
+            && maxIdQuery.next())
+            return maxIdQuery.value(0).toInt();
+
+    return 0;
+}
+
+int SQLBase::getTotalTexts()
+{
+    QString requestTotalRecords = "SELECT COUNT(textId) FROM texts";
+    QSqlQuery totalRecordsQuery = executeRequest(requestTotalRecords);
+
+    if (totalRecordsQuery.next())
+        return totalRecordsQuery.value(0).toInt();
+
+    return 0;
+}
