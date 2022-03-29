@@ -18,8 +18,8 @@ Item {
 
         spacing: 10
 
-        Text {
-            id: nameText
+        TextField {
+            id: nameField
         }
         Text {
             id: dateTimeText
@@ -40,7 +40,7 @@ Item {
             text: "Save"
             onClicked: {
                 sqlBase.editAudioRecord(singleRecordItem.date, singleRecordItem.localIdx,
-                                        tagsField.text, descriptionField.text)
+                                        nameField.text, tagsField.text, descriptionField.text)
             }
         }
         Button {
@@ -59,7 +59,7 @@ Item {
                                      singleRecordItem.localIdx)
 
         dateTimeText.text = record[0] + " T " + record[1]
-        nameText.text = record[3]
+        nameField.text = record[3]
         durationMsText.text = record[4]
 
         tagsField.text = record[5]

@@ -22,7 +22,7 @@ namespace diaryth {
         Q_INVOKABLE void addAudioRecord(QString date, QString time, int localId,
                             QString name, quint64 durationMs);
 
-        Q_INVOKABLE void editAudioRecord(QString date, int localId,
+        Q_INVOKABLE void editAudioRecord(QString date, int localId, QString name,
                              QString tags, QString description);
 
         Q_INVOKABLE void removeAudioRecord(QString date, int localId);

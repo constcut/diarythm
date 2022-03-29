@@ -80,13 +80,13 @@ void SQLBase::addAudioRecord(QString date, QString time, int localId,
 }
 
 
-void SQLBase::editAudioRecord(QString date, int localId,
+void SQLBase::editAudioRecord(QString date, int localId, QString name,
                               QString tags, QString description)
 {
     QString updateAudioRequest =
-            QString("UPDATE audio SET tags='%1', description='%2' "
+            QString("UPDATE audio SET tags='%1', description='%2', audioName='%3' "
                     "WHERE datePart='%4' AND localId='%5';")
-            .arg(tags, description, date).arg(localId);
+            .arg(tags, description, name, date).arg(localId);
 
     QSqlQuery updateQuery = executeRequest(updateAudioRequest);
     logIfError(updateQuery, updateAudioRequest);
