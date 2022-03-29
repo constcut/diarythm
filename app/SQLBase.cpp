@@ -243,7 +243,7 @@ void SQLBase::addText(QString name, QString text, QString tags, QString descript
     auto date = QDate::currentDate().toString("yyyy-MM-dd");
     auto time = QTime::currentTime().toString("HH:mm:ss");
 
-    int localId = 0; //Пока что заглушка
+    int localId = getTextsMaxLocalId(date) + 1;
 
     QString addTextRequest =
             QString("INSERT INTO texts (datePart, timePart, localId, textName, textValue, tags, description) "
