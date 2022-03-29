@@ -89,37 +89,46 @@ ApplicationWindow {
 
     function requestWaveshape(filename) {
         //Delayed: open many tabs, just like in athenum
-        mainLoader.setSource("qrc:/qml/WaveshapeQML.qml", {"filename": filename});
+        mainLoader.setSource("qrc:/qml/WaveshapeQML.qml",
+                             {"filename": filename});
         mainLoader.focus = true
     }
 
     function requestAFC(filename) {
-        mainLoader.setSource("qrc:/qml/ACFQML.qml", {"filename": filename});
+        mainLoader.setSource("qrc:/qml/ACFQML.qml",
+                             {"filename": filename});
         mainLoader.focus = true
     }
 
     function requestSTFT(filename) {
-        mainLoader.setSource("qrc:/qml/STFTQML.qml", {"filename": filename});
+        mainLoader.setSource("qrc:/qml/STFTQML.qml",
+                             {"filename": filename});
         mainLoader.focus = true
     }
 
     function requestCQT(filename) {
-        mainLoader.setSource("qrc:/qml/CQTQML.qml", {"filename": filename});
+        mainLoader.setSource("qrc:/qml/CQTQML.qml",
+                             {"filename": filename});
         mainLoader.focus = true
     }
 
     function requestFilters(filename) {
-        mainLoader.setSource("qrc:/qml/FiltersQML.qml", {"filename": filename});
+        mainLoader.setSource("qrc:/qml/FiltersQML.qml",
+                             {"filename": filename});
         mainLoader.focus = true
     }
 
     function requestCepstrum(filename) {
-        mainLoader.setSource("qrc:/qml/CepstrumQML.qml", {"filename": filename});
+        mainLoader.setSource("qrc:/qml/CepstrumQML.qml",
+                             {"filename": filename});
         mainLoader.focus = true
     }
 
-    function requestSingleRecord() {
+    function requestSingleRecord(date, localIdx) {
         console.log("Single record requested!")
+        mainLoader.setSource("qrc:/qml/SingleRecord.qml",
+                             {"date": date, "localIdx":localIdx})
+        mainLoader.focus = true
     }
 
 
