@@ -177,37 +177,37 @@ Item {
             ToolButton {
                 text: "Wave"
                 onClicked:  {
-                    thatWindow.requestWaveshape("records/" + filenameEdit.text)
+                    mainWindow.requestWaveshape("records/" + filenameEdit.text)
                 }
             }
             ToolButton {
                 text: "ACF"
                 onClicked:  {
-                    thatWindow.requestAFC("records/" + filenameEdit.text)
+                    mainWindow.requestAFC("records/" + filenameEdit.text)
                 }
             }
             ToolButton {
                 text: "STFT"
                 onClicked:  {
-                    thatWindow.requestSTFT("records/" + filenameEdit.text)
+                    mainWindow.requestSTFT("records/" + filenameEdit.text)
                 }
             }
             ToolButton {
                 text: "CQT"
                 onClicked:  {
-                    thatWindow.requestCQT("records/" + filenameEdit.text)
+                    mainWindow.requestCQT("records/" + filenameEdit.text)
                 }
             }
             ToolButton {
                 text: "Filters"
                 onClicked:  {
-                    thatWindow.requestFilters("records/" + filenameEdit.text)
+                    mainWindow.requestFilters("records/" + filenameEdit.text)
                 }
             }
             ToolButton {
                 text: "Cepstrum"
                 onClicked:  {
-                    thatWindow.requestCepstrum("records/" + filenameEdit.text)
+                    mainWindow.requestCepstrum("records/" + filenameEdit.text)
                 }
                 visible: false //Yet unknow how to use it
             }
@@ -219,7 +219,7 @@ Item {
             title: "Please choose a wav file (16 bit, 44100 sr)"
             folder: shortcuts.home
             onAccepted: {
-                thatWindow.requestWaveshape(fileDialog.fileUrls[0].substring(7))
+                mainWindow.requestWaveshape(fileDialog.fileUrls[0].substring(7))
                 fileDialog.visible = false
             }
             onRejected: {
@@ -284,7 +284,7 @@ Item {
                         filenameEdit.text = name
                     }
                     onDoubleClicked: {
-                        thatWindow.requestWaveshape("records/" + filenameEdit.text)
+                        mainWindow.requestWaveshape("records/" + filenameEdit.text)
                     }
                     onPressAndHold: {
                         wrapper.ListView.view.currentIndex = index
@@ -312,37 +312,37 @@ Item {
             MenuItem {
                 text: "Open wave"
                 onTriggered: {
-                    thatWindow.requestWaveshape("records/" + filenameEdit.text)
+                    mainWindow.requestWaveshape("records/" + filenameEdit.text)
                 }
             }
             MenuItem {
                 text: "Open ACF"
                 onTriggered: {
-                    thatWindow.requestAFC("records/" + filenameEdit.text)
+                    mainWindow.requestAFC("records/" + filenameEdit.text)
                 }
             }
             MenuItem {
                 text: "Open STFT"
                 onTriggered: {
-                    thatWindow.requestSTFT("records/" + filenameEdit.text)
+                    mainWindow.requestSTFT("records/" + filenameEdit.text)
                 }
             }
             MenuItem {
                 text: "Open CQT"
                 onTriggered: {
-                    thatWindow.requestCQT("records/" + filenameEdit.text)
+                    mainWindow.requestCQT("records/" + filenameEdit.text)
                 }
             }
             MenuItem {
                 text: "Open filters"
                 onTriggered: {
-                    thatWindow.requestFilters("records/" + filenameEdit.text)
+                    mainWindow.requestFilters("records/" + filenameEdit.text)
                 }
             }
             MenuItem {
                 text: "Open cepstrum"
                 onTriggered: {
-                    thatWindow.requestCepstrum("records/" + filenameEdit.text)
+                    mainWindow.requestCepstrum("records/" + filenameEdit.text)
                 }
             }
         }

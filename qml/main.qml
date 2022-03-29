@@ -8,7 +8,7 @@ import QtQuick.Layouts 1.15
 
 ApplicationWindow {
 
-    id: thatWindow
+    id: mainWindow
     visible: true
     title: "diaryth"
 
@@ -19,11 +19,11 @@ ApplicationWindow {
         if (Qt.platform.os === "android") {
             exitMenuItem.visible = false
             exitMenuItem.height = 0
-            thatWindow.visibility = "FullScreen"
+            mainWindow.visibility = "FullScreen"
         }
         else {
-            thatWindow.width = 1280
-            thatWindow.height = 600
+            mainWindow.width = 1280
+            mainWindow.height = 600
         }
 
         mainLoader.setSource("recorder.qml")
@@ -116,6 +116,10 @@ ApplicationWindow {
     function requestCepstrum(filename) {
         mainLoader.setSource("qrc:/qml/CepstrumQML.qml", {"filename": filename});
         mainLoader.focus = true
+    }
+
+    function requestSingleRecord() {
+        console.log("Single record requested!")
     }
 
 
