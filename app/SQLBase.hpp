@@ -48,6 +48,9 @@ namespace diaryth {
         Q_INVOKABLE int getTextsMaxLocalId(QString date);
         Q_INVOKABLE int getTotalTexts();
 
+        Q_INVOKABLE QStringList findSingleText(QString date, int localId);
+        Q_INVOKABLE QVariantList findTexts(QString date);
+
 
     private:
 

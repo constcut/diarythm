@@ -303,3 +303,34 @@ int SQLBase::getTotalTexts()
 
     return 0;
 }
+
+
+QStringList SQLBase::findSingleText(QString date, int localId)
+{
+    QString requestSingleText =
+            QString("SELECT * FROM texts WHERE datePart='%1' AND localId='%2';")
+            .arg(date).arg(localId);
+
+    QSqlQuery singleTextQuery = executeRequest(requestSingleText);
+    QStringList singleText;
+
+    if (singleTextQuery.next())
+        for (int i = 1; i <= audioFieldsCount; ++i)
+            singleText << singleTextQuery.value(i).toString();
+
+    return singleText;
+}
+
+
+QVariantList SQLBase::findTexts(QString date)
+{
+    QString requestTexts =
+            QString("SELECT * FROM texts WHERE datePart='%1';")
+            .arg(date);
+
+    QSqlQuery recordsQuery = executeRequest(requestTexts);
+    return fillRecordsSearchResults(recordsQuery);
+}
+
+
+
