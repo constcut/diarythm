@@ -117,7 +117,7 @@ int SQLBase::getRecordsMaxLocalId(QString date)
             && maxIdQuery.next())
             return maxIdQuery.value(0).toInt();
 
-    return -1;
+    return 0;
 }
 
 

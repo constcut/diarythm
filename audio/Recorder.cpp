@@ -41,8 +41,8 @@ Recorder::Recorder(SQLBase &database) : _database(database)
 
 void Recorder::start()
 {
-    auto dateString = QDate::currentDate().toString("yy-MM-dd");
-    QString directory = QDir::currentPath() + "/recorder/" + dateString + "/";
+    _lastDateString = QDate::currentDate().toString("yy-MM-dd");
+    QString directory = QDir::currentPath() + "/recorder/" + _lastDateString + "/";
 
     QDir dir;
     if (dir.exists(directory) == false) {
@@ -50,8 +50,8 @@ void Recorder::start()
             qDebug() << "Failed to create recorder directory: " << directory;
     }
 
-    auto timeString = QTime::currentTime().toString("HH:mm:ss");
-    const int nextRecordId = _database.getRecordsMaxLocalId(dateString) + 1;
+    _lastTimeString = QTime::currentTime().toString("HH:mm:ss");
+    const int nextRecordId = _database.getRecordsMaxLocalId(_lastDateString);
     QString recordName = QString::number(nextRecordId);
 
     _durationMicroSeconds = 0;
@@ -73,6 +73,11 @@ void Recorder::pause() {
 
 void Recorder::stop() {
     _audioRecorder->stop();
+
+    const int nextRecordId = _database.getRecordsMaxLocalId(_lastDateString);
+    QString simpleName = "Record #" + QString::number(nextRecordId);
+    _database.addAudioRecord(_lastDateString, _lastTimeString, nextRecordId,
+                             simpleName, _durationMicroSeconds);
 }
 
 
@@ -83,9 +88,8 @@ void Recorder::cancel()
     QString fn = lastFilename().mid(8); //Remove file:///
     QFile file(fn);
 
-    if (file.remove(fn) == false)
+    if (file.remove() == false)
         qDebug() << "Failed to remove: " << fn;
-
 }
 
 

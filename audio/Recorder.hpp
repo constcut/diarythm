@@ -54,6 +54,8 @@ namespace diaryth {
         std::unique_ptr<QAudioRecorder> _audioRecorder;
 
         quint64 _durationMicroSeconds;
+        QString _lastDateString;
+        QString _lastTimeString;
 
         QString _defaultInput;
         QString _defaultCodec;
