@@ -2,7 +2,6 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
 import QtQuick.Dialogs 1.1
-
 import QtQuick.Controls 1.4 as Quick1
 
 Item {
@@ -15,7 +14,8 @@ Item {
         {
             var record = records[i]
             recordsModel.append({"name":record[3], "date": record[0],
-                                "time": record[1], "id": record[2]});
+                                "time": record[1], "id": record[2], "duration": record[4],
+                                "tags": record[5], "description": record[6]});
         }
     }
 
@@ -206,7 +206,10 @@ Item {
             height: 35
             Column {
                 Text {
-                    text: name + "   " + date + " " + time + " " + id
+                    text: name + "   " + date + " T " + time + " " + duration + " ms"
+                }
+                Text {
+                    text: tags + " " + description
                 }
             }
             states: State {
