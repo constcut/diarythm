@@ -40,13 +40,17 @@ Item {
 
         ScrollView {
             id: view
-            width: textRecordsItem.width - 10
-            height: textRecordsItem.height - 100
+            width: 650
             clip: true
 
             implicitWidth: 650
 
             TextArea {
+
+                background: Rectangle {
+                    //color: "lightgreen"
+                    border.color: "lightgreen"
+                }
 
                 implicitWidth: parent.width
 
