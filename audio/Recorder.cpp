@@ -41,17 +41,17 @@ Recorder::Recorder(SQLBase &database) : _database(database)
 
 void Recorder::start()
 {
-    _lastDateString = QDate::currentDate().toString("yy-MM-dd");
+    _lastDateString = QDate::currentDate().toString("yyyy-MM-dd");
     QString directory = QDir::currentPath() + "/recorder/" + _lastDateString + "/";
 
     QDir dir;
-    if (dir.exists(directory) == false) {
+    if (dir.exists(directory) == false) { //Лучше создавать на старте приложения, а потом подчищать прошлые дни, тк создание даёт задержку
         if (dir.mkdir(directory) == false)
             qDebug() << "Failed to create recorder directory: " << directory;
     }
 
     _lastTimeString = QTime::currentTime().toString("HH:mm:ss");
-    const int nextRecordId = _database.getRecordsMaxLocalId(_lastDateString);
+    const int nextRecordId = _database.getRecordsMaxLocalId(_lastDateString) + 1;
     QString recordName = QString::number(nextRecordId);
 
     _durationMicroSeconds = 0;
@@ -74,10 +74,15 @@ void Recorder::pause() {
 void Recorder::stop() {
     _audioRecorder->stop();
 
-    const int nextRecordId = _database.getRecordsMaxLocalId(_lastDateString);
+    const int nextRecordId = _database.getRecordsMaxLocalId(_lastDateString) + 1;
     QString simpleName = "Record #" + QString::number(nextRecordId);
     _database.addAudioRecord(_lastDateString, _lastTimeString, nextRecordId,
                              simpleName, _durationMicroSeconds);
+
+    qDebug() << "Stop: " << _lastDateString << " " << _lastTimeString << " " << nextRecordId
+             << " " << simpleName << " " << _durationMicroSeconds;
+
+    qDebug() << "And after adding: " << _database.getRecordsMaxLocalId(_lastDateString) + 1;
 }
 
 
