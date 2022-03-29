@@ -80,7 +80,8 @@ Item {
 
                 recordsModel.clear()
 
-                for (var i = 0; i < records.length; ++i) {
+                for (var i = 0; i < records.length; ++i)
+                {
                     var record = records[i]
                     recordsModel.append({"name":record[3], "date": record[0],
                                         "time": record[1], "id": record[2]});
@@ -92,6 +93,9 @@ Item {
 
         ListModel {
             id: recordsModel
+
+            property string lastDate: ""
+            property int lastLocalId: 0
         }
 
 
@@ -136,7 +140,7 @@ Item {
             height: 35
             Column {
                 Text {
-                    text: name + " " + date + " " + time + " " + id
+                    text: name + "   " + date + " " + time + " " + id
                 }
             }
             states: State {
@@ -151,9 +155,10 @@ Item {
                 anchors.fill: parent
                 onClicked: {
                     wrapper.ListView.view.currentIndex = index
-                    //recordsModel.filename = name
+                    recordsModel.lastDate = date
+                    recordsModel.lastLocalId = id
 
-                    //TODO сохранить тут все свойста, для последующей обработки
+                    console.log("Last date", date, "last id", id)
                 }
                 onDoubleClicked: {
                     //Открыть окно единичной записи
