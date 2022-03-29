@@ -1,6 +1,7 @@
 QT += sql quick multimedia core
 CONFIG += c++17
 
+CONFIG += AuralsLegacy
 
 #Doesn't work on windows
 linux:Debug:CONFIG += sanitizer sanitize_address sanitize_memory sanitize_undefined
@@ -8,8 +9,6 @@ linux:Debug:CONFIG += sanitizer sanitize_address sanitize_memory sanitize_undefi
 
 QMAKE_CXXFLAGS_RELEASE += -O3
 
-
-win32:LIBS += -lWinMM
 
 #CONFIG += no_keywords #was used only for python interpreter
 DEFINES += QT_DEPRECATED_WARNINGS
@@ -31,20 +30,25 @@ SOURCES += \
     app/LogHandler.cpp \
     app/SQLBase.cpp \
     audio/Recorder.cpp \
+    audio/features/FeatureExtractor.cpp \
+    audio/features/Yin.cpp \
+    main.cpp
+
+
+AuralsLegacy {
+SOURCES += \
     audio/features/ACFgraph.cpp \
     audio/spectrum/Cepstrumgraph.cpp \
     audio/wave/AudioHandler.cpp \
     audio/wave/AudioReceiver.cpp \
     audio/wave/AudioSpeaker.cpp \
     audio/wave/AudioUtils.cpp \
-    audio/features/FeatureExtractor.cpp \
     audio/spectrum/FrequencySpectrum.cpp \
     audio/spectrum/Spectrograph.cpp \
     audio/spectrum/SpectrumAnalyser.cpp \
     audio/wave/WavFile.cpp \
     audio/wave/WaveContour.cpp \
     audio/wave/WaveShape.cpp \
-    audio/features/Yin.cpp \
     libs/cqt/CQInverse.cpp \
     libs/cqt/CQKernel.cpp \
     libs/cqt/CQSpectrogram.cpp \
@@ -78,31 +82,8 @@ SOURCES += \
     #libs/wavelet/wavefunc.c \
     #libs/wavelet/wavelib.c \
     #libs/wavelet/wtmath.c \
-    main.cpp
-
-RESOURCES += qml.qrc \
-    res/fonts.qrc
-
-
-QML_IMPORT_PATH =
-QML_DESIGNER_IMPORT_PATH =
-
-# Default rules for deployment.
-qnx: target.path = /tmp/$${TARGET}/bin
-else: unix:!android: target.path = /opt/$${TARGET}/bin
-!isEmpty(target.path): INSTALLS += target
-
 
 HEADERS += \
-    app/AndroidTools.hpp \
-    app/Clipboard.hpp \
-    app/Config.hpp \
-    app/Init.hpp \
-    app/LogHandler.hpp \
-    app/SQLBase.hpp \
-    app/StretchImage.hpp \
-    app/log.hpp \
-    audio/Recorder.hpp \
     audio/features/ACFgraph.hpp \
     audio/features/PeaksOperations.hpp \
     audio/features/WindowFunction.hpp \
@@ -111,14 +92,12 @@ HEADERS += \
     audio/wave/AudioReceiver.hpp \
     audio/wave/AudioSpeaker.hpp \
     audio/wave/AudioUtils.hpp \
-    audio/features/FeatureExtractor.hpp \
     audio/spectrum/FrequencySpectrum.hpp \
     audio/spectrum/Spectrograph.hpp \
     audio/spectrum/SpectrumAnalyser.hpp \
     audio/wave/WavFile.hpp \
     audio/wave/WaveContour.hpp \
     audio/wave/WaveShape.hpp \
-    audio/features/Yin.hpp \
     libs/cqt/CQBase.h \
     libs/cqt/CQInverse.h \
     libs/cqt/CQKernel.h \
@@ -167,6 +146,40 @@ HEADERS += \
     #libs/wavelet/wavefunc.h \
     #libs/wavelet/wavelib.h \
     #libs/wavelet/wtmath.h \
+
+}
+else
+{
+}
+
+
+RESOURCES += qml.qrc \
+    res/fonts.qrc
+
+
+QML_IMPORT_PATH =
+QML_DESIGNER_IMPORT_PATH =
+
+# Default rules for deployment.
+qnx: target.path = /tmp/$${TARGET}/bin
+else: unix:!android: target.path = /opt/$${TARGET}/bin
+!isEmpty(target.path): INSTALLS += target
+
+
+HEADERS += \
+    app/AndroidTools.hpp \
+    app/Clipboard.hpp \
+    app/Config.hpp \
+    app/Init.hpp \
+    app/LogHandler.hpp \
+    app/SQLBase.hpp \
+    app/StretchImage.hpp \
+    app/log.hpp \
+    audio/Recorder.hpp \
+    audio/features/FeatureExtractor.hpp \
+    audio/features/Yin.hpp \
+
+
 
 
 DISTFILES += \
