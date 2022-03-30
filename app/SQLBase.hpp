@@ -17,8 +17,6 @@ namespace diaryth {
 
         QSqlQuery executeRequest(const QString& requestBody);
 
-        //TODO const& for QString
-
         Q_INVOKABLE void addAudioRecord(const QString& date, const QString& time, int localId,
                                         const QString& name, quint64 durationMs);
 

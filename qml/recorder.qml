@@ -30,6 +30,8 @@ Item {
                 text: "Stop and save"
                 onClicked:  {
                     recorder.stop()
+                    statusText.text = "Record was saved"
+                    notificationAnimation.start()
                 }
             }
 
@@ -37,6 +39,8 @@ Item {
                 text: "Pause"
                 onClicked:  {
                     recorder.pause()
+                    statusText.text = "Record was paused"
+                    notificationAnimation.start()
                 }
             }
 
@@ -44,11 +48,9 @@ Item {
                 text: "Cancel"
                 onClicked: {
                     recorder.cancel()
+                    statusText.text = "Record was canceled"
+                    notificationAnimation.start()
                 }
-            }
-
-            ToolButton {
-                text: "Settings"
             }
 
             Text {
@@ -76,7 +78,23 @@ Item {
                 }
             }
         }
+        Text {
+            opacity: 0.0
+            id: statusText
+            text: "Record was added"
+            Layout.alignment: Qt.AlignCenter
+        }
+    }
 
+
+    NumberAnimation
+    {
+        id: notificationAnimation
+        target: statusText
+        property: "opacity"
+        duration: 1500
+        from: 1.0
+        to: 0.0
     }
 
 

@@ -24,13 +24,30 @@ Item {
         }
     }
 
+    NumberAnimation
+    {
+        id: notificationAnimation
+        target: statusText
+        property: "opacity"
+        duration: 1500
+        from: 1.0
+        to: 0.0
+    }
+
 
     ColumnLayout
     {
-        x: 40
-        y: 40
+        x: 10
+        y: 10
 
         spacing: 10
+
+        Text {
+            opacity: 0.0
+            id: statusText
+            text: "Record was added"
+            Layout.alignment: Qt.AlignCenter
+        }
 
         RowLayout {
 
@@ -71,9 +88,7 @@ Item {
                         //Возможно стоит переключать на другой экран
                     }
 
-                    //TODO Notification that record was added
-                    //Popup with number animation on opacity and close on finish animation
-                    //Or close on click
+                    notificationAnimation.start()
                 }
             }
 

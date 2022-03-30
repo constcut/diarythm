@@ -139,7 +139,7 @@ QImage WaveContour::makeSTFT() const {
 
     size_t height = 600;
     float hScale = log(height) / height;
-    size_t spaceOf12Bins = 234; //TODO calculate
+    size_t spaceOf12Bins = 234;
     size_t realHeight = 600 - spaceOf12Bins + 34;
 
     QImage img(width, realHeight, QImage::Format_RGB32);
@@ -231,7 +231,7 @@ QImage WaveContour::makeCQT() const {
     for (size_t i = 0; i < spectrogram.size(); ++i) {
         for (size_t j = 0; j < spectrogram[i].size(); ++j) {
             const float mag = spectrogram[i][j];
-            const float norm = (mag / 12.f) * 255; //TODO normalization + colormap
+            const float norm = (mag / 12.f) * 255;
             QColor c(0, norm, 0);
             img.setPixel(i, j, c.rgb());
         }
