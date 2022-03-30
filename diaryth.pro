@@ -194,6 +194,7 @@ DISTFILES += \
     OpenTab.qml \
     README.md \
     qml/SingleRecord.qml \
+    qml/calendar.qml \
     qml/config.qml \
     qml/patternInput.qml \
     qml/recorder.qml \

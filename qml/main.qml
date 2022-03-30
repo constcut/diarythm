@@ -26,7 +26,7 @@ ApplicationWindow {
             mainWindow.height = 600
         }
 
-        mainLoader.setSource("recorder.qml")
+        mainLoader.setSource("calendar.qml")
     }
 
 
@@ -79,6 +79,11 @@ ApplicationWindow {
             text: "Text"
             onTriggered: mainLoader.setSource("text.qml")
         }
+        MenuItem {
+            text: "Calendar"
+            onTriggered: mainLoader.setSource("calendar.qml")
+        }
+
         MenuItem {
             id: exitMenuItem
             text: "Exit"
