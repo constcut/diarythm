@@ -69,7 +69,6 @@ void SQLBase::createTablesIfNeeded() {
                            "description text);");
 
     //Если разрешить редактирование текста, возможно стоит завести таблицу, где хранить несколько последних версий
-
     executeRequest(textTableCreate); //QSqlQuery textTableQuery =
 }
 
@@ -88,13 +87,7 @@ void SQLBase::addAudioRecord(QString date, QString time, int localId,
 void SQLBase::editAudioRecord(QString date, int localId, QString name,
                               QString tags, QString description)
 {
-    QString updateAudioRequest =
-            QString("UPDATE audio SET tags='%1', description='%2', audioName='%3' "
-                    "WHERE datePart='%4' AND localId='%5';")
-            .arg(tags, description, name, date).arg(localId);
-
-    QSqlQuery updateQuery = executeRequest(updateAudioRequest);
-    logIfError(updateQuery, updateAudioRequest);
+    editRow("audio", "audioName", date, localId, name, tags, description);
 }
 
 
@@ -198,13 +191,7 @@ void SQLBase::addText(QString name, QString text, QString tags, QString descript
 void SQLBase::editText(QString date, int localId, QString name, //TODO refact (дублирование кода с audio версией)
                        QString tags, QString description)
 {
-    QString updateTextRequest =
-            QString("UPDATE texts SET tags='%1', description='%2', textName='%3' "
-                    "WHERE datePart='%4' AND localId='%5';")
-            .arg(tags, description, name, date).arg(localId);
-
-    QSqlQuery updateQuery = executeRequest(updateTextRequest);
-    logIfError(updateQuery, updateTextRequest);
+    editRow("texts", "textName", date, localId, name, tags, description);
 }
 
 
@@ -354,4 +341,18 @@ void SQLBase::removeRow(QString table, QString date, int localId)
     QSqlQuery deleteQuery = executeRequest(deleteRequest);
     logIfError(deleteQuery, deleteRequest);
 }
+
+
+void SQLBase::editRow(QString table, QString nameField, QString date, int localId,
+                      QString name, QString tags, QString description)
+{
+    QString updateRequest =
+            QString("UPDATE %1 SET tags='%2', description='%3', %4='%5' "
+                    "WHERE datePart='%6' AND localId='%7';")
+            .arg(table, tags, description, nameField, name, date).arg(localId);
+
+    QSqlQuery updateQuery = executeRequest(updateRequest);
+    logIfError(updateQuery, updateRequest);
+}
+
 

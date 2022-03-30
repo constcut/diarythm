@@ -85,6 +85,9 @@ namespace diaryth {
 
         void removeRow(QString table, QString date, int localId);
 
+        void editRow(QString table, QString date, int localId,
+                     QString name, QString tags, QString description);
+
         const int audioFieldsCount = 7; //Later use walkaround with query.last() and query.at() + 1
         const int textFieldsCount = 7;
     };
