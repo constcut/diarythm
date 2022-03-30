@@ -103,8 +103,7 @@ Item {
                 {
                     currentDateText.text = selectedDate //Walkaround
                     currentDateText.text = currentDateText.text.substring(0, 10)
-                    var records = sqlBase.findRecords(currentDateText.text)
-                    recorderItem.fillListWithRecords(records)
+                    searchBox.search()
                 }
             }
 
