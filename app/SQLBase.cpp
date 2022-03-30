@@ -361,26 +361,26 @@ QVariantList SQLBase::findTextsByTagMask(QString tagMask)
 
 QVariantList SQLBase::findTextsByNameMaskAndDate(QString date, QString nameMask)
 {
-    QString findRequest =
-            QString("SELECT * FROM texts WHERE datePart='%1' AND textName LIKE '%%2%';")
-            .arg(date, nameMask);
-
-    QSqlQuery recordsQuery = executeRequest(findRequest);
-    return fillRecordsSearchResults(recordsQuery);
+    return findByFieldMaskAndDate("texts", "textName", date, nameMask);
 }
 
 
 QVariantList SQLBase::findTextsByTagMaskAndDate(QString date, QString tagMask)
 {
+    return findByFieldMaskAndDate("texts", "tags", date, tagMask);
+}
+
+
+QVariantList SQLBase::findByFieldMaskAndDate(QString table, QString field,
+                                    QString date, QString mask)
+{
     QString findRequest =
-            QString("SELECT * FROM texts WHERE datePart='%1' AND tags LIKE '%%2%';")
-            .arg(date, tagMask);
+            QString("SELECT * FROM %1 WHERE datePart='%2' AND %3 LIKE '%%4%';")
+            .arg(table, date, field, mask);
 
     QSqlQuery recordsQuery = executeRequest(findRequest);
     return fillRecordsSearchResults(recordsQuery);
 }
-
-
 
 
 
