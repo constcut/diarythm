@@ -93,7 +93,7 @@ Item {
                 text: ""
                 placeholderText: "Input text here"
 
-                enabled: textItem.date.length != 0
+                readOnly: textItem.date.length != 0
             }
 
             ScrollBar.vertical.policy: ScrollBar.AlwaysOn
