@@ -168,12 +168,7 @@ QStringList SQLBase::findSingleRecord(QString date, int localId)
 
 QVariantList SQLBase::findRecords(QString date)
 {
-    QString requestRecords =
-            QString("SELECT * FROM audio WHERE datePart='%1';")
-            .arg(date);
-
-    QSqlQuery recordsQuery = executeRequest(requestRecords);
-    return fillRecordsSearchResults(recordsQuery);
+    return findByDate("audio", date);
 }
 
 
@@ -314,12 +309,7 @@ QStringList SQLBase::findSingleText(QString date, int localId) //TODO refact (д
 
 QVariantList SQLBase::findTexts(QString date) //TODO refact (дублирование кода с audio версией)
 {
-    QString requestTexts =
-            QString("SELECT * FROM texts WHERE datePart='%1';")
-            .arg(date);
-
-    QSqlQuery recordsQuery = executeRequest(requestTexts);
-    return fillRecordsSearchResults(recordsQuery);
+    return findByDate("texts", date);
 }
 
 
@@ -334,7 +324,6 @@ QVariantList SQLBase::findTextsByTagMask(QString tagMask)
 {
     return findByFieldMask("texts", "tags", tagMask);
 }
-
 
 
 QVariantList SQLBase::findTextsByNameMaskAndDate(QString date, QString nameMask)
@@ -372,6 +361,15 @@ QVariantList SQLBase::findByFieldMask(QString table, QString field, QString mask
 }
 
 
+QVariantList SQLBase::findByDate(QString table, QString date)
+{
+    QString findRequest =
+            QString("SELECT * FROM %1 WHERE datePart='%2';")
+            .arg(table, date);
+
+    QSqlQuery requestQuery = executeRequest(findRequest);
+    return fillRecordsSearchResults(requestQuery);
+}
 
 
 

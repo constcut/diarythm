@@ -74,6 +74,8 @@ namespace diaryth {
 
         QVariantList findByFieldMask(QString table, QString field, QString mask);
 
+        QVariantList findByDate(QString table, QString date);
+
         const int audioFieldsCount = 7; //Later use walkaround with query.last() and query.at() + 1
         const int textFieldsCount = 7;
     };
