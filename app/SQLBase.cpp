@@ -138,13 +138,7 @@ bool SQLBase::logIfError(QSqlQuery& query, const QString &request)
 
 int SQLBase::getTotalRecords()
 {
-    QString requestTotalRecords = "SELECT COUNT(audioId) FROM audio";
-    QSqlQuery totalRecordsQuery = executeRequest(requestTotalRecords);
-
-    if (totalRecordsQuery.next())
-        return totalRecordsQuery.value(0).toInt();
-
-    return 0;
+    return getTotalRows("audioId", "audio");
 }
 
 
@@ -258,13 +252,7 @@ int SQLBase::getTextsMaxLocalId(QString date) //TODO refact (дублирова�
 
 int SQLBase::getTotalTexts() //TODO refact (дублирование кода с audio версией)
 {
-    QString requestTotalTexts = "SELECT COUNT(textId) FROM texts";
-    QSqlQuery totalTextsQuery = executeRequest(requestTotalTexts);
-
-    if (totalTextsQuery.next())
-        return totalTextsQuery.value(0).toInt();
-
-    return 0;
+    return getTotalRows("textId", "texts");
 }
 
 
@@ -357,5 +345,17 @@ QStringList SQLBase::findSingle(QString table, int fieldsCount,
 }
 
 
+int SQLBase::getTotalRows(QString keyField, QString table)
+{
+    QString requestTotal = QString("SELECT COUNT(%1) FROM %2")
+                           .arg(keyField, table);
+
+    QSqlQuery totalQuery = executeRequest(requestTotal);
+
+    if (totalQuery.next())
+        return totalQuery.value(0).toInt();
+
+    return 0;
+}
 
 
