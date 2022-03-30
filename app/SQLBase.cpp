@@ -201,23 +201,13 @@ QVariantList SQLBase::findRecordsByTagMask(QString tagMask)
 
 QVariantList SQLBase::findRecordsByNameMaskAndDate(QString date, QString nameMask)
 {
-    QString findRequest =
-            QString("SELECT * FROM audio WHERE datePart='%1' AND audioName LIKE '%%2%';")
-            .arg(date, nameMask);
-
-    QSqlQuery recordsQuery = executeRequest(findRequest);
-    return fillRecordsSearchResults(recordsQuery);
+    return findByFieldMaskAndDate("audio", "audioName", date, nameMask);
 }
 
 
 QVariantList SQLBase::findRecordsByTagMaskAndDate(QString date, QString tagMask)
 {
-    QString findRequest =
-            QString("SELECT * FROM audio WHERE datePart='%1' AND tags LIKE '%%2%';")
-            .arg(date, tagMask);
-
-    QSqlQuery recordsQuery = executeRequest(findRequest);
-    return fillRecordsSearchResults(recordsQuery);
+    return findByFieldMaskAndDate("audio", "tags", date, tagMask);
 }
 
 
@@ -236,8 +226,6 @@ QVariantList SQLBase::fillRecordsSearchResults(QSqlQuery& query)
 
      return records;
 }
-
-
 
 
 void SQLBase::addText(QString name, QString text, QString tags, QString description)
