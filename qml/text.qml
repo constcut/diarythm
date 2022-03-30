@@ -35,7 +35,12 @@ Item {
                 onClicked: {
                     sqlBase.addText(nameField.text, textArea.text, tagsField.text,
                                     descriptionField.text)
-                    //Clean?
+
+                    nameField.text = "" //Защита от повторного добавления
+                    tagsField.text = ""
+                    descriptionField.text = ""
+                    textArea.text = ""
+                    //Возможно стоит переключать на другой экран
                 }
             }
         }
