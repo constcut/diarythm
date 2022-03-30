@@ -129,8 +129,13 @@ ApplicationWindow {
     }
 
     function requestSingleRecord(date, localIdx) {
-        console.log("Single record requested!")
         mainLoader.setSource("qrc:/qml/SingleRecord.qml",
+                             {"date": date, "localIdx":localIdx})
+        mainLoader.focus = true
+    }
+
+    function requestSingleText(date, localIdx) {
+        mainLoader.setSource("qrc:/qml/text.qml",
                              {"date": date, "localIdx":localIdx})
         mainLoader.focus = true
     }
