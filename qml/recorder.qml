@@ -107,20 +107,33 @@ Item {
 
                 function search()
                 {
-                    //TODO var bools vs checked options, as we don't handle both yet
+                    var needAudio = false
+                    var needText = false
+
+                    if (searchAudio.checked)
+                        needAudio = true
+
+                    if (searchTexts.checked)
+                        needText = true
+
+                    if (searchAll.checked)
+                    {
+                        needAudio = true
+                        needText = true
+                    }
 
                     var foundRecords = []
-                    var subFound = []
+                    var subFound = [] //rename both, collect sepparated
 
                     if (useDateInSearch.checked)
                     {
                         if (searchByName.checked)
                         {
-                            if (searchAudio.checked)
+                            if (needAudio)
                                 foundRecords = sqlBase.findRecordsByNameMaskAndDate(
                                                currentDateText.text, searchBox.text)
 
-                            if (searchTexts.checked)
+                            if (needText)
                             {
                                 subFound = sqlBase.findTextsByNameMaskAndDate(
                                            currentDateText.text, searchBox.text)
@@ -130,11 +143,11 @@ Item {
                         }
                         else
                         {
-                            if (searchAudio.checked)
+                            if (needAudio)
                                 foundRecords = sqlBase.findRecordsByTagMaskAndDate(
                                                currentDateText.text, searchBox.text)
 
-                            if (searchTexts.checked)
+                            if (needText)
                             {
                                 subFound = sqlBase.findTextsByTagMaskAndDate(
                                            currentDateText.text, searchBox.text)
@@ -147,10 +160,10 @@ Item {
                     {
                         if (searchByName.checked)
                         {
-                            if (searchAudio.checked)
+                            if (needAudio)
                                 foundRecords = sqlBase.findRecordsByNameMask(searchBox.text)
 
-                            if (searchTexts.checked)
+                            if (needText)
                             {
                                 subFound = sqlBase.findTextsByNameMask(searchBox.text)
                                 foundRecords = foundRecords.concat(subFound)
@@ -158,10 +171,10 @@ Item {
                         }
                         else
                         {
-                            if (searchAudio.checked)
+                            if (needAudio)
                                 foundRecords = sqlBase.findRecordsByTagMask(searchBox.text)
 
-                            if (searchTexts.checked)
+                            if (needText)
                             {
                                 subFound = sqlBase.findTextsByNameMask(searchBox.text)
                                 foundRecords = foundRecords.concat(subFound)
