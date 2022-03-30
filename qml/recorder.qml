@@ -305,10 +305,10 @@ Item {
                 onDoubleClicked:
                 {
                     if (rowType === "audio")
-                        mainWindow.requestSingleRecord(rowsModel.lastDate, rowsModel.lastLocalId);
+                        mainWindow.requestSingleRecord(rowsModel.lastDate, rowsModel.lastLocalId)
 
                     if (rowType === "text")
-                        mainWindow.requestSingleText(rowsModel.lastDate, rowsModel.lastLocalId);
+                        mainWindow.requestSingleText(rowsModel.lastDate, rowsModel.lastLocalId)
                 }
                 onPressAndHold:
                 {
@@ -322,6 +322,12 @@ Item {
                         audioMenu.y = mouseY + listViewRectangle.y
                         audioMenu.open()
                     }
+                    if (rowType === "text")
+                    {
+                        textsMenu.x = mouseX
+                        textsMenu.y = mouseY + listViewRectangle.y
+                        textsMenu.open()
+                    }
                 }
             }
         }
@@ -333,19 +339,13 @@ Item {
         MenuItem {
             text: "Open"
             onTriggered: {
-
+                 mainWindow.requestSingleRecord(rowsModel.lastDate, rowsModel.lastLocalId)
             }
         }
         MenuItem {
             text: "Play"
             onTriggered: {
                 recorder.playFile(rowsModel.lastDate, rowsModel.lastLocalId)
-            }
-        }
-        MenuItem {
-            text: "Edit"
-            onTriggered: {
-
             }
         }
         MenuItem {
@@ -362,13 +362,7 @@ Item {
         MenuItem {
             text: "Open"
             onTriggered: {
-
-            }
-        }
-        MenuItem {
-            text: "Edit"
-            onTriggered: {
-
+                mainWindow.requestSingleText(rowsModel.lastDate, rowsModel.lastLocalId)
             }
         }
         MenuItem {
