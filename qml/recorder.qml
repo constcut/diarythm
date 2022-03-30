@@ -107,26 +107,71 @@ Item {
 
                 function search()
                 {
+                    //TODO var bools vs checked options, as we don't handle both yet
+
                     var foundRecords = []
+                    var subFound = []
 
                     if (useDateInSearch.checked)
                     {
                         if (searchByName.checked)
-                            foundRecords = sqlBase.findRecordsByNameMaskAndDate(
-                                        currentDateText.text, searchBox.text)
+                        {
+                            if (searchAudio.checked)
+                                foundRecords = sqlBase.findRecordsByNameMaskAndDate(
+                                               currentDateText.text, searchBox.text)
+
+                            if (searchTexts.checked)
+                            {
+                                subFound = sqlBase.findTextsByNameMaskAndDate(
+                                           currentDateText.text, searchBox.text)
+
+                                foundRecords = foundRecords.concat(subFound)
+                            }
+                        }
                         else
-                            foundRecords = sqlBase.findRecordsByTagMaskAndDate(
-                                        currentDateText.text, searchBox.text)
+                        {
+                            if (searchAudio.checked)
+                                foundRecords = sqlBase.findRecordsByTagMaskAndDate(
+                                               currentDateText.text, searchBox.text)
+
+                            if (searchTexts.checked)
+                            {
+                                subFound = sqlBase.findTextsByTagMaskAndDate(
+                                           currentDateText.text, searchBox.text)
+
+                                foundRecords = foundRecords.concat(subFound)
+                            }
+                        }
                     }
                     else
                     {
                         if (searchByName.checked)
-                            foundRecords = sqlBase.findRecordsByNameMask(searchBox.text)
+                        {
+                            if (searchAudio.checked)
+                                foundRecords = sqlBase.findRecordsByNameMask(searchBox.text)
+
+                            if (searchTexts.checked)
+                            {
+                                subFound = sqlBase.findTextsByNameMask(searchBox.text)
+                                foundRecords = foundRecords.concat(subFound)
+                            }
+                        }
                         else
-                            foundRecords = sqlBase.findRecordsByTagMask(searchBox.text)
+                        {
+                            if (searchAudio.checked)
+                                foundRecords = sqlBase.findRecordsByTagMask(searchBox.text)
+
+                            if (searchTexts.checked)
+                            {
+                                subFound = sqlBase.findTextsByNameMask(searchBox.text)
+                                foundRecords = foundRecords.concat(subFound)
+                            }
+                        }
                     }
 
+                    //Здесь сейчас будут ошибки, вызванные тем что поля разные, вероятно лучше всего разделить
                     recorderItem.fillListWithRecords(foundRecords)
+                    //вероятно хорошо бы выделять первый элемент, если доступ к его подфункциям будет происходить вне кликов по листу
                 }
             }
 
