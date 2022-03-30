@@ -100,12 +100,7 @@ void SQLBase::editAudioRecord(QString date, int localId, QString name,
 
 void SQLBase::removeAudioRecord(QString date, int localId)
 {
-    QString deleteAudioRequest =
-            QString("DELETE FROM audio WHERE datePart='%1' AND localId='%2';")
-            .arg(date).arg(localId);
-
-    QSqlQuery deleteQuery = executeRequest(deleteAudioRequest);
-    logIfError(deleteQuery, deleteAudioRequest);
+    removeRow("audio", date, localId);
 }
 
 
@@ -215,12 +210,7 @@ void SQLBase::editText(QString date, int localId, QString name, //TODO refact (�
 
 void SQLBase::removeText(QString date, int localId) //TODO refact (дублирование кода с audio версией)
 {
-    QString deleteAudioRequest =
-            QString("DELETE FROM texts WHERE datePart='%1' AND localId='%2';")
-            .arg(date).arg(localId);
-
-    QSqlQuery deleteQuery = executeRequest(deleteAudioRequest);
-    logIfError(deleteQuery, deleteAudioRequest);
+    removeRow("texts", date, localId);
 }
 
 
@@ -354,4 +344,14 @@ int SQLBase::getMaxLocalId(QString table, QString date)
     return 0;
 }
 
+
+void SQLBase::removeRow(QString table, QString date, int localId)
+{
+    QString deleteRequest =
+            QString("DELETE FROM %1 WHERE datePart='%2' AND localId='%3';")
+            .arg(table, date).arg(localId);
+
+    QSqlQuery deleteQuery = executeRequest(deleteRequest);
+    logIfError(deleteQuery, deleteRequest);
+}
 

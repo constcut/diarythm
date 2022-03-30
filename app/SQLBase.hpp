@@ -83,6 +83,8 @@ namespace diaryth {
 
         int getMaxLocalId(QString table, QString date);
 
+        void removeRow(QString table, QString date, int localId);
+
         const int audioFieldsCount = 7; //Later use walkaround with query.last() and query.at() + 1
         const int textFieldsCount = 7;
     };
