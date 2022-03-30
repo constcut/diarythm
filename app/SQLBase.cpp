@@ -292,7 +292,7 @@ QStringList SQLBase::findSingle(QString table, int fieldsCount,
                         QString date, int localId)
 {
     QString requestSingle =
-            QString("SELECT * FROM %1 WHERE datePart='%2' AND localId='%2';")
+            QString("SELECT * FROM %1 WHERE datePart='%2' AND localId='%3';")
             .arg(table, date).arg(localId);
 
     QSqlQuery singleQuery = executeRequest(requestSingle);
