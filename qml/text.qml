@@ -70,6 +70,10 @@ Item {
                         textArea.text = ""
                         //Возможно стоит переключать на другой экран
                     }
+
+                    //TODO Notification that record was added
+                    //Popup with number animation on opacity and close on finish animation
+                    //Or close on click
                 }
             }
 
@@ -79,6 +83,17 @@ Item {
                     mainWindow.requestCalendar()
                 }
             }
+        }
+
+        Popup {
+            id: popup
+            x: 100
+            y: 100
+            width: 200
+            height: 300
+            modal: true
+            focus: true
+            closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutsideParent
         }
 
         ScrollView {
