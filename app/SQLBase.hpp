@@ -76,26 +76,26 @@ namespace diaryth {
 
         bool logIfError(QSqlQuery& query, const QString& request);
 
-        QVariantList findByFieldMaskAndDate(QString table, QString field,
-                                            QString date, QString mask);
+        QVariantList findByFieldMaskAndDate(const QString& table, const QString& field,
+                                            const QString& date, const QString& mask);
 
-        QVariantList findByFieldMask(QString table, QString field, QString mask);
+        QVariantList findByFieldMask(const QString& table, const QString& field,
+                                     const QString& mask);
 
-        QVariantList findByDate(QString table, QString date);
+        QVariantList findByDate(const QString& table, const QString& date);
 
-        QStringList findSingle(QString table,  int fieldsCount,
-                               QString date, int localId);
+        QStringList findSingle(const QString& table, int fieldsCount,
+                               const QString& date, int localId);
 
-        int getTotalRows(QString keyField, QString table);
+        int getTotalRows(const QString& keyField, const QString& table);
 
-        int getMaxLocalId(QString table, QString date);
+        int getMaxLocalId(const QString& table, const QString& date);
 
-        void removeRow(QString table, QString date, int localId);
+        void removeRow(const QString& table, const QString& date, int localId);
 
-        void editRow(QString table, QString nameField, QString date, int localId,
-                     QString name, QString tags, QString description);
+        void editRow(const QString& table, const QString& nameField, const QString& date,
+                     int localId, const QString& name, const QString& tags, const QString& description);
 
-        //void addRow(QString table ,)
 
         const int audioFieldsCount = 7; //Later use walkaround with query.last() and query.at() + 1
         const int textFieldsCount = 7;

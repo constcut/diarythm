@@ -256,8 +256,8 @@ QVariantList SQLBase::findTextsByTagMaskAndDate(const QString& date,
 }
 
 
-QVariantList SQLBase::findByFieldMaskAndDate(const QString table, QString field,
-                                    QString date, QString mask)
+QVariantList SQLBase::findByFieldMaskAndDate(const QString &table, const QString &field,
+                                    const QString &date, const QString &mask)
 {
     QString findRequest =
             QString("SELECT * FROM %1 WHERE datePart='%2' AND %3 LIKE '%%4%';")
@@ -268,7 +268,8 @@ QVariantList SQLBase::findByFieldMaskAndDate(const QString table, QString field,
 }
 
 
-QVariantList SQLBase::findByFieldMask(QString table, QString field, QString mask)
+QVariantList SQLBase::findByFieldMask(const QString &table, const QString &field,
+                                      const QString &mask)
 {
     QString findRequest =
             QString("SELECT * FROM %1 WHERE %2 LIKE '%%3%';")
@@ -279,7 +280,7 @@ QVariantList SQLBase::findByFieldMask(QString table, QString field, QString mask
 }
 
 
-QVariantList SQLBase::findByDate(QString table, QString date)
+QVariantList SQLBase::findByDate(const QString& table, const QString& date)
 {
     QString findRequest =
             QString("SELECT * FROM %1 WHERE datePart='%2';")
@@ -290,8 +291,8 @@ QVariantList SQLBase::findByDate(QString table, QString date)
 }
 
 
-QStringList SQLBase::findSingle(QString table, int fieldsCount,
-                        QString date, int localId)
+QStringList SQLBase::findSingle(const QString& table, int fieldsCount,
+                                const QString& date, int localId)
 {
     QString requestSingle =
             QString("SELECT * FROM %1 WHERE datePart='%2' AND localId='%3';")
@@ -308,7 +309,7 @@ QStringList SQLBase::findSingle(QString table, int fieldsCount,
 }
 
 
-int SQLBase::getTotalRows(QString keyField, QString table)
+int SQLBase::getTotalRows(const QString &keyField, const QString &table)
 {
     QString requestTotal = QString("SELECT COUNT(%1) FROM %2")
                            .arg(keyField, table);
@@ -322,7 +323,7 @@ int SQLBase::getTotalRows(QString keyField, QString table)
 }
 
 
-int SQLBase::getMaxLocalId(QString table, QString date)
+int SQLBase::getMaxLocalId(const QString &table, const QString &date)
 {
     QString requestMaxId =
             QString("SELECT MAX(localId) FROM %1 WHERE datePart='%2';")
@@ -338,7 +339,7 @@ int SQLBase::getMaxLocalId(QString table, QString date)
 }
 
 
-void SQLBase::removeRow(QString table, QString date, int localId)
+void SQLBase::removeRow(const QString &table, const QString &date, int localId)
 {
     QString deleteRequest =
             QString("DELETE FROM %1 WHERE datePart='%2' AND localId='%3';")
