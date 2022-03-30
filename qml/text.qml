@@ -33,7 +33,9 @@ Item {
             Button {
                 text: "Save text"
                 onClicked: {
-
+                    sqlBase.addText(nameField.text, textArea.text, tagsField.text,
+                                    descriptionField.text)
+                    //Clean?
                 }
             }
         }
