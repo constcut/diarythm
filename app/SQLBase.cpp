@@ -326,23 +326,13 @@ QVariantList SQLBase::findTexts(QString date) //TODO refact (дублирова�
 
 QVariantList SQLBase::findTextsByNameMask(QString nameMask)
 {
-    QString findRequest =
-            QString("SELECT * FROM txts WHERE textName LIKE '%%1%';")
-            .arg(nameMask);
-
-    QSqlQuery recordsQuery = executeRequest(findRequest);
-    return fillRecordsSearchResults(recordsQuery);
+    return findByFieldMask("texts", "textName", nameMask);
 }
 
 
 QVariantList SQLBase::findTextsByTagMask(QString tagMask)
 {
-    QString findRequest =
-            QString("SELECT * FROM texts WHERE tags LIKE '%%1%';")
-            .arg(tagMask);
-
-    QSqlQuery recordsQuery = executeRequest(findRequest);
-    return fillRecordsSearchResults(recordsQuery);
+    return findByFieldMask("texts", "tags", tagMask);
 }
 
 
@@ -366,9 +356,22 @@ QVariantList SQLBase::findByFieldMaskAndDate(QString table, QString field,
             QString("SELECT * FROM %1 WHERE datePart='%2' AND %3 LIKE '%%4%';")
             .arg(table, date, field, mask);
 
-    QSqlQuery recordsQuery = executeRequest(findRequest);
-    return fillRecordsSearchResults(recordsQuery);
+    QSqlQuery requestQuery = executeRequest(findRequest);
+    return fillRecordsSearchResults(requestQuery);
 }
+
+
+QVariantList SQLBase::findByFieldMask(QString table, QString field, QString mask)
+{
+    QString findRequest =
+            QString("SELECT * FROM %1 WHERE %2 LIKE '%%3%';") //Для древовидных тэгов
+            .arg(table, field, mask);
+
+    QSqlQuery requestQuery = executeRequest(findRequest);
+    return fillRecordsSearchResults(requestQuery);
+}
+
+
 
 
 

@@ -41,7 +41,9 @@ namespace diaryth {
 
 
         Q_INVOKABLE void addText(QString name, QString text, QString tags, QString description);
-        Q_INVOKABLE void editText(QString date, int localId, QString name, QString tags, QString description);
+
+        Q_INVOKABLE void editText(QString date, int localId, QString name,
+                                  QString tags, QString description);
 
         Q_INVOKABLE void removeText(QString date, int localId);
 
@@ -67,7 +69,10 @@ namespace diaryth {
 
         bool logIfError(QSqlQuery& query, const QString& request);
 
-        QVariantList findByFieldMaskAndDate(QString table, QString field, QString date, QString mask);
+        QVariantList findByFieldMaskAndDate(QString table, QString field,
+                                            QString date, QString mask);
+
+        QVariantList findByFieldMask(QString table, QString field, QString mask);
 
         const int audioFieldsCount = 7; //Later use walkaround with query.last() and query.at() + 1
         const int textFieldsCount = 7;
