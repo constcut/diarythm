@@ -296,27 +296,87 @@ Item {
             }
             MouseArea {
                 anchors.fill: parent
-                onClicked: {
-
+                onClicked:
+                {
                     wrapper.ListView.view.currentIndex = index
                     rowsModel.lastDate = date
                     rowsModel.lastLocalId = id
                 }
-                onDoubleClicked: {
+                onDoubleClicked:
+                {
                     if (rowType === "audio")
                         mainWindow.requestSingleRecord(rowsModel.lastDate, rowsModel.lastLocalId);
 
                     if (rowType === "text")
                         mainWindow.requestSingleText(rowsModel.lastDate, rowsModel.lastLocalId);
                 }
-                onPressAndHold: {
-                    //Меню, два разных + удаление
-                    recorder.playFile(rowsModel.lastDate, rowsModel.lastLocalId)
+                onPressAndHold:
+                {
+                    wrapper.ListView.view.currentIndex = index
+                    rowsModel.lastDate = date
+                    rowsModel.lastLocalId = id
+
+                    if (rowType === "audio")
+                    {
+                        audioMenu.x = mouseX
+                        audioMenu.y = mouseY + listViewRectangle.y
+                        audioMenu.open()
+                    }
                 }
             }
         }
     }
 
+
+    Menu {
+        id: audioMenu
+        MenuItem {
+            text: "Open"
+            onTriggered: {
+
+            }
+        }
+        MenuItem {
+            text: "Play"
+            onTriggered: {
+                recorder.playFile(rowsModel.lastDate, rowsModel.lastLocalId)
+            }
+        }
+        MenuItem {
+            text: "Edit"
+            onTriggered: {
+
+            }
+        }
+        MenuItem {
+            text: "Remove"
+            onTriggered: {
+            }
+        }
+    }
+
+
+
+    Menu {
+        id: textsMenu
+        MenuItem {
+            text: "Open"
+            onTriggered: {
+
+            }
+        }
+        MenuItem {
+            text: "Edit"
+            onTriggered: {
+
+            }
+        }
+        MenuItem {
+            text: "Remove"
+            onTriggered: {
+            }
+        }
+    }
 
 
     Connections {
