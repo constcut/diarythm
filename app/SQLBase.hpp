@@ -81,6 +81,8 @@ namespace diaryth {
 
         int getTotalRows(QString keyField, QString table);
 
+        int getMaxLocalId(QString table, QString date);
+
         const int audioFieldsCount = 7; //Later use walkaround with query.last() and query.at() + 1
         const int textFieldsCount = 7;
     };

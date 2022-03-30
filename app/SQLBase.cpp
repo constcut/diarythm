@@ -111,17 +111,7 @@ void SQLBase::removeAudioRecord(QString date, int localId)
 
 int SQLBase::getRecordsMaxLocalId(QString date)
 {
-    QString requestMaxId =
-            QString("SELECT MAX(localId) FROM audio WHERE datePart='%1';")
-            .arg(date);
-
-    QSqlQuery maxIdQuery = executeRequest(requestMaxId);
-
-    if (logIfError(maxIdQuery, requestMaxId) == false
-            && maxIdQuery.next())
-            return maxIdQuery.value(0).toInt();
-
-    return 0;
+    return getMaxLocalId("audio", date);
 }
 
 
@@ -236,17 +226,7 @@ void SQLBase::removeText(QString date, int localId) //TODO refact (дублир�
 
 int SQLBase::getTextsMaxLocalId(QString date) //TODO refact (дублирование кода с audio версией)
 {
-    QString requestMaxId =
-            QString("SELECT MAX(localId) FROM texts WHERE datePart='%1';")
-            .arg(date);
-
-    QSqlQuery maxIdQuery = executeRequest(requestMaxId);
-
-    if (logIfError(maxIdQuery, requestMaxId) == false
-            && maxIdQuery.next())
-            return maxIdQuery.value(0).toInt();
-
-    return 0;
+    return getMaxLocalId("texts", date);
 }
 
 
@@ -354,6 +334,22 @@ int SQLBase::getTotalRows(QString keyField, QString table)
 
     if (totalQuery.next())
         return totalQuery.value(0).toInt();
+
+    return 0;
+}
+
+
+int SQLBase::getMaxLocalId(QString table, QString date)
+{
+    QString requestMaxId =
+            QString("SELECT MAX(localId) FROM %1 WHERE datePart='%2';")
+            .arg(table, date);
+
+    QSqlQuery maxIdQuery = executeRequest(requestMaxId);
+
+    if (logIfError(maxIdQuery, requestMaxId) == false
+            && maxIdQuery.next())
+            return maxIdQuery.value(0).toInt();
 
     return 0;
 }
