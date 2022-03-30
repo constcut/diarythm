@@ -203,7 +203,6 @@ Item {
                 RadioButton {
                     id: searchAudio
                     text: "Audio"
-                    checked: true
                 }
                 RadioButton {
                     id: searchTexts
@@ -212,6 +211,7 @@ Item {
                 RadioButton {
                     id: searchAll
                     text: "All"
+                    checked: true
                 }
             }
 
