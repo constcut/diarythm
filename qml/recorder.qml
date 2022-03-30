@@ -334,7 +334,8 @@ Item {
     }
 
 
-    Menu {
+    Menu
+    {
         id: audioMenu
         MenuItem {
             text: "Open"
@@ -351,13 +352,15 @@ Item {
         MenuItem {
             text: "Remove"
             onTriggered: {
+                confirmDelete.type = "audio"
+                confirmDelete.open()
             }
         }
     }
 
 
-
-    Menu {
+    Menu
+    {
         id: textsMenu
         MenuItem {
             text: "Open"
@@ -368,9 +371,34 @@ Item {
         MenuItem {
             text: "Remove"
             onTriggered: {
+                confirmDelete.type = "audio"
+                confirmDelete.open()
             }
         }
     }
+
+
+
+    MessageDialog
+    {
+        property string type: ""
+
+        id: confirmDelete
+        title: "Delete file"
+        text: "Do you really want to delete selected record?"
+        standardButtons: StandardButton.Yes | StandardButton.No
+        onYes: {
+            if (type == "audio")
+                sqlBase.removeAudioRecord(rowsModel.lastDate, rowsModel.lastLocalId)
+
+            if (type == "text")
+                sqlBase.removeText(rowsModel.lastDate, rowsModel.lastLocalId)
+
+            searchBox.search()
+        }
+        visible: false
+    }
+
 
 
     Connections {
