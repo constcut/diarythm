@@ -51,6 +51,9 @@ namespace diaryth {
         Q_INVOKABLE QStringList findSingleText(QString date, int localId);
         Q_INVOKABLE QVariantList findTexts(QString date);
 
+        Q_INVOKABLE QVariantList findTextsByNameMask(QString nameMask);
+        Q_INVOKABLE QVariantList findTextsByTagMask(QString tagMask);
+
 
     private:
 

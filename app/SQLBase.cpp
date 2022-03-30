@@ -307,7 +307,7 @@ int SQLBase::getTotalTexts() //TODO refact (дублирование кода с
 }
 
 
-QStringList SQLBase::findSingleText(QString date, int localId)
+QStringList SQLBase::findSingleText(QString date, int localId) //TODO refact (дублирование кода с audio версией)
 {
     QString requestSingleText =
             QString("SELECT * FROM texts WHERE datePart='%1' AND localId='%2';")
@@ -324,7 +324,7 @@ QStringList SQLBase::findSingleText(QString date, int localId)
 }
 
 
-QVariantList SQLBase::findTexts(QString date)
+QVariantList SQLBase::findTexts(QString date) //TODO refact (дублирование кода с audio версией)
 {
     QString requestTexts =
             QString("SELECT * FROM texts WHERE datePart='%1';")
@@ -335,4 +335,25 @@ QVariantList SQLBase::findTexts(QString date)
 }
 
 
+
+QVariantList SQLBase::findTextsByNameMask(QString nameMask)
+{
+    QString findRequest =
+            QString("SELECT * FROM txts WHERE audioName LIKE '%%1%';")
+            .arg(nameMask);
+
+    QSqlQuery recordsQuery = executeRequest(findRequest);
+    return fillRecordsSearchResults(recordsQuery);
+}
+
+
+QVariantList SQLBase::findTextsByTagMask(QString tagMask)
+{
+    QString findRequest =
+            QString("SELECT * FROM texts WHERE tags LIKE '%%1%';")
+            .arg(tagMask);
+
+    QSqlQuery recordsQuery = executeRequest(findRequest);
+    return fillRecordsSearchResults(recordsQuery);
+}
 
