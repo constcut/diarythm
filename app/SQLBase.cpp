@@ -72,7 +72,7 @@ void SQLBase::createTablesIfNeeded() {
     executeRequest(textTableCreate); //QSqlQuery textTableQuery =
 }
 
-//Возможно разумно убрать date & time и формировать их прямо тут да и localId
+
 void SQLBase::addAudioRecord(QString date, QString time, int localId,
                              QString name, quint64 durationMs)
 {
@@ -81,8 +81,7 @@ void SQLBase::addAudioRecord(QString date, QString time, int localId,
             "VALUES('%1','%2','%3','%4','%5');")
             .arg(date,time).arg(localId).arg(name).arg(durationMs);
 
-    executeRequest(addAudioRequest); //QSqlQuery addQuery =
-    //Вероятно в начале была бы полезна проверка, что пары date + localId ещё нет
+    executeRequest(addAudioRequest);  //Вероятно в начале была бы полезна проверка, что пары date + localId ещё нет
 }
 
 
@@ -184,44 +183,45 @@ void SQLBase::addText(QString name, QString text, QString tags, QString descript
 
     QString addTextRequest =
             QString("INSERT INTO texts (datePart, timePart, localId, textName, textValue, tags, description) "
-    "VALUES('%1','%2','%3','%4','%5','%6','%7');").arg(date,time).arg(localId).arg(name, text, tags, description);
+            "VALUES('%1','%2','%3','%4','%5','%6','%7');")
+            .arg(date,time).arg(localId).arg(name, text, tags, description);
 
     executeRequest(addTextRequest);
 }
 
 
-void SQLBase::editText(QString date, int localId, QString name, //TODO refact (дублирование кода с audio версией)
+void SQLBase::editText(QString date, int localId, QString name,
                        QString tags, QString description)
 {
     editRow("texts", "textName", date, localId, name, tags, description);
 }
 
 
-void SQLBase::removeText(QString date, int localId) //TODO refact (дублирование кода с audio версией)
+void SQLBase::removeText(QString date, int localId)
 {
     removeRow("texts", date, localId);
 }
 
 
-int SQLBase::getTextsMaxLocalId(QString date) //TODO refact (дублирование кода с audio версией)
+int SQLBase::getTextsMaxLocalId(QString date)
 {
     return getMaxLocalId("texts", date);
 }
 
 
-int SQLBase::getTotalTexts() //TODO refact (дублирование кода с audio версией)
+int SQLBase::getTotalTexts()
 {
     return getTotalRows("textId", "texts");
 }
 
 
-QStringList SQLBase::findSingleText(QString date, int localId) //TODO refact (дублирование кода с audio версией)
+QStringList SQLBase::findSingleText(QString date, int localId)
 {
     return findSingle("texts", textFieldsCount, date, localId);
 }
 
 
-QVariantList SQLBase::findTexts(QString date) //TODO refact (дублирование кода с audio версией)
+QVariantList SQLBase::findTexts(QString date)
 {
     return findByDate("texts", date);
 }
@@ -251,7 +251,6 @@ QVariantList SQLBase::findTextsByTagMaskAndDate(QString date, QString tagMask)
 }
 
 
-
 QVariantList SQLBase::findByFieldMaskAndDate(QString table, QString field,
                                     QString date, QString mask)
 {
@@ -267,7 +266,7 @@ QVariantList SQLBase::findByFieldMaskAndDate(QString table, QString field,
 QVariantList SQLBase::findByFieldMask(QString table, QString field, QString mask)
 {
     QString findRequest =
-            QString("SELECT * FROM %1 WHERE %2 LIKE '%%3%';") //Для древовидных тэгов
+            QString("SELECT * FROM %1 WHERE %2 LIKE '%%3%';")
             .arg(table, field, mask);
 
     QSqlQuery requestQuery = executeRequest(findRequest);
