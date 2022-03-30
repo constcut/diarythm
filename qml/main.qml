@@ -155,6 +155,13 @@ ApplicationWindow {
         mainLoader.focus = true
     }
 
+    function requestCalendar() {
+        mainLoader.setSource("calendar.qml")
+        mainLoader.focus = true
+    }
+
+    //TODO later implement https://doc.qt.io/qt-5/qml-qtquick-controls2-swipeview.html
+
 
     Loader {
     id:mainLoader

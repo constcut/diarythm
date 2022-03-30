@@ -60,6 +60,13 @@ Item {
                 id: timeText
                 text: "Time ms"
             }
+
+            Button {
+                text: "Back to calendar"
+                onClicked: {
+                    mainWindow.requestCalendar()
+                }
+            }
         }
 
     }

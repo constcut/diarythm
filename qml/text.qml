@@ -48,7 +48,8 @@ Item {
                 id: descriptionField
                 placeholderText: "description"
             }
-            Button {
+            Button
+            {
                 text: "Save text"
                 onClicked:
                 {
@@ -69,6 +70,13 @@ Item {
                         textArea.text = ""
                         //Возможно стоит переключать на другой экран
                     }
+                }
+            }
+
+            Button {
+                text: "Back to calendar"
+                onClicked: {
+                    mainWindow.requestCalendar()
                 }
             }
         }
