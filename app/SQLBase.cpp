@@ -73,8 +73,8 @@ void SQLBase::createTablesIfNeeded() {
 }
 
 
-void SQLBase::addAudioRecord(QString date, QString time, int localId,
-                             QString name, quint64 durationMs)
+void SQLBase::addAudioRecord(const QString& date, const QString& time,
+                             int localId, const QString& name, quint64 durationMs)
 {
     QString addAudioRequest =
             QString("INSERT INTO audio (datePart, timePart, localId, audioName, durationMs) "
@@ -85,20 +85,20 @@ void SQLBase::addAudioRecord(QString date, QString time, int localId,
 }
 
 
-void SQLBase::editAudioRecord(QString date, int localId, QString name,
-                              QString tags, QString description)
+void SQLBase::editAudioRecord(const QString& date, int localId, const QString& name,
+                              const QString& tags, const QString& description)
 {
     editRow("audio", "audioName", date, localId, name, tags, description);
 }
 
 
-void SQLBase::removeAudioRecord(QString date, int localId)
+void SQLBase::removeAudioRecord(const QString& date, int localId)
 {
     removeRow("audio", date, localId);
 }
 
 
-int SQLBase::getRecordsMaxLocalId(QString date)
+int SQLBase::getRecordsMaxLocalId(const QString& date)
 {
     return getMaxLocalId("audio", date);
 }
@@ -121,37 +121,39 @@ int SQLBase::getTotalRecords()
 }
 
 
-QStringList SQLBase::findSingleRecord(QString date, int localId)
+QStringList SQLBase::findSingleRecord(const QString& date, int localId)
 {
     return findSingle("audio", audioFieldsCount, date, localId);
 }
 
 
-QVariantList SQLBase::findRecords(QString date)
+QVariantList SQLBase::findRecords(const QString& date)
 {
     return findByDate("audio", date);
 }
 
 
-QVariantList SQLBase::findRecordsByNameMask(QString nameMask)
+QVariantList SQLBase::findRecordsByNameMask(const QString& nameMask)
 {
     return findByFieldMask("audio", "audioName", nameMask);
 }
 
 
-QVariantList SQLBase::findRecordsByTagMask(QString tagMask)
+QVariantList SQLBase::findRecordsByTagMask(const QString& tagMask)
 {
     return findByFieldMask("audio", "tags", tagMask);
 }
 
 
-QVariantList SQLBase::findRecordsByNameMaskAndDate(QString date, QString nameMask)
+QVariantList SQLBase::findRecordsByNameMaskAndDate(const QString& date,
+                                                   const QString& nameMask)
 {
     return findByFieldMaskAndDate("audio", "audioName", date, nameMask);
 }
 
 
-QVariantList SQLBase::findRecordsByTagMaskAndDate(QString date, QString tagMask)
+QVariantList SQLBase::findRecordsByTagMaskAndDate(const QString& date,
+                                                  const QString& tagMask)
 {
     return findByFieldMaskAndDate("audio", "tags", date, tagMask);
 }
@@ -174,7 +176,8 @@ QVariantList SQLBase::fillRecordsSearchResults(QSqlQuery& query)
 }
 
 
-void SQLBase::addText(QString name, QString text, QString tags, QString description)
+void SQLBase::addText(const QString& name, const QString& text,
+                      const QString& tags, const QString& description)
 {
     auto date = QDate::currentDate().toString("yyyy-MM-dd");
     auto time = QTime::currentTime().toString("HH:mm:ss");
@@ -190,20 +193,20 @@ void SQLBase::addText(QString name, QString text, QString tags, QString descript
 }
 
 
-void SQLBase::editText(QString date, int localId, QString name,
-                       QString tags, QString description)
+void SQLBase::editText(const QString& date, int localId, const QString& name,
+                       const QString& tags, const QString& description)
 {
     editRow("texts", "textName", date, localId, name, tags, description);
 }
 
 
-void SQLBase::removeText(QString date, int localId)
+void SQLBase::removeText(const QString& date, int localId)
 {
     removeRow("texts", date, localId);
 }
 
 
-int SQLBase::getTextsMaxLocalId(QString date)
+int SQLBase::getTextsMaxLocalId(const QString& date)
 {
     return getMaxLocalId("texts", date);
 }
@@ -215,43 +218,45 @@ int SQLBase::getTotalTexts()
 }
 
 
-QStringList SQLBase::findSingleText(QString date, int localId)
+QStringList SQLBase::findSingleText(const QString& date, int localId)
 {
     return findSingle("texts", textFieldsCount, date, localId);
 }
 
 
-QVariantList SQLBase::findTexts(QString date)
+QVariantList SQLBase::findTexts(const QString& date)
 {
     return findByDate("texts", date);
 }
 
 
-QVariantList SQLBase::findTextsByNameMask(QString nameMask)
+QVariantList SQLBase::findTextsByNameMask(const QString& nameMask)
 {
     return findByFieldMask("texts", "textName", nameMask);
 }
 
 
-QVariantList SQLBase::findTextsByTagMask(QString tagMask)
+QVariantList SQLBase::findTextsByTagMask(const QString& tagMask)
 {
     return findByFieldMask("texts", "tags", tagMask);
 }
 
 
-QVariantList SQLBase::findTextsByNameMaskAndDate(QString date, QString nameMask)
+QVariantList SQLBase::findTextsByNameMaskAndDate(const QString& date,
+                                                 const QString& nameMask)
 {
     return findByFieldMaskAndDate("texts", "textName", date, nameMask);
 }
 
 
-QVariantList SQLBase::findTextsByTagMaskAndDate(QString date, QString tagMask)
+QVariantList SQLBase::findTextsByTagMaskAndDate(const QString& date,
+                                                const QString& tagMask)
 {
     return findByFieldMaskAndDate("texts", "tags", date, tagMask);
 }
 
 
-QVariantList SQLBase::findByFieldMaskAndDate(QString table, QString field,
+QVariantList SQLBase::findByFieldMaskAndDate(const QString table, QString field,
                                     QString date, QString mask)
 {
     QString findRequest =

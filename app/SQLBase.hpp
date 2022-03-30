@@ -19,45 +19,52 @@ namespace diaryth {
 
         //TODO const& for QString
 
-        Q_INVOKABLE void addAudioRecord(QString date, QString time, int localId,
-                            QString name, quint64 durationMs);
+        Q_INVOKABLE void addAudioRecord(const QString& date, const QString& time, int localId,
+                                        const QString& name, quint64 durationMs);
 
-        Q_INVOKABLE void editAudioRecord(QString date, int localId, QString name,
-                             QString tags, QString description);
+        Q_INVOKABLE void editAudioRecord(const QString& date, int localId, const QString& name,
+                                         const QString& tags, const QString& description);
 
-        Q_INVOKABLE void removeAudioRecord(QString date, int localId);
+        Q_INVOKABLE void removeAudioRecord(const QString& date, int localId);
 
-        Q_INVOKABLE int getRecordsMaxLocalId(QString date);
+        Q_INVOKABLE int getRecordsMaxLocalId(const QString& date);
         Q_INVOKABLE int getTotalRecords();
 
-        Q_INVOKABLE QStringList findSingleRecord(QString date, int localId);
-        Q_INVOKABLE QVariantList findRecords(QString date);
+        Q_INVOKABLE QStringList findSingleRecord(const QString& date, int localId);
+        Q_INVOKABLE QVariantList findRecords(const QString& date);
 
-        Q_INVOKABLE QVariantList findRecordsByNameMask(QString nameMask);
-        Q_INVOKABLE QVariantList findRecordsByTagMask(QString tagMask);
+        Q_INVOKABLE QVariantList findRecordsByNameMask(const QString& nameMask);
+        Q_INVOKABLE QVariantList findRecordsByTagMask(const QString& tagMask);
 
-        Q_INVOKABLE QVariantList findRecordsByNameMaskAndDate(QString date, QString nameMask);
-        Q_INVOKABLE QVariantList findRecordsByTagMaskAndDate(QString date, QString tagMask);
+        Q_INVOKABLE QVariantList findRecordsByNameMaskAndDate(const QString& date,
+                                                              const QString& nameMask);
+
+        Q_INVOKABLE QVariantList findRecordsByTagMaskAndDate(const QString& date,
+                                                             const QString& tagMask);
 
 
-        Q_INVOKABLE void addText(QString name, QString text, QString tags, QString description);
+        Q_INVOKABLE void addText(const QString& name, const QString& text,
+                                 const QString& tags, const QString& description);
 
-        Q_INVOKABLE void editText(QString date, int localId, QString name,
-                                  QString tags, QString description);
+        Q_INVOKABLE void editText(const QString& date, int localId, const QString& name,
+                                  const QString& tags, const QString& description);
 
-        Q_INVOKABLE void removeText(QString date, int localId);
+        Q_INVOKABLE void removeText(const QString& date, int localId);
 
-        Q_INVOKABLE int getTextsMaxLocalId(QString date);
+        Q_INVOKABLE int getTextsMaxLocalId(const QString& date);
         Q_INVOKABLE int getTotalTexts();
 
-        Q_INVOKABLE QStringList findSingleText(QString date, int localId);
-        Q_INVOKABLE QVariantList findTexts(QString date);
+        Q_INVOKABLE QStringList findSingleText(const QString& date, int localId);
+        Q_INVOKABLE QVariantList findTexts(const QString& date);
 
-        Q_INVOKABLE QVariantList findTextsByNameMask(QString nameMask);
-        Q_INVOKABLE QVariantList findTextsByTagMask(QString tagMask);
+        Q_INVOKABLE QVariantList findTextsByNameMask(const QString& nameMask);
+        Q_INVOKABLE QVariantList findTextsByTagMask(const QString& tagMask);
 
-        Q_INVOKABLE QVariantList findTextsByNameMaskAndDate(QString date, QString nameMask);
-        Q_INVOKABLE QVariantList findTextsByTagMaskAndDate(QString date, QString tagMask);
+        Q_INVOKABLE QVariantList findTextsByNameMaskAndDate(const QString& date,
+                                                            const QString& nameMask);
+
+        Q_INVOKABLE QVariantList findTextsByTagMaskAndDate(const QString& date,
+                                                           const QString& tagMask);
 
 
     private:
