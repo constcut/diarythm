@@ -11,11 +11,13 @@ Item {
     {
         rowsModel.clear()
 
+        var merged = []
+
         if (audios !== undefined)
             for (var i = 0; i < audios.length; ++i)
             {
                 var audio = audios[i]
-                rowsModel.append({"name":audio[3], "date": audio[0],
+                merged.push({"name":audio[3], "date": audio[0],
                                     "time": audio[1], "id": audio[2], "duration": audio[4],
                                     "tags": audio[5], "description": audio[6], "rowType":"audio"});
             }
@@ -24,10 +26,17 @@ Item {
             for (i = 0; i < texts.length; ++i)
             {
                 var text = texts[i]
-                rowsModel.append({"name":text[3], "date": text[0],
+                merged.push({"name":text[3], "date": text[0],
                                     "time": text[1], "id": text[2], "textValue": text[4],
                                     "tags": text[5], "description": text[6], "rowType":"text"});
             }
+
+        merged.sort(function(lhs, rhs) {
+            if(lhs.time < rhs.time) { return -1; }
+            if(lhs.time > rhs.time) { return 1; }
+            return 0;
+        })
+
     }
 
 
