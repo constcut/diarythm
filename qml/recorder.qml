@@ -62,6 +62,14 @@ Item {
             }
 
             Button {
+                text: "Settings"
+                onClicked:  {
+                    settingsDialog.requestSettings()
+                    settingsDialog.open()
+                }
+            }
+
+            Button {
                 text: "Back to calendar"
                 onClicked: {
                     mainWindow.requestCalendar()
@@ -69,6 +77,82 @@ Item {
             }
         }
 
+    }
+
+
+    Dialog
+    {
+        id: settingsDialog
+
+        width: 700
+        height: 300
+
+        x: 200
+        y: 100
+
+        ColumnLayout {
+            RowLayout
+            {
+                Text{
+                    text: "Device: "
+                }
+                ComboBox {
+                    id: deviceCombo
+                    implicitWidth: settingsDialog.width - 120
+                }
+            }
+            RowLayout
+            {
+                Text{
+                    text: "Codec: "
+                }
+                ComboBox {
+                    id: codecCombo
+                    implicitWidth: settingsDialog.width - 120
+                }
+            }
+            RowLayout
+            {
+                Text{
+                    text: "Container: "
+                }
+                ComboBox {
+                    id: containerCombo
+                    implicitWidth: settingsDialog.width - 120
+                }
+            }
+            RowLayout
+            {
+                Text{
+                    text: "Sample rate: "
+                }
+                ComboBox {
+                    id: sampleRateCombo
+                    implicitWidth: settingsDialog.width - 120
+                }
+            }
+            Button {
+                text: "Save"
+                onClicked:  {
+                    recorderItem.setInputDevice(deviceCombo.currentText)
+                    recorderItem.setAudioCodec(codecCombo.currentText)
+                    recorderItem.setFileContainer(containerCombo.currentText)
+                    recorderItem.setSampleRate(sampleRateCombo.currentText)
+                    settingsDialog.close()
+                }
+            }
+            Button {
+                text: "Close"
+                onClicked: settingsDialog.close()
+            }
+        }
+
+        function requestSettings() {
+            deviceCombo.model = recorder.inputDevices()
+            codecCombo.model = recorder.audioCodecs()
+            containerCombo.model = recorder.fileContainers()
+            sampleRateCombo.model = recorder.sampleRates()
+        }
     }
 
 

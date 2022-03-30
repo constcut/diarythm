@@ -1,6 +1,5 @@
 
 1) Добавить в setters\getters - bit rate + quality
-2) QML создать диалог настроек Recorder'а
 
-3) Поиск по диапазонам дат, со всеми вариациями:
+2) Поиск по диапазонам дат, со всеми вариациями:
 https://stackoverflow.com/questions/66304523/qml-calendar-selecting-start-date-and-end-date
