@@ -26,7 +26,7 @@ Item {
                 var text = texts[i]
                 recordsModel.append({"name":text[3], "date": text[0],
                                     "time": text[1], "id": text[2], "textValue": text[4],
-                                    "tags": text[5], "description": text[6], "type":"audio"});
+                                    "tags": text[5], "description": text[6], "type":"text"});
             }
     }
 
@@ -275,8 +275,14 @@ Item {
             height: 35
             Column {
                 Text {
-                    text: name + "   " + date + " T " + time + " " + duration + " ms"
+                    text: "Audio: " + name + "   " + date + " T " + time + " " + duration + " ms"
+                    visible: type === "audio"
                 }
+                Text {
+                    text: "Text: " + name + "  " + date + " T " + time
+                    visible: type === "text"
+                }
+
                 Text {
                     text: tags + " " + description
                 }
