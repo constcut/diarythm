@@ -9,13 +9,13 @@ Item {
 
     function fillListWithRecords(audios, texts)
     {
-        recordsModel.clear()
+        rowsModel.clear()
 
         if (audios !== undefined)
             for (var i = 0; i < audios.length; ++i)
             {
                 var audio = audios[i]
-                recordsModel.append({"name":audio[3], "date": audio[0],
+                rowsModel.append({"name":audio[3], "date": audio[0],
                                     "time": audio[1], "id": audio[2], "duration": audio[4],
                                     "tags": audio[5], "description": audio[6], "rowType":"audio"});
             }
@@ -24,7 +24,7 @@ Item {
             for (i = 0; i < texts.length; ++i)
             {
                 var text = texts[i]
-                recordsModel.append({"name":text[3], "date": text[0],
+                rowsModel.append({"name":text[3], "date": text[0],
                                     "time": text[1], "id": text[2], "textValue": text[4],
                                     "tags": text[5], "description": text[6], "rowType":"text"});
             }
@@ -226,7 +226,7 @@ Item {
 
 
         ListModel {
-            id: recordsModel
+            id: rowsModel
 
             property string lastDate: ""
             property int lastLocalId: 0
@@ -243,7 +243,7 @@ Item {
                 id: recordsList
                 clip: true
                 anchors.fill: parent
-                model: recordsModel
+                model: rowsModel
                 Behavior on y { NumberAnimation{ duration: 200 } }
                 onContentYChanged: {} //When implement search bar copy behavior
                 delegate: recordDeligate
@@ -299,21 +299,19 @@ Item {
                 onClicked: {
 
                     wrapper.ListView.view.currentIndex = index
-                    recordsModel.lastDate = date
-                    recordsModel.lastLocalId = id
-
-                    console.log("Last date", date, "last id", id)
+                    rowsModel.lastDate = date
+                    rowsModel.lastLocalId = id
                 }
                 onDoubleClicked: {
                     if (rowType === "audio")
-                        mainWindow.requestSingleRecord(recordsModel.lastDate, recordsModel.lastLocalId);
+                        mainWindow.requestSingleRecord(rowsModel.lastDate, rowsModel.lastLocalId);
 
                     if (rowType === "text")
-                        console.log("Text open request")
+                        mainWindow.requestSingleText(rowsModel.lastDate, rowsModel.lastLocalId);
                 }
                 onPressAndHold: {
                     //Меню, два разных + удаление
-                    recorder.playFile(recordsModel.lastDate, recordsModel.lastLocalId)
+                    recorder.playFile(rowsModel.lastDate, rowsModel.lastLocalId)
                 }
             }
         }
