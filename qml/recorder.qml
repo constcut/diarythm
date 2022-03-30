@@ -146,6 +146,22 @@ Item {
                 checked: true
             }
 
+            ColumnLayout {
+                RadioButton {
+                    id: searchAudio
+                    text: "Audio"
+                    checked: true
+                }
+                RadioButton {
+                    id: searchTexts
+                    text: "Texts"
+                }
+                RadioButton {
+                    id: searchAll
+                    text: "All"
+                }
+            }
+
 
             Button {
                 text: "Search"

@@ -26,7 +26,7 @@ ApplicationWindow {
             mainWindow.height = 600
         }
 
-        mainLoader.setSource("text.qml") //"recorder.qml"
+        mainLoader.setSource("recorder.qml")
     }
 
 
