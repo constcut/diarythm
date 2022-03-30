@@ -7,15 +7,24 @@ import QtQuick.Controls 1.4 as Quick1
 Item {
     id: recorderItem
 
-    function fillListWithRecords(records) {
+    function fillListWithRecords(audios, texts)
+    {
         recordsModel.clear()
 
-        for (var i = 0; i < records.length; ++i)
+        for (var i = 0; i < audios.length; ++i)
         {
-            var record = records[i]
-            recordsModel.append({"name":record[3], "date": record[0],
-                                "time": record[1], "id": record[2], "duration": record[4],
-                                "tags": record[5], "description": record[6]});
+            var audio = audios[i]
+            recordsModel.append({"name":audio[3], "date": audio[0],
+                                "time": audio[1], "id": audio[2], "duration": audio[4],
+                                "tags": audio[5], "description": audio[6], "type":"audio"});
+        }
+
+        for (i = 0; i < texts.length; ++i)
+        {
+            var text = texts[i]
+            recordsModel.append({"name":text[3], "date": text[0],
+                                "time": text[1], "id": text[2], "textValue": text[4],
+                                "tags": text[5], "description": text[6], "type":"audio"});
         }
     }
 
@@ -122,38 +131,28 @@ Item {
                         needText = true
                     }
 
-                    var foundRecords = []
-                    var subFound = [] //rename both, collect sepparated
+                    var foundAudios = []
+                    var foundTexts = [] //rename both, collect sepparated
 
                     if (useDateInSearch.checked)
                     {
                         if (searchByName.checked)
                         {
                             if (needAudio)
-                                foundRecords = sqlBase.findRecordsByNameMaskAndDate(
+                                foundAudios = sqlBase.findRecordsByNameMaskAndDate(
                                                currentDateText.text, searchBox.text)
-
                             if (needText)
-                            {
-                                subFound = sqlBase.findTextsByNameMaskAndDate(
+                                foundTexts = sqlBase.findTextsByNameMaskAndDate(
                                            currentDateText.text, searchBox.text)
-
-                                foundRecords = foundRecords.concat(subFound)
-                            }
                         }
                         else
                         {
                             if (needAudio)
-                                foundRecords = sqlBase.findRecordsByTagMaskAndDate(
+                                foundAudios = sqlBase.findRecordsByTagMaskAndDate(
                                                currentDateText.text, searchBox.text)
-
                             if (needText)
-                            {
-                                subFound = sqlBase.findTextsByTagMaskAndDate(
+                                foundTexts = sqlBase.findTextsByTagMaskAndDate(
                                            currentDateText.text, searchBox.text)
-
-                                foundRecords = foundRecords.concat(subFound)
-                            }
                         }
                     }
                     else
@@ -161,29 +160,23 @@ Item {
                         if (searchByName.checked)
                         {
                             if (needAudio)
-                                foundRecords = sqlBase.findRecordsByNameMask(searchBox.text)
+                                foundAudios = sqlBase.findRecordsByNameMask(searchBox.text)
 
                             if (needText)
-                            {
-                                subFound = sqlBase.findTextsByNameMask(searchBox.text)
-                                foundRecords = foundRecords.concat(subFound)
-                            }
+                                foundTexts = sqlBase.findTextsByNameMask(searchBox.text)
                         }
                         else
                         {
                             if (needAudio)
-                                foundRecords = sqlBase.findRecordsByTagMask(searchBox.text)
+                                foundAudios = sqlBase.findRecordsByTagMask(searchBox.text)
 
                             if (needText)
-                            {
-                                subFound = sqlBase.findTextsByNameMask(searchBox.text)
-                                foundRecords = foundRecords.concat(subFound)
-                            }
+                                foundTexts = sqlBase.findTextsByNameMask(searchBox.text)
                         }
                     }
 
                     //Здесь сейчас будут ошибки, вызванные тем что поля разные, вероятно лучше всего разделить
-                    recorderItem.fillListWithRecords(foundRecords)
+                    recorderItem.fillListWithRecords(foundAudios, foundTexts)
                     //вероятно хорошо бы выделять первый элемент, если доступ к его подфункциям будет происходить вне кликов по листу
                 }
             }
