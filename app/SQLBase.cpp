@@ -76,8 +76,10 @@ void SQLBase::createTablesIfNeeded() {
 void SQLBase::addAudioRecord(QString date, QString time, int localId,
                              QString name, quint64 durationMs)
 {
-    QString addAudioRequest = QString("INSERT INTO audio (datePart, timePart, localId, audioName, durationMs) "
-    "VALUES('%1','%2','%3','%4','%5');").arg(date,time).arg(localId).arg(name).arg(durationMs);
+    QString addAudioRequest =
+            QString("INSERT INTO audio (datePart, timePart, localId, audioName, durationMs) "
+            "VALUES('%1','%2','%3','%4','%5');")
+            .arg(date,time).arg(localId).arg(name).arg(durationMs);
 
     executeRequest(addAudioRequest); //QSqlQuery addQuery =
     //Вероятно в начале была бы полезна проверка, что пары date + localId ещё нет
@@ -354,5 +356,6 @@ void SQLBase::editRow(QString table, QString nameField, QString date, int localI
     QSqlQuery updateQuery = executeRequest(updateRequest);
     logIfError(updateQuery, updateRequest);
 }
+
 
 
