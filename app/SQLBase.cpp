@@ -339,7 +339,7 @@ QVariantList SQLBase::findTexts(QString date) //TODO refact (дублирова�
 QVariantList SQLBase::findTextsByNameMask(QString nameMask)
 {
     QString findRequest =
-            QString("SELECT * FROM txts WHERE audioName LIKE '%%1%';")
+            QString("SELECT * FROM txts WHERE textName LIKE '%%1%';")
             .arg(nameMask);
 
     QSqlQuery recordsQuery = executeRequest(findRequest);
@@ -356,4 +356,31 @@ QVariantList SQLBase::findTextsByTagMask(QString tagMask)
     QSqlQuery recordsQuery = executeRequest(findRequest);
     return fillRecordsSearchResults(recordsQuery);
 }
+
+
+
+QVariantList SQLBase::findTextsByNameMaskAndDate(QString date, QString nameMask)
+{
+    QString findRequest =
+            QString("SELECT * FROM texts WHERE datePart='%1' AND textName LIKE '%%2%';")
+            .arg(date, nameMask);
+
+    QSqlQuery recordsQuery = executeRequest(findRequest);
+    return fillRecordsSearchResults(recordsQuery);
+}
+
+
+QVariantList SQLBase::findTextsByTagMaskAndDate(QString date, QString tagMask)
+{
+    QString findRequest =
+            QString("SELECT * FROM texts WHERE datePart='%1' AND tags LIKE '%%2%';")
+            .arg(date, tagMask);
+
+    QSqlQuery recordsQuery = executeRequest(findRequest);
+    return fillRecordsSearchResults(recordsQuery);
+}
+
+
+
+
 
