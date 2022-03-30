@@ -222,6 +222,21 @@ Item {
                 }
             }
 
+            ColumnLayout {
+
+                Button {
+                    text: "+Audio"
+                }
+
+                Button {
+                    text: "+Text"
+
+                    onClicked:  {
+                        mainWindow.requestAddText()
+                    }
+                }
+            }
+
         }
 
 

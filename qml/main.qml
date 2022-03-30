@@ -140,6 +140,16 @@ ApplicationWindow {
         mainLoader.focus = true
     }
 
+    function requestAddAudioRecord() {
+        mainLoader.setSource("recorder.qml")
+        mainLoader.focus = true
+    }
+
+    function requestAddText() {
+        mainLoader.setSource("text.qml")
+        mainLoader.focus = true
+    }
+
 
     Loader {
     id:mainLoader
