@@ -5,7 +5,25 @@ import QtQuick.Dialogs 1.1
 import QtQuick.Controls 1.4 as Quick1
 
 Item {
-    id: textRecordsItem
+
+    id: textItem
+
+    property string date: ""
+    property int localId: 0
+
+
+    Component.onCompleted:
+    {
+        if (textItem.date.length != 0)
+        {
+            var singleText = sqlBase.findSingleText(textItem.date, textItem.localId)
+            nameField.text = singleText[3]
+            textArea.text = singleText[4]
+            tagsField.text = singleText[5]
+            descriptionField.text = singleText[6]
+        }
+    }
+
 
     ColumnLayout
     {
@@ -32,15 +50,25 @@ Item {
             }
             Button {
                 text: "Save text"
-                onClicked: {
-                    sqlBase.addText(nameField.text, textArea.text, tagsField.text,
-                                    descriptionField.text)
+                onClicked:
+                {
+                    if (textItem.date.length != 0)
+                    {
+                        sqlBase.editText(textItem.date, textItem.localId,
+                                         nameField.text, tagsField.text,
+                                         descriptionField.text)
+                    }
+                    else
+                    {
+                        sqlBase.addText(nameField.text, textArea.text, tagsField.text,
+                                        descriptionField.text)
 
-                    nameField.text = "" //Защита от повторного добавления
-                    tagsField.text = ""
-                    descriptionField.text = ""
-                    textArea.text = ""
-                    //Возможно стоит переключать на другой экран
+                        nameField.text = "" //Защита от повторного добавления
+                        tagsField.text = ""
+                        descriptionField.text = ""
+                        textArea.text = ""
+                        //Возможно стоит переключать на другой экран
+                    }
                 }
             }
         }
@@ -64,6 +92,8 @@ Item {
                 id: textArea
                 text: ""
                 placeholderText: "Input text here"
+
+                enabled: textItem.date.length != 0
             }
 
             ScrollBar.vertical.policy: ScrollBar.AlwaysOn
