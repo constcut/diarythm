@@ -41,6 +41,7 @@ Item {
                 text: "Stop and save"
                 onClicked:  {
                     recorder.stop()
+                    searchBox.search()
                 }
             }
 
