@@ -40,7 +40,7 @@ void posix_death_signal(int signum)
 {
     qDebug() << "Crash happend signal:"<<signum;
     signal(signum, SIG_DFL);
-    //TODO
+    //Replace with Firebase crashlitics
     exit(3);
 }
 

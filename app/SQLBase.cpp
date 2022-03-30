@@ -81,9 +81,6 @@ void SQLBase::addAudioRecord(QString date, QString time, int localId,
             "VALUES('%1','%2','%3','%4','%5');")
             .arg(date,time).arg(localId).arg(name).arg(durationMs);
 
-    //В теории все же можно обобщить эту функцию, если передавать durationMs преобразованной
-    //TODO так как на этой позиции хранится textValue
-
     executeRequest(addAudioRequest);  //Вероятно в начале была бы полезна проверка, что пары date + localId ещё нет
 }
 

@@ -6,8 +6,7 @@
 #include <vector>
 #include <iterator>
 
-#define CONF_PARAM(z) Config::getInst().values[ z ] //TODO maybe replace with QSettings
-
+#define CONF_PARAM(z) Config::getInst().values[ z ]
 #include <QObject>
 #include <QAbstractTableModel>
 #include <QDebug>

@@ -160,22 +160,23 @@ ApplicationWindow {
         mainLoader.focus = true
     }
 
-    //TODO later implement https://doc.qt.io/qt-5/qml-qtquick-controls2-swipeview.html
+    //Реализовать более удобную навигацию, используя свайп
+    //https://doc.qt.io/qt-5/qml-qtquick-controls2-swipeview.html
+    //Возможно даже по команде загружать несколько свайпов, вместо одного Loader'a N штук
 
 
-    Loader {
-    id:mainLoader
-       anchors.fill: parent
-       focus: true
-       Keys.onPressed:  {
+    Loader
+    {
+        id:mainLoader
+        anchors.fill: parent
+        focus: true
+        Keys.onPressed:
+        {
+            if (event.key === Qt.Key_Home)
+                mainMenu.open()
 
-           if (event.key === Qt.Key_Home)
-               mainMenu.open()
-
-           mainLoader.item.keyboardEventSend(event.key, event.modifiers)
-       }
+            mainLoader.item.keyboardEventSend(event.key, event.modifiers)
+        }
     }
-
-
 
 }
