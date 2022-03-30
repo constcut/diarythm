@@ -81,11 +81,6 @@ void Recorder::stop() {
     QString simpleName = "Record #" + QString::number(nextRecordId);
     _database.addAudioRecord(_lastDateString, _lastTimeString, nextRecordId,
                              simpleName, _durationMicroSeconds / 1000);
-
-    qDebug() << "Stop: " << _lastDateString << " " << _lastTimeString << " " << nextRecordId
-             << " " << simpleName << " " << _durationMicroSeconds;
-
-    qDebug() << "And after adding: " << _database.getRecordsMaxLocalId(_lastDateString) + 1;
 }
 
 

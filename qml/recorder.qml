@@ -21,6 +21,7 @@ Item {
                 text: "Start" //recording ? "Start" : "Pause"
                 onClicked: {
                     //recording = !recording
+                    connector.started = false
                     recorder.start()
                 }
             }
@@ -72,10 +73,18 @@ Item {
 
 
     Connections {
+
+        id: connector
+        property bool started: false
+
         target: recorder
 
         function onTimeUpdate(ms) {
             timeText.text = ms
+            if (connector.started === false) {
+                connector.started = true
+                console.log("Started recording!")
+            }
         }
 
         function onDbsUpdate(dbs) {
