@@ -17,7 +17,7 @@ Item {
                 var audio = audios[i]
                 recordsModel.append({"name":audio[3], "date": audio[0],
                                     "time": audio[1], "id": audio[2], "duration": audio[4],
-                                    "tags": audio[5], "description": audio[6], "type":"audio"});
+                                    "tags": audio[5], "description": audio[6], "rowType":"audio"});
             }
 
         if (texts !== undefined)
@@ -26,7 +26,7 @@ Item {
                 var text = texts[i]
                 recordsModel.append({"name":text[3], "date": text[0],
                                     "time": text[1], "id": text[2], "textValue": text[4],
-                                    "tags": text[5], "description": text[6], "type":"text"});
+                                    "tags": text[5], "description": text[6], "rowType":"text"});
             }
     }
 
@@ -276,11 +276,11 @@ Item {
             Column {
                 Text {
                     text: "Audio: " + name + "   " + date + " T " + time + " " + duration + " ms"
-                    visible: type === "audio"
+                    visible: rowType === "audio"
                 }
                 Text {
                     text: "Text: " + name + "  " + date + " T " + time
-                    visible: type === "text"
+                    visible: rowType === "text"
                 }
 
                 Text {
@@ -298,6 +298,7 @@ Item {
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
+
                     wrapper.ListView.view.currentIndex = index
                     recordsModel.lastDate = date
                     recordsModel.lastLocalId = id
@@ -305,11 +306,14 @@ Item {
                     console.log("Last date", date, "last id", id)
                 }
                 onDoubleClicked: {
-                    //Открыть окно единичной записи
-                     mainWindow.requestSingleRecord(recordsModel.lastDate, recordsModel.lastLocalId);
+                    if (rowType === "audio")
+                        mainWindow.requestSingleRecord(recordsModel.lastDate, recordsModel.lastLocalId);
+
+                    if (rowType === "text")
+                        console.log("Text open request")
                 }
                 onPressAndHold: {
-                    //Меню
+                    //Меню, два разных + удаление
                     recorder.playFile(recordsModel.lastDate, recordsModel.lastLocalId)
                 }
             }
