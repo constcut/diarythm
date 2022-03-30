@@ -150,19 +150,7 @@ int SQLBase::getTotalRecords()
 
 QStringList SQLBase::findSingleRecord(QString date, int localId)
 {
-    QString requestSingleRecord =
-            QString("SELECT * FROM audio WHERE datePart='%1' AND localId='%2';")
-            .arg(date).arg(localId);
-
-    QSqlQuery singleRecordQuery = executeRequest(requestSingleRecord);
-
-    QStringList singleRecord;
-
-    if (singleRecordQuery.next())
-        for (int i = 1; i <= audioFieldsCount; ++i)
-            singleRecord << singleRecordQuery.value(i).toString();
-
-    return singleRecord;
+    return findSingle("audio", audioFieldsCount, date, localId);
 }
 
 
@@ -282,18 +270,7 @@ int SQLBase::getTotalTexts() //TODO refact (дублирование кода с
 
 QStringList SQLBase::findSingleText(QString date, int localId) //TODO refact (дублирование кода с audio версией)
 {
-    QString requestSingleText =
-            QString("SELECT * FROM texts WHERE datePart='%1' AND localId='%2';")
-            .arg(date).arg(localId);
-
-    QSqlQuery singleTextQuery = executeRequest(requestSingleText);
-    QStringList singleText;
-
-    if (singleTextQuery.next())
-        for (int i = 1; i <= textFieldsCount; ++i)
-            singleText << singleTextQuery.value(i).toString();
-
-    return singleText;
+    return findSingle("texts", textFieldsCount, date, localId);
 }
 
 
@@ -301,7 +278,6 @@ QVariantList SQLBase::findTexts(QString date) //TODO refact (дублирова�
 {
     return findByDate("texts", date);
 }
-
 
 
 QVariantList SQLBase::findTextsByNameMask(QString nameMask)
@@ -326,6 +302,7 @@ QVariantList SQLBase::findTextsByTagMaskAndDate(QString date, QString tagMask)
 {
     return findByFieldMaskAndDate("texts", "tags", date, tagMask);
 }
+
 
 
 QVariantList SQLBase::findByFieldMaskAndDate(QString table, QString field,
@@ -360,6 +337,25 @@ QVariantList SQLBase::findByDate(QString table, QString date)
     QSqlQuery requestQuery = executeRequest(findRequest);
     return fillRecordsSearchResults(requestQuery);
 }
+
+
+QStringList SQLBase::findSingle(QString table, int fieldsCount,
+                        QString date, int localId)
+{
+    QString requestSingle =
+            QString("SELECT * FROM %1 WHERE datePart='%2' AND localId='%2';")
+            .arg(table, date).arg(localId);
+
+    QSqlQuery singleQuery = executeRequest(requestSingle);
+    QStringList single;
+
+    if (singleQuery.next())
+        for (int i = 1; i <= fieldsCount; ++i)
+            single << singleQuery.value(i).toString();
+
+    return single;
+}
+
 
 
 
