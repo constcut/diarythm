@@ -371,7 +371,7 @@ Item {
         MenuItem {
             text: "Remove"
             onTriggered: {
-                confirmDelete.type = "audio"
+                confirmDelete.type = "text"
                 confirmDelete.open()
             }
         }
@@ -388,6 +388,7 @@ Item {
         text: "Do you really want to delete selected record?"
         standardButtons: StandardButton.Yes | StandardButton.No
         onYes: {
+
             if (type == "audio")
                 sqlBase.removeAudioRecord(rowsModel.lastDate, rowsModel.lastLocalId)
 
