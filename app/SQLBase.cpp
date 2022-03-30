@@ -174,23 +174,13 @@ QVariantList SQLBase::findRecords(QString date)
 
 QVariantList SQLBase::findRecordsByNameMask(QString nameMask)
 {
-    QString findRequest =
-            QString("SELECT * FROM audio WHERE audioName LIKE '%%1%';")
-            .arg(nameMask);
-
-    QSqlQuery recordsQuery = executeRequest(findRequest);
-    return fillRecordsSearchResults(recordsQuery);
+    return findByFieldMask("audio", "audioName", nameMask);
 }
 
 
 QVariantList SQLBase::findRecordsByTagMask(QString tagMask)
 {
-    QString findRequest =
-            QString("SELECT * FROM audio WHERE tags LIKE '%%1%';") //Для древовидных тэгов
-            .arg(tagMask);
-
-    QSqlQuery recordsQuery = executeRequest(findRequest);
-    return fillRecordsSearchResults(recordsQuery);
+    return findByFieldMask("audio", "tags", tagMask);
 }
 
 
