@@ -128,15 +128,15 @@ ApplicationWindow {
         mainLoader.focus = true
     }
 
-    function requestSingleRecord(date, localIdx) {
+    function requestSingleRecord(date, localId) {
         mainLoader.setSource("qrc:/qml/SingleRecord.qml",
-                             {"date": date, "localIdx":localIdx})
+                             {"date": date, "localId":localId})
         mainLoader.focus = true
     }
 
-    function requestSingleText(date, localIdx) {
+    function requestSingleText(date, localId) {
         mainLoader.setSource("qrc:/qml/text.qml",
-                             {"date": date, "localIdx":localIdx})
+                             {"date": date, "localId":localId})
         mainLoader.focus = true
     }
 

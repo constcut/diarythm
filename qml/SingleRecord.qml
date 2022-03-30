@@ -9,7 +9,7 @@ Item {
     id: singleRecordItem
 
     property string date: ""
-    property int localIdx: 0
+    property int localId: 0
 
     ColumnLayout
     {
