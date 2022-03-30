@@ -39,14 +39,14 @@ Item {
         Button {
             text: "Save"
             onClicked: {
-                sqlBase.editAudioRecord(singleRecordItem.date, singleRecordItem.localIdx,
+                sqlBase.editAudioRecord(singleRecordItem.date, singleRecordItem.localId,
                                         nameField.text, tagsField.text, descriptionField.text)
             }
         }
         Button {
             text: "Play"
             onClicked: {
-                recorder.playFile(singleRecordItem.date, singleRecordItem.localIdx)
+                recorder.playFile(singleRecordItem.date, singleRecordItem.localId)
             }
         }
     }
@@ -56,7 +56,7 @@ Item {
     {
         var record =
             sqlBase.findSingleRecord(singleRecordItem.date,
-                                     singleRecordItem.localIdx)
+                                     singleRecordItem.localId)
 
         dateTimeText.text = record[0] + " T " + record[1]
         nameField.text = record[3]
