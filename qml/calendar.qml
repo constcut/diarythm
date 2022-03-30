@@ -37,6 +37,9 @@ Item {
             return 0;
         })
 
+
+        for (i = 0; i < merged.length; ++i)
+            rowsModel.append(merged[i])
     }
 
 
