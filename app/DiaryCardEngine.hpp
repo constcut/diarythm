@@ -44,6 +44,8 @@ namespace diaryth {
         int daysFrequency = 1;
         QList<int> onWeekDays;
         QList<int> onMonthDays;
+
+        std::unordered_map<QString, CardField> fields;
     };
 
 
@@ -84,6 +86,9 @@ namespace diaryth {
 
         void fillGroupProperties(CardGroup& cardGroup,
                                  const QJsonObject& groupObject);
+
+        void fillFieldProperties(CardField& cardField,
+                                 const QJsonObject& fieldObject);
 
         bool hasRootErros(const QJsonDocument& doc);
 
