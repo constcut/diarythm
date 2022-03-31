@@ -185,6 +185,14 @@ QString DiaryCardEngine::getGroupDescription(QString name)
 }
 
 
+bool DiaryCardEngine::isGroupMandatory(QString name)
+{
+    if (_groups.count(name) == false)
+        return false;
+
+    return _groups[name].mandatory;
+}
+
 
 
 

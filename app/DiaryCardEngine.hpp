@@ -49,6 +49,7 @@ namespace diaryth {
 
         QStringList getAllGroupsNames();
         QString getGroupDescription(QString name);
+        bool isGroupMandatory(QString name);
 
 
 
