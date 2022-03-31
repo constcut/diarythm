@@ -41,11 +41,11 @@ namespace diaryth {
         void parseJSON(const QString& json);
 
         QStringList getAllEnumsNames();
-
         QStringList getEnumNames(QString name);
         QStringList getEnumDisplayNames(QString name);
-
         QList<int> getEnumValues(QString name);
+
+        QStringList getAllGroupsNames();
 
     private:
 

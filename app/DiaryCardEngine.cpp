@@ -156,6 +156,16 @@ QList<int> DiaryCardEngine::getEnumValues(QString name)
 }
 
 
+QStringList DiaryCardEngine::getAllGroupsNames() //Refact generalize
+{
+    QStringList allNames;
+
+    for (const auto& [groupName, _]: _enums)
+        allNames.append(groupName);
+
+    return allNames;
+}
+
 
 
 
