@@ -12,20 +12,26 @@
 namespace diaryth {
 
 
-    struct CardEnum {
+    struct CardEnum
+    {
         QString name;
         QString description;
 
-        QStringList valuesNames; //Возможно лишнее
+        QStringList valuesNames;
         QStringList displayNames;
         QList<int> values;
     };
 
 
-    struct CardGroup {
+    struct CardGroup
+    {
         QString name;
         QString description;
         bool mandatory;
+
+        int daysFrequency;
+        QList<int> onWeekDays;
+        QList<int> onMonthDays;
 
     };
 
@@ -50,7 +56,6 @@ namespace diaryth {
         QStringList getAllGroupsNames();
         QString getGroupDescription(QString name);
         bool isGroupMandatory(QString name);
-
 
 
     private:

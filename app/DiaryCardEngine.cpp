@@ -41,7 +41,28 @@ void DiaryCardEngine::addGroups(const QJsonArray& groupsArray)
         else
             cardGroup.mandatory = true;
 
-        //TODO frequencyDays, onWeekDays, onMonthDays
+        if (groupObject.contains("onWeekDays"))
+        {
+            const auto& weekDaysArray = groupObject["onWeekDays"].toArray();
+            for (const auto& weekDay: weekDaysArray)
+                cardGroup.onWeekDays.append(weekDay.toInt());
+        }
+
+        if (groupObject.contains("onMonthDays"))
+        {
+            const auto& monthDaysArray = groupObject["onMonthDays"].toArray();
+            for (const auto& monthDay: monthDaysArray)
+                cardGroup.onMonthDays.append(monthDay.toInt());
+        }
+
+        if (cardGroup.onMonthDays.empty() && cardGroup.onWeekDays.empty())
+        {
+            if (groupObject.contains("daysFrequency"))
+                cardGroup.daysFrequency = groupObject["daysFrequency"].toInt();
+            else
+                cardGroup.daysFrequency = 1;
+        }
+
         //TODO fields
 
         _groups[cardGroup.name] = cardGroup;
