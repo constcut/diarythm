@@ -22,6 +22,7 @@ namespace diaryth {
         QList<int> values;
     };
 
+
     struct CardField
     {
         QString name;
@@ -29,21 +30,20 @@ namespace diaryth {
         QString description;
 
         QString enumName;
-        int rangeMin;
-        int rangeMax;
-
+        int rangeMin = 0;
+        int rangeMax = 10;
     };
+
 
     struct CardGroup
     {
         QString name;
         QString description;
-        bool mandatory;
+        bool mandatory = true;
 
-        int daysFrequency;
+        int daysFrequency = 1;
         QList<int> onWeekDays;
         QList<int> onMonthDays;
-
     };
 
 
