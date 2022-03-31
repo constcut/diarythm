@@ -156,14 +156,32 @@ QList<int> DiaryCardEngine::getEnumValues(QString name)
 }
 
 
+QString DiaryCardEngine::getEnumDescription(QString name)
+{
+    if (_enums.count(name) == false)
+        return {};
+
+    return _enums[name].description;
+}
+
+
 QStringList DiaryCardEngine::getAllGroupsNames() //Refact generalize
 {
     QStringList allNames;
 
-    for (const auto& [groupName, _]: _enums)
+    for (const auto& [groupName, _]: _groups)
         allNames.append(groupName);
 
     return allNames;
+}
+
+
+QString DiaryCardEngine::getGroupDescription(QString name)
+{
+    if (_groups.count(name) == false)
+        return {};
+
+    return _groups[name].description;
 }
 
 
