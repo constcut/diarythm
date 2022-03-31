@@ -100,6 +100,9 @@ namespace diaryth {
 
         bool hasRootErros(const QJsonDocument& doc);
 
+        bool isFieldMissing(QString group, QString field);
+
+
         std::unordered_map<QString, CardEnum> _enums;
         std::unordered_map<QString, CardGroup> _groups;
 

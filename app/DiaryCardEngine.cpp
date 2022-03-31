@@ -387,3 +387,16 @@ int DiaryCardEngine::getFieldRangeMax(QString group, QString field)
 
     return groupObj.fields.at(field).rangeMax;
 }
+
+
+bool DiaryCardEngine::isFieldMissing(QString group, QString field)
+{
+    if (_groups.count(group) == 0)
+        return true;
+
+    const auto& groupObj = _groups[group];
+    if (groupObj.fields.count(field) == false)
+        return true;
+
+    return false;
+}
