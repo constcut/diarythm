@@ -34,6 +34,8 @@ namespace diaryth {
         QStringList getEnumNames(QString name);
         QStringList getEnumDisplayNames(QString name);
 
+        QList<int> getEnumValues(QString name);
+
     private:
 
         std::unordered_map<QString, CardEnum> _enums;

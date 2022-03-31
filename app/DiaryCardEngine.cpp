@@ -109,6 +109,13 @@ QStringList DiaryCardEngine::getEnumDisplayNames(QString name)
 }
 
 
+QList<int> DiaryCardEngine::getEnumValues(QString name)
+{
+    if (_enums.count(name) == false)
+        return {};
+
+    return _enums[name].values;
+}
 
 
 
