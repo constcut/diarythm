@@ -2,6 +2,9 @@
 #define DIARYCARDENGINE_HPP
 
 #include <QObject>
+#include <QJsonArray>
+#include <QJsonObject>
+#include <QJsonDocument>
 
 #include <unordered_map>
 
@@ -37,6 +40,10 @@ namespace diaryth {
         QList<int> getEnumValues(QString name);
 
     private:
+
+        void addEnums(const QJsonArray& enumsArray);
+
+        bool hasRootErros(const QJsonDocument& root);
 
         std::unordered_map<QString, CardEnum> _enums;
 

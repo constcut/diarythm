@@ -1,8 +1,6 @@
 #include "DiaryCardEngine.hpp"
 
 #include <QJsonDocument>
-#include <QJsonArray>
-#include <QJsonObject>
 #include <QDebug>
 
 
@@ -13,71 +11,84 @@ void DiaryCardEngine::parseJSON(const QString& json)
 {
     auto doc = QJsonDocument::fromJson(json.toUtf8());
 
+    if (hasRootErros(doc))
+        return;
+
+    auto rootObject = doc.object();
+
+    if (rootObject.contains("enums") && rootObject["enums"].isArray())
+        addEnums(rootObject["enums"].toArray());
+
+    auto groups = rootObject["groups"];
+}
+
+
+bool DiaryCardEngine::hasRootErros(const QJsonDocument& doc)
+{
     if (doc.isObject() == false) {
         qDebug() << "Failed to parse: JSON root is not an object.";
-        return;
+        return true;
     }
 
     auto rootObject = doc.object();
 
     if (rootObject.contains("groups") == false) {
         qDebug() << "Failed to prase: JSON root doesn't contain groups field.";
-        return;
+        return true;
     }
 
     if (rootObject["groups"].isArray() == false) {
         qDebug() << "Failed to parse: JSON groups field isn't array";
-        return;
+        return true;
     }
 
-    if (rootObject.contains("enums") && rootObject["enums"].isArray())
-    {
-        auto enumsArray = rootObject["enums"].toArray();
-
-        for (const auto& singleEnum: enumsArray)
-        {
-            auto enumObj = singleEnum.toObject();
-            auto valuesArray = enumObj["values"].toArray();
-            auto vNamesArray = enumObj["names"].toArray();
-
-            if (valuesArray.size() != vNamesArray.size())
-            {
-                qDebug() << "Parse error: values and names arrays has different sizes "
-                         << valuesArray.size() << " and " << vNamesArray.size();
-                continue;
-            }
-
-            CardEnum cardEnum;
-            cardEnum.name = enumObj["name"].toString();
-
-            if (enumObj.contains("description"))
-                cardEnum.description = enumObj["description"].toString(); //optional
-
-            bool showValues = enumObj["showValues"].toBool();
-
-            for (int i = 0; i < valuesArray.size(); ++i)
-            {
-                const auto value = valuesArray[i].toInt();
-                const auto valueName = vNamesArray[i].toString();
-
-                cardEnum.valuesNames.append(valueName);
-                cardEnum.values.append(value);
-
-                if (showValues) {
-                    const QString fullName = QString::number(value) + " " + vNamesArray[i].toString();
-                    cardEnum.displayNames.append(fullName);
-                }
-                else
-                    cardEnum.displayNames.append(valueName);
-            }
-
-            _enums[cardEnum.name] = cardEnum;
-
-        }
-    }
-
-    auto groups = rootObject["groups"];
+    return false;
 }
+
+
+void DiaryCardEngine::addEnums(const QJsonArray &enumsArray)
+{
+    for (const auto& singleEnum: enumsArray)
+    {
+        auto enumObj = singleEnum.toObject();
+        auto valuesArray = enumObj["values"].toArray();
+        auto vNamesArray = enumObj["names"].toArray();
+
+        if (valuesArray.size() != vNamesArray.size())
+        {
+            qDebug() << "Parse error: values and names arrays has different sizes "
+                     << valuesArray.size() << " and " << vNamesArray.size();
+            continue;
+        }
+
+        CardEnum cardEnum;
+        cardEnum.name = enumObj["name"].toString();
+
+        if (enumObj.contains("description"))
+            cardEnum.description = enumObj["description"].toString(); //optional
+
+        bool showValues = enumObj["showValues"].toBool();
+
+        for (int i = 0; i < valuesArray.size(); ++i)
+        {
+            const auto value = valuesArray[i].toInt();
+            const auto valueName = vNamesArray[i].toString();
+
+            cardEnum.valuesNames.append(valueName);
+            cardEnum.values.append(value);
+
+            if (showValues) {
+                const QString fullName = QString::number(value) + " " + vNamesArray[i].toString();
+                cardEnum.displayNames.append(fullName);
+            }
+            else
+                cardEnum.displayNames.append(valueName);
+        }
+
+        _enums[cardEnum.name] = cardEnum;
+    }
+}
+
 
 
 QStringList DiaryCardEngine::getAllEnumsNames()
