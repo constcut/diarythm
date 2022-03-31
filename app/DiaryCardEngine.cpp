@@ -5,6 +5,9 @@
 #include <QJsonObject>
 #include <QDebug>
 
+using namespace diaryth;
+
+
 void DiaryCardEngine::parseJSON(const QString& json)
 {
     auto doc = QJsonDocument::fromJson(json.toUtf8());
@@ -33,13 +36,40 @@ void DiaryCardEngine::parseJSON(const QString& json)
         for (const auto& singleEnum: enumsArray)
         {
             auto enumObj = singleEnum.toObject();
-
-            auto enumName = enumObj["name"].toString();
-            auto description = enumObj["description"].toString();
-            bool showValues = enumObj["showValues"].toBool();
-
             auto valuesArray = enumObj["values"].toArray();
             auto vNamesArray = enumObj["names"].toArray();
+
+            if (valuesArray.size() != vNamesArray.size())
+            {
+                qDebug() << "Parse error: values and names arrays has different sizes "
+                         << valuesArray.size() << " and " << vNamesArray.size();
+                continue;
+            }
+
+            CardEnum cardEnum;
+            cardEnum.name = enumObj["name"].toString();
+
+            if (enumObj.contains("description"))
+                cardEnum.description = enumObj["description"].toString(); //optional
+
+            bool showValues = enumObj["showValues"].toBool();
+
+            for (int i = 0; i < valuesArray.size(); ++i)
+            {
+                const auto value = valuesArray[i].toInt();
+                const auto valueName = vNamesArray[i].toString();
+
+                cardEnum.valuesNames.append(valueName);
+                cardEnum.values.append(value);
+
+                if (showValues) {
+                    const QString fullName = QString::number(value) + " " + vNamesArray[i].toString();
+                    cardEnum.displayNames.append(fullName);
+                }
+                else
+                    cardEnum.displayNames.append(valueName);
+            }
+
         }
     }
 
