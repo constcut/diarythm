@@ -3,6 +3,8 @@
 
 #include <QObject>
 
+#include <unordered_map>
+
 
 namespace diaryth {
 
@@ -23,6 +25,10 @@ namespace diaryth {
         DiaryCardEngine() = default;
 
         void parseJSON(const QString& json);
+
+    private:
+
+        std::unordered_map<QString, CardEnum> _enums;
 
     };
 

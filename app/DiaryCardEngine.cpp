@@ -71,6 +71,8 @@ void DiaryCardEngine::parseJSON(const QString& json)
                     cardEnum.displayNames.append(valueName);
             }
 
+            _enums[cardEnum.name] = cardEnum;
+
         }
     }
 
