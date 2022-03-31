@@ -51,7 +51,23 @@ void DiaryCardEngine::addGroups(const QJsonArray& groupsArray)
 
 void DiaryCardEngine::fillFieldProperties(CardField& cardField, const QJsonObject& fieldObject)
 {
+    cardField.name = fieldObject["name"].toString();
+    cardField.type = fieldObject["type"].toString();
 
+    if (fieldObject.contains("description"))
+        cardField.description = fieldObject["description"].toString();
+
+    if (cardField.type == "enum")
+        cardField.enumName = fieldObject["enumName"].toString();
+
+    if (cardField.type == "range")
+    {
+        if (fieldObject.contains("rangeMin"))
+            cardField.rangeMin = fieldObject["rangeMin"].toInt();
+
+        if (fieldObject.contains("rangeMax"))
+            cardField.rangeMax = fieldObject["rangeMax"].toInt();
+    }
 }
 
 
@@ -129,7 +145,7 @@ void DiaryCardEngine::addEnums(const QJsonArray &enumsArray)
         cardEnum.name = enumObj["name"].toString();
 
         if (enumObj.contains("description"))
-            cardEnum.description = enumObj["description"].toString(); //optional
+            cardEnum.description = enumObj["description"].toString();
 
         bool showValues = enumObj["showValues"].toBool();
 
@@ -279,8 +295,8 @@ bool DiaryCardEngine::isItGroupDay(const QDate& date, QString name)
 
      const auto& group = _groups[name];
 
-     if (group.daysFrequency == 1)
-         return true; //Подумать над другими значениями
+     if (group.daysFrequency == 1) //Подумать над другими значениями
+         return true;
 
     if (group.onMonthDays.empty() == false)
         for (int day: group.onMonthDays)
