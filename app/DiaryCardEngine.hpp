@@ -21,11 +21,12 @@ namespace diaryth {
         QList<int> values;
     };
 
+
     struct CardGroup {
         QString name;
         QString description;
-
         bool mandatory;
+
     };
 
 
@@ -54,6 +55,7 @@ namespace diaryth {
         bool hasRootErros(const QJsonDocument& doc);
 
         std::unordered_map<QString, CardEnum> _enums;
+        std::unordered_map<QString, CardGroup> _groups;
 
     };
 
