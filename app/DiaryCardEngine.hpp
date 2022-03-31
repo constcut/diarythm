@@ -42,8 +42,9 @@ namespace diaryth {
     private:
 
         void addEnums(const QJsonArray& enumsArray);
+        void addGroups(const QJsonArray& groupsArray);
 
-        bool hasRootErros(const QJsonDocument& root);
+        bool hasRootErros(const QJsonDocument& doc);
 
         std::unordered_map<QString, CardEnum> _enums;
 

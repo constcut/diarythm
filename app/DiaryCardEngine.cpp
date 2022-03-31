@@ -19,7 +19,15 @@ void DiaryCardEngine::parseJSON(const QString& json)
     if (rootObject.contains("enums") && rootObject["enums"].isArray())
         addEnums(rootObject["enums"].toArray());
 
-    auto groups = rootObject["groups"];
+    addGroups(rootObject["groups"].toArray());
+
+    qDebug() << "Diary card json loaded";
+}
+
+
+void DiaryCardEngine::addGroups(const QJsonArray& groupsArray)
+{
+
 }
 
 
