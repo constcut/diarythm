@@ -327,65 +327,45 @@ QStringList DiaryCardEngine::getAllGroupFields(QString name)
 
 QString DiaryCardEngine::getFieldType(QString group, QString field)
 {
-    if (_groups.count(group) == 0)
+    if (isFieldMissing(group, field))
         return "";
 
-    const auto& groupObj = _groups[group];
-    if (groupObj.fields.count(field) == false)
-        return "";
-
-    return groupObj.fields.at(field).type;
+    return _groups[group].fields.at(field).type;
 }
 
-//TODO generalize
+
 QString DiaryCardEngine::getFieldDescription(QString group, QString field)
 {
-    if (_groups.count(group) == 0)
+    if (isFieldMissing(group, field))
         return "";
 
-    const auto& groupObj = _groups[group];
-    if (groupObj.fields.count(field) == false)
-        return "";
-
-    return groupObj.fields.at(field).description;
+    return _groups[group].fields.at(field).description;
 }
 
 
 QString DiaryCardEngine::getFieldEnum(QString group, QString field)
 {
-    if (_groups.count(group) == 0)
+    if (isFieldMissing(group, field))
         return "";
 
-    const auto& groupObj = _groups[group];
-    if (groupObj.fields.count(field) == false)
-        return "";
-
-    return groupObj.fields.at(field).enumName;
+    return _groups[group].fields.at(field).enumName;
 }
 
 int DiaryCardEngine::getFieldRangeMin(QString group, QString field)
 {
-    if (_groups.count(group) == 0)
+    if (isFieldMissing(group, field))
         return -1;
 
-    const auto& groupObj = _groups[group];
-    if (groupObj.fields.count(field) == false)
-        return -1;
-
-    return groupObj.fields.at(field).rangeMin;
+    return _groups[group].fields.at(field).rangeMin;
 }
 
 
 int DiaryCardEngine::getFieldRangeMax(QString group, QString field)
 {
-    if (_groups.count(group) == 0)
+    if (isFieldMissing(group, field))
         return -1;
 
-    const auto& groupObj = _groups[group];
-    if (groupObj.fields.count(field) == false)
-        return -1;
-
-    return groupObj.fields.at(field).rangeMax;
+    return _groups[group].fields.at(field).rangeMax;
 }
 
 
