@@ -182,7 +182,7 @@ QStringList DiaryCardEngine::getAllEnumsNames() const
 }
 
 
-QStringList DiaryCardEngine::getEnumNames(QString name) const
+QStringList DiaryCardEngine::getEnumNames(const QString &name) const
 {
     if (_enums.count(name) == 0)
         return {};
@@ -191,7 +191,7 @@ QStringList DiaryCardEngine::getEnumNames(QString name) const
 }
 
 
-QStringList DiaryCardEngine::getEnumDisplayNames(QString name) const
+QStringList DiaryCardEngine::getEnumDisplayNames(const QString &name) const
 {
     if (_enums.count(name) == 0)
         return {};
@@ -200,7 +200,7 @@ QStringList DiaryCardEngine::getEnumDisplayNames(QString name) const
 }
 
 
-QList<int> DiaryCardEngine::getEnumValues(QString name) const
+QList<int> DiaryCardEngine::getEnumValues(const QString &name) const
 {
     if (_enums.count(name) == 0)
         return {};
@@ -209,7 +209,7 @@ QList<int> DiaryCardEngine::getEnumValues(QString name) const
 }
 
 
-QString DiaryCardEngine::getEnumDescription(QString name) const
+QString DiaryCardEngine::getEnumDescription(const QString &name) const
 {
     if (_enums.count(name) == 0)
         return {};
@@ -229,7 +229,7 @@ QStringList DiaryCardEngine::getAllGroupsNames() const //Refact generalize
 }
 
 
-QString DiaryCardEngine::getGroupDescription(QString name) const
+QString DiaryCardEngine::getGroupDescription(const QString &name) const
 {
     if (_groups.count(name) == 0)
         return {};
@@ -238,7 +238,7 @@ QString DiaryCardEngine::getGroupDescription(QString name) const
 }
 
 
-bool DiaryCardEngine::isGroupMandatory(QString name) const
+bool DiaryCardEngine::isGroupMandatory(const QString &name) const
 {
     if (_groups.count(name) == 0)
         return false;
@@ -247,7 +247,7 @@ bool DiaryCardEngine::isGroupMandatory(QString name) const
 }
 
 
-int DiaryCardEngine::getGroupDaysFrequency(QString name) const
+int DiaryCardEngine::getGroupDaysFrequency(const QString &name) const
 {
     if (_groups.count(name) == 0)
         return 0;
@@ -256,7 +256,7 @@ int DiaryCardEngine::getGroupDaysFrequency(QString name) const
 }
 
 
-QList<int> DiaryCardEngine::getGroupWeekDays(QString name) const
+QList<int> DiaryCardEngine::getGroupWeekDays(const QString &name) const
 {
     if (_groups.count(name) == 0)
         return {};
@@ -265,7 +265,7 @@ QList<int> DiaryCardEngine::getGroupWeekDays(QString name) const
 }
 
 
-QList<int> DiaryCardEngine::getGroupMonthDays(QString name) const
+QList<int> DiaryCardEngine::getGroupMonthDays(const QString &name) const
 {
     if (_groups.count(name) == 0)
         return {};
@@ -274,21 +274,21 @@ QList<int> DiaryCardEngine::getGroupMonthDays(QString name) const
 }
 
 
-bool DiaryCardEngine::isItGroupDay(QString name) const
+bool DiaryCardEngine::isItGroupDay(const QString &name) const
 {
     QDate date = QDate::currentDate();
     return isItGroupDay(date, name);
 }
 
 
-bool DiaryCardEngine::isItGroupDay(QString date, QString name) const
+bool DiaryCardEngine::isItGroupDay(const QString &date, const QString &name) const
 {
     QDate dateObject = QDate::fromString(date); //возможно тут нужна маска
     return isItGroupDay(dateObject, name);
 }
 
 
-bool DiaryCardEngine::isItGroupDay(const QDate& date, QString name) const
+bool DiaryCardEngine::isItGroupDay(const QDate& date, const QString &name) const
 {
     if (_groups.count(name) == 0)
         return false;
@@ -312,7 +312,7 @@ bool DiaryCardEngine::isItGroupDay(const QDate& date, QString name) const
 }
 
 
-QStringList DiaryCardEngine::getAllGroupFields(QString name) const
+QStringList DiaryCardEngine::getAllGroupFields(const QString &name) const
 {
     if (_groups.count(name) == 0)
         return {};
@@ -325,7 +325,7 @@ QStringList DiaryCardEngine::getAllGroupFields(QString name) const
 }
 
 
-QString DiaryCardEngine::getFieldType(QString group, QString field) const
+QString DiaryCardEngine::getFieldType(const QString &group, const QString &field) const
 {
     if (isFieldMissing(group, field))
         return "";
@@ -334,7 +334,7 @@ QString DiaryCardEngine::getFieldType(QString group, QString field) const
 }
 
 
-QString DiaryCardEngine::getFieldDescription(QString group, QString field) const
+QString DiaryCardEngine::getFieldDescription(const QString &group, const QString &field) const
 {
     if (isFieldMissing(group, field))
         return "";
@@ -343,7 +343,7 @@ QString DiaryCardEngine::getFieldDescription(QString group, QString field) const
 }
 
 
-QString DiaryCardEngine::getFieldEnum(QString group, QString field) const
+QString DiaryCardEngine::getFieldEnum(const QString &group, const QString &field) const
 {
     if (isFieldMissing(group, field))
         return "";
@@ -351,7 +351,7 @@ QString DiaryCardEngine::getFieldEnum(QString group, QString field) const
     return _groups.at(group).fields.at(field).enumName;
 }
 
-int DiaryCardEngine::getFieldRangeMin(QString group, QString field) const
+int DiaryCardEngine::getFieldRangeMin(const QString &group, const QString &field) const
 {
     if (isFieldMissing(group, field))
         return -1;
@@ -360,7 +360,7 @@ int DiaryCardEngine::getFieldRangeMin(QString group, QString field) const
 }
 
 
-int DiaryCardEngine::getFieldRangeMax(QString group, QString field) const
+int DiaryCardEngine::getFieldRangeMax(const QString &group, const QString &field) const
 {
     if (isFieldMissing(group, field))
         return -1;
@@ -369,7 +369,7 @@ int DiaryCardEngine::getFieldRangeMax(QString group, QString field) const
 }
 
 
-bool DiaryCardEngine::isFieldMissing(QString group, QString field) const
+bool DiaryCardEngine::isFieldMissing(const QString &group, const QString &field) const
 {
     if (_groups.count(group) == 0)
         return true;
