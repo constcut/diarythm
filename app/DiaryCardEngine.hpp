@@ -61,6 +61,8 @@ namespace diaryth {
         QList<int> getGroupWeekDays(QString name);
         QList<int> getGroupMonthDays(QString name);
 
+        bool isItGroupDay(QString name);
+        bool isItGroupDay(QString date, QString name);
 
     private:
 

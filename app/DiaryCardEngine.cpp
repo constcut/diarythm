@@ -2,6 +2,7 @@
 
 #include <QJsonDocument>
 #include <QDebug>
+#include <QDate>
 
 
 using namespace diaryth;
@@ -247,3 +248,36 @@ QList<int> DiaryCardEngine::getGroupMonthDays(QString name)
     return _groups[name].onMonthDays;
 }
 
+
+bool DiaryCardEngine::isItGroupDay(QString name)
+{
+    if (_groups.count(name) == false)
+        return false;
+
+     const auto& group = _groups[name];
+
+     if (group.daysFrequency == 1)
+         return true; //Подумать над другими значениями
+
+    QDate date = QDate::currentDate();
+
+    if (group.onMonthDays.empty() == false)
+        for (int day: group.onMonthDays)
+            if (day == date.day())
+                return true;
+
+    if (group.onWeekDays.empty() == false)
+        for (int day: group.onWeekDays)
+            if (day == date.dayOfWeek())
+                return true;
+
+    return false;
+}
+
+
+bool DiaryCardEngine::isItGroupDay(QString date, QString name)
+{
+    //Эту функцию обощить из функции сверху
+    //parse date first
+    return false;
+}
