@@ -27,6 +27,21 @@ void DiaryCardEngine::parseJSON(const QString& json)
 
 void DiaryCardEngine::addGroups(const QJsonArray& groupsArray)
 {
+    for (const auto& group: groupsArray)
+    {
+        const auto& groupObject = group.toObject();
+        CardGroup cardGroup;
+
+        cardGroup.name = groupObject["name"].toString();
+        if (groupObject.contains("description"))
+            cardGroup.description = groupObject["description"].toString();
+
+        if (groupObject.contains("mandatory"))
+            cardGroup.mandatory = groupObject["mandatory"].toBool();
+        else
+            cardGroup.mandatory = true;
+
+    }
 
 }
 
@@ -58,7 +73,7 @@ void DiaryCardEngine::addEnums(const QJsonArray &enumsArray)
 {
     for (const auto& singleEnum: enumsArray)
     {
-        auto enumObj = singleEnum.toObject();
+        const auto& enumObj = singleEnum.toObject();
         auto valuesArray = enumObj["values"].toArray();
         auto vNamesArray = enumObj["names"].toArray();
 

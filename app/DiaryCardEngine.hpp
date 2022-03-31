@@ -21,6 +21,13 @@ namespace diaryth {
         QList<int> values;
     };
 
+    struct CardGroup {
+        QString name;
+        QString description;
+
+        bool mandatory;
+    };
+
 
 
     class DiaryCardEngine : public QObject
