@@ -66,13 +66,13 @@ namespace diaryth {
         QStringList getEnumDisplayNames(QString name) const;
         QList<int> getEnumValues(QString name) const;
 
-        QStringList getAllGroupsNames();
-        QString getGroupDescription(QString name);
-        bool isGroupMandatory(QString name);
+        QStringList getAllGroupsNames() const;
+        QString getGroupDescription(QString name) const;
+        bool isGroupMandatory(QString name) const;
 
-        int getGroupDaysFrequency(QString name);
-        QList<int> getGroupWeekDays(QString name);
-        QList<int> getGroupMonthDays(QString name);
+        int getGroupDaysFrequency(QString name) const;
+        QList<int> getGroupWeekDays(QString name) const;
+        QList<int> getGroupMonthDays(QString name) const;
 
         bool isItGroupDay(QString name);
         bool isItGroupDay(QString date, QString name);

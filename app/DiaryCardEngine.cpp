@@ -218,7 +218,7 @@ QString DiaryCardEngine::getEnumDescription(QString name) const
 }
 
 
-QStringList DiaryCardEngine::getAllGroupsNames() //Refact generalize
+QStringList DiaryCardEngine::getAllGroupsNames() const //Refact generalize
 {
     QStringList allNames;
 
@@ -229,48 +229,48 @@ QStringList DiaryCardEngine::getAllGroupsNames() //Refact generalize
 }
 
 
-QString DiaryCardEngine::getGroupDescription(QString name)
+QString DiaryCardEngine::getGroupDescription(QString name) const
 {
     if (_groups.count(name) == 0)
         return {};
 
-    return _groups[name].description;
+    return _groups.at(name).description;
 }
 
 
-bool DiaryCardEngine::isGroupMandatory(QString name)
+bool DiaryCardEngine::isGroupMandatory(QString name) const
 {
     if (_groups.count(name) == 0)
         return false;
 
-    return _groups[name].mandatory;
+    return _groups.at(name).mandatory;
 }
 
 
-int DiaryCardEngine::getGroupDaysFrequency(QString name)
+int DiaryCardEngine::getGroupDaysFrequency(QString name) const
 {
     if (_groups.count(name) == 0)
         return 0;
 
-    return _groups[name].daysFrequency;
+    return _groups.at(name).daysFrequency;
 }
 
 
-QList<int> DiaryCardEngine::getGroupWeekDays(QString name)
+QList<int> DiaryCardEngine::getGroupWeekDays(QString name) const
 {
     if (_groups.count(name) == 0)
         return {};
 
-    return _groups[name].onWeekDays;
+    return _groups.at(name).onWeekDays;
 }
 
 
-QList<int> DiaryCardEngine::getGroupMonthDays(QString name)
+QList<int> DiaryCardEngine::getGroupMonthDays(QString name) const
 {
     if (_groups.count(name) == 0)
         return {};
 
-    return _groups[name].onMonthDays;
+    return _groups.at(name).onMonthDays;
 }
 
 
