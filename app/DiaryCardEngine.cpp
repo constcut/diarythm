@@ -251,6 +251,20 @@ QList<int> DiaryCardEngine::getGroupMonthDays(QString name)
 
 bool DiaryCardEngine::isItGroupDay(QString name)
 {
+    QDate date = QDate::currentDate();
+    return isItGroupDay(date, name);
+}
+
+
+bool DiaryCardEngine::isItGroupDay(QString date, QString name)
+{
+    QDate dateObject = QDate::fromString(date); //возможно тут нужна маска
+    return isItGroupDay(dateObject, name);
+}
+
+
+bool DiaryCardEngine::isItGroupDay(const QDate& date, QString name)
+{
     if (_groups.count(name) == false)
         return false;
 
@@ -258,8 +272,6 @@ bool DiaryCardEngine::isItGroupDay(QString name)
 
      if (group.daysFrequency == 1)
          return true; //Подумать над другими значениями
-
-    QDate date = QDate::currentDate();
 
     if (group.onMonthDays.empty() == false)
         for (int day: group.onMonthDays)
@@ -271,13 +283,5 @@ bool DiaryCardEngine::isItGroupDay(QString name)
             if (day == date.dayOfWeek())
                 return true;
 
-    return false;
-}
-
-
-bool DiaryCardEngine::isItGroupDay(QString date, QString name)
-{
-    //Эту функцию обощить из функции сверху
-    //parse date first
     return false;
 }

@@ -66,6 +66,8 @@ namespace diaryth {
 
     private:
 
+        bool isItGroupDay(const QDate& date, QString name);
+
         void addEnums(const QJsonArray& enumsArray);
         void addGroups(const QJsonArray& groupsArray);
 
