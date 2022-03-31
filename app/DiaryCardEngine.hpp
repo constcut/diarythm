@@ -79,8 +79,12 @@ namespace diaryth {
 
         QStringList getAllGroupFields(QString name);
         QString getFieldType(QString group, QString field);
-
         QString getFieldDescription(QString group, QString field);
+        QString getFieldEnum(QString group, QString field);
+
+        int getFieldRangeMin(QString group, QString field);
+        int getFieldRangeMax(QString group, QString field);
+
 
     private:
 
