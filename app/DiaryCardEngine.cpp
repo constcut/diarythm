@@ -31,37 +31,7 @@ void DiaryCardEngine::addGroups(const QJsonArray& groupsArray)
     {
         const auto& groupObject = group.toObject();
         CardGroup cardGroup;
-
-        cardGroup.name = groupObject["name"].toString();
-        if (groupObject.contains("description"))
-            cardGroup.description = groupObject["description"].toString();
-
-        if (groupObject.contains("mandatory"))
-            cardGroup.mandatory = groupObject["mandatory"].toBool();
-        else
-            cardGroup.mandatory = true;
-
-        if (groupObject.contains("onWeekDays"))
-        {
-            const auto& weekDaysArray = groupObject["onWeekDays"].toArray();
-            for (const auto& weekDay: weekDaysArray)
-                cardGroup.onWeekDays.append(weekDay.toInt());
-        }
-
-        if (groupObject.contains("onMonthDays"))
-        {
-            const auto& monthDaysArray = groupObject["onMonthDays"].toArray();
-            for (const auto& monthDay: monthDaysArray)
-                cardGroup.onMonthDays.append(monthDay.toInt());
-        }
-
-        if (cardGroup.onMonthDays.empty() && cardGroup.onWeekDays.empty())
-        {
-            if (groupObject.contains("daysFrequency"))
-                cardGroup.daysFrequency = groupObject["daysFrequency"].toInt();
-            else
-                cardGroup.daysFrequency = 1;
-        }
+        fillGroupProperties(cardGroup, groupObject);
 
         //TODO fields
 
@@ -69,6 +39,42 @@ void DiaryCardEngine::addGroups(const QJsonArray& groupsArray)
     }
 
 }
+
+
+void DiaryCardEngine::fillGroupProperties(CardGroup& cardGroup, const QJsonObject& groupObject)
+{
+    cardGroup.name = groupObject["name"].toString();
+    if (groupObject.contains("description"))
+        cardGroup.description = groupObject["description"].toString();
+
+    if (groupObject.contains("mandatory"))
+        cardGroup.mandatory = groupObject["mandatory"].toBool();
+    else
+        cardGroup.mandatory = true;
+
+    if (groupObject.contains("onWeekDays"))
+    {
+        const auto& weekDaysArray = groupObject["onWeekDays"].toArray();
+        for (const auto& weekDay: weekDaysArray)
+            cardGroup.onWeekDays.append(weekDay.toInt());
+    }
+
+    if (groupObject.contains("onMonthDays"))
+    {
+        const auto& monthDaysArray = groupObject["onMonthDays"].toArray();
+        for (const auto& monthDay: monthDaysArray)
+            cardGroup.onMonthDays.append(monthDay.toInt());
+    }
+
+    if (cardGroup.onMonthDays.empty() && cardGroup.onWeekDays.empty())
+    {
+        if (groupObject.contains("daysFrequency"))
+            cardGroup.daysFrequency = groupObject["daysFrequency"].toInt();
+        else
+            cardGroup.daysFrequency = 1;
+    }
+}
+
 
 
 bool DiaryCardEngine::hasRootErros(const QJsonDocument& doc)
@@ -215,5 +221,29 @@ bool DiaryCardEngine::isGroupMandatory(QString name)
 }
 
 
+int DiaryCardEngine::getGroupDaysFrequency(QString name)
+{
+    if (_groups.count(name) == false)
+        return 0;
 
+    return _groups[name].daysFrequency;
+}
+
+
+QList<int> DiaryCardEngine::getGroupWeekDays(QString name)
+{
+    if (_groups.count(name) == false)
+        return {};
+
+    return _groups[name].onWeekDays;
+}
+
+
+QList<int> DiaryCardEngine::getGroupMonthDays(QString name)
+{
+    if (_groups.count(name) == false)
+        return {};
+
+    return _groups[name].onMonthDays;
+}
 

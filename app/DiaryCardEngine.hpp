@@ -57,11 +57,18 @@ namespace diaryth {
         QString getGroupDescription(QString name);
         bool isGroupMandatory(QString name);
 
+        int getGroupDaysFrequency(QString name);
+        QList<int> getGroupWeekDays(QString name);
+        QList<int> getGroupMonthDays(QString name);
+
 
     private:
 
         void addEnums(const QJsonArray& enumsArray);
         void addGroups(const QJsonArray& groupsArray);
+
+        void fillGroupProperties(CardGroup& cardGroup,
+                                 const QJsonObject& groupObject);
 
         bool hasRootErros(const QJsonDocument& doc);
 
