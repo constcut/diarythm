@@ -34,7 +34,11 @@ void DiaryCardEngine::addGroups(const QJsonArray& groupsArray)
         CardGroup cardGroup;
         fillGroupProperties(cardGroup, groupObject);
 
-        //TODO fields
+        const auto& fieldsArray = groupObject["fields"].toArray();
+        for (const auto& field: fieldsArray)
+        {
+            const auto& fieldObj = field.toObject();
+        }
 
         _groups[cardGroup.name] = cardGroup;
     }

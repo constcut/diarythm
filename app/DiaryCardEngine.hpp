@@ -22,6 +22,17 @@ namespace diaryth {
         QList<int> values;
     };
 
+    struct CardField
+    {
+        QString name;
+        QString type;
+        QString description;
+
+        QString enumName;
+        int rangeMin;
+        int rangeMax;
+
+    };
 
     struct CardGroup
     {
