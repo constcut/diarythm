@@ -274,14 +274,14 @@ QList<int> DiaryCardEngine::getGroupMonthDays(QString name) const
 }
 
 
-bool DiaryCardEngine::isItGroupDay(QString name)
+bool DiaryCardEngine::isItGroupDay(QString name) const
 {
     QDate date = QDate::currentDate();
     return isItGroupDay(date, name);
 }
 
 
-bool DiaryCardEngine::isItGroupDay(QString date, QString name)
+bool DiaryCardEngine::isItGroupDay(QString date, QString name) const
 {
     QDate dateObject = QDate::fromString(date); //возможно тут нужна маска
     return isItGroupDay(dateObject, name);
@@ -312,60 +312,60 @@ bool DiaryCardEngine::isItGroupDay(const QDate& date, QString name) const
 }
 
 
-QStringList DiaryCardEngine::getAllGroupFields(QString name)
+QStringList DiaryCardEngine::getAllGroupFields(QString name) const
 {
     if (_groups.count(name) == 0)
         return {};
 
     QStringList allFields;
-    for (const auto& [fieldName, _]: _groups[name].fields)
+    for (const auto& [fieldName, _]: _groups.at(name).fields)
         allFields.append(fieldName);
 
     return allFields;
 }
 
 
-QString DiaryCardEngine::getFieldType(QString group, QString field)
+QString DiaryCardEngine::getFieldType(QString group, QString field) const
 {
     if (isFieldMissing(group, field))
         return "";
 
-    return _groups[group].fields.at(field).type;
+    return _groups.at(group).fields.at(field).type;
 }
 
 
-QString DiaryCardEngine::getFieldDescription(QString group, QString field)
+QString DiaryCardEngine::getFieldDescription(QString group, QString field) const
 {
     if (isFieldMissing(group, field))
         return "";
 
-    return _groups[group].fields.at(field).description;
+    return _groups.at(group).fields.at(field).description;
 }
 
 
-QString DiaryCardEngine::getFieldEnum(QString group, QString field)
+QString DiaryCardEngine::getFieldEnum(QString group, QString field) const
 {
     if (isFieldMissing(group, field))
         return "";
 
-    return _groups[group].fields.at(field).enumName;
+    return _groups.at(group).fields.at(field).enumName;
 }
 
-int DiaryCardEngine::getFieldRangeMin(QString group, QString field)
+int DiaryCardEngine::getFieldRangeMin(QString group, QString field) const
 {
     if (isFieldMissing(group, field))
         return -1;
 
-    return _groups[group].fields.at(field).rangeMin;
+    return _groups.at(group).fields.at(field).rangeMin;
 }
 
 
-int DiaryCardEngine::getFieldRangeMax(QString group, QString field)
+int DiaryCardEngine::getFieldRangeMax(QString group, QString field) const
 {
     if (isFieldMissing(group, field))
         return -1;
 
-    return _groups[group].fields.at(field).rangeMax;
+    return _groups.at(group).fields.at(field).rangeMax;
 }
 
 

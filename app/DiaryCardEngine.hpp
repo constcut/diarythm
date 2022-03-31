@@ -60,30 +60,30 @@ namespace diaryth {
         void parseJSON(const QString& json);
 
         QStringList getAllEnumsNames() const;
-        QString getEnumDescription(QString name) const;
+        QString getEnumDescription(const QString& name) const;
 
-        QStringList getEnumNames(QString name) const;
-        QStringList getEnumDisplayNames(QString name) const;
-        QList<int> getEnumValues(QString name) const;
+        QStringList getEnumNames(const QString& name) const;
+        QStringList getEnumDisplayNames(const QString& name) const;
+        QList<int> getEnumValues(const QString& name) const;
 
         QStringList getAllGroupsNames() const;
-        QString getGroupDescription(QString name) const;
-        bool isGroupMandatory(QString name) const;
+        QString getGroupDescription(const QString& name) const;
+        bool isGroupMandatory(const QString& name) const;
 
-        int getGroupDaysFrequency(QString name) const;
-        QList<int> getGroupWeekDays(QString name) const;
-        QList<int> getGroupMonthDays(QString name) const;
+        int getGroupDaysFrequency(const QString& name) const;
+        QList<int> getGroupWeekDays(const QString& name) const;
+        QList<int> getGroupMonthDays(const QString& name) const;
 
-        bool isItGroupDay(QString name);
-        bool isItGroupDay(QString date, QString name);
+        bool isItGroupDay(const QString& name) const;
+        bool isItGroupDay(const QString& date, const QString& name) const;
 
-        QStringList getAllGroupFields(QString name);
-        QString getFieldType(QString group, QString field);
-        QString getFieldDescription(QString group, QString field);
-        QString getFieldEnum(QString group, QString field);
+        QStringList getAllGroupFields(const QString& name) const;
+        QString getFieldType(const QString& group, const QString& field) const;
+        QString getFieldDescription(const QString& group, const QString& field) const;
+        QString getFieldEnum(const QString& group, const QString& field) const;
 
-        int getFieldRangeMin(QString group, QString field);
-        int getFieldRangeMax(QString group, QString field);
+        int getFieldRangeMin(const QString& group, const QString& field) const;
+        int getFieldRangeMax(const QString& group, const QString& field) const;
 
     private:
 
