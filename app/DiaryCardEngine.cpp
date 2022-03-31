@@ -323,3 +323,16 @@ QStringList DiaryCardEngine::getAllGroupFields(QString name)
 
     return allFields;
 }
+
+
+QString DiaryCardEngine::getFieldType(QString group, QString field)
+{
+    if (_groups.count(group) == false)
+        return "";
+
+    const auto& groupObj = _groups[group];
+    if (groupObj.fields.count(field) == false)
+        return "";
+
+    return groupObj.fields.at(field).type;
+}
