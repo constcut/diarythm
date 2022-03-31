@@ -85,7 +85,6 @@ namespace diaryth {
         int getFieldRangeMin(QString group, QString field);
         int getFieldRangeMax(QString group, QString field);
 
-
     private:
 
         bool isItGroupDay(const QDate& date, QString name);

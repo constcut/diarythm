@@ -362,3 +362,28 @@ QString DiaryCardEngine::getFieldEnum(QString group, QString field)
 
     return groupObj.fields.at(field).enumName;
 }
+
+int DiaryCardEngine::getFieldRangeMin(QString group, QString field)
+{
+    if (_groups.count(group) == 0)
+        return -1;
+
+    const auto& groupObj = _groups[group];
+    if (groupObj.fields.count(field) == false)
+        return -1;
+
+    return groupObj.fields.at(field).rangeMin;
+}
+
+
+int DiaryCardEngine::getFieldRangeMax(QString group, QString field)
+{
+    if (_groups.count(group) == 0)
+        return -1;
+
+    const auto& groupObj = _groups[group];
+    if (groupObj.fields.count(field) == false)
+        return -1;
+
+    return groupObj.fields.at(field).rangeMax;
+}
