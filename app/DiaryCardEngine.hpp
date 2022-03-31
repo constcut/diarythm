@@ -8,6 +8,7 @@
 
 namespace diaryth {
 
+
     struct CardEnum {
         QString name;
         QString description;
@@ -17,6 +18,8 @@ namespace diaryth {
         QList<int> values;
     };
 
+
+
     class DiaryCardEngine : public QObject
     {
         Q_OBJECT
@@ -25,6 +28,11 @@ namespace diaryth {
         DiaryCardEngine() = default;
 
         void parseJSON(const QString& json);
+
+        QStringList getAllEnumsNames();
+
+        QStringList getEnumNames(QString name);
+        QStringList getEnumDisplayNames(QString name);
 
     private:
 

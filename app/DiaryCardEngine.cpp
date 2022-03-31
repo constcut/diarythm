@@ -80,8 +80,6 @@ void DiaryCardEngine::parseJSON(const QString& json)
 }
 
 
-
-
 QStringList DiaryCardEngine::getAllEnumsNames()
 {
     QStringList allNames;
@@ -93,7 +91,22 @@ QStringList DiaryCardEngine::getAllEnumsNames()
 }
 
 
+QStringList DiaryCardEngine::getEnumNames(QString name)
+{
+    if (_enums.count(name) == false)
+        return {};
 
+    return _enums[name].valuesNames;
+}
+
+
+QStringList DiaryCardEngine::getEnumDisplayNames(QString name)
+{
+    if (_enums.count(name) == false)
+        return {};
+
+    return _enums[name].displayNames;
+}
 
 
 
