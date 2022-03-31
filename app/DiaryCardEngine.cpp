@@ -26,5 +26,22 @@ void DiaryCardEngine::parseJSON(const QString& json)
         return;
     }
 
+    if (rootObject.contains("enums") && rootObject["enums"].isArray())
+    {
+        auto enumsArray = rootObject["enums"].toArray();
+
+        for (const auto& singleEnum: enumsArray)
+        {
+            auto enumObj = singleEnum.toObject();
+
+            auto enumName = enumObj["name"].toString();
+            auto description = enumObj["description"].toString();
+            bool showValues = enumObj["showValues"].toBool();
+
+            auto valuesArray = enumObj["values"].toArray();
+            auto vNamesArray = enumObj["names"].toArray();
+        }
+    }
+
     auto groups = rootObject["groups"];
 }
