@@ -93,14 +93,14 @@ namespace diaryth {
         void addGroups(const QJsonArray& groupsArray);
 
         void fillGroupProperties(CardGroup& cardGroup,
-                                 const QJsonObject& groupObject);
+                                 const QJsonObject& groupObject) const;
 
         void fillFieldProperties(CardField& cardField,
-                                 const QJsonObject& fieldObject);
+                                 const QJsonObject& fieldObject) const;
 
-        bool hasRootErros(const QJsonDocument& doc);
+        bool hasRootErros(const QJsonDocument& doc) const;
 
-        bool isFieldMissing(QString group, QString field);
+        bool isFieldMissing(QString group, QString field) const;
 
 
         std::unordered_map<QString, CardEnum> _enums;

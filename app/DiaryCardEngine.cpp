@@ -49,7 +49,7 @@ void DiaryCardEngine::addGroups(const QJsonArray& groupsArray)
 }
 
 
-void DiaryCardEngine::fillFieldProperties(CardField& cardField, const QJsonObject& fieldObject)
+void DiaryCardEngine::fillFieldProperties(CardField& cardField, const QJsonObject& fieldObject) const
 {
     cardField.name = fieldObject["name"].toString();
     cardField.type = fieldObject["type"].toString();
@@ -71,7 +71,7 @@ void DiaryCardEngine::fillFieldProperties(CardField& cardField, const QJsonObjec
 }
 
 
-void DiaryCardEngine::fillGroupProperties(CardGroup& cardGroup, const QJsonObject& groupObject)
+void DiaryCardEngine::fillGroupProperties(CardGroup& cardGroup, const QJsonObject& groupObject) const
 {
     cardGroup.name = groupObject["name"].toString();
     if (groupObject.contains("description"))
@@ -103,7 +103,7 @@ void DiaryCardEngine::fillGroupProperties(CardGroup& cardGroup, const QJsonObjec
 
 
 
-bool DiaryCardEngine::hasRootErros(const QJsonDocument& doc)
+bool DiaryCardEngine::hasRootErros(const QJsonDocument& doc) const
 {
     if (doc.isObject() == false) {
         qDebug() << "Failed to parse: JSON root is not an object.";
@@ -369,12 +369,12 @@ int DiaryCardEngine::getFieldRangeMax(QString group, QString field)
 }
 
 
-bool DiaryCardEngine::isFieldMissing(QString group, QString field)
+bool DiaryCardEngine::isFieldMissing(QString group, QString field) const
 {
     if (_groups.count(group) == 0)
         return true;
 
-    const auto& groupObj = _groups[group];
+    const auto& groupObj = _groups.at(group);
     if (groupObj.fields.count(field) == false)
         return true;
 
