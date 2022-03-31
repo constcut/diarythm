@@ -310,3 +310,16 @@ bool DiaryCardEngine::isItGroupDay(const QDate& date, QString name)
 
     return false;
 }
+
+
+QStringList DiaryCardEngine::getAllGroupFields(QString name)
+{
+    if (_groups.count(name) == false)
+        return {};
+
+    QStringList allFields;
+    for (const auto& [fieldName, _]: _groups[name].fields)
+        allFields.append(fieldName);
+
+    return allFields;
+}

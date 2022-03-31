@@ -77,6 +77,8 @@ namespace diaryth {
         bool isItGroupDay(QString name);
         bool isItGroupDay(QString date, QString name);
 
+        QStringList getAllGroupFields(QString name);
+
     private:
 
         bool isItGroupDay(const QDate& date, QString name);
