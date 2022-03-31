@@ -184,7 +184,7 @@ QStringList DiaryCardEngine::getAllEnumsNames()
 
 QStringList DiaryCardEngine::getEnumNames(QString name)
 {
-    if (_enums.count(name) == false)
+    if (_enums.count(name) == 0)
         return {};
 
     return _enums[name].valuesNames;
@@ -193,7 +193,7 @@ QStringList DiaryCardEngine::getEnumNames(QString name)
 
 QStringList DiaryCardEngine::getEnumDisplayNames(QString name)
 {
-    if (_enums.count(name) == false)
+    if (_enums.count(name) == 0)
         return {};
 
     return _enums[name].displayNames;
@@ -202,7 +202,7 @@ QStringList DiaryCardEngine::getEnumDisplayNames(QString name)
 
 QList<int> DiaryCardEngine::getEnumValues(QString name)
 {
-    if (_enums.count(name) == false)
+    if (_enums.count(name) == 0)
         return {};
 
     return _enums[name].values;
@@ -211,7 +211,7 @@ QList<int> DiaryCardEngine::getEnumValues(QString name)
 
 QString DiaryCardEngine::getEnumDescription(QString name)
 {
-    if (_enums.count(name) == false)
+    if (_enums.count(name) == 0)
         return {};
 
     return _enums[name].description;
@@ -231,7 +231,7 @@ QStringList DiaryCardEngine::getAllGroupsNames() //Refact generalize
 
 QString DiaryCardEngine::getGroupDescription(QString name)
 {
-    if (_groups.count(name) == false)
+    if (_groups.count(name) == 0)
         return {};
 
     return _groups[name].description;
@@ -240,7 +240,7 @@ QString DiaryCardEngine::getGroupDescription(QString name)
 
 bool DiaryCardEngine::isGroupMandatory(QString name)
 {
-    if (_groups.count(name) == false)
+    if (_groups.count(name) == 0)
         return false;
 
     return _groups[name].mandatory;
@@ -249,7 +249,7 @@ bool DiaryCardEngine::isGroupMandatory(QString name)
 
 int DiaryCardEngine::getGroupDaysFrequency(QString name)
 {
-    if (_groups.count(name) == false)
+    if (_groups.count(name) == 0)
         return 0;
 
     return _groups[name].daysFrequency;
@@ -258,7 +258,7 @@ int DiaryCardEngine::getGroupDaysFrequency(QString name)
 
 QList<int> DiaryCardEngine::getGroupWeekDays(QString name)
 {
-    if (_groups.count(name) == false)
+    if (_groups.count(name) == 0)
         return {};
 
     return _groups[name].onWeekDays;
@@ -267,7 +267,7 @@ QList<int> DiaryCardEngine::getGroupWeekDays(QString name)
 
 QList<int> DiaryCardEngine::getGroupMonthDays(QString name)
 {
-    if (_groups.count(name) == false)
+    if (_groups.count(name) == 0)
         return {};
 
     return _groups[name].onMonthDays;
@@ -290,7 +290,7 @@ bool DiaryCardEngine::isItGroupDay(QString date, QString name)
 
 bool DiaryCardEngine::isItGroupDay(const QDate& date, QString name)
 {
-    if (_groups.count(name) == false)
+    if (_groups.count(name) == 0)
         return false;
 
      const auto& group = _groups[name];
@@ -314,7 +314,7 @@ bool DiaryCardEngine::isItGroupDay(const QDate& date, QString name)
 
 QStringList DiaryCardEngine::getAllGroupFields(QString name)
 {
-    if (_groups.count(name) == false)
+    if (_groups.count(name) == 0)
         return {};
 
     QStringList allFields;
@@ -327,7 +327,7 @@ QStringList DiaryCardEngine::getAllGroupFields(QString name)
 
 QString DiaryCardEngine::getFieldType(QString group, QString field)
 {
-    if (_groups.count(group) == false)
+    if (_groups.count(group) == 0)
         return "";
 
     const auto& groupObj = _groups[group];
