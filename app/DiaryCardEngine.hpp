@@ -59,12 +59,12 @@ namespace diaryth {
 
         void parseJSON(const QString& json);
 
-        QStringList getAllEnumsNames();
-        QString getEnumDescription(QString name);
+        QStringList getAllEnumsNames() const;
+        QString getEnumDescription(QString name) const;
 
-        QStringList getEnumNames(QString name);
-        QStringList getEnumDisplayNames(QString name);
-        QList<int> getEnumValues(QString name);
+        QStringList getEnumNames(QString name) const;
+        QStringList getEnumDisplayNames(QString name) const;
+        QList<int> getEnumValues(QString name) const;
 
         QStringList getAllGroupsNames();
         QString getGroupDescription(QString name);
@@ -87,7 +87,7 @@ namespace diaryth {
 
     private:
 
-        bool isItGroupDay(const QDate& date, QString name);
+        bool isItGroupDay(const QDate& date, QString name) const;
 
         void addEnums(const QJsonArray& enumsArray);
         void addGroups(const QJsonArray& groupsArray);

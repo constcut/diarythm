@@ -171,7 +171,7 @@ void DiaryCardEngine::addEnums(const QJsonArray &enumsArray)
 
 
 
-QStringList DiaryCardEngine::getAllEnumsNames()
+QStringList DiaryCardEngine::getAllEnumsNames() const
 {
     QStringList allNames;
 
@@ -182,39 +182,39 @@ QStringList DiaryCardEngine::getAllEnumsNames()
 }
 
 
-QStringList DiaryCardEngine::getEnumNames(QString name)
+QStringList DiaryCardEngine::getEnumNames(QString name) const
 {
     if (_enums.count(name) == 0)
         return {};
 
-    return _enums[name].valuesNames;
+    return _enums.at(name).valuesNames;
 }
 
 
-QStringList DiaryCardEngine::getEnumDisplayNames(QString name)
+QStringList DiaryCardEngine::getEnumDisplayNames(QString name) const
 {
     if (_enums.count(name) == 0)
         return {};
 
-    return _enums[name].displayNames;
+    return _enums.at(name).displayNames;
 }
 
 
-QList<int> DiaryCardEngine::getEnumValues(QString name)
+QList<int> DiaryCardEngine::getEnumValues(QString name) const
 {
     if (_enums.count(name) == 0)
         return {};
 
-    return _enums[name].values;
+    return _enums.at(name).values;
 }
 
 
-QString DiaryCardEngine::getEnumDescription(QString name)
+QString DiaryCardEngine::getEnumDescription(QString name) const
 {
     if (_enums.count(name) == 0)
         return {};
 
-    return _enums[name].description;
+    return _enums.at(name).description;
 }
 
 
@@ -288,12 +288,12 @@ bool DiaryCardEngine::isItGroupDay(QString date, QString name)
 }
 
 
-bool DiaryCardEngine::isItGroupDay(const QDate& date, QString name)
+bool DiaryCardEngine::isItGroupDay(const QDate& date, QString name) const
 {
     if (_groups.count(name) == 0)
         return false;
 
-     const auto& group = _groups[name];
+     const auto& group = _groups.at(name);
 
      if (group.daysFrequency == 1) //Подумать над другими значениями
          return true;
