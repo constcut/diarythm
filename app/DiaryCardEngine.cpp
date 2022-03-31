@@ -78,3 +78,27 @@ void DiaryCardEngine::parseJSON(const QString& json)
 
     auto groups = rootObject["groups"];
 }
+
+
+
+
+QStringList DiaryCardEngine::getAllEnumsNames()
+{
+    QStringList allNames;
+
+    for (const auto& [enumName, _]: _enums)
+        allNames.append(enumName);
+
+    return allNames;
+}
+
+
+
+
+
+
+
+
+
+
+
