@@ -109,6 +109,9 @@ namespace diaryth {
         Q_INVOKABLE void setEnumFieldToGroup(const QString& groupName, const QString& fieldName,
                                              const QString& enumName);
 
+        Q_INVOKABLE void setRangeFieldToGroup(const QString& groupName, const QString& fieldName,
+                                              int rangeMin, int rangeMax);
+
     private:
 
         void clear();

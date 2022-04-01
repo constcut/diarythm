@@ -505,3 +505,18 @@ void DiaryCardEngine::setEnumFieldToGroup(const QString& groupName, const QStrin
     _groups[groupName].fields[fieldName].type = "enum";
     _groups[groupName].fields[fieldName].enumName = enumName;
 }
+
+
+void DiaryCardEngine::setRangeFieldToGroup(const QString& groupName, const QString& fieldName,
+                                           int rangeMin, int rangeMax)
+{
+    if (_groups.count(groupName) == 0) {
+        qDebug() << "Failed to find group " << groupName << " to add range field " << fieldName;
+        return;
+    }
+
+    _groups[groupName].fields[fieldName].name = fieldName;
+    _groups[groupName].fields[fieldName].type = "range";
+    _groups[groupName].fields[fieldName].rangeMin = rangeMin;
+    _groups[groupName].fields[fieldName].rangeMin = rangeMax;
+}
