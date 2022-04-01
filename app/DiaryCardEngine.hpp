@@ -103,6 +103,8 @@ namespace diaryth {
         Q_INVOKABLE void changeGroupDescription(const QString& groupName, const QString& description);
         Q_INVOKABLE void changeGroupMandatory(const QString& groupName, bool value);
 
+        Q_INVOKABLE void setFieldToGroup(const QString& groupName, const QString& fieldName,
+                                         const QString& fieldType);
 
     private:
 

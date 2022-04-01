@@ -478,3 +478,17 @@ void DiaryCardEngine::changeGroupMandatory(const QString& groupName, bool value)
 
     _groups[groupName].mandatory = value;
 }
+
+
+void DiaryCardEngine::setFieldToGroup(const QString& groupName, const QString& fieldName,
+                                      const QString& fieldType)
+{
+    if (_groups.count(groupName) == 0) {
+        qDebug() << "Failed to find group " << groupName << " to add field " << fieldName;
+        return;
+    }
+
+    _groups[groupName].fields[fieldName].name = fieldName;
+    _groups[groupName].fields[fieldName].type = fieldType;
+}
+
