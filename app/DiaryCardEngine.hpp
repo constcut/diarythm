@@ -57,33 +57,33 @@ namespace diaryth {
 
         DiaryCardEngine() = default;
 
-        void parseJSON(const QString& json);
+        Q_INVOKABLE void parseJSON(const QString& json);
 
-        QStringList getAllEnumsNames() const;
-        QString getEnumDescription(const QString& name) const;
+        Q_INVOKABLE QStringList getAllEnumsNames() const;
+        Q_INVOKABLE QString getEnumDescription(const QString& name) const;
 
-        QStringList getEnumNames(const QString& name) const;
-        QStringList getEnumDisplayNames(const QString& name) const;
-        QList<int> getEnumValues(const QString& name) const;
+        Q_INVOKABLE QStringList getEnumNames(const QString& name) const;
+        Q_INVOKABLE QStringList getEnumDisplayNames(const QString& name) const;
+        Q_INVOKABLE QList<int> getEnumValues(const QString& name) const;
 
-        QStringList getAllGroupsNames() const;
-        QString getGroupDescription(const QString& name) const;
-        bool isGroupMandatory(const QString& name) const;
+        Q_INVOKABLE QStringList getAllGroupsNames() const;
+        Q_INVOKABLE QString getGroupDescription(const QString& name) const;
+        Q_INVOKABLE bool isGroupMandatory(const QString& name) const;
 
-        int getGroupDaysFrequency(const QString& name) const;
-        QList<int> getGroupWeekDays(const QString& name) const;
-        QList<int> getGroupMonthDays(const QString& name) const;
+        Q_INVOKABLE int getGroupDaysFrequency(const QString& name) const;
+        Q_INVOKABLE QList<int> getGroupWeekDays(const QString& name) const;
+        Q_INVOKABLE QList<int> getGroupMonthDays(const QString& name) const;
 
-        bool isItGroupDay(const QString& name) const;
-        bool isItGroupDay(const QString& date, const QString& name) const;
+        Q_INVOKABLE bool isItGroupDay(const QString& name) const;
+        Q_INVOKABLE bool isItGroupDay(const QString& date, const QString& name) const;
 
-        QStringList getAllGroupFields(const QString& name) const;
-        QString getFieldType(const QString& group, const QString& field) const;
-        QString getFieldDescription(const QString& group, const QString& field) const;
-        QString getFieldEnum(const QString& group, const QString& field) const;
+        Q_INVOKABLE QStringList getAllGroupFields(const QString& name) const;
+        Q_INVOKABLE QString getFieldType(const QString& group, const QString& field) const;
+        Q_INVOKABLE QString getFieldDescription(const QString& group, const QString& field) const;
+        Q_INVOKABLE QString getFieldEnum(const QString& group, const QString& field) const;
 
-        int getFieldRangeMin(const QString& group, const QString& field) const;
-        int getFieldRangeMax(const QString& group, const QString& field) const;
+        Q_INVOKABLE int getFieldRangeMin(const QString& group, const QString& field) const;
+        Q_INVOKABLE int getFieldRangeMax(const QString& group, const QString& field) const;
 
     private:
 
