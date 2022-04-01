@@ -79,10 +79,11 @@ namespace diaryth {
 
 
 
-        Q_INVOKABLE int getCardRecordsMaxLocalId(const QString& date) const;
         Q_INVOKABLE int getTotalCardRecords() const;
+        Q_INVOKABLE int getCardRecordsMaxLocalId(const QString& date) const;
 
         Q_INVOKABLE int getCardRecordsCountOnDate(const QString& date) const;
+        Q_INVOKABLE QVariantList getAllCardRecordsOnDate(const QString& date) const;
 
     private:
 
@@ -117,6 +118,7 @@ namespace diaryth {
 
         const int audioFieldsCount = 7; //Later use walkaround with query.last() and query.at() + 1
         const int textFieldsCount = 7;
+        const int cardRecordsFieldsCount = 8;
     };
 
 }
