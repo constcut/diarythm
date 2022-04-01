@@ -412,3 +412,17 @@ QStringList SQLBase::getAllCardsNames() const
 
      return allNames;
 }
+
+
+QString SQLBase::getCardDescription(QString name) const
+{
+    QString descriptionRequest =
+            QString("SELECT cardDescription FROM diaryCards WHERE cardName='%1';").arg(name);
+
+    QSqlQuery descriptionQuery = executeRequest(descriptionRequest);
+
+    if (descriptionQuery.next())
+        return descriptionQuery.value(0).toString();
+
+    return {};
+}

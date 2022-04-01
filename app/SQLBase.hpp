@@ -67,6 +67,7 @@ namespace diaryth {
 
         Q_INVOKABLE bool checkCardNameExists(QString name) const;
         Q_INVOKABLE QStringList getAllCardsNames() const;
+        Q_INVOKABLE QString getCardDescription(QString name) const;
 
 
     private:
