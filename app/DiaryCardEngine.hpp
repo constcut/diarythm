@@ -107,8 +107,8 @@ namespace diaryth {
         Q_INVOKABLE void addNewGroup(const QString& name);
         Q_INVOKABLE void removeGroup(const QString& name);
 
-        Q_INVOKABLE void changeGroupDescription(const QString& groupName, const QString& description);
-        Q_INVOKABLE void changeGroupMandatory(const QString& groupName, bool value);
+        Q_INVOKABLE void setGroupDescription(const QString& groupName, const QString& description);
+        Q_INVOKABLE void setGroupMandatory(const QString& groupName, bool value);
 
         Q_INVOKABLE void setGroupMonthDays(const QString& groupName, const QList<int>& monthDays);
         Q_INVOKABLE void setGroupWeekDays(const QString& groupName, const QList<int>& weekDays);
