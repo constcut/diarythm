@@ -19,6 +19,8 @@ namespace diaryth {
                                  const DiaryCardEngine& cardEngine);
 
 
+        //exportByDate
+        //exportByDatesRange
 
     private:
 
