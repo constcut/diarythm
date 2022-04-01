@@ -95,6 +95,8 @@ namespace diaryth {
         Q_INVOKABLE void setName(QString name) { _cardName = name; }
         Q_INVOKABLE void setDescription(QString description) { _cardDescription = description; }
 
+        Q_INVOKABLE void addNewEnum(QString name);
+        Q_INVOKABLE void addNewGroup(QString name);
 
     private:
 

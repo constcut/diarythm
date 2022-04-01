@@ -418,3 +418,30 @@ bool DiaryCardEngine::isFieldMissing(const QString &group, const QString &field)
 
     return false;
 }
+
+
+
+void DiaryCardEngine::addNewEnum(QString name)
+{
+    if (_enums.count(name)) {
+        qDebug() << "Warning: attemp to create enum with existing name";
+        return;
+    }
+
+    CardEnum cardEnum;
+    cardEnum.name = name;
+    _enums[name] = cardEnum;
+}
+
+
+void DiaryCardEngine::addNewGroup(QString name)
+{
+    if (_groups.count(name)) {
+        qDebug() << "Warning: attemp to create enum with existing name";
+        return;
+    }
+
+    CardGroup cardGroup;
+    cardGroup.name = name;
+    _groups[name] = cardGroup;
+}
