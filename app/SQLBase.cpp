@@ -446,3 +446,17 @@ int SQLBase::getTotalCardRecords() const
     return getTotalRows("diaryCardRecords", "diaryRecordId");
 }
 
+
+int SQLBase::getCardRecordsCountOnDate(const QString& date) const
+{
+    QString countRequest =
+            QString("SELECT COUNT(localId) FROM diaryCardRecords WHERE datePart='%1';")
+            .arg(date);
+
+    QSqlQuery countQuery = executeRequest(countRequest);
+
+    if (countQuery.next())
+        return countQuery.value(0).toInt();
+
+    return 0;
+}

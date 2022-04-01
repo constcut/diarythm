@@ -15,7 +15,9 @@ namespace diaryth {
     public:
         SQLBase();
 
+
         QSqlQuery executeRequest(const QString& requestBody) const;
+
 
 
         Q_INVOKABLE void addAudioRecord(const QString& date, const QString& time, int localId,
@@ -40,7 +42,6 @@ namespace diaryth {
 
         Q_INVOKABLE QVariantList findRecordsByTagMaskAndDate(const QString& date,
                                                              const QString& tagMask) const;
-
 
 
         Q_INVOKABLE void addText(const QString& name, const QString& text,
@@ -77,7 +78,7 @@ namespace diaryth {
         Q_INVOKABLE int getCardRecordsMaxLocalId(const QString& date) const;
         Q_INVOKABLE int getTotalCardRecords() const;
 
-
+        Q_INVOKABLE int getCardRecordsCountOnDate(const QString& date) const;
 
     private:
 
