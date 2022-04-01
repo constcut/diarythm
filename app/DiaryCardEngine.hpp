@@ -58,6 +58,7 @@ namespace diaryth {
         DiaryCardEngine() = default;
 
         Q_INVOKABLE void parseJSON(const QString& json);
+        Q_INVOKABLE void mergeJSON(const QString& json);
 
         Q_INVOKABLE QString getCardName() const { return _cardName; }
         Q_INVOKABLE QString getCardDescription() const { return _cardDescription; }
@@ -92,6 +93,7 @@ namespace diaryth {
     private:
 
         void clear();
+        void loadFromJsonObject(const QJsonObject& rootObject);
 
         bool isItGroupDay(const QDate& date, const QString& name) const;
 

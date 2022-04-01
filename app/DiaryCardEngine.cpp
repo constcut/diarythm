@@ -11,7 +11,6 @@ using namespace diaryth;
 void DiaryCardEngine::parseJSON(const QString& json)
 {
     auto doc = QJsonDocument::fromJson(json.toUtf8());
-
     if (hasRootErros(doc))
         return;
 
@@ -23,12 +22,30 @@ void DiaryCardEngine::parseJSON(const QString& json)
     if (rootObject.contains("description"))
         _cardDescription = rootObject["descrition"].toString();
 
+    loadFromJsonObject(rootObject);
+
+    qDebug() << "Diary card json loaded";
+}
+
+
+
+void DiaryCardEngine::mergeJSON(const QString& json)
+{
+    auto doc = QJsonDocument::fromJson(json.toUtf8());
+    if (hasRootErros(doc))
+        return;
+
+    loadFromJsonObject(doc.object());
+    //Группы и поля не должны пересекаться, на это пока нет проверки
+}
+
+
+void DiaryCardEngine::loadFromJsonObject(const QJsonObject& rootObject)
+{
     if (rootObject.contains("enums") && rootObject["enums"].isArray())
         addEnums(rootObject["enums"].toArray());
 
     addGroups(rootObject["groups"].toArray());
-
-    qDebug() << "Diary card json loaded";
 }
 
 
