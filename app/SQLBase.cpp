@@ -400,3 +400,15 @@ bool SQLBase::checkCardNameExists(QString name) const
     return false;
 }
 
+
+QStringList SQLBase::getAllCardsNames() const
+{
+     QString allNamesRequest = QString("SELECT cardName FROM diaryCards;");
+     QSqlQuery allNamesQuery = executeRequest(allNamesRequest);
+
+     QStringList allNames;
+     while (allNamesQuery.next())
+        allNames.append(allNamesQuery.value(0).toString());
+
+     return allNames;
+}
