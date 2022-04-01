@@ -467,3 +467,14 @@ void DiaryCardEngine::changeGroupDescription(QString groupName, QString descript
 
     _groups[groupName].description = description;
 }
+
+
+void DiaryCardEngine::changeGroupMandatory(QString groupName, bool value)
+{
+    if (_groups.count(groupName) == 0) {
+        qDebug() << "Failed to find group to change mandatory status" << groupName;
+        return;
+    }
+
+    _groups[groupName].mandatory = value;
+}

@@ -99,7 +99,10 @@ namespace diaryth {
         Q_INVOKABLE void addNewGroup(QString name);
 
         Q_INVOKABLE void changeEnumDescription(QString enumName, QString description);
+
         Q_INVOKABLE void changeGroupDescription(QString groupName, QString description);
+        Q_INVOKABLE void changeGroupMandatory(QString groupName, bool value);
+
 
     private:
 
