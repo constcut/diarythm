@@ -110,9 +110,9 @@ namespace diaryth {
         Q_INVOKABLE void changeGroupDescription(const QString& groupName, const QString& description);
         Q_INVOKABLE void changeGroupMandatory(const QString& groupName, bool value);
 
-        //setMonthDays
-        //setWeekDays
-        //setEveryday - подумать над этим полем, может его сделать bool
+        Q_INVOKABLE void setGroupMonthDays(const QString& groupName, const QList<int>& monthDays);
+        Q_INVOKABLE void setGroupWeekDays(const QString& groupName, const QList<int>& weekDays);
+        //setEveryday - подумать над daysFreq полем, может его сделать bool
 
         Q_INVOKABLE void setFieldToGroup(const QString& groupName, const QString& fieldName,
                                          const QString& fieldType);

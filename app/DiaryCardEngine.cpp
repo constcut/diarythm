@@ -516,6 +516,28 @@ void DiaryCardEngine::changeGroupMandatory(const QString& groupName, bool value)
 }
 
 
+void DiaryCardEngine::setGroupMonthDays(const QString& groupName, const QList<int>& monthDays)
+{
+    if (_groups.count(groupName) == 0) {
+        qDebug() << "Failed to find group to set month days" << groupName;
+        return;
+    }
+
+    _groups[groupName].onMonthDays = monthDays;
+}
+
+
+void DiaryCardEngine::setGroupWeekDays(const QString& groupName, const QList<int>& weekDays)
+{
+    if (_groups.count(groupName) == 0) {
+        qDebug() << "Failed to find group to set week days" << groupName;
+        return;
+    }
+
+    _groups[groupName].onWeekDays = weekDays;
+}
+
+
 void DiaryCardEngine::setFieldToGroup(const QString& groupName, const QString& fieldName,
                                       const QString& fieldType)
 {
