@@ -92,16 +92,16 @@ namespace diaryth {
         Q_INVOKABLE int getFieldRangeMax(const QString& group, const QString& field) const;
 
 
-        Q_INVOKABLE void setName(QString name) { _cardName = name; }
-        Q_INVOKABLE void setDescription(QString description) { _cardDescription = description; }
+        Q_INVOKABLE void setName(const QString& name) { _cardName = name; }
+        Q_INVOKABLE void setDescription(const QString& description) { _cardDescription = description; }
 
-        Q_INVOKABLE void addNewEnum(QString name);
-        Q_INVOKABLE void addNewGroup(QString name);
+        Q_INVOKABLE void addNewEnum(const QString& name);
+        Q_INVOKABLE void addNewGroup(const QString& name);
 
-        Q_INVOKABLE void changeEnumDescription(QString enumName, QString description);
+        Q_INVOKABLE void changeEnumDescription(const QString& enumName, const QString& description);
 
-        Q_INVOKABLE void changeGroupDescription(QString groupName, QString description);
-        Q_INVOKABLE void changeGroupMandatory(QString groupName, bool value);
+        Q_INVOKABLE void changeGroupDescription(const QString& groupName, const QString& description);
+        Q_INVOKABLE void changeGroupMandatory(const QString& groupName, bool value);
 
 
     private:

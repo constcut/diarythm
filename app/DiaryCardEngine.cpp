@@ -421,7 +421,7 @@ bool DiaryCardEngine::isFieldMissing(const QString &group, const QString &field)
 
 
 
-void DiaryCardEngine::addNewEnum(QString name)
+void DiaryCardEngine::addNewEnum(const QString& name)
 {
     if (_enums.count(name)) {
         qDebug() << "Warning: attemp to create enum with existing name";
@@ -434,7 +434,7 @@ void DiaryCardEngine::addNewEnum(QString name)
 }
 
 
-void DiaryCardEngine::addNewGroup(QString name)
+void DiaryCardEngine::addNewGroup(const QString& name)
 {
     if (_groups.count(name)) {
         qDebug() << "Warning: attemp to create enum with existing name";
@@ -447,7 +447,7 @@ void DiaryCardEngine::addNewGroup(QString name)
 }
 
 
-void DiaryCardEngine::changeEnumDescription(QString enumName, QString description)
+void DiaryCardEngine::changeEnumDescription(const QString& enumName, const QString& description)
 {
     if (_enums.count(enumName) == 0) {
         qDebug() << "Failed to find enum to change description: " << enumName;
@@ -458,7 +458,7 @@ void DiaryCardEngine::changeEnumDescription(QString enumName, QString descriptio
 }
 
 
-void DiaryCardEngine::changeGroupDescription(QString groupName, QString description)
+void DiaryCardEngine::changeGroupDescription(const QString& groupName, const QString& description)
 {
     if (_groups.count(groupName) == 0) {
         qDebug() << "Failed to find group to change description: " << groupName;
@@ -469,7 +469,7 @@ void DiaryCardEngine::changeGroupDescription(QString groupName, QString descript
 }
 
 
-void DiaryCardEngine::changeGroupMandatory(QString groupName, bool value)
+void DiaryCardEngine::changeGroupMandatory(const QString& groupName, bool value)
 {
     if (_groups.count(groupName) == 0) {
         qDebug() << "Failed to find group to change mandatory status" << groupName;
