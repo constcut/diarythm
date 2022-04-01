@@ -60,6 +60,8 @@ namespace diaryth {
         Q_INVOKABLE void parseJSON(const QString& json);
         Q_INVOKABLE void mergeJSON(const QString& json);
 
+        //Q_INVOKABLE QString exportJSON(); TODO
+
         Q_INVOKABLE QString getCardName() const { return _cardName; }
         Q_INVOKABLE QString getCardDescription() const { return _cardDescription; }
 
