@@ -87,7 +87,7 @@ namespace diaryth {
 
     private:
 
-        bool isItGroupDay(const QDate& date, QString name) const;
+        bool isItGroupDay(const QDate& date, const QString& name) const;
 
         void addEnums(const QJsonArray& enumsArray);
         void addGroups(const QJsonArray& groupsArray);
@@ -100,7 +100,7 @@ namespace diaryth {
 
         bool hasRootErros(const QJsonDocument& doc) const;
 
-        bool isFieldMissing(QString group, QString field) const;
+        bool isFieldMissing(const QString& group, const QString& field) const;
 
 
         std::unordered_map<QString, CardEnum> _enums;
