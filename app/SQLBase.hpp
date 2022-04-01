@@ -65,6 +65,9 @@ namespace diaryth {
                                                            const QString& tagMask) const;
 
 
+        //Check card with name exists
+
+
     private:
 
         QSqlError initBase() const;
