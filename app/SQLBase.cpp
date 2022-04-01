@@ -77,7 +77,7 @@ void SQLBase::createTablesIfNeeded() const {
                            "datePart text NOT NULL,"
                            "timePart text NOT NULL,"
                            "localId integer NOT NULL,"
-                           "cardId integer NOT NULL"
+                           "cardId integer NOT NULL,"
                            "cardDate text NOT NULL,"
                            "groupName text NOT NULL,"
                            "fieldName text NOT NULL,"
