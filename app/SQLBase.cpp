@@ -431,7 +431,7 @@ QString SQLBase::getCardDescription(const QString& name) const
 QString SQLBase::getCardJSON(const QString& name) const
 {
     QString descriptionRequest =
-            QString("SELECT jsonText FROM diaryCards WHERE cardName='%1';").arg(name); //can be done tiny ref ^1,2
+            QString("SELECT jsonText FROM diaryCards WHERE cardName='%1';").arg(name); //can be done tiny ref ^1,2 v,1
 
     QSqlQuery descriptionQuery = executeRequest(descriptionRequest);
 
@@ -445,7 +445,7 @@ QString SQLBase::getCardJSON(const QString& name) const
 int SQLBase::getCardId(const QString& name) const
 {
     QString descriptionRequest =
-            QString("SELECT jsonText FROM diaryCards WHERE cardName='%1';").arg(name); //can be done tiny ref ^1,2
+            QString("SELECT diaryCardId FROM diaryCards WHERE cardName='%1';").arg(name);
 
     QSqlQuery descriptionQuery = executeRequest(descriptionRequest);
 
@@ -454,7 +454,6 @@ int SQLBase::getCardId(const QString& name) const
 
     return -1;
 }
-
 
 
 int SQLBase::getTotalCards() const
