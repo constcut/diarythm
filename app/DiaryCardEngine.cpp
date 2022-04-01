@@ -520,3 +520,14 @@ void DiaryCardEngine::setRangeFieldToGroup(const QString& groupName, const QStri
     _groups[groupName].fields[fieldName].rangeMin = rangeMin;
     _groups[groupName].fields[fieldName].rangeMin = rangeMax;
 }
+
+
+void DiaryCardEngine::removeGroupField(const QString& groupName, const QString& fieldName)
+{
+    if (_groups.count(groupName) == 0) {
+        qDebug() << "Failed to find group " << groupName << " to remove field " << fieldName;
+        return;
+    }
+
+    _groups.erase(fieldName);
+}

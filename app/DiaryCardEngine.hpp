@@ -112,6 +112,8 @@ namespace diaryth {
         Q_INVOKABLE void setRangeFieldToGroup(const QString& groupName, const QString& fieldName,
                                               int rangeMin, int rangeMax);
 
+        Q_INVOKABLE void removeGroupField(const QString& groupName, const QString& fieldName);
+
     private:
 
         void clear();
