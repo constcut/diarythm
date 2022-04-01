@@ -106,6 +106,9 @@ namespace diaryth {
         std::unordered_map<QString, CardEnum> _enums;
         std::unordered_map<QString, CardGroup> _groups;
 
+        QString _cardName;
+        QString _cardDescription;
+
     };
 
 }

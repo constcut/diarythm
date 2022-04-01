@@ -17,6 +17,11 @@ void DiaryCardEngine::parseJSON(const QString& json)
 
     auto rootObject = doc.object();
 
+    _cardName = rootObject["name"].toString();
+
+    if (rootObject.contains("description"))
+        _cardDescription = rootObject["descrition"].toString();
+
     if (rootObject.contains("enums") && rootObject["enums"].isArray())
         addEnums(rootObject["enums"].toArray());
 
