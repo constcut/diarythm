@@ -92,6 +92,10 @@ namespace diaryth {
         Q_INVOKABLE int getFieldRangeMax(const QString& group, const QString& field) const;
 
 
+        Q_INVOKABLE void setName(QString name) { _cardName = name; }
+        Q_INVOKABLE void setDescription(QString description) { _cardDescription = description; }
+
+
     private:
 
         void clear();
