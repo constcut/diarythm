@@ -18,7 +18,9 @@
 #include "app/LogHandler.hpp"
 #include "app/Config.hpp"
 #include "app/StretchImage.hpp"
+
 #include "app/SQLBase.hpp"
+#include "app/DiaryCardEngine.hpp"
 
 #ifdef AuralsLegacy
     #include "audio/wave/AudioHandler.hpp"
@@ -137,11 +139,13 @@ int mainInit(int argc, char *argv[])
 
     diaryth::ConfigQML config;
     diaryth::SQLBase sqlBase;
+    diaryth::DiaryCardEngine cardEngine;
     diaryth::Recorder recorder(sqlBase);
 
     engine.rootContext()->setContextProperty("recorder", &recorder);
     engine.rootContext()->setContextProperty("aconfig", &config);
     engine.rootContext()->setContextProperty("sqlBase", &sqlBase);
+    engine.rootContext()->setContextProperty("cardEngine", &cardEngine);
 
     engine.load(QUrl(QStringLiteral("qrc:/qml/main.qml")));
     if (engine.rootObjects().isEmpty())
