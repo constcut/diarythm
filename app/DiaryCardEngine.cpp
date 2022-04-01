@@ -122,6 +122,11 @@ bool DiaryCardEngine::hasRootErros(const QJsonDocument& doc) const
         return true;
     }
 
+    if (rootObject.contains("name") == false) {
+        qDebug() << "Failed to parse: JSON name field not found.";
+        return true;
+    }
+
     return false;
 }
 
