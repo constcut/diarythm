@@ -100,7 +100,8 @@ namespace diaryth {
 
         Q_INVOKABLE void changeEnumDescription(const QString& enumName, const QString& description);
 
-        //Q_INVOKABLE void setEnumValues(const QString& name, values, names, useValues)
+        Q_INVOKABLE void setEnumValues(const QString& name, const QList<int>& values,
+                                       const QStringList& valuesNames, bool showValues);
 
 
         Q_INVOKABLE void addNewGroup(const QString& name);

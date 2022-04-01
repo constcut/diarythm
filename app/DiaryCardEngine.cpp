@@ -208,6 +208,30 @@ void DiaryCardEngine::addEnums(const QJsonArray& enumsArray)
 }
 
 
+void DiaryCardEngine::setEnumValues(const QString& name, const QList<int>& values,
+                                    const QStringList& valuesNames, bool showValues)
+{
+    if (_enums.count(name) == 0) {
+        qDebug() << "Failed to find enum to set values: " << name;
+        return;
+    }
+
+    _enums[name].values = values;
+    _enums[name].valuesNames = valuesNames;
+
+    if (showValues == false)
+        _enums[name].displayNames = valuesNames;
+    else
+    {
+        _enums[name].displayNames.clear();
+
+        for (int i = 0; i < values.size(); ++i)
+            _enums[name].displayNames.append(
+                         QString::number(values[i]) + " " + valuesNames[i]);
+    }
+}
+
+
 
 QStringList DiaryCardEngine::getAllEnumsNames() const
 {
