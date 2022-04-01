@@ -96,7 +96,10 @@ namespace diaryth {
         Q_INVOKABLE void setDescription(const QString& description) { _cardDescription = description; }
 
         Q_INVOKABLE void addNewEnum(const QString& name);
+        Q_INVOKABLE void removeEnum(const QString& name);
+
         Q_INVOKABLE void addNewGroup(const QString& name);
+        Q_INVOKABLE void removeGroup(const QString& name);
 
         Q_INVOKABLE void changeEnumDescription(const QString& enumName, const QString& description);
 

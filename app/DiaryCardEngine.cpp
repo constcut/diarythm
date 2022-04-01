@@ -434,6 +434,12 @@ void DiaryCardEngine::addNewEnum(const QString& name)
 }
 
 
+void DiaryCardEngine::removeEnum(const QString& name)
+{
+    _enums.erase(name);
+}
+
+
 void DiaryCardEngine::addNewGroup(const QString& name)
 {
     if (_groups.count(name)) {
@@ -444,6 +450,12 @@ void DiaryCardEngine::addNewGroup(const QString& name)
     CardGroup cardGroup;
     cardGroup.name = name;
     _groups[name] = cardGroup;
+}
+
+
+void DiaryCardEngine::removeGroup(const QString& name)
+{
+    _groups.erase(name);
 }
 
 
