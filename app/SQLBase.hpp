@@ -13,11 +13,11 @@ namespace diaryth {
         Q_OBJECT
 
     public:
+
         SQLBase();
 
 
         QSqlQuery executeRequest(const QString& requestBody) const;
-
 
 
         Q_INVOKABLE void addAudioRecord(const QString& date, const QString& time, int localId,
@@ -71,8 +71,9 @@ namespace diaryth {
         Q_INVOKABLE QStringList getAllCardsNames() const;
         Q_INVOKABLE int getTotalCards() const;
 
-        Q_INVOKABLE bool checkCardNameExists(QString name) const;
-        Q_INVOKABLE QString getCardDescription(QString name) const;
+        Q_INVOKABLE bool checkCardNameExists(const QString& name) const;
+
+        Q_INVOKABLE QString getCardDescription(const QString& name) const;
         Q_INVOKABLE QString getCardJSON(const QString& name) const;
 
 

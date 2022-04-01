@@ -387,7 +387,7 @@ void SQLBase::editRow(const QString& table, const QString& nameField, const QStr
 
 
 
-bool SQLBase::checkCardNameExists(QString name) const
+bool SQLBase::checkCardNameExists(const QString& name) const
 {
     QString checkRequest =
             QString("SELECT * FROM diaryCards WHERE cardName='%1';").arg(name);
@@ -414,7 +414,7 @@ QStringList SQLBase::getAllCardsNames() const
 }
 
 
-QString SQLBase::getCardDescription(QString name) const
+QString SQLBase::getCardDescription(const QString& name) const
 {
     QString descriptionRequest =
             QString("SELECT cardDescription FROM diaryCards WHERE cardName='%1';").arg(name);
