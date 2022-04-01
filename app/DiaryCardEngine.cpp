@@ -492,3 +492,16 @@ void DiaryCardEngine::setFieldToGroup(const QString& groupName, const QString& f
     _groups[groupName].fields[fieldName].type = fieldType;
 }
 
+
+void DiaryCardEngine::setEnumFieldToGroup(const QString& groupName, const QString& fieldName,
+                                          const QString& enumName)
+{
+    if (_groups.count(groupName) == 0) {
+        qDebug() << "Failed to find group " << groupName << " to add enum field " << fieldName;
+        return;
+    }
+
+    _groups[groupName].fields[fieldName].name = fieldName;
+    _groups[groupName].fields[fieldName].type = "enum";
+    _groups[groupName].fields[fieldName].enumName = enumName;
+}
