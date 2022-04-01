@@ -445,3 +445,25 @@ void DiaryCardEngine::addNewGroup(QString name)
     cardGroup.name = name;
     _groups[name] = cardGroup;
 }
+
+
+void DiaryCardEngine::changeEnumDescription(QString enumName, QString description)
+{
+    if (_enums.count(enumName) == 0) {
+        qDebug() << "Failed to find enum to change description: " << enumName;
+        return;
+    }
+
+    _enums[enumName].description = description;
+}
+
+
+void DiaryCardEngine::changeGroupDescription(QString groupName, QString description)
+{
+    if (_groups.count(groupName) == 0) {
+        qDebug() << "Failed to find group to change description: " << groupName;
+        return;
+    }
+
+    _groups[groupName].description = description;
+}
