@@ -67,12 +67,16 @@ namespace diaryth {
                                                            const QString& tagMask) const;
 
 
-
         Q_INVOKABLE QStringList getAllCardsNames() const;
         Q_INVOKABLE int getTotalCards() const;
 
         Q_INVOKABLE bool checkCardNameExists(QString name) const;
         Q_INVOKABLE QString getCardDescription(QString name) const;
+
+
+        Q_INVOKABLE int getCardRecordsMaxLocalId(const QString& date) const;
+        Q_INVOKABLE int getTotalCardRecords() const;
+
 
 
     private:

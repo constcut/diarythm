@@ -435,4 +435,14 @@ int SQLBase::getTotalCards() const
 
 
 
+int SQLBase::getCardRecordsMaxLocalId(const QString& date) const
+{
+    return getMaxLocalId("diaryCardRecords ", date);
+}
+
+
+int SQLBase::getTotalCardRecords() const
+{
+    return getTotalRows("diaryCardRecords", "diaryRecordId ");
+}
 
