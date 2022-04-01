@@ -32,6 +32,7 @@ SOURCES += \
     app/AndroidTools.cpp \
     app/Config.cpp \
     app/DiaryCardEngine.cpp \
+    app/DiaryCardExport.cpp \
     app/Init.cpp \
     app/LogHandler.cpp \
     app/SQLBase.cpp \
@@ -171,6 +172,7 @@ HEADERS += \
     app/Clipboard.hpp \
     app/Config.hpp \
     app/DiaryCardEngine.hpp \
+    app/DiaryCardExport.hpp \
     app/Init.hpp \
     app/LogHandler.hpp \
     app/SQLBase.hpp \
