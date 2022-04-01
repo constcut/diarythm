@@ -70,6 +70,21 @@ void SQLBase::createTablesIfNeeded() const {
 
     //Если разрешить редактирование текста, возможно стоит завести таблицу, где хранить несколько последних версий
     executeRequest(textTableCreate); //QSqlQuery textTableQuery =
+
+
+    const QString cardRecordsTableCreate("CREATE TABLE IF NOT EXISTS diaryCardRecords ("
+                           "diaryRecordId integer primary key autoincrement NOT NULL,"
+                           "datePart text NOT NULL,"
+                           "timePart text NOT NULL,"
+                           "localId integer NOT NULL,"
+                           "cardId integer NOT NULL"
+                           "cardDate text NOT NULL,"
+                           "groupName text NOT NULL,"
+                           "fieldName text NOT NULL,"
+                           "fieldValue text);");
+
+    executeRequest(cardRecordsTableCreate);
+
 }
 
 
