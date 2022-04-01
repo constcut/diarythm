@@ -48,7 +48,7 @@ namespace diaryth {
         std::unordered_map<QString, CardField> fields;
     };
 
-
+    //TODO добавить новый тип names для записи нескольких значений, например список лекарств
 
     class DiaryCardEngine : public QObject
     {
@@ -90,6 +90,8 @@ namespace diaryth {
 
 
     private:
+
+        void clear();
 
         bool isItGroupDay(const QDate& date, const QString& name) const;
 

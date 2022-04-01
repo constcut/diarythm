@@ -15,6 +15,7 @@ void DiaryCardEngine::parseJSON(const QString& json)
     if (hasRootErros(doc))
         return;
 
+    clear();
     auto rootObject = doc.object();
 
     _cardName = rootObject["name"].toString();
@@ -28,6 +29,16 @@ void DiaryCardEngine::parseJSON(const QString& json)
     addGroups(rootObject["groups"].toArray());
 
     qDebug() << "Diary card json loaded";
+}
+
+
+void DiaryCardEngine::clear()
+{
+    _cardName = "";
+    _cardDescription = "";
+
+    _enums.clear();
+    _groups.clear();
 }
 
 
