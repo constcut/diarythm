@@ -65,7 +65,7 @@ namespace diaryth {
                                                            const QString& tagMask) const;
 
 
-        //Check card with name exists
+        Q_INVOKABLE bool checkCardNameExists(QString name) const;
 
 
     private:

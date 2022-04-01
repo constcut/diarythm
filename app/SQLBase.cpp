@@ -387,3 +387,16 @@ void SQLBase::editRow(const QString& table, const QString& nameField, const QStr
 
 
 
+bool SQLBase::checkCardNameExists(QString name) const
+{
+    QString checkRequest =
+            QString("SELECT * FROM diaryCards WHERE cardName='%1';").arg(name);
+
+    QSqlQuery checkQuery = executeRequest(checkRequest);
+
+    if (checkQuery.next())
+        return true;
+
+    return false;
+}
+
