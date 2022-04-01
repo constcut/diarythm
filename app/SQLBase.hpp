@@ -73,6 +73,7 @@ namespace diaryth {
 
         Q_INVOKABLE bool checkCardNameExists(const QString& name) const;
 
+        Q_INVOKABLE int getCardId(const QString& name) const;
         Q_INVOKABLE QString getCardDescription(const QString& name) const;
         Q_INVOKABLE QString getCardJSON(const QString& name) const;
 
