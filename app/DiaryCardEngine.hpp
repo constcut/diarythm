@@ -59,6 +59,9 @@ namespace diaryth {
 
         Q_INVOKABLE void parseJSON(const QString& json);
 
+        Q_INVOKABLE QString getCardName() const { return _cardName; }
+        Q_INVOKABLE QString getCardDescription() const { return _cardDescription; }
+
         Q_INVOKABLE QStringList getAllEnumsNames() const;
         Q_INVOKABLE QString getEnumDescription(const QString& name) const;
 
@@ -84,6 +87,7 @@ namespace diaryth {
 
         Q_INVOKABLE int getFieldRangeMin(const QString& group, const QString& field) const;
         Q_INVOKABLE int getFieldRangeMax(const QString& group, const QString& field) const;
+
 
     private:
 
