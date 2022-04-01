@@ -98,13 +98,20 @@ namespace diaryth {
         Q_INVOKABLE void addNewEnum(const QString& name);
         Q_INVOKABLE void removeEnum(const QString& name);
 
+        Q_INVOKABLE void changeEnumDescription(const QString& enumName, const QString& description);
+
+        //Q_INVOKABLE void setEnumValues(const QString& name, values, names, useValues)
+
+
         Q_INVOKABLE void addNewGroup(const QString& name);
         Q_INVOKABLE void removeGroup(const QString& name);
 
-        Q_INVOKABLE void changeEnumDescription(const QString& enumName, const QString& description);
-
         Q_INVOKABLE void changeGroupDescription(const QString& groupName, const QString& description);
         Q_INVOKABLE void changeGroupMandatory(const QString& groupName, bool value);
+
+        //setMonthDays
+        //setWeekDays
+        //setEveryday - подумать над этим полем, может его сделать bool
 
         Q_INVOKABLE void setFieldToGroup(const QString& groupName, const QString& fieldName,
                                          const QString& fieldType);
