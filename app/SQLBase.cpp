@@ -426,3 +426,13 @@ QString SQLBase::getCardDescription(QString name) const
 
     return {};
 }
+
+
+int SQLBase::getTotalCards() const
+{
+    return getTotalRows("cardName", "diaryCards");
+}
+
+
+
+

@@ -17,6 +17,7 @@ namespace diaryth {
 
         QSqlQuery executeRequest(const QString& requestBody) const;
 
+
         Q_INVOKABLE void addAudioRecord(const QString& date, const QString& time, int localId,
                                         const QString& name, quint64 durationMs) const;
 
@@ -39,6 +40,7 @@ namespace diaryth {
 
         Q_INVOKABLE QVariantList findRecordsByTagMaskAndDate(const QString& date,
                                                              const QString& tagMask) const;
+
 
 
         Q_INVOKABLE void addText(const QString& name, const QString& text,
@@ -65,8 +67,11 @@ namespace diaryth {
                                                            const QString& tagMask) const;
 
 
-        Q_INVOKABLE bool checkCardNameExists(QString name) const;
+
         Q_INVOKABLE QStringList getAllCardsNames() const;
+        Q_INVOKABLE int getTotalCards() const;
+
+        Q_INVOKABLE bool checkCardNameExists(QString name) const;
         Q_INVOKABLE QString getCardDescription(QString name) const;
 
 
