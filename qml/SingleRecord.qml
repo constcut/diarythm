@@ -49,6 +49,13 @@ Item {
                 recorder.playFile(singleRecordItem.date, singleRecordItem.localId)
             }
         }
+
+        Button {
+            text: "Back to calendar"
+            onClicked: {
+                mainWindow.requestCalendar()
+            }
+        }
     }
 
 
