@@ -26,7 +26,7 @@ namespace diaryth {
     struct CardField
     {
         QString name;
-        QString type;
+        QString type = "bool";
         QString description;
 
         QString enumName;

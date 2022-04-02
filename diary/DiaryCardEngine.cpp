@@ -96,7 +96,9 @@ void DiaryCardEngine::addGroups(const QJsonArray& groupsArray)
 void DiaryCardEngine::fillFieldProperties(CardField& cardField, const QJsonObject& fieldObject) const
 {
     cardField.name = fieldObject["name"].toString();
-    cardField.type = fieldObject["type"].toString();
+
+    if (fieldObject.contains("type"))
+        cardField.type = fieldObject["type"].toString();
 
     if (fieldObject.contains("description"))
         cardField.description = fieldObject["description"].toString();
@@ -185,7 +187,7 @@ void DiaryCardEngine::addEnums(const QJsonArray& enumsArray)
 
         if (valuesArray.size() != vNamesArray.size())
         {
-            qDebug() << "Parse error: values and names arrays has different sizes "
+            qDebug() << "Parse error: enum values and names arrays has different sizes "
                      << valuesArray.size() << " and " << vNamesArray.size();
             continue;
         }
