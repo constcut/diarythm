@@ -19,8 +19,8 @@
 #include "app/Config.hpp"
 #include "app/StretchImage.hpp"
 
-#include "app/SQLBase.hpp"
-#include "app/DiaryCardEngine.hpp"
+#include "diary/SQLBase.hpp"
+#include "diary/DiaryCardEngine.hpp"
 
 #ifdef AuralsLegacy
     #include "audio/wave/AudioHandler.hpp"
