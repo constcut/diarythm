@@ -1,5 +1,5 @@
-#ifndef DIARYCARDEXPORT_HPP
-#define DIARYCARDEXPORT_HPP
+#ifndef CARDREPORT_H
+#define CARDREPORT_H
 
 #include <QObject>
 
@@ -10,7 +10,7 @@
 namespace diaryth {
 
 
-    class DiaryCardExport : public QObject
+    class CardReport : public QObject
     {
         Q_OBJECT
 
@@ -33,4 +33,4 @@ namespace diaryth {
 
 
 
-#endif // DIARYCARDEXPORT_HPP
+#endif // CARDREPORT_H
