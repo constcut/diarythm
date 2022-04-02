@@ -1,0 +1,26 @@
+{
+    "groups" : [
+        {
+            "name" : "Strong intention",
+
+            "fields" : [
+                {
+                    "name" : "Sucide",
+                    "type" : "range",
+                    "rangeMax" : 5
+                },
+                {
+                    "name" : "Selfharm",
+                    "type" : "range",
+                    "rangeMax" : 5
+                },
+                {
+                    "name" : "Drugs",
+                    "type" : "range",
+                    "rangeMax" : 5
+                }
+            ]
+
+        }
+    ]
+}
