@@ -73,7 +73,7 @@ Item {
 
             ComboBox {
                 id: groupsNames
-                implicitWidth: 200
+                implicitWidth: 250
 
                 onCurrentTextChanged: {
                     diaryCardItem.updateFields()
@@ -86,6 +86,7 @@ Item {
 
             ComboBox {
                 id: fieldsNames
+                implicitWidth: 300
             }
 
             Text {
@@ -131,7 +132,7 @@ Item {
         }
 
 
-        RowLayout
+        ColumnLayout //RowLayout
         {
 
             Repeater
