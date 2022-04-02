@@ -129,8 +129,8 @@ int mainInit(int argc, char *argv[])
             qDebug() << "Failed to create records directory";
     }
 
-
-    QTextCodec::setCodecForLocale(QTextCodec::codecForName("Windows-1251")); //Настройки //KOI8-R //ISO 8859-5 //UTF-8 //Windows-1251
+    //Настройки //KOI8-R //ISO 8859-5 //UTF-8 //Windows-1251
+    QTextCodec::setCodecForLocale(QTextCodec::codecForName("Windows-1251"));
     QQmlApplicationEngine engine;
 
 #ifdef AuralsLegacy
@@ -143,8 +143,9 @@ int mainInit(int argc, char *argv[])
     diaryth::DiaryCardEngine cardEngine;
     diaryth::Recorder recorder(sqlBase);
 
-    cardEngine.readFromFile(":/cards/BPD.json");
+    //cardEngine.readFromFile(":/cards/BPD.json");
     //cardEngine.readFromFile(":/cards/DBT.json");
+    cardEngine.readFromFile(":/cards/DBT_skills.json");
 
     engine.rootContext()->setContextProperty("recorder", &recorder);
     engine.rootContext()->setContextProperty("aconfig", &config);
