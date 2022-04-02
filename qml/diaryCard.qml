@@ -81,6 +81,8 @@ Item {
                     width: textInfo.width + 10 + textField.width
                     height: 40
 
+                    //Compnent on completed to avoid
+
                     Text
                     {
                         y: 10
@@ -93,6 +95,8 @@ Item {
                         id: textField
                         x: textInfo.width + 10
                         placeholderText: fieldsRepeater.fieldsNames[index]
+
+                        enabled: cardEngine.getFieldType(groupsNames.currentText, fieldsRepeater.fieldsNames[index]) === "text"
                     }
                 }
 
