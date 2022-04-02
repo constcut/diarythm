@@ -57,6 +57,8 @@ namespace diaryth {
 
         DiaryCardEngine() = default;
 
+        Q_INVOKABLE void readFromFile(const QString& filename);
+
         Q_INVOKABLE void parseJSON(const QString& json);
         Q_INVOKABLE void mergeJSON(const QString& json);
 

@@ -3,9 +3,20 @@
 #include <QJsonDocument>
 #include <QDebug>
 #include <QDate>
+#include <QFile>
 
 
 using namespace diaryth;
+
+
+void DiaryCardEngine::readFromFile(const QString& filename)
+{
+    QFile file(filename);
+    file.open(QFile::ReadOnly | QFile::Text);
+    QTextStream in(&file);
+    const QString json = in.readAll();
+    parseJSON(json);
+}
 
 
 void DiaryCardEngine::parseJSON(const QString& json)
