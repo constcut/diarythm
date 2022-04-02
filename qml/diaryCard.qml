@@ -10,8 +10,9 @@ Item {
 
     function updateFields()
     {
-        fieldsNames.model = cardEngine.getAllGroupFields(groupsNames.currentText)
         var allFields = cardEngine.getAllGroupFields(groupsNames.currentText)
+        fieldsRepeater.model = 0
+        fieldsNames.model = allFields
         fieldsRepeater.fieldsNames = allFields
         fieldsRepeater.model = allFields.length
     }
