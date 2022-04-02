@@ -43,6 +43,27 @@
                     "rangeMax" : 5
                 }
             ]
+        },
+        {
+            "name" : "Drugs-meds",
+            "fields" : [
+                {
+                    "name": "alcohol",
+                    "type": "text"
+                },
+                {
+                    "name": "drugs",
+                    "type": "text"
+                },
+                {
+                    "name": "recipe meds",
+                    "type": "text"
+                },
+                {
+                    "name": "no recipe meds",
+                    "type": "text"
+                }
+            ]
         }
     ]
 }
