@@ -102,13 +102,18 @@ Item {
                         var groupName = groupsNames.currentText
 
                         var fieldType = cardEngine.getFieldType(groupName, fieldName)
+
+                        textInfo.text = fieldName
+
                         textField.visible = (fieldType === "text") || (fieldType === "int") || (fieldType === "real")
+                        comboField.visible = (fieldType === "range") || (fieldType === "enum")
+                        checkField.visible = fieldType === "bool"
 
                         if (textField.visible)
                             textField.placeholderText = fieldName
-                        textInfo.text = fieldName
 
-                        comboField.visible = (fieldType === "range") || (fieldType === "enum")
+                        if (checkField.visible)
+                            checkField.text = fieldName
 
                         if (fieldType === "range")
                         {
@@ -158,6 +163,10 @@ Item {
                     }
                     ComboBox {
                         id: comboField
+                        x: textInfo.width + 10
+                    }
+                    CheckBox {
+                        id: checkField
                         x: textInfo.width + 10
                     }
                 }
