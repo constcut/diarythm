@@ -60,20 +60,35 @@ Item {
         RowLayout
         {
 
-            Repeater {
+            Repeater
+            {
                 id: fieldsRepeater
 
                 property var fieldsNames: []
 
-                TextField {
+                Rectangle
+                {
+                    width: textInfo.width + 10 + textField.width
+                    height: 40
 
-                    //Layout.column: index
-                    placeholderText: fieldsRepeater.fieldsNames[index]
+                    Text
+                    {
+                        y: 10
+                        id: textInfo
+                        text: fieldsRepeater.fieldsNames[index]
+                    }
+
+                    TextField
+                    {
+                        id: textField
+                        x: textInfo.width + 10
+                        placeholderText: fieldsRepeater.fieldsNames[index]
+                    }
                 }
 
-            }
+            } //Repater
 
-        }
+        } //RowLayout
     }
 
 
