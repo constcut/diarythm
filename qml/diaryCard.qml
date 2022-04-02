@@ -100,9 +100,19 @@ Item {
             }
             RoundButton {
                 text : "<"
+                onClicked: {
+                    var theDay = calendar.selectedDate
+                    theDay.setDate(theDay.getDate() - 1);
+                    calendar.selectedDate = theDay
+                }
             }
             RoundButton {
                 text: ">"
+                onClicked: {
+                    var theDay = calendar.selectedDate
+                    theDay.setDate(theDay.getDate() + 1);
+                    calendar.selectedDate = theDay
+                }
             }
 
             Button {
