@@ -8,7 +8,7 @@
 #include <QTime>
 #include <QDebug>
 
-#include "app/SQLBase.hpp"
+#include "diary/SQLBase.hpp"
 #include "audio/features/FeatureExtractor.hpp"
 
 
