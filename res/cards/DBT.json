@@ -5,7 +5,7 @@
         {
             "name" : "SkillsEnum",
             "values" : [0,1,2,3,4,5,6,7],
-            "valuesNames" : ["None", "Thought, didn't want", "Thought, wanted", "Failed", "Didn't help", "Did help", "Auto no help", "Auto help"],
+            "names" : ["None", "Thought, didn't want", "Thought, wanted", "Failed", "Didn't help", "Did help", "Auto no help", "Auto help"],
             "showValues" : true 
         }
     ],
