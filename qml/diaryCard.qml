@@ -17,7 +17,8 @@ Item {
         fieldsNames.model = cardEngine.getAllGroupFields(groupsNames.currentText)
 
         var allFields = cardEngine.getAllGroupFields(groupsNames.currentText)
-        console.log("Test fields sequence ", allFields)
+        fieldsRepeater.fieldsNames = allFields
+        fieldsRepeater.model = allFields.length
     }
 
     ColumnLayout
@@ -54,6 +55,24 @@ Item {
             ComboBox {
                 id: fieldsNames
             }
+        }
+
+        RowLayout
+        {
+
+            Repeater {
+                id: fieldsRepeater
+
+                property var fieldsNames: []
+
+                TextField {
+
+                    //Layout.column: index
+                    placeholderText: fieldsRepeater.fieldsNames[index]
+                }
+
+            }
+
         }
     }
 
