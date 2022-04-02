@@ -121,6 +121,19 @@
                     "rangeMax" : 5
                 }
             ]
+        },
+        {
+            "name" : "TEST",
+            "fields" : [
+                {
+                    "name" : "int",
+                    "type" : "int"
+                }, 
+                {
+                    "name" : "real",
+                    "type" : "real"
+                }
+            ]
         }
     ]
 }
