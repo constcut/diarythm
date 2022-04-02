@@ -107,7 +107,8 @@ Item {
 
                     //Compnent on completed to avoid
 
-                    Component.onCompleted: {
+                    Component.onCompleted:
+                    {
 
                         var fieldName = fieldsRepeater.fieldsNames[index]
                         var groupName = groupsNames.currentText
@@ -147,24 +148,13 @@ Item {
 
                         if (fieldType === "enum")
                         {
-
                             var enumName = cardEngine.getFieldEnum(groupName, fieldName)
                             var displayNames = cardEngine.getEnumDisplayNames(enumName)
-
-                            var allEnums = cardEngine.getAllEnumsNames()
-
-                            console.log("ENUM type", enumName)
-                            console.log(displayNames)
-                            console.log("All enums ", allEnums)
-
-
-
                             comboField.model = displayNames
                         }
 
-                        //bool - checkbox
-                        //range, enum - ComboBox
-                    }
+                    } //Component.onCompleted
+
 
                     Text
                     {
