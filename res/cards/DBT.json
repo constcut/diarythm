@@ -90,6 +90,37 @@
                     "enumName" : "SkillsEnum"
                 }
             ]
+        },
+        {
+            "name" : "Emotions",
+
+            "fields" : [
+                {
+                    "name" : "Pain",
+                    "type" : "range",
+                    "rangeMax" : 5
+                },
+                {
+                    "name" : "Sadness",
+                    "type" : "range",
+                    "rangeMax" : 5
+                },
+                {
+                    "name" : "Shame",
+                    "type" : "range",
+                    "rangeMax" : 5
+                },
+                {
+                    "name" : "Fear",
+                    "type" : "range",
+                    "rangeMax" : 5
+                },
+                {
+                    "name" : "Anger",
+                    "type" : "range",
+                    "rangeMax" : 5
+                }
+            ]
         }
     ]
 }
