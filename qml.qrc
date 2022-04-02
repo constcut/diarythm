@@ -14,5 +14,6 @@
         <file>qml/SingleRecord.qml</file>
         <file>qml/text.qml</file>
         <file>qml/calendar.qml</file>
+        <file>qml/diaryCard.qml</file>
     </qresource>
 </RCC>

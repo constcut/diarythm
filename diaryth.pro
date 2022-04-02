@@ -201,6 +201,7 @@ DISTFILES += \
     qml/SingleRecord.qml \
     qml/calendar.qml \
     qml/config.qml \
+    qml/diaryCard.qml \
     qml/patternInput.qml \
     qml/recorder.qml \
     qml/text.qml \
