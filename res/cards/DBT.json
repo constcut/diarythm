@@ -22,7 +22,27 @@
                     "rangeMax" : 5
                 }
             ]
+        },
+        {
+            "name" : "Rates for day",
 
+            "fields" : [
+                {
+                    "name": "Drained",
+                    "type" : "range",
+                    "rangeMax" : 5
+                },
+                {
+                    "name": "Tiered",
+                    "type" : "range",
+                    "rangeMax" : 5
+                },
+                {
+                    "name": "Joy",
+                    "type" : "range",
+                    "rangeMax" : 5
+                }
+            ]
         }
     ]
 }
