@@ -171,7 +171,6 @@ Item {
                         if (checkField.visible) {
                             checkField.text = fieldName
                             textInfo.text = ""
-                            //toolTip.visible = checkField.hovered
                         }
 
                         if (fieldType === "int")
@@ -227,7 +226,7 @@ Item {
                         ToolTip {
                            id: toolTip
                            visible: checkField.hovered && text !== ""
-                           text: "TEST"
+                           text: ""
                         }
                     }
                 }
