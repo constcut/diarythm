@@ -145,7 +145,6 @@ Item {
                     width: textInfo.width + 10 + textField.width
                     height: 40
 
-                    //Compnent on completed to avoid
 
                     Component.onCompleted:
                     {
@@ -161,11 +160,15 @@ Item {
                         comboField.visible = (fieldType === "range") || (fieldType === "enum")
                         checkField.visible = fieldType === "bool"
 
-                        if (textField.visible)
+                        if (textField.visible) {
                             textField.placeholderText = fieldName
+                            textInfo.text = ""
+                        }
 
-                        if (checkField.visible)
+                        if (checkField.visible) {
                             checkField.text = fieldName
+                            textInfo.text = ""
+                        }
 
                         if (fieldType === "int")
                             textField.validator = intValidator
