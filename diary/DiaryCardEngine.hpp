@@ -58,6 +58,7 @@ namespace diaryth {
         DiaryCardEngine() = default;
 
         Q_INVOKABLE void readFromFile(const QString& filename);
+        Q_INVOKABLE void mergeFromFile(const QString& filename);
 
         Q_INVOKABLE void parseJSON(const QString& json);
         Q_INVOKABLE void mergeJSON(const QString& json);
@@ -146,6 +147,8 @@ namespace diaryth {
         bool hasRootErros(const QJsonDocument& doc) const;
 
         bool isFieldMissing(const QString& group, const QString& field) const;
+
+        QString readTextFile(const QString& filename);
 
 
         std::unordered_map<QString, CardEnum> _enums;

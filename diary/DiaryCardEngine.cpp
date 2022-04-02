@@ -11,11 +11,22 @@ using namespace diaryth;
 
 void DiaryCardEngine::readFromFile(const QString& filename)
 {
+    parseJSON(readTextFile(filename));
+}
+
+
+void DiaryCardEngine::mergeFromFile(const QString& filename)
+{
+    mergeJSON(readTextFile(filename));
+}
+
+
+QString DiaryCardEngine::readTextFile(const QString& filename)
+{
     QFile file(filename);
     file.open(QFile::ReadOnly | QFile::Text);
     QTextStream in(&file);
-    const QString json = in.readAll();
-    parseJSON(json);
+    return in.readAll();
 }
 
 
