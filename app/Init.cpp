@@ -144,8 +144,9 @@ int mainInit(int argc, char *argv[])
     diaryth::Recorder recorder(sqlBase);
 
     //cardEngine.readFromFile(":/cards/BPD.json");
-    //cardEngine.readFromFile(":/cards/DBT.json");
-    cardEngine.readFromFile(":/cards/DBT_skills.json");
+    cardEngine.readFromFile(":/cards/DBT.json");
+    cardEngine.mergeFromFile(":/cards/DBT_skills.json");
+    //cardEngine.readFromFile(":/cards/DBT_skills.json");
 
     engine.rootContext()->setContextProperty("recorder", &recorder);
     engine.rootContext()->setContextProperty("aconfig", &config);
