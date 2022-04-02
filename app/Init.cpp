@@ -96,6 +96,7 @@ int mainInit(int argc, char *argv[])
     app.setOrganizationDomain("accumerite.ru");
 
     Q_INIT_RESOURCE(fonts);
+    Q_INIT_RESOURCE(cards);
 
     qDebug() << "Current working path "<<QDir::currentPath();
     int fontId = QFontDatabase::addApplicationFont(":/fonts/prefont.ttf");
@@ -141,6 +142,8 @@ int mainInit(int argc, char *argv[])
     diaryth::SQLBase sqlBase;
     diaryth::DiaryCardEngine cardEngine;
     diaryth::Recorder recorder(sqlBase);
+
+    cardEngine.readFromFile(":/cards/DBT.json");
 
     engine.rootContext()->setContextProperty("recorder", &recorder);
     engine.rootContext()->setContextProperty("aconfig", &config);
