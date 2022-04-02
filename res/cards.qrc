@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>cards/DBT.json</file>
+    </qresource>
+</RCC>

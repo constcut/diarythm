@@ -155,6 +155,7 @@ else
 
 
 RESOURCES += qml.qrc \
+    res/cards.qrc \
     res/fonts.qrc
 
 
