@@ -8,17 +8,23 @@ Item {
 
     id: diaryCardItem
 
+    function updateFields()
+    {
+        fieldsNames.model = cardEngine.getAllGroupFields(groupsNames.currentText)
+        var allFields = cardEngine.getAllGroupFields(groupsNames.currentText)
+        fieldsRepeater.fieldsNames = allFields
+        fieldsRepeater.model = allFields.length
+    }
+
 
     Component.onCompleted:
     {
         cardName.text = cardEngine.getCardName()
         cardDescription.text =  cardEngine.getCardDescription()
         groupsNames.model = cardEngine.getAllGroupsNames()
-        fieldsNames.model = cardEngine.getAllGroupFields(groupsNames.currentText)
+        groupsNames.currentIndex = 0
 
-        var allFields = cardEngine.getAllGroupFields(groupsNames.currentText)
-        fieldsRepeater.fieldsNames = allFields
-        fieldsRepeater.model = allFields.length
+        updateFields()
     }
 
     ColumnLayout
@@ -46,6 +52,10 @@ Item {
             ComboBox {
                 id: groupsNames
                 implicitWidth: 200
+
+                onCurrentTextChanged: {
+                    diaryCardItem.updateFields()
+                }
             }
 
             Text {
