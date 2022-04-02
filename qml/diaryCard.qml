@@ -11,7 +11,50 @@ Item {
 
     Component.onCompleted:
     {
+        cardName.text = cardEngine.getCardName()
+        cardDescription.text =  cardEngine.getCardDescription()
+        groupsNames.model = cardEngine.getAllGroupsNames()
+        fieldsNames.model = cardEngine.getAllGroupFields(groupsNames.currentText)
 
+        var allFields = cardEngine.getAllGroupFields(groupsNames.currentText)
+        console.log("Test fields sequence ", allFields)
+    }
+
+    ColumnLayout
+    {
+        spacing: 10
+        y: 40
+        x: 40
+
+        RowLayout
+        {
+            spacing: 10
+
+            Text {
+                id: cardName
+            }
+
+            Text {
+                id: cardDescription
+            }
+
+            Text {
+                text: "Group: "
+            }
+
+            ComboBox {
+                id: groupsNames
+                implicitWidth: 200
+            }
+
+            Text {
+                text: "Field: "
+            }
+
+            ComboBox {
+                id: fieldsNames
+            }
+        }
     }
 
 
