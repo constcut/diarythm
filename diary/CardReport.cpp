@@ -1,4 +1,4 @@
-#include "DiaryCardExport.hpp"
+#include "CardReport.hpp"
 
 using namespace diaryth;
 

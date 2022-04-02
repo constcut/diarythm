@@ -3,8 +3,8 @@
 
 #include <QObject>
 
-#include "app/SQLBase.hpp"
-#include "app/DiaryCardEngine.hpp"
+#include "diary/SQLBase.hpp"
+#include "diary/DiaryCardEngine.hpp"
 
 
 namespace diaryth {
@@ -15,8 +15,8 @@ namespace diaryth {
         Q_OBJECT
 
     public:
-        explicit DiaryCardExport(const SQLBase& database,
-                                 const DiaryCardEngine& cardEngine);
+        explicit CardReport(const SQLBase& database,
+                            const DiaryCardEngine& cardEngine);
 
 
         //exportByDate
