@@ -105,10 +105,8 @@ Item {
                         textField.visible = (fieldType === "text") || (fieldType === "int") || (fieldType === "real")
 
                         if (textField.visible)
-                        {
-                            textInfo.text = fieldName
                             textField.placeholderText = fieldName
-                        }
+                        textInfo.text = fieldName
 
                         comboField.visible = (fieldType === "range") || (fieldType === "enum")
 
@@ -123,6 +121,23 @@ Item {
                                 rangeList.push(i)
 
                             comboField.model = rangeList
+                        }
+
+                        if (fieldType === "enum")
+                        {
+
+                            var enumName = cardEngine.getFieldEnum(groupName, fieldName)
+                            var displayNames = cardEngine.getEnumDisplayNames(enumName)
+
+                            var allEnums = cardEngine.getAllEnumsNames()
+
+                            console.log("ENUM type", enumName)
+                            console.log(displayNames)
+                            console.log("All enums ", allEnums)
+
+
+
+                            comboField.model = displayNames
                         }
 
                         //bool - checkbox
