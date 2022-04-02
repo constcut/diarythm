@@ -143,7 +143,8 @@ int mainInit(int argc, char *argv[])
     diaryth::DiaryCardEngine cardEngine;
     diaryth::Recorder recorder(sqlBase);
 
-    cardEngine.readFromFile(":/cards/DBT.json");
+    cardEngine.readFromFile(":/cards/BPD.json");
+    //cardEngine.readFromFile(":/cards/DBT.json");
 
     engine.rootContext()->setContextProperty("recorder", &recorder);
     engine.rootContext()->setContextProperty("aconfig", &config);
