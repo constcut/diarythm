@@ -1,21 +1,23 @@
 {
+    "name" : "DBT",
+
     "groups" : [
         {
-            "name" : "Сильное побуждение",
+            "name" : "Strong intention",
 
             "fields" : [
                 {
-                    "name" : "Суицид",
+                    "name" : "Sucide",
                     "type" : "range",
                     "rangeMax" : 5
                 },
                 {
-                    "name" : "Самоповреждение",
+                    "name" : "Selfharm",
                     "type" : "range",
                     "rangeMax" : 5
                 },
                 {
-                    "name" : "К приему веществ",
+                    "name" : "Drugs",
                     "type" : "range",
                     "rangeMax" : 5
                 }
