@@ -86,6 +86,10 @@ Item {
             id: intValidator
         }
 
+        DoubleValidator {
+            id: realValidator
+        }
+
 
         RowLayout
         {
@@ -126,7 +130,7 @@ Item {
                             textField.validator = intValidator
 
                         if (fieldType === "real")
-                            textField.inputMethodHints = Qt.ImhFormattedNumbersOnly
+                            textField.validator = realValidator
 
                         if (fieldType === "range")
                         {
