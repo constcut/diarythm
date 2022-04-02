@@ -81,6 +81,12 @@ Item {
             }
         }
 
+
+        IntValidator {
+            id: intValidator
+        }
+
+
         RowLayout
         {
 
@@ -115,6 +121,12 @@ Item {
 
                         if (checkField.visible)
                             checkField.text = fieldName
+
+                        if (fieldType === "int")
+                            textField.validator = intValidator
+
+                        if (fieldType === "real")
+                            textField.inputMethodHints = Qt.ImhFormattedNumbersOnly
 
                         if (fieldType === "range")
                         {
