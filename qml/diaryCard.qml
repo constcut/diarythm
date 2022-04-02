@@ -22,7 +22,6 @@ Item {
         cardName.text = cardEngine.getCardName()
         cardDescription.text =  cardEngine.getCardDescription()
         groupsNames.model = cardEngine.getAllGroupsNames()
-        groupsNames.currentIndex = 0
 
         updateFields()
     }
@@ -65,6 +64,20 @@ Item {
             ComboBox {
                 id: fieldsNames
             }
+
+            Text {
+                text: "Date: "
+            }
+            Text {
+                id: dateText
+            }
+            RoundButton {
+                text: ".."
+            }
+            Button {
+                text: "Add values"
+                //Add only not empty, maybe use localId for the same group of fields edited once
+            }
         }
 
         RowLayout
@@ -83,20 +96,54 @@ Item {
 
                     //Compnent on completed to avoid
 
+                    Component.onCompleted: {
+
+                        var fieldName = fieldsRepeater.fieldsNames[index]
+                        var groupName = groupsNames.currentText
+
+                        var fieldType = cardEngine.getFieldType(groupName, fieldName)
+                        textField.visible = (fieldType === "text") || (fieldType === "int") || (fieldType === "real")
+
+                        if (textField.visible)
+                        {
+                            textInfo.text = fieldName
+                            textField.placeholderText = fieldName
+                        }
+
+                        comboField.visible = (fieldType === "range") || (fieldType === "enum")
+
+                        if (fieldType === "range")
+                        {
+                            var rangeMin = cardEngine.getFieldRangeMin(groupName, fieldName)
+                            var rangeMax = cardEngine.getFieldRangeMax(groupName, fieldName)
+
+                            var rangeList = []
+
+                            for (var i = rangeMin; i <= rangeMax; ++i)
+                                rangeList.push(i)
+
+                            comboField.model = rangeList
+                        }
+
+                        //bool - checkbox
+                        //range, enum - ComboBox
+                    }
+
                     Text
                     {
                         y: 10
                         id: textInfo
-                        text: fieldsRepeater.fieldsNames[index]
                     }
 
                     TextField
                     {
                         id: textField
                         x: textInfo.width + 10
-                        placeholderText: fieldsRepeater.fieldsNames[index]
 
-                        enabled: cardEngine.getFieldType(groupsNames.currentText, fieldsRepeater.fieldsNames[index]) === "text"
+                    }
+                    ComboBox {
+                        id: comboField
+                        x: textInfo.width + 10
                     }
                 }
 
