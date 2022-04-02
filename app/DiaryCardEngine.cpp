@@ -494,7 +494,7 @@ void DiaryCardEngine::changeEnumDescription(const QString& enumName, const QStri
 }
 
 
-void DiaryCardEngine::changeGroupDescription(const QString& groupName, const QString& description)
+void DiaryCardEngine::setGroupDescription(const QString& groupName, const QString& description)
 {
     if (_groups.count(groupName) == 0) {
         qDebug() << "Failed to find group to change description: " << groupName;
@@ -505,7 +505,7 @@ void DiaryCardEngine::changeGroupDescription(const QString& groupName, const QSt
 }
 
 
-void DiaryCardEngine::changeGroupMandatory(const QString& groupName, bool value)
+void DiaryCardEngine::setGroupMandatory(const QString& groupName, bool value)
 {
     if (_groups.count(groupName) == 0) {
         qDebug() << "Failed to find group to change mandatory status" << groupName;
