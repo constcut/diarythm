@@ -1,0 +1,26 @@
+{
+    "groups" : [
+        {
+            "name" : "Сильное побуждение",
+
+            "fields" : [
+                {
+                    "name" : "Суицид",
+                    "type" : "range",
+                    "rangeMax" : 5
+                },
+                {
+                    "name" : "Самоповреждение",
+                    "type" : "range",
+                    "rangeMax" : 5
+                },
+                {
+                    "name" : "К приему веществ",
+                    "type" : "range",
+                    "rangeMax" : 5
+                }
+            ]
+
+        }
+    ]
+}
