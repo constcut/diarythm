@@ -26,7 +26,7 @@ ApplicationWindow {
             mainWindow.height = 600
         }
 
-        mainLoader.setSource("calendar.qml")
+        mainLoader.setSource("diaryCard.qml") //calendar
     }
 
 
@@ -78,6 +78,10 @@ ApplicationWindow {
         MenuItem {
             text: "Text"
             onTriggered: mainLoader.setSource("text.qml")
+        }
+        MenuItem {
+            text: "Diary card"
+            onTriggered: mainLoader.setSource("diaryCard.qml")
         }
         MenuItem {
             text: "Calendar"
