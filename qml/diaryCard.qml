@@ -154,8 +154,10 @@ Item {
                         var groupName = groupsNames.currentText
 
                         var fieldType = cardEngine.getFieldType(groupName, fieldName)
+                        var fieldDescription = cardEngine.getFieldDescription(groupName, fieldName)
 
                         textInfo.text = fieldName
+                        toolTip.text = fieldDescription
 
                         textField.visible = (fieldType === "text") || (fieldType === "int") || (fieldType === "real")
                         comboField.visible = (fieldType === "range") || (fieldType === "enum")
@@ -169,6 +171,7 @@ Item {
                         if (checkField.visible) {
                             checkField.text = fieldName
                             textInfo.text = ""
+                            //toolTip.visible = checkField.hovered
                         }
 
                         if (fieldType === "int")
@@ -200,6 +203,7 @@ Item {
                     } //Component.onCompleted
 
 
+
                     Text
                     {
                         y: 10
@@ -219,6 +223,12 @@ Item {
                     CheckBox {
                         id: checkField
                         x: textInfo.width + 10
+
+                        ToolTip {
+                           id: toolTip
+                           visible: checkField.hovered && text !== ""
+                           text: "TEST"
+                        }
                     }
                 }
 
