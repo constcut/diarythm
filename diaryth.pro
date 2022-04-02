@@ -31,15 +31,15 @@ QMAKE_LFLAGS += -v
 SOURCES += \
     app/AndroidTools.cpp \
     app/Config.cpp \
-    app/DiaryCardEngine.cpp \
-    app/DiaryCardExport.cpp \
     app/Init.cpp \
     app/LogHandler.cpp \
-    app/SQLBase.cpp \
     audio/Recorder.cpp \
     audio/features/FeatureExtractor.cpp \
     audio/features/Yin.cpp \
     audio/wave/AudioUtils.cpp \
+    diary/DiaryCardEngine.cpp \
+    diary/DiaryCardExport.cpp \
+    diary/SQLBase.cpp \
     libs/kiss/kfc.c \
     libs/kiss/kiss_fft.c \
     libs/kiss/kiss_fftnd.c \
@@ -172,16 +172,16 @@ HEADERS += \
     app/AndroidTools.hpp \
     app/Clipboard.hpp \
     app/Config.hpp \
-    app/DiaryCardEngine.hpp \
-    app/DiaryCardExport.hpp \
     app/Init.hpp \
     app/LogHandler.hpp \
-    app/SQLBase.hpp \
     app/StretchImage.hpp \
     app/log.hpp \
     audio/Recorder.hpp \
     audio/features/FeatureExtractor.hpp \
     audio/features/Yin.hpp \
+    diary/DiaryCardEngine.hpp \
+    diary/DiaryCardExport.hpp \
+    diary/SQLBase.hpp \
     libs/kiss/_kiss_fft_guts.h \
     libs/kiss/kfc.h \
     libs/kiss/kiss_fft.h \
