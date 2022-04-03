@@ -2,9 +2,10 @@
 
 #include <QDebug>
 #include <QSqlError>
-
+#include <QFile>
 #include <QDate>
 #include <QTime>
+
 
 using namespace diaryth;
 
@@ -472,6 +473,15 @@ void SQLBase::addCard(const QString& name, const QString& json)
 }
 
 
+void SQLBase::addCardFromFile(const QString& name, const QString& filename) //Возможно удобней сразу из файла находить имя и описание
+{
+    QFile file(filename);
+    file.open(QFile::ReadOnly | QFile::Text);
+    QTextStream in(&file);
+
+    const QString json = in.readAll();
+    addCard(name, filename);
+}
 
 
 
