@@ -4,6 +4,7 @@ import QtQuick.Layouts 1.15
 import QtQuick.Dialogs 1.1
 import QtQuick.Controls 1.4 as Quick1
 
+
 Item {
 
     id: diaryCardItem
@@ -29,7 +30,9 @@ Item {
 
     Component.onCompleted:
     {
-        cardCombo.model = sqlBase.getAllCardsNames()
+        var allCardsNames = sqlBase.getAllCardsNames()
+        cardCombo.model = allCardsNames
+        mergeCardCombo.model = allCardsNames
 
         updateCard()
     }
@@ -62,17 +65,44 @@ Item {
         y: 40
         x: 40
 
-        ComboBox {
-            id: cardCombo
+
+        RowLayout
+        {
+            spacing: 10
 
 
-            onCurrentTextChanged: {
-                var jsonCard = sqlBase.getCardJSON(currentText)
-                cardEngine.parseJSON(jsonCard)
+            ComboBox
+            {
+                id: cardCombo
+                onCurrentTextChanged: {
+                    var jsonCard = sqlBase.getCardJSON(currentText)
+                    cardEngine.parseJSON(jsonCard)
 
-                diaryCardItem.updateCard()
+                    diaryCardItem.updateCard()
+                }
+            }
+
+            ComboBox {
+                id: mergeCardCombo
+            }
+
+            Button
+            {
+                text: "merge"
+
+                onClicked:
+                {
+                    if (mergeCardCombo.currentText !== cardCombo.currentText)
+                    {
+                        var jsonCard = sqlBase.getCardJSON(mergeCardCombo.currentText)
+                        cardEngine.mergeJSON(jsonCard)
+                        diaryCardItem.updateCard()
+                    }
+                }
             }
         }
+
+
 
         RowLayout
         {
