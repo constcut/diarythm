@@ -21,6 +21,7 @@ namespace diaryth {
         QString description;
     };
 
+
     struct TestQuestion
     {
         QString text;
@@ -31,6 +32,7 @@ namespace diaryth {
         std::vector<TestOption> options;
         //map? optionName->rate ? for fast rating
     };
+
 
     struct TestRate
     {
@@ -70,7 +72,15 @@ namespace diaryth {
         QStringList getOptionsTexts(int questionIdx); //insure sequence
         QVariantList getOptions(int questionIdx);
 
-        //
+        //Postpone question
+        //Answear question -> idx + option
+        //Answear question -> idx + List of options
+
+        //isTestFinished
+        //questionsLeft
+        //testCurrentRate
+        //getFinalRateName
+        //getFinalRateDescription
 
     private:
 
