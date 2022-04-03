@@ -63,7 +63,6 @@ void TestsEngine::addOptions(TestQuestion& question, const QJsonArray& options)
         if (optionObject.contains("description"))
             testOption.description = optionObject["description"].toString();
 
-
         question.options.push_back(testOption);
     }
 }
@@ -85,6 +84,16 @@ bool TestsEngine::hasRootErros(const QJsonDocument& root)
 
     if (docObject["questions"].isArray() == false) {
         qDebug() << "Error: Tests engine, questions is not array";
+        return true;
+    }
+
+    if (docObject.contains("rates") == false) {
+        qDebug() << "Error: Tests engine, failed to find rates";
+        return true;
+    }
+
+    if (docObject["rates"].isArray() == false) {
+        qDebug() << "Error: Tests engine, rates is not array";
         return true;
     }
 
