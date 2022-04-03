@@ -16,6 +16,14 @@ namespace diaryth {
     public:
         TestsEngine() = default;
 
+        void parseJSON(const QString& json);
+
+    private:
+
+
+        QString _testName;
+        QString _testDescription;
+
     };
 
 
