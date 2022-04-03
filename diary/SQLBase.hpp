@@ -120,6 +120,8 @@ namespace diaryth {
                      int localId, const QString& name, const QString& tags,
                      const QString& description) const;
 
+        QString loadTextFromFile(const QString& filename);
+
 
         const int audioFieldsCount = 7; //Later use walkaround with query.last() and query.at() + 1
         const int textFieldsCount = 7;

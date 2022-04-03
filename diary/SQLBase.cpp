@@ -475,12 +475,7 @@ void SQLBase::addCard(const QString& name, const QString& json)
 
 void SQLBase::addCardFromFile(const QString& name, const QString& filename) //Возможно удобней сразу из файла находить имя и описание
 {
-    QFile file(filename);
-    file.open(QFile::ReadOnly | QFile::Text);
-    QTextStream in(&file);
-
-    const QString json = in.readAll();
-    addCard(name, json);
+    addCard(name, loadTextFromFile(filename));
 }
 
 
@@ -496,12 +491,16 @@ void SQLBase::editCard(const QString& name, const QString& json)
 
 void SQLBase::editCardFromFile(const QString& name, const QString& filename)
 {
+    editCard(name, loadTextFromFile(filename));
+}
+
+
+QString SQLBase::loadTextFromFile(const QString& filename)
+{
     QFile file(filename);
     file.open(QFile::ReadOnly | QFile::Text);
     QTextStream in(&file);
-
-    const QString json = in.readAll();
-    editCard(name, json);
+    return in.readAll();
 }
 
 
