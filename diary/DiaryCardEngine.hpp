@@ -148,7 +148,7 @@ namespace diaryth {
 
         bool isFieldMissing(const QString& group, const QString& field) const;
 
-        QString readTextFile(const QString& filename);
+        QString readTextFile(const QString& filename) const;
 
 
         std::unordered_map<QString, CardEnum> _enums;

@@ -21,7 +21,7 @@ void DiaryCardEngine::mergeFromFile(const QString& filename)
 }
 
 
-QString DiaryCardEngine::readTextFile(const QString& filename)
+QString DiaryCardEngine::readTextFile(const QString& filename) const
 {
     QFile file(filename);
     file.open(QFile::ReadOnly | QFile::Text);
