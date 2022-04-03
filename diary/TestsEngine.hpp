@@ -13,7 +13,6 @@
 namespace diaryth {
 
 
-
     struct TestOption
     {
         QString text;
@@ -32,6 +31,23 @@ namespace diaryth {
         std::vector<TestOption> options;
     };
 
+    struct TestRate
+    {
+        QString text;
+
+        qreal rangeStart;
+        qreal rangeEnd;
+
+        QString description;
+
+        bool isInRange(qreal rate)
+        {
+            return rate >= rangeStart &&
+                   rate <= rangeEnd;
+        }
+    };
+
+
 
     class TestsEngine : public QObject
     {
@@ -49,6 +65,7 @@ namespace diaryth {
 
         void addQuestions(const QJsonArray& questions);
         void addOptions(TestQuestion& question, const QJsonArray& options);
+        void addRates(const QJsonArray& rates);
 
         bool hasRootErros(const QJsonDocument& root);
 
@@ -58,6 +75,7 @@ namespace diaryth {
         QString _testDescription;
 
         std::vector<TestQuestion> _questions;
+        std::vector<TestRate> _rates;
 
         //Lie detection markers
     };

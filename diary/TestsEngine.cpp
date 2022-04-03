@@ -27,7 +27,19 @@ void TestsEngine::parseJSON(const QString& json)
     _questions.clear();
     addQuestions(docObject["questions"].toArray());
 
+    _rates.clear();
+    addRates(docObject["rates"].toArray());
+
     qDebug() << "Test engine loaded: " << _testName;
+}
+
+
+void TestsEngine::addRates(const QJsonArray& rates)
+{
+    for (const auto& r: rates)
+    {
+        const auto rateObject = r.toObject();
+    }
 }
 
 
