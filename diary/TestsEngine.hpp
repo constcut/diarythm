@@ -59,13 +59,18 @@ namespace diaryth {
         void parseJSON(const QString& json);
         void parseFromFile(const QString& filename);
 
-        //when request question - option to mix them
-
         int questionsCount() { return _questions.size(); }
 
         QString getQuestionText(int idx) { return _questions[idx].text; }
         QString getQuestionType(int idx) { return _questions[idx].type; }
         int getQuestionGroupId(int idx) { return _questions[idx].groupId; }
+
+
+        //Get options
+        //Get options rates - insure sequence the same
+
+        //Get mixed options - as QVariantList
+
 
     private:
 
@@ -81,9 +86,9 @@ namespace diaryth {
         QString _testDescription;
 
         std::vector<TestQuestion> _questions;
-        std::vector<TestRate> _rates; //TODO subrates?
+        std::vector<TestRate> _rates; //TODO subrates? review on Beck test
 
-        //Lie detection markers
+        //_subRates -> Question list, way to summate
     };
 
 
