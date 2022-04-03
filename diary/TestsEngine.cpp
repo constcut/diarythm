@@ -24,7 +24,7 @@ void TestsEngine::parseJSON(const QString& json)
     else
         _testDescription = "";
 
-
+    _questions.clear();
     addQuestions(docObject["questions"].toArray());
 
     qDebug() << "Test engine loaded: " << _testName;
@@ -37,7 +37,14 @@ void TestsEngine::addQuestions(const QJsonArray& questions)
     {
         const auto questionObject = q.toObject();
 
+        CardQuestion cardQuestion;
+        cardQuestion.text = questionObject["text"].toString();
+        cardQuestion.type = questionObject["type"].toString();
 
+        if (questionObject.contains("groupId"))
+            cardQuestion.groupId = questionObject["groupId"].toInt();
+
+        _questions.push_back(cardQuestion);
     }
 }
 

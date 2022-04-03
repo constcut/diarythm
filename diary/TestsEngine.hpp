@@ -7,14 +7,29 @@
 #include <QJsonArray>
 #include <QJsonObject>
 
+#include <vector>
+
 
 namespace diaryth {
 
 
-    struct CardQuestion
+    struct TestOption
     {
         QString text;
+        qreal rate;
 
+        QString description;
+    };
+
+
+    struct TestQuestion
+    {
+        QString text;
+        QString type; //radio, check, input
+
+        int groupId = -1; //alt-question + other relations
+
+        std::vector<TestOption> _options;
     };
 
 
@@ -28,6 +43,8 @@ namespace diaryth {
         void parseJSON(const QString& json);
         void parseFromFile(const QString& filename);
 
+        //when request question - option to mix them
+
     private:
 
         void addQuestions(const QJsonArray& questions);
@@ -36,12 +53,11 @@ namespace diaryth {
 
         QString readTextFile(const QString& filename);
 
-
         QString _testName;
         QString _testDescription;
 
+        std::vector<CardQuestion> _questions;
 
-        //Alt questions relation + sequence
         //Lie detection markers
     };
 
