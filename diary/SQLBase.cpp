@@ -462,6 +462,18 @@ int SQLBase::getTotalCards() const
 }
 
 
+void SQLBase::addCard(const QString& name, const QString& json)
+{
+    QString addCardRequest =
+            QString("INSERT INTO diaryCards (cardName, jsonText) VALUES('%1', '%2');")
+            .arg(name, json);
+
+    executeRequest(addCardRequest);
+}
+
+
+
+
 
 int SQLBase::getCardRecordsMaxLocalId(const QString& date) const
 {

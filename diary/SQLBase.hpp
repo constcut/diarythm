@@ -77,6 +77,8 @@ namespace diaryth {
         Q_INVOKABLE QString getCardDescription(const QString& name) const;
         Q_INVOKABLE QString getCardJSON(const QString& name) const;
 
+        Q_INVOKABLE void addCard(const QString& name, const QString& json);
+
 
 
         Q_INVOKABLE int getTotalCardRecords() const;
