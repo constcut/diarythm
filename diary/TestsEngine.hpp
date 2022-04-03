@@ -61,6 +61,8 @@ namespace diaryth {
 
         //when request question - option to mix them
 
+        int questionsCount() { return _questions.size(); }
+
     private:
 
         void addQuestions(const QJsonArray& questions);

@@ -146,8 +146,9 @@ int mainInit(int argc, char *argv[])
     diaryth::TestsEngine testsEngine;
     diaryth::Recorder recorder(sqlBase);
 
+    testsEngine.parseFromFile(":/tests/Beck.json");
 
-
+    qDebug() << "Questions count: " << testsEngine.questionsCount();
 
     engine.rootContext()->setContextProperty("recorder", &recorder);
     engine.rootContext()->setContextProperty("aconfig", &config);
