@@ -504,6 +504,17 @@ QString SQLBase::loadTextFromFile(const QString& filename)
 }
 
 
+void SQLBase::setCardDescription(const QString& name, const QString& description)
+{
+    QString updateCardRequest =
+            QString("UPDATE diaryCards SET description='%1' WHERE cardName='%2';")
+            .arg(description, name);
+
+    executeRequest(updateCardRequest);
+}
+
+
+
 
 int SQLBase::getCardRecordsMaxLocalId(const QString& date) const
 {
