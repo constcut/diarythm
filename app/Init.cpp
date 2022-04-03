@@ -21,6 +21,7 @@
 
 #include "diary/SQLBase.hpp"
 #include "diary/DiaryCardEngine.hpp"
+#include "diary/TestsEngine.hpp"
 
 #ifdef AuralsLegacy
     #include "audio/wave/AudioHandler.hpp"
@@ -142,23 +143,17 @@ int mainInit(int argc, char *argv[])
     diaryth::ConfigQML config;
     diaryth::SQLBase sqlBase;
     diaryth::DiaryCardEngine cardEngine;
+    diaryth::TestsEngine testsEngine;
     diaryth::Recorder recorder(sqlBase);
 
-    //cardEngine.readFromFile(":/cards/BPD.json");
-    //cardEngine.readFromFile(":/cards/DBT_skills.json");
-    //cardEngine.readFromFile(":/cards/DBT.json");
-    //cardEngine.mergeFromFile(":/cards/DBT_skills.json");
 
-    /*sqlBase.addCardFromFile("DBT", ":/cards/DBT.json");
-    sqlBase.addCardFromFile("DBT_skills", ":/cards/DBT_skills.json");
-    sqlBase.addCardFromFile("BPD", ":/cards/BPD.json");*/
 
-    qDebug() << "Existing regestered cards: " << sqlBase.getAllCardsNames();
 
     engine.rootContext()->setContextProperty("recorder", &recorder);
     engine.rootContext()->setContextProperty("aconfig", &config);
     engine.rootContext()->setContextProperty("sqlBase", &sqlBase);
     engine.rootContext()->setContextProperty("cardEngine", &cardEngine);
+    engine.rootContext()->setContextProperty("testsEngine", &testsEngine);
 
     engine.load(QUrl(QStringLiteral("qrc:/qml/main.qml")));
     if (engine.rootObjects().isEmpty())
