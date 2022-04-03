@@ -11,6 +11,12 @@
 namespace diaryth {
 
 
+    struct CardQuestion
+    {
+        QString text;
+
+    };
+
 
     class TestsEngine : public QObject
     {
@@ -24,7 +30,7 @@ namespace diaryth {
 
     private:
 
-        void readQuestions(const QJsonArray& questions);
+        void addQuestions(const QJsonArray& questions);
 
         bool hasRootErros(const QJsonDocument& root);
 
@@ -34,6 +40,9 @@ namespace diaryth {
         QString _testName;
         QString _testDescription;
 
+
+        //Alt questions relation + sequence
+        //Lie detection markers
     };
 
 
