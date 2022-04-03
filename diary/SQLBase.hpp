@@ -80,6 +80,9 @@ namespace diaryth {
         Q_INVOKABLE void addCard(const QString& name, const QString& json);
         Q_INVOKABLE void addCardFromFile(const QString& name, const QString& filename);
 
+        Q_INVOKABLE void updateCard(const QString& name, const QString& json);
+
+
 
         Q_INVOKABLE int getTotalCardRecords() const;
         Q_INVOKABLE int getCardRecordsMaxLocalId(const QString& date) const;

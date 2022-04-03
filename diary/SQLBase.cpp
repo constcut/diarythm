@@ -480,7 +480,17 @@ void SQLBase::addCardFromFile(const QString& name, const QString& filename) //В
     QTextStream in(&file);
 
     const QString json = in.readAll();
-    addCard(name, filename);
+    addCard(name, json);
+}
+
+
+void SQLBase::updateCard(const QString& name, const QString& json)
+{
+    QString updateCardRequest =
+            QString("UPDATE diaryCards SET jsonText='%1' WHERE cardName='%2';")
+            .arg(json, name);
+
+    executeRequest(updateCardRequest);
 }
 
 
