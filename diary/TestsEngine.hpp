@@ -24,11 +24,11 @@ namespace diaryth {
 
     private:
 
+        void readQuestions(const QJsonArray& questions);
 
         bool hasRootErros(const QJsonDocument& root);
 
         QString readTextFile(const QString& filename);
-
 
 
         QString _testName;

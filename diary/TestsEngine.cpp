@@ -25,6 +25,20 @@ void TestsEngine::parseJSON(const QString& json)
         _testDescription = "";
 
 
+    addQuestions(docObject["questions"].toArray());
+
+    qDebug() << "Test engine loaded: " << _testName;
+}
+
+
+void TestsEngine::addQuestions(const QJsonArray& questions)
+{
+    for (const auto& q: questions)
+    {
+        const auto questionObject = q.toObject();
+
+
+    }
 }
 
 
