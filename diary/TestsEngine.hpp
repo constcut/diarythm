@@ -35,14 +35,14 @@ namespace diaryth {
     {
         QString text;
 
-        qreal rangeStart;
+        qreal rangeBegin;
         qreal rangeEnd;
 
         QString description;
 
         bool isInRange(qreal rate)
         {
-            return rate >= rangeStart &&
+            return rate >= rangeBegin &&
                    rate <= rangeEnd;
         }
     };
@@ -75,7 +75,7 @@ namespace diaryth {
         QString _testDescription;
 
         std::vector<TestQuestion> _questions;
-        std::vector<TestRate> _rates;
+        std::vector<TestRate> _rates; //TODO subrates?
 
         //Lie detection markers
     };

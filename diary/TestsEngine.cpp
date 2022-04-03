@@ -39,6 +39,15 @@ void TestsEngine::addRates(const QJsonArray& rates)
     for (const auto& r: rates)
     {
         const auto rateObject = r.toObject();
+
+        TestRate testRate;
+        testRate.text = rateObject["text"].toString();
+        testRate.rangeBegin = rateObject["rangeBegin"].toDouble();
+        testRate.rangeEnd = rateObject["rangeEnd"].toDouble();
+
+        if (rateObject.contains("description"))
+            testRate.description = rateObject["description"].toString();
+
     }
 }
 
