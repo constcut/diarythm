@@ -1,5 +1,7 @@
 #include "TestsEngine.hpp"
 
+#include <QFile>
+
 
 using namespace diaryth;
 
@@ -47,3 +49,19 @@ bool TestsEngine::hasRootErros(const QJsonDocument& root)
 
     return false;
 }
+
+
+void TestsEngine::parseFromFile(const QString& filename)
+{
+    parseJSON(readTextFile(filename));
+}
+
+
+QString TestsEngine::readTextFile(const QString& filename)
+{
+    QFile file(filename);
+    file.open(QFile::ReadOnly | QFile::Text);
+    QTextStream in(&file);
+    return in.readAll();
+}
+

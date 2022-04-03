@@ -20,11 +20,16 @@ namespace diaryth {
         TestsEngine() = default;
 
         void parseJSON(const QString& json);
+        void parseFromFile(const QString& filename);
 
     private:
 
 
         bool hasRootErros(const QJsonDocument& root);
+
+        QString readTextFile(const QString& filename);
+
+
 
         QString _testName;
         QString _testDescription;
