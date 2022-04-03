@@ -17,14 +17,21 @@ Item {
         fieldsRepeater.model = allFields.length
     }
 
-
-    Component.onCompleted:
+    function updateCard()
     {
         cardName.text = cardEngine.getCardName()
         cardDescription.text =  cardEngine.getCardDescription()
         groupsNames.model = cardEngine.getAllGroupsNames()
 
         updateFields()
+    }
+
+
+    Component.onCompleted:
+    {
+        cardCombo.model = sqlBase.getAllCardsNames()
+
+        updateCard()
     }
 
     Dialog
@@ -54,6 +61,18 @@ Item {
         spacing: 10
         y: 40
         x: 40
+
+        ComboBox {
+            id: cardCombo
+
+
+            onCurrentTextChanged: {
+                var jsonCard = sqlBase.getCardJSON(currentText)
+                cardEngine.parseJSON(jsonCard)
+
+                diaryCardItem.updateCard()
+            }
+        }
 
         RowLayout
         {
