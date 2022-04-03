@@ -1,6 +1,3 @@
 #include "TestsEngine.hpp"
 
-TestsEngine::TestsEngine()
-{
-
-}
+using namespace diaryth;

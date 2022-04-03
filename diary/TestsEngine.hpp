@@ -3,13 +3,23 @@
 
 #include <QObject>
 
-class TestsEngine : public QObject
-{
-    Q_OBJECT
 
-public:
-    TestsEngine() = default;
 
-};
+namespace diaryth {
+
+
+
+    class TestsEngine : public QObject
+    {
+        Q_OBJECT
+
+    public:
+        TestsEngine() = default;
+
+    };
+
+
+}
+
 
 #endif // TESTSENGINE_HPP
