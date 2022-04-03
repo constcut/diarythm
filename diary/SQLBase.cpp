@@ -484,13 +484,24 @@ void SQLBase::addCardFromFile(const QString& name, const QString& filename) //В
 }
 
 
-void SQLBase::updateCard(const QString& name, const QString& json)
+void SQLBase::editCard(const QString& name, const QString& json)
 {
     QString updateCardRequest =
             QString("UPDATE diaryCards SET jsonText='%1' WHERE cardName='%2';")
             .arg(json, name);
 
     executeRequest(updateCardRequest);
+}
+
+
+void SQLBase::editCardFromFile(const QString& name, const QString& filename)
+{
+    QFile file(filename);
+    file.open(QFile::ReadOnly | QFile::Text);
+    QTextStream in(&file);
+
+    const QString json = in.readAll();
+    editCard(name, json);
 }
 
 
