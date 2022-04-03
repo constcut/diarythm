@@ -97,6 +97,7 @@ int mainInit(int argc, char *argv[])
 
     Q_INIT_RESOURCE(fonts);
     Q_INIT_RESOURCE(cards);
+    Q_INIT_RESOURCE(tests);
 
     qDebug() << "Current working path "<<QDir::currentPath();
     int fontId = QFontDatabase::addApplicationFont(":/fonts/prefont.ttf");
