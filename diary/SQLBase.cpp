@@ -436,8 +436,10 @@ QString SQLBase::getCardJSON(const QString& name) const
 
     QSqlQuery descriptionQuery = executeRequest(descriptionRequest);
 
-    if (descriptionQuery.next())
-        return descriptionQuery.value(0).toString();
+    if (descriptionQuery.next()) {
+        auto base64Json =  descriptionQuery.value(0).toString();
+        return QByteArray::fromBase64(base64Json.toLocal8Bit());
+    }
 
     return {};
 }
@@ -465,9 +467,11 @@ int SQLBase::getTotalCards() const
 
 void SQLBase::addCard(const QString& name, const QString& json) const
 {
+    QString base64Json = json.toLocal8Bit().toBase64();
+
     QString addCardRequest =
             QString("INSERT INTO diaryCards (cardName, jsonText) VALUES('%1', '%2');")
-            .arg(name, json);
+            .arg(name, base64Json);
 
     executeRequest(addCardRequest);
 }
@@ -481,9 +485,11 @@ void SQLBase::addCardFromFile(const QString& name, const QString& filename) cons
 
 void SQLBase::editCard(const QString& name, const QString& json) const
 {
+    QString base64Json = json.toLocal8Bit().toBase64();
+
     QString updateCardRequest =
             QString("UPDATE diaryCards SET jsonText='%1' WHERE cardName='%2';")
-            .arg(json, name);
+            .arg(base64Json, name);
 
     executeRequest(updateCardRequest);
 }
