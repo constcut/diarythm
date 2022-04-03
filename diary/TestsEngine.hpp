@@ -3,6 +3,9 @@
 
 #include <QObject>
 
+#include <QJsonDocument>
+#include <QJsonArray>
+#include <QJsonObject>
 
 
 namespace diaryth {
@@ -20,6 +23,8 @@ namespace diaryth {
 
     private:
 
+
+        bool hasRootErros(const QJsonDocument& root);
 
         QString _testName;
         QString _testDescription;
