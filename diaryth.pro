@@ -40,6 +40,7 @@ SOURCES += \
     diary/CardReport.cpp \
     diary/DiaryCardEngine.cpp \
     diary/SQLBase.cpp \
+    diary/TestsEngine.cpp \
     libs/kiss/kfc.c \
     libs/kiss/kiss_fft.c \
     libs/kiss/kiss_fftnd.c \
@@ -182,6 +183,7 @@ HEADERS += \
     diary/CardReport.hpp \
     diary/DiaryCardEngine.hpp \
     diary/SQLBase.hpp \
+    diary/TestsEngine.hpp \
     libs/kiss/_kiss_fft_guts.h \
     libs/kiss/kfc.h \
     libs/kiss/kiss_fft.h \
