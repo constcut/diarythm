@@ -147,3 +147,17 @@ QStringList TestsEngine::getOptionsTexts(int questionIdx)
     return texts;
 }
 
+
+QVariantList TestsEngine::getOptions(int questionIdx)
+{
+    QVariantList options;
+
+    for (const auto& option: _questions[questionIdx].options)
+    {
+        QVariantList optionLine;
+        optionLine << option.text << option.rate << option.description;
+        options << optionLine;
+    }
+
+    return options
+}

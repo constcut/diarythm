@@ -69,7 +69,7 @@ namespace diaryth {
         int getOptionsCount(int questionIdx) { return _questions[questionIdx].options.size(); }
         QStringList getOptionsTexts(int questionIdx); //insure sequence
 
-
+        QVariantList getOptions(int questionIdx);
         //Get options
         //Get options rates - insure sequence the same
 
