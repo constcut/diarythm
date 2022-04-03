@@ -157,7 +157,8 @@ else
 
 RESOURCES += qml.qrc \
     res/cards.qrc \
-    res/fonts.qrc
+    res/fonts.qrc \
+    res/tests.qrc
 
 
 QML_IMPORT_PATH =
