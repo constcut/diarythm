@@ -136,3 +136,14 @@ QString TestsEngine::readTextFile(const QString& filename)
     return in.readAll();
 }
 
+
+QStringList TestsEngine::getOptionsTexts(int questionIdx)
+{
+    QStringList texts;
+
+    for (const auto& option: _questions[questionIdx].options)
+        texts.append(option.text);
+
+    return texts;
+}
+

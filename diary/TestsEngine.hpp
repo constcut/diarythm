@@ -29,6 +29,7 @@ namespace diaryth {
         int groupId = -1; //alt-question + other relations
 
         std::vector<TestOption> options;
+        //map? optionName->rate ?
     };
 
     struct TestRate
@@ -64,6 +65,9 @@ namespace diaryth {
         QString getQuestionText(int idx) { return _questions[idx].text; }
         QString getQuestionType(int idx) { return _questions[idx].type; }
         int getQuestionGroupId(int idx) { return _questions[idx].groupId; }
+
+        int getOptionsCount(int questionIdx) { return _questions[questionIdx].options.size(); }
+        QStringList getOptionsTexts(int questionIdx); //insure sequence
 
 
         //Get options
