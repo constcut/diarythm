@@ -77,11 +77,13 @@ namespace diaryth {
         Q_INVOKABLE QString getCardDescription(const QString& name) const;
         Q_INVOKABLE QString getCardJSON(const QString& name) const;
 
-        Q_INVOKABLE void addCard(const QString& name, const QString& json);
-        Q_INVOKABLE void addCardFromFile(const QString& name, const QString& filename);
+        Q_INVOKABLE void addCard(const QString& name, const QString& json) const;
+        Q_INVOKABLE void addCardFromFile(const QString& name, const QString& filename) const;
 
-        Q_INVOKABLE void editCard(const QString& name, const QString& json);
-        Q_INVOKABLE void editCardFromFile(const QString& name, const QString& filename);
+        Q_INVOKABLE void editCard(const QString& name, const QString& json) const;
+        Q_INVOKABLE void editCardFromFile(const QString& name, const QString& filename) const;
+
+        Q_INVOKABLE void setCardDescription(const QString& name, const QString& description) const;
 
 
         Q_INVOKABLE int getTotalCardRecords() const;
@@ -120,7 +122,7 @@ namespace diaryth {
                      int localId, const QString& name, const QString& tags,
                      const QString& description) const;
 
-        QString loadTextFromFile(const QString& filename);
+        QString loadTextFromFile(const QString& filename) const;
 
 
         const int audioFieldsCount = 7; //Later use walkaround with query.last() and query.at() + 1

@@ -463,7 +463,7 @@ int SQLBase::getTotalCards() const
 }
 
 
-void SQLBase::addCard(const QString& name, const QString& json)
+void SQLBase::addCard(const QString& name, const QString& json) const
 {
     QString addCardRequest =
             QString("INSERT INTO diaryCards (cardName, jsonText) VALUES('%1', '%2');")
@@ -473,13 +473,13 @@ void SQLBase::addCard(const QString& name, const QString& json)
 }
 
 
-void SQLBase::addCardFromFile(const QString& name, const QString& filename) //Возможно удобней сразу из файла находить имя и описание
+void SQLBase::addCardFromFile(const QString& name, const QString& filename) const //Возможно удобней сразу из файла находить имя и описание
 {
     addCard(name, loadTextFromFile(filename));
 }
 
 
-void SQLBase::editCard(const QString& name, const QString& json)
+void SQLBase::editCard(const QString& name, const QString& json) const
 {
     QString updateCardRequest =
             QString("UPDATE diaryCards SET jsonText='%1' WHERE cardName='%2';")
@@ -489,13 +489,13 @@ void SQLBase::editCard(const QString& name, const QString& json)
 }
 
 
-void SQLBase::editCardFromFile(const QString& name, const QString& filename)
+void SQLBase::editCardFromFile(const QString& name, const QString& filename) const
 {
     editCard(name, loadTextFromFile(filename));
 }
 
 
-QString SQLBase::loadTextFromFile(const QString& filename)
+QString SQLBase::loadTextFromFile(const QString& filename) const
 {
     QFile file(filename);
     file.open(QFile::ReadOnly | QFile::Text);
@@ -504,7 +504,7 @@ QString SQLBase::loadTextFromFile(const QString& filename)
 }
 
 
-void SQLBase::setCardDescription(const QString& name, const QString& description)
+void SQLBase::setCardDescription(const QString& name, const QString& description) const
 {
     QString updateCardRequest =
             QString("UPDATE diaryCards SET description='%1' WHERE cardName='%2';")
