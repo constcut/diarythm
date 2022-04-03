@@ -13,6 +13,7 @@
 namespace diaryth {
 
 
+
     struct TestOption
     {
         QString text;
@@ -20,7 +21,6 @@ namespace diaryth {
 
         QString description;
     };
-
 
     struct TestQuestion
     {
@@ -56,7 +56,7 @@ namespace diaryth {
         QString _testName;
         QString _testDescription;
 
-        std::vector<CardQuestion> _questions;
+        std::vector<TestQuestion> _questions;
 
         //Lie detection markers
     };
