@@ -29,7 +29,7 @@ namespace diaryth {
 
         int groupId = -1; //alt-question + other relations
 
-        std::vector<TestOption> _options;
+        std::vector<TestOption> options;
     };
 
 
@@ -48,6 +48,7 @@ namespace diaryth {
     private:
 
         void addQuestions(const QJsonArray& questions);
+        void addOptions(TestQuestion& question, const QJsonArray& options);
 
         bool hasRootErros(const QJsonDocument& root);
 

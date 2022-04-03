@@ -37,14 +37,34 @@ void TestsEngine::addQuestions(const QJsonArray& questions)
     {
         const auto questionObject = q.toObject();
 
-        CardQuestion cardQuestion;
-        cardQuestion.text = questionObject["text"].toString();
-        cardQuestion.type = questionObject["type"].toString();
+        TestQuestion testQuestion;
+        testQuestion.text = questionObject["text"].toString();
+        testQuestion.type = questionObject["type"].toString();
 
         if (questionObject.contains("groupId"))
-            cardQuestion.groupId = questionObject["groupId"].toInt();
+            testQuestion.groupId = questionObject["groupId"].toInt();
 
-        _questions.push_back(cardQuestion);
+        addOptions(testQuestion, questionObject["options"].toArray());
+        _questions.push_back(testQuestion);
+    }
+}
+
+
+void TestsEngine::addOptions(TestQuestion& question, const QJsonArray& options)
+{
+    for (const auto& o: options)
+    {
+        const auto optionObject = o.toObject();
+
+        TestOption testOption;
+        testOption.text = optionObject["text"].toString();
+        testOption.rate = optionObject["rate"].toDouble();
+
+        if (optionObject.contains("description"))
+            testOption.description = optionObject["description"].toString();
+
+
+        question.options.push_back(testOption);
     }
 }
 
