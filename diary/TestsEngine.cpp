@@ -159,5 +159,5 @@ QVariantList TestsEngine::getOptions(int questionIdx)
         options << optionLine;
     }
 
-    return options
+    return options;
 }

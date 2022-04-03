@@ -26,10 +26,10 @@ namespace diaryth {
         QString text;
         QString type; //radio, check, input
 
-        int groupId = -1; //alt-question + other relations
+        int groupId = -1; //for alt-question
 
         std::vector<TestOption> options;
-        //map? optionName->rate ?
+        //map? optionName->rate ? for fast rating
     };
 
     struct TestRate
@@ -68,13 +68,9 @@ namespace diaryth {
 
         int getOptionsCount(int questionIdx) { return _questions[questionIdx].options.size(); }
         QStringList getOptionsTexts(int questionIdx); //insure sequence
-
         QVariantList getOptions(int questionIdx);
-        //Get options
-        //Get options rates - insure sequence the same
 
-        //Get mixed options - as QVariantList
-
+        //
 
     private:
 
@@ -90,9 +86,9 @@ namespace diaryth {
         QString _testDescription;
 
         std::vector<TestQuestion> _questions;
-        std::vector<TestRate> _rates; //TODO subrates? review on Beck test
-
+        std::vector<TestRate> _rates;
         //_subRates -> Question list, way to summate
+        //Или возможно другой метод задать рейты - разные типы рейтов и разные методы подсчёта
     };
 
 
