@@ -63,6 +63,10 @@ namespace diaryth {
 
         int questionsCount() { return _questions.size(); }
 
+        QString getQuestionText(int idx) { return _questions[idx].text; }
+        QString getQuestionType(int idx) { return _questions[idx].type; }
+        int getQuestionGroupId(int idx) { return _questions[idx].groupId; }
+
     private:
 
         void addQuestions(const QJsonArray& questions);
