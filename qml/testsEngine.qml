@@ -66,6 +66,15 @@ Item {
         }
     }
 
+    function loadPrevQuestion()
+    {
+        if (testsEngineItem.questionNumber > 0)
+        {
+            testsEngineItem.questionNumber -= 1
+            testsEngineItem.loadQuestion()
+        }
+    }
+
 
     ColumnLayout
     {
@@ -89,6 +98,10 @@ Item {
             }
             Text {
                 id: questionsCount
+            }
+            RoundButton {
+                text: "Prev"
+                onClicked: testsEngineItem.loadPrevQuestion()
             }
             RoundButton {
                 text: "Next"
