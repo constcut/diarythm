@@ -62,6 +62,10 @@ namespace diaryth {
         Q_INVOKABLE void parseJSON(const QString& json);
         Q_INVOKABLE void parseFromFile(const QString& filename);
 
+        Q_INVOKABLE QString getName() { return _testName; }
+        Q_INVOKABLE QString getDescription() { return _testDescription; }
+
+
         Q_INVOKABLE int questionsCount() { return _questions.size(); }
 
         Q_INVOKABLE QString getQuestionText(int idx) { return _questions[idx].text; }

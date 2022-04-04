@@ -11,6 +11,7 @@ Item {
 
     Component.onCompleted:
     {
+        testName.text = testsEngine.getName()
         questionsCount.text = testsEngine.questionsCount()
     }
 
@@ -33,7 +34,7 @@ Item {
                 id: testName
             }
             Text {
-                text: "Question count: "
+                text: "Questions count: "
             }
             Text {
                 id: questionsCount
