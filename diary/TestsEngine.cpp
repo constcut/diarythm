@@ -176,3 +176,19 @@ void TestsEngine::answerCheckQuestion(int idx, QStringList options)
 {
     _answers[idx] = options;
 }
+
+
+int TestsEngine::questionsLeft()
+{
+    int count = 0;
+    for (const auto& a: _answers)
+        if (a.isEmpty())
+            ++count;
+    return count;
+}
+
+
+bool TestsEngine::isTestFinished()
+{
+    return questionsLeft() == 0;
+}

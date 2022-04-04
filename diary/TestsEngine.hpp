@@ -83,8 +83,8 @@ namespace diaryth {
         //Answear question -> idx + List of options
         Q_INVOKABLE void answerCheckQuestion(int idx, QStringList options);
 
-        //questionsLeft
-        //isTestFinished
+        Q_INVOKABLE int questionsLeft();
+        Q_INVOKABLE bool isTestFinished();
 
         //testCurrentRate
         //getFinalRateName
