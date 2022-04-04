@@ -11,7 +11,7 @@ Item {
 
     Component.onCompleted:
     {
-
+        questionsCount.text = testsEngine.questionsCount()
     }
 
 
@@ -25,6 +25,19 @@ Item {
         RowLayout
         {
             spacing: 10
+
+            Text {
+                text: "Test name: "
+            }
+            Text {
+                id: testName
+            }
+            Text {
+                text: "Question count: "
+            }
+            Text {
+                id: questionsCount
+            }
 
         }
     }

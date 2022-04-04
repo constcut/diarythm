@@ -59,18 +59,18 @@ namespace diaryth {
     public:
         TestsEngine() = default;
 
-        void parseJSON(const QString& json);
-        void parseFromFile(const QString& filename);
+        Q_INVOKABLE void parseJSON(const QString& json);
+        Q_INVOKABLE void parseFromFile(const QString& filename);
 
-        int questionsCount() { return _questions.size(); }
+        Q_INVOKABLE int questionsCount() { return _questions.size(); }
 
-        QString getQuestionText(int idx) { return _questions[idx].text; }
-        QString getQuestionType(int idx) { return _questions[idx].type; }
-        int getQuestionGroupId(int idx) { return _questions[idx].groupId; }
+        Q_INVOKABLE QString getQuestionText(int idx) { return _questions[idx].text; }
+        Q_INVOKABLE QString getQuestionType(int idx) { return _questions[idx].type; }
+        Q_INVOKABLE int getQuestionGroupId(int idx) { return _questions[idx].groupId; }
 
-        int getOptionsCount(int questionIdx) { return _questions[questionIdx].options.size(); }
-        QStringList getOptionsTexts(int questionIdx); //insure sequence
-        QVariantList getOptions(int questionIdx);
+        Q_INVOKABLE int getOptionsCount(int questionIdx) { return _questions[questionIdx].options.size(); }
+        Q_INVOKABLE QStringList getOptionsTexts(int questionIdx); //insure sequence
+        Q_INVOKABLE QVariantList getOptions(int questionIdx);
 
         //Postpone question
         //Answear question -> idx + option
