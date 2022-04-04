@@ -27,16 +27,25 @@ Item {
         var optionsCount = testsEngine.getOptionsCount(qNum)
         optionsRepeater.model = optionsCount
 
+        var questionType = testsEngine.getQuestionType(qNum)
+        console.log("Question type: ", questionType)
+
+        var optionsTexts = testsEngine.getOptionsTexts(qNum)
+
         for (var i = 0; i < optionsCount; ++i)
         {
-            optionsRepeater.itemAt(i).text = i
+            optionsRepeater.itemAt(i).text = optionsTexts[i]
         }
     }
 
     function loadNextQuestion()
     {
-        testsEngineItem.questionNumber += 1
-        testsEngineItem.loadQuestion()
+        var qCount = testsEngine.questionsCount()
+        if (testsEngineItem.questionNumber + 1 < qCount)
+        {
+            testsEngineItem.questionNumber += 1
+            testsEngineItem.loadQuestion()
+        }
     }
 
 
@@ -64,7 +73,8 @@ Item {
                 id: questionsCount
             }
             RoundButton {
-                text: "Start"
+                text: "Next"
+                onClicked: testsEngineItem.loadNextQuestion()
             }
         }
 
@@ -77,6 +87,9 @@ Item {
             ColumnLayout
             {
                 spacing:  20
+
+                y: 10
+                x: 20
 
                 Text {
                     id: questionNumber
