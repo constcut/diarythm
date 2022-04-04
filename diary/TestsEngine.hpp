@@ -86,7 +86,8 @@ namespace diaryth {
         Q_INVOKABLE int questionsLeft();
         Q_INVOKABLE bool isTestFinished();
 
-        //testCurrentRate
+        Q_INVOKABLE qreal testCurrentRate();
+
         //getFinalRateName
         //getFinalRateDescription
 

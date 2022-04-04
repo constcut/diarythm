@@ -192,3 +192,32 @@ bool TestsEngine::isTestFinished()
 {
     return questionsLeft() == 0;
 }
+
+
+qreal TestsEngine::testCurrentRate()
+{
+    qreal rate = 0.0;
+
+    for (size_t i = 0; i < _answers.size(); ++i)
+    {
+        const auto& answer = _answers[i];
+
+        if (answer.isEmpty() == false)
+        {
+            const auto& question = _questions[i];
+
+            if (answer.size() == 1)
+            {
+                for (const auto& option: question.options)
+                    if (option.text == answer[0]) {
+                        rate += option.rate;
+                        break;
+                    }
+            }
+            //else check boxes calculation
+            //Или может сразу же перебирать
+        }
+    }
+
+    return rate;
+}
