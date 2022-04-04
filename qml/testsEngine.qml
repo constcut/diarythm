@@ -27,16 +27,33 @@ Item {
         var optionsCount = testsEngine.getOptionsCount(qNum)
         var questionType = testsEngine.getQuestionType(qNum)
 
-        optionsRepeater.questionType = questionType
-        optionsRepeater.model = 0
-        optionsRepeater.model = optionsCount
+        checksRepeater.model = 0
+        radioRepeater.model = 0
+        questionField.visible = false
 
         var optionsTexts = testsEngine.getOptionsTexts(qNum)
+        var i = 0
 
-        for (var i = 0; i < optionsCount; ++i)
+        if (questionType === "radio")
         {
-            optionsRepeater.itemAt(i).text = optionsTexts[i]
+            radioRepeater.model = optionsCount
+
+            for (i = 0; i < optionsCount; ++i)
+                radioRepeater.itemAt(i).text = optionsTexts[i]
+
         }
+        else if (questionType === "check")
+        {
+            checksRepeater.model = optionsCount
+
+            for (i = 0; i < optionsCount; ++i)
+                checksRepeater.itemAt(i).text = optionsTexts[i]
+        }
+        else if (questionType === "text")
+        {
+            questionField.visible = true
+        }
+
     }
 
     function loadNextQuestion()
@@ -101,20 +118,24 @@ Item {
 
                 Repeater
                 {
-                    id: optionsRepeater
-
-                    property string questionType: ""
-
-
+                    id: checksRepeater
                     CheckBox {
                         id: checkOption
-                        visible: optionsRepeater.questionType = "check"
-                    }
-                    RadioButton {
-                        id: radioOption
-                        visible: optionsRepeater.questionType = "radio"
                     }
                 }
+                Repeater
+                {
+                    id: radioRepeater
+                    RadioButton {
+                        id: radioOption
+                    }
+                }
+                TextField
+                {
+                    id: questionField
+                    placeholderText: "Answer"
+                }
+
                 //TEXT field vs repeater
             }
 

@@ -162,6 +162,30 @@
                     "rate" : 3
                 }
             ]
+        },
+        {
+            "text": "Check",
+            "type": "check",
+            "options" :[
+                {
+                    "text" : "1",
+                    "rate" : 0
+                },
+                {
+                    "text" : "2",
+                    "rate" : 0
+                }
+            ]
+        },
+        {
+            "text": "Text",
+            "type": "text",
+            "options" :[
+                {
+                    "text" : "1",
+                    "rate" : 0
+                }
+            ]
         }
 
 
