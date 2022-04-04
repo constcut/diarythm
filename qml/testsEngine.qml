@@ -13,6 +13,30 @@ Item {
     {
         testName.text = testsEngine.getName()
         questionsCount.text = testsEngine.questionsCount()
+        loadQuestion()
+    }
+
+    property int questionNumber: 0
+
+    function loadQuestion()
+    {
+        var qNum = testsEngineItem.questionNumber
+        questionNumber.text = qNum
+        questionText.text = testsEngine.getQuestionText(qNum)
+
+        var optionsCount = testsEngine.getOptionsCount(qNum)
+        optionsRepeater.model = optionsCount
+
+        for (var i = 0; i < optionsCount; ++i)
+        {
+            optionsRepeater.itemAt(i).text = i
+        }
+    }
+
+    function loadNextQuestion()
+    {
+        testsEngineItem.questionNumber += 1
+        testsEngineItem.loadQuestion()
     }
 
 
@@ -39,8 +63,40 @@ Item {
             Text {
                 id: questionsCount
             }
+            RoundButton {
+                text: "Start"
+            }
+        }
+
+        Rectangle
+        {
+            width: 700
+            height: 400
+            border.color: "lightgreen"
+
+            ColumnLayout
+            {
+                spacing:  20
+
+                Text {
+                    id: questionNumber
+                }
+                Text {
+                    id: questionText
+                }
+
+                Repeater {
+                    id: optionsRepeater
+
+                    Text {
+                        id: option
+                    }
+                }
+            }
 
         }
+
+
     }
 
 
