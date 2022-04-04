@@ -31,6 +31,8 @@ void TestsEngine::parseJSON(const QString& json)
     addRates(docObject["rates"].toArray());
 
     qDebug() << "Test engine loaded: " << _testName;
+
+    _answers = std::vector<QStringList>(_questions.size());
 }
 
 
@@ -160,4 +162,17 @@ QVariantList TestsEngine::getOptions(int questionIdx)
     }
 
     return options;
+}
+
+
+void TestsEngine::answerQuestion(int idx, QString option)
+{
+    _answers[idx].clear();
+    _answers[idx].append(option);
+}
+
+
+void TestsEngine::answerCheckQuestion(int idx, QStringList options)
+{
+    _answers[idx] = options;
 }

@@ -73,15 +73,19 @@ namespace diaryth {
         Q_INVOKABLE int getQuestionGroupId(int idx) { return _questions[idx].groupId; }
 
         Q_INVOKABLE int getOptionsCount(int questionIdx) { return _questions[questionIdx].options.size(); }
-        Q_INVOKABLE QStringList getOptionsTexts(int questionIdx); //insure sequence
+
+        Q_INVOKABLE QStringList getOptionsTexts(int questionIdx);
         Q_INVOKABLE QVariantList getOptions(int questionIdx);
 
-        //Postpone question
         //Answear question -> idx + option
-        //Answear question -> idx + List of options
+        Q_INVOKABLE void answerQuestion(int idx, QString option);
 
-        //isTestFinished
+        //Answear question -> idx + List of options
+        Q_INVOKABLE void answerCheckQuestion(int idx, QStringList options);
+
         //questionsLeft
+        //isTestFinished
+
         //testCurrentRate
         //getFinalRateName
         //getFinalRateDescription
@@ -103,6 +107,8 @@ namespace diaryth {
         std::vector<TestRate> _rates;
         //_subRates -> Question list, way to summate
         //Или возможно другой метод задать рейты - разные типы рейтов и разные методы подсчёта
+
+        std::vector<QStringList> _answers;
     };
 
 

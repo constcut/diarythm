@@ -40,7 +40,6 @@ Item {
 
             for (i = 0; i < optionsCount; ++i)
                 radioRepeater.itemAt(i).text = optionsTexts[i]
-
         }
         else if (questionType === "check")
         {
@@ -112,7 +111,7 @@ Item {
         Rectangle
         {
             width: 700
-            height: 400
+            height: 400 //Calculate size and probably use flick
             border.color: "lightgreen"
 
             ColumnLayout
@@ -148,11 +147,13 @@ Item {
                     id: questionField
                     placeholderText: "Answer"
                 }
+                RoundButton
+                {
+                    text: "Save answer"
+                }
+            } //ColumnLayout
 
-                //TEXT field vs repeater
-            }
-
-        }
+        } //Rectangle
 
 
     }
