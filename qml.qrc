@@ -15,5 +15,6 @@
         <file>qml/text.qml</file>
         <file>qml/calendar.qml</file>
         <file>qml/diaryCard.qml</file>
+        <file>qml/testsEngine.qml</file>
     </qresource>
 </RCC>

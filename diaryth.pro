@@ -207,6 +207,7 @@ DISTFILES += \
     qml/diaryCard.qml \
     qml/patternInput.qml \
     qml/recorder.qml \
+    qml/testsEngine.qml \
     qml/text.qml \
     res/TODO \
     Tablature.qml \
