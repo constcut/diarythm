@@ -25,10 +25,11 @@ Item {
         questionText.text = testsEngine.getQuestionText(qNum)
 
         var optionsCount = testsEngine.getOptionsCount(qNum)
-        optionsRepeater.model = optionsCount
-
         var questionType = testsEngine.getQuestionType(qNum)
-        console.log("Question type: ", questionType)
+
+        optionsRepeater.questionType = questionType
+        optionsRepeater.model = 0
+        optionsRepeater.model = optionsCount
 
         var optionsTexts = testsEngine.getOptionsTexts(qNum)
 
@@ -98,13 +99,23 @@ Item {
                     id: questionText
                 }
 
-                Repeater {
+                Repeater
+                {
                     id: optionsRepeater
 
-                    Text {
-                        id: option
+                    property string questionType: ""
+
+
+                    CheckBox {
+                        id: checkOption
+                        visible: optionsRepeater.questionType = "check"
+                    }
+                    RadioButton {
+                        id: radioOption
+                        visible: optionsRepeater.questionType = "radio"
                     }
                 }
+                //TEXT field vs repeater
             }
 
         }
