@@ -94,6 +94,15 @@ void SQLBase::createTablesIfNeeded() const {
 
     executeRequest(diaryCardsTableCreate);
 
+
+    const QString testsTableCreate("CREATE TABLE IF NOT EXISTS tests ("
+                           "testId integer primary key autoincrement NOT NULL,"
+                           "testName text NOT NULL UNIQUE,"
+                           "testDescription text,"
+                           "jsonText text NOT NULL);");
+
+    executeRequest(testsTableCreate);
+
 }
 
 
