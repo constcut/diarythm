@@ -167,8 +167,6 @@ int mainInit(int argc, char *argv[])
 
     registerTestsAndCards(sqlBase);
 
-    testsEngine.parseFromFile(":/tests/Beck.json");
-
     engine.rootContext()->setContextProperty("recorder", &recorder);
     engine.rootContext()->setContextProperty("aconfig", &config);
     engine.rootContext()->setContextProperty("sqlBase", &sqlBase);

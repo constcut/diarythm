@@ -11,6 +11,14 @@ Item {
 
     Component.onCompleted:
     {
+        allTests.model = sqlBase.getAllTestsNames()
+
+        loadTest()
+    }
+
+    function loadTest()
+    {
+        testsEngineItem.questionNumber = 0
         testName.text = testsEngine.getName()
         questionsCount.text = testsEngine.questionsCount()
         loadQuestion()
@@ -98,6 +106,16 @@ Item {
         y: 40
         x: 40
 
+        ComboBox {
+            id: allTests
+            implicitWidth: 150
+
+            onCurrentTextChanged: {
+                var testJson = sqlBase.getTestJSON(currentText)
+                testsEngine.parseJSON(testJson)
+                testsEngineItem.loadTest()
+            }
+        }
 
         RowLayout
         {
