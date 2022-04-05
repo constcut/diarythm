@@ -98,6 +98,19 @@ Item {
             Text {
                 id: questionsCount
             }
+            Text {
+                text: "Questions left"
+            }
+            Text {
+                id: questionsLeft
+            }
+            Text {
+                text: "Current rate"
+            }
+            Text {
+                id: currentRate
+            }
+
             RoundButton {
                 text: "Prev"
                 onClicked: testsEngineItem.loadPrevQuestion()
@@ -150,6 +163,32 @@ Item {
                 RoundButton
                 {
                     text: "Save answer"
+                    onClicked: {
+                        var qNum = testsEngineItem.questionNumber
+                        var questionType = testsEngine.getQuestionType(qNum)
+
+                        var i
+
+                        if (questionType === "check") {
+                            //todo
+                        }
+                        else if (questionType === "radio")
+                        {
+                            for (i = 0; i < radioRepeater.model; ++i)
+                                if (radioRepeater.itemAt(i).checked)
+                                {
+                                    testsEngine.answerQuestion(qNum, radioRepeater.itemAt(i).text);
+                                    break;
+                                }
+                        }
+                        else if (questionText.text === "text")
+                        {
+                            testsEngine.answerQuestion(questionField.text)
+                        }
+
+                        questionsLeft.text = testsEngine.questionsLeft()
+                        currentRate.text = testsEngine.testCurrentRate()
+                    }
                 }
             } //ColumnLayout
 
