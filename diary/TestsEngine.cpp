@@ -169,6 +169,8 @@ void TestsEngine::answerQuestion(int idx, QString option)
 {
     _answers[idx].clear();
     _answers[idx].append(option);
+
+    qDebug() << "Answer " << idx << " " << option;
 }
 
 
@@ -209,10 +211,12 @@ qreal TestsEngine::testCurrentRate()
             if (answer.size() == 1)
             {
                 for (const auto& option: question.options)
+                {
                     if (option.text == answer[0]) {
                         rate += option.rate;
                         break;
                     }
+                }
             }
             //else check boxes calculation
             //Или может сразу же перебирать

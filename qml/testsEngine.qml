@@ -188,8 +188,8 @@ Item {
                                     break;
                                 }
                         }
-                        else if (questionText.text === "text")
-                            testsEngine.answerQuestion(questionField.text)
+                        else if (questionType === "text")
+                            testsEngine.answerQuestion(qNum, questionField.text)
 
 
                         questionsLeft.text = testsEngine.questionsLeft()
