@@ -522,7 +522,7 @@ QString SQLBase::loadTextFromFile(const QString& filename) const
 void SQLBase::setCardDescription(const QString& name, const QString& description) const
 {
     QString updateCardRequest =
-            QString("UPDATE diaryCards SET description='%1' WHERE cardName='%2';")
+            QString("UPDATE diaryCards SET cardDescription='%1' WHERE cardName='%2';")
             .arg(description, name);
 
     executeRequest(updateCardRequest);
