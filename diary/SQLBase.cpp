@@ -103,6 +103,16 @@ void SQLBase::createTablesIfNeeded() const {
 
     executeRequest(testsTableCreate);
 
+
+    const QString testsResultsTableCreate("CREATE TABLE IF NOT EXISTS testsResults ("
+                           "resultId integer primary key autoincrement NOT NULL,"
+                           "testName text NOT NULL UNIQUE,"
+                           "datePart text NOT NULL,"
+                           "timePart text NOT NULL,"
+                           "testRate text NOT NULL,"
+                           "testText text NOT NULL);");
+
+    executeRequest(testsResultsTableCreate);
 }
 
 
