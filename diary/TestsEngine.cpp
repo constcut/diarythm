@@ -180,6 +180,12 @@ void TestsEngine::answerCheckQuestion(int idx, QStringList options)
 }
 
 
+QStringList TestsEngine::getAnswers(int idx)
+{
+    return _answers[idx];
+}
+
+
 int TestsEngine::questionsLeft()
 {
     int count = 0;

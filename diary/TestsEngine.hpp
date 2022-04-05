@@ -77,15 +77,14 @@ namespace diaryth {
         Q_INVOKABLE QStringList getOptionsTexts(int questionIdx);
         Q_INVOKABLE QVariantList getOptions(int questionIdx);
 
-        //Answear question -> idx + option
-        Q_INVOKABLE void answerQuestion(int idx, QString option);
 
-        //Answear question -> idx + List of options
+        Q_INVOKABLE void answerQuestion(int idx, QString option);
         Q_INVOKABLE void answerCheckQuestion(int idx, QStringList options);
+        Q_INVOKABLE QStringList getAnswers(int idx);
+
 
         Q_INVOKABLE int questionsLeft();
         Q_INVOKABLE bool isTestFinished();
-
         Q_INVOKABLE qreal testCurrentRate();
 
         //getFinalRateName

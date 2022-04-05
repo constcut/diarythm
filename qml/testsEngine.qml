@@ -33,13 +33,23 @@ Item {
 
         var optionsTexts = testsEngine.getOptionsTexts(qNum)
         var i = 0
+        var j = 0
+
+        var answers = testsEngine.getAnswers(qNum)
 
         if (questionType === "radio")
         {
             radioRepeater.model = optionsCount
 
             for (i = 0; i < optionsCount; ++i)
+            {
                 radioRepeater.itemAt(i).text = optionsTexts[i]
+
+                for (j = 0; j < answers.length; ++j)
+                    if (answers[j] === optionsTexts[i])
+                        radioRepeater.itemAt(i).checked = true
+
+            }
         }
         else if (questionType === "check")
         {
