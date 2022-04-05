@@ -66,6 +66,8 @@ Item {
         else if (questionType === "text")
         {
             questionField.visible = true
+            if (answers.length === 1)
+                questionField.text = answers[0]
         }
 
     }

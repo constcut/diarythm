@@ -169,8 +169,6 @@ void TestsEngine::answerQuestion(int idx, QString option)
 {
     _answers[idx].clear();
     _answers[idx].append(option);
-
-    qDebug() << "Answer " << idx << " " << option;
 }
 
 
