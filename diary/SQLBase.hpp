@@ -123,6 +123,7 @@ namespace diaryth {
 
         //Q_INVOKABLE QVariantList getAllTestsResults(QString& name) const;
 
+        Q_INVOKABLE QVariantList getAllTestsResults(const QString& name) const;
         Q_INVOKABLE QVariantList getAllTestsResultsOnDate(const QString& date) const;
 
         Q_INVOKABLE void addTestResult(const QString& testName, const QString& testRate,

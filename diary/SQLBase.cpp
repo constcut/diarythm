@@ -777,7 +777,7 @@ void SQLBase::addTestResult(const QString& testName, const QString& testRate,
 QVariantList SQLBase::getAllTestsResultsOnDate(const QString& date) const
 {
     QString findRequest =
-            QString("SELECT * FROM testsResults WHERE datePart='%2';")
+            QString("SELECT * FROM testsResults WHERE datePart='%1';")
             .arg(date);
 
     QSqlQuery requestQuery = executeRequest(findRequest);
@@ -787,6 +787,28 @@ QVariantList SQLBase::getAllTestsResultsOnDate(const QString& date) const
     {
         QStringList singleRecord;
         for (int i = 1; i <= testsResultsFieldsCount; ++i) //insure <=
+            singleRecord << requestQuery.value(i).toString();
+
+        testsResults.append(singleRecord);
+    }
+
+    return testsResults;
+}
+
+
+QVariantList SQLBase::getAllTestsResults(const QString& name) const
+{
+    QString findRequest =
+            QString("SELECT * FROM testsResults WHERE testName='%1';")
+            .arg(name);
+
+    QSqlQuery requestQuery = executeRequest(findRequest);
+    QVariantList testsResults;
+
+    while(requestQuery.next())
+    {
+        QStringList singleRecord;
+        for (int i = 1; i <= testsResultsFieldsCount; ++i) //insure <= (everywhere)
             singleRecord << requestQuery.value(i).toString();
 
         testsResults.append(singleRecord);
