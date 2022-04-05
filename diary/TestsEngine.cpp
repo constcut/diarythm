@@ -212,18 +212,15 @@ qreal TestsEngine::testCurrentRate()
         {
             const auto& question = _questions[i];
 
-            if (answer.size() == 1)
+            for (const auto& option: question.options)
             {
-                for (const auto& option: question.options)
+                for (const auto& answerPart: answer)
                 {
-                    if (option.text == answer[0]) {
+                    if (option.text == answerPart) {
                         rate += option.rate;
-                        break;
                     }
                 }
             }
-            //else check boxes calculation
-            //Или может сразу же перебирать
         }
     }
 
