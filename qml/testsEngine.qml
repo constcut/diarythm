@@ -16,6 +16,13 @@ Item {
         loadTest()
     }
 
+    function restartEngine()
+    {
+        var testJson = sqlBase.getTestJSON(allTests.currentText)
+        testsEngine.parseJSON(testJson)
+        testsEngineItem.loadTest()
+    }
+
     function loadTest()
     {
         testsEngineItem.questionNumber = 0
@@ -111,9 +118,7 @@ Item {
             implicitWidth: 150
 
             onCurrentTextChanged: {
-                var testJson = sqlBase.getTestJSON(currentText)
-                testsEngine.parseJSON(testJson)
-                testsEngineItem.loadTest()
+                testsEngineItem.restartEngine()
             }
         }
 
@@ -236,6 +241,9 @@ Item {
                         {
                             var rateName = testsEngine.getRateName()
                             var rateDescription = testsEngine.getRateDescription()
+
+                            sqlBase.addTestResult(allTests.currentText, currentRate.text, rateName)
+                            testsEngineItem.restartEngine()
 
                             testResult.text = rateName
                             resultDescription.text = rateDescription
