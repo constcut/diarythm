@@ -758,3 +758,17 @@ int SQLBase::getTotalTetsResultsByDate(const QString& date) const
     return 0;
 }
 
+
+void SQLBase::addTestResult(const QString& testName, const QString& testRate,
+                            const QString& rateText) const
+{
+    auto date = QDate::currentDate().toString("yyyy-MM-dd");
+    auto time = QTime::currentTime().toString("HH:mm:ss");
+
+    QString addTestResultRequest =
+            QString("INSERT INTO texts (testName, datePart, timePart, testRate, testText) " //maybe testText to rateText
+            "VALUES('%1','%2','%3','%4','%5');")
+            .arg(testName, date, time, testRate, rateText);
+
+    executeRequest(addTestResultRequest);
+}
