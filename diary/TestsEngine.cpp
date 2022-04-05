@@ -223,9 +223,16 @@ QString TestsEngine::getRateName()
 {
     auto currentRate = testCurrentRate();
 
+    qDebug() << "Rates: " << _rates.size();
+
     for (const auto& rate: _rates)
+    {
         if (rate.isInRange(currentRate))
             return rate.text;
+
+        qDebug() << "Current " << currentRate << " "
+                 << rate.rangeBegin << " " << rate.rangeEnd;
+    }
 
     return "";
 }
