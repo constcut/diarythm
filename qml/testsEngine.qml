@@ -32,10 +32,9 @@ Item {
         questionField.visible = false
 
         var optionsTexts = testsEngine.getOptionsTexts(qNum)
+        var answers = testsEngine.getAnswers(qNum)
         var i = 0
         var j = 0
-
-        var answers = testsEngine.getAnswers(qNum)
 
         if (questionType === "radio")
         {
@@ -56,7 +55,13 @@ Item {
             checksRepeater.model = optionsCount
 
             for (i = 0; i < optionsCount; ++i)
+            {
                 checksRepeater.itemAt(i).text = optionsTexts[i]
+
+                for (j = 0; j < answers.length; ++j)
+                    if (answers[j] === optionsTexts[i])
+                        checksRepeater.itemAt(i).checked = true
+            }
         }
         else if (questionType === "text")
         {
