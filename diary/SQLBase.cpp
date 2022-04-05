@@ -110,7 +110,7 @@ void SQLBase::createTablesIfNeeded() const {
                            "datePart text NOT NULL,"
                            "timePart text NOT NULL,"
                            "testRate text NOT NULL,"
-                           "testText text NOT NULL);");
+                           "rateText text NOT NULL);");
 
     executeRequest(testsResultsTableCreate);
 }
@@ -766,7 +766,7 @@ void SQLBase::addTestResult(const QString& testName, const QString& testRate,
     auto time = QTime::currentTime().toString("HH:mm:ss");
 
     QString addTestResultRequest =
-            QString("INSERT INTO texts (testName, datePart, timePart, testRate, testText) " //maybe testText to rateText
+            QString("INSERT INTO texts (testName, datePart, timePart, testRate, rateText) "
             "VALUES('%1','%2','%3','%4','%5');")
             .arg(testName, date, time, testRate, rateText);
 
