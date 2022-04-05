@@ -578,3 +578,22 @@ QVariantList SQLBase::getAllCardRecordsOnDate(const QString& date) const
 
     return cardRecords;
 }
+
+
+
+void SQLBase::addTest(const QString& name, const QString& json) const
+{
+    QString base64Json = json.toLocal8Bit().toBase64();
+
+    QString addCardRequest =
+            QString("INSERT INTO tests (testName, jsonText) VALUES('%1', '%2');")
+            .arg(name, base64Json);
+
+    executeRequest(addCardRequest);
+}
+
+
+void SQLBase::addTestFromFile(const QString& name, const QString& filename) const
+{
+    addTest(name, loadTextFromFile(filename));
+}
