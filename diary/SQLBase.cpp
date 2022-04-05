@@ -731,8 +731,24 @@ int SQLBase::getTotalTestsResults() const
 
 int SQLBase::getTestsResulstCount(QString& name) const
 {
-    QString requestTotal = QString("SELECT COUNT(resultId) FROM testsResults WHERE testName='%1';")
-                           .arg(name);
+    QString requestTotal =
+            QString("SELECT COUNT(resultId) FROM testsResults WHERE testName='%1';")
+            .arg(name);
+
+    QSqlQuery totalQuery = executeRequest(requestTotal);
+
+    if (totalQuery.next())
+        return totalQuery.value(0).toInt();
+
+    return 0;
+}
+
+
+int SQLBase::getTotalTetsResultsByDate(QString& date) const
+{
+    QString requestTotal =
+            QString("SELECT COUNT(resultId) FROM testsResults WHERE datePart='%1';")
+            .arg(date);
 
     QSqlQuery totalQuery = executeRequest(requestTotal);
 
