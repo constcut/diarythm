@@ -440,13 +440,13 @@ QString SQLBase::getCardDescription(const QString& name) const
 
 QString SQLBase::getCardJSON(const QString& name) const
 {
-    QString descriptionRequest =
+    QString jsonRequest =
             QString("SELECT jsonText FROM diaryCards WHERE cardName='%1';").arg(name); //can be done tiny ref ^1,2 v,1
 
-    QSqlQuery descriptionQuery = executeRequest(descriptionRequest);
+    QSqlQuery jsonQuery = executeRequest(jsonRequest);
 
-    if (descriptionQuery.next()) {
-        auto base64Json =  descriptionQuery.value(0).toString();
+    if (jsonQuery.next()) {
+        auto base64Json =  jsonQuery.value(0).toString();
         return QByteArray::fromBase64(base64Json.toLocal8Bit());
     }
 
@@ -670,4 +670,20 @@ bool SQLBase::checkTestNameExists(const QString& name) const
         return true;
 
     return false;
+}
+
+
+QString SQLBase::getTestJSON(const QString& name) const
+{
+    QString jsonRequest =
+            QString("SELECT jsonText FROM tests WHERE testName='%1';").arg(name);
+
+    QSqlQuery jsonQuery = executeRequest(jsonRequest);
+
+    if (jsonQuery.next()) {
+        auto base64Json =  jsonQuery.value(0).toString();
+        return QByteArray::fromBase64(base64Json.toLocal8Bit());
+    }
+
+    return {};
 }
