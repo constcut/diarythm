@@ -93,6 +93,13 @@ namespace diaryth {
         Q_INVOKABLE QVariantList getAllCardRecordsOnDate(const QString& date) const;
 
 
+
+        Q_INVOKABLE QStringList getAllTestsNames() const;
+        Q_INVOKABLE int getTotalTests() const;
+
+        //Q_INVOKABLE bool checkTestNameExists(const QString& name) const;
+        //Q_INVOKABLE QString getTestJSON(const QString& name) const;
+
         Q_INVOKABLE void addTest(const QString& name, const QString& json) const;
         Q_INVOKABLE void addTestFromFile(const QString& name, const QString& filename) const;
 

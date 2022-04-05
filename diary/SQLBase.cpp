@@ -638,3 +638,22 @@ QString SQLBase::getTestDescription(const QString& name) const
 
     return {};
 }
+
+
+QStringList SQLBase::getAllTestsNames() const
+{
+    QString allNamesRequest = QString("SELECT testName FROM tests;");
+    QSqlQuery allNamesQuery = executeRequest(allNamesRequest);
+
+    QStringList allNames;
+    while (allNamesQuery.next())
+       allNames.append(allNamesQuery.value(0).toString());
+
+    return allNames;
+}
+
+
+int SQLBase::getTotalTests() const
+{
+    return getTotalRows("testName", "tests");
+}
