@@ -169,8 +169,15 @@ Item {
 
                         var i
 
-                        if (questionType === "check") {
-                            //todo
+                        if (questionType === "check")
+                        {
+                            var checkAnswers = []
+
+                            for (i = 0; i < checksRepeater.model; ++i)
+                                if (checksRepeater.itemAt(i).checked)
+                                    checkAnswers.push(checksRepeater.itemAt(i).text)
+
+                            testsEngine.answerCheckQuestion(qNum, checkAnswers);
                         }
                         else if (questionType === "radio")
                         {
@@ -182,12 +189,12 @@ Item {
                                 }
                         }
                         else if (questionText.text === "text")
-                        {
                             testsEngine.answerQuestion(questionField.text)
-                        }
+
 
                         questionsLeft.text = testsEngine.questionsLeft()
                         currentRate.text = testsEngine.testCurrentRate()
+                        testsEngineItem.loadNextQuestion()
                     }
                 }
             } //ColumnLayout
