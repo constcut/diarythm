@@ -269,7 +269,8 @@ QStringList SQLBase::findSingleText(const QString& date, int localId) const
 
 QVariantList SQLBase::findTexts(const QString& date) const
 {
-    return findByDate("texts", date);
+    return findByDate("texts", date); //Attention if fields count will differ it would be an issue
+    //must be as param
 }
 
 
@@ -719,3 +720,25 @@ void SQLBase::removeTest(const QString& name) const
     QSqlQuery deleteQuery = executeRequest(deleteRequest);
     logIfError(deleteQuery, deleteRequest);
 }
+
+
+
+int SQLBase::getTotalTestsResults() const
+{
+    return getTotalRows("resultId", "testsResults");
+}
+
+
+int SQLBase::getTestsResulstCount(QString& name) const
+{
+    QString requestTotal = QString("SELECT COUNT(resultId) FROM testsResults WHERE testName='%1';")
+                           .arg(name);
+
+    QSqlQuery totalQuery = executeRequest(requestTotal);
+
+    if (totalQuery.next())
+        return totalQuery.value(0).toInt();
+
+    return 0;
+}
+

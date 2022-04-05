@@ -95,6 +95,7 @@ namespace diaryth {
         Q_INVOKABLE int getCardRecordsCountOnDate(const QString& date) const;
         Q_INVOKABLE QVariantList getAllCardRecordsOnDate(const QString& date) const;
 
+        //add
 
 
         Q_INVOKABLE QStringList getAllTestsNames() const;
@@ -114,6 +115,12 @@ namespace diaryth {
         Q_INVOKABLE void setTestDescription(const QString& name, const QString& description) const;
         Q_INVOKABLE QString getTestDescription(const QString& name) const;
 
+
+        Q_INVOKABLE int getTotalTestsResults() const;
+        Q_INVOKABLE int getTestsResulstCount(QString& name) const;
+
+        //Q_INVOKABLE QVariantList getAllTestsResults(QString& name) const;
+        //Q_INVOKABLE QVariantList getAllTestsResultsByDate(QString& name) const;
 
 
     private:
