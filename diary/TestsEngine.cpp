@@ -38,8 +38,6 @@ void TestsEngine::parseJSON(const QString& json)
 
 void TestsEngine::addRates(const QJsonArray& rates)
 {
-    qDebug() << "Fill rates: " << rates.size();
-
     _rates.clear();
 
     for (const auto& r: rates)
@@ -231,16 +229,9 @@ QString TestsEngine::getRateName()
 {
     auto currentRate = testCurrentRate();
 
-    qDebug() << "Rates: " << _rates.size();
-
     for (const auto& rate: _rates)
-    {
         if (rate.isInRange(currentRate))
             return rate.text;
-
-        qDebug() << "Current " << currentRate << " "
-                 << rate.rangeBegin << " " << rate.rangeEnd;
-    }
 
     return "";
 }
