@@ -207,21 +207,12 @@ qreal TestsEngine::testCurrentRate()
     for (size_t i = 0; i < _answers.size(); ++i)
     {
         const auto& answer = _answers[i];
+        const auto& question = _questions[i];
 
-        if (answer.isEmpty() == false)
-        {
-            const auto& question = _questions[i];
-
-            for (const auto& option: question.options)
-            {
-                for (const auto& answerPart: answer)
-                {
-                    if (option.text == answerPart) {
-                        rate += option.rate;
-                    }
-                }
-            }
-        }
+        for (const auto& option: question.options)
+            for (const auto& answerPart: answer)
+                if (option.text == answerPart)
+                    rate += option.rate;
     }
 
     return rate;
