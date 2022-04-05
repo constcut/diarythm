@@ -510,6 +510,17 @@ void SQLBase::editCardFromFile(const QString& name, const QString& filename) con
 }
 
 
+void SQLBase::removeCard(const QString& name) const
+{
+    QString deleteRequest =
+            QString("DELETE FROM diaryCards WHERE cardName='%1';")
+            .arg(name);
+
+    QSqlQuery deleteQuery = executeRequest(deleteRequest);
+    logIfError(deleteQuery, deleteRequest);
+}
+
+
 QString SQLBase::loadTextFromFile(const QString& filename) const
 {
     QFile file(filename);
@@ -686,4 +697,15 @@ QString SQLBase::getTestJSON(const QString& name) const
     }
 
     return {};
+}
+
+
+void SQLBase::removeTest(const QString& name) const
+{
+    QString deleteRequest =
+            QString("DELETE FROM tests WHERE testName='%1';")
+            .arg(name);
+
+    QSqlQuery deleteQuery = executeRequest(deleteRequest);
+    logIfError(deleteQuery, deleteRequest);
 }
