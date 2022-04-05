@@ -38,6 +38,10 @@ void TestsEngine::parseJSON(const QString& json)
 
 void TestsEngine::addRates(const QJsonArray& rates)
 {
+    qDebug() << "Fill rates: " << rates.size();
+
+    _rates.clear();
+
     for (const auto& r: rates)
     {
         const auto rateObject = r.toObject();
@@ -47,9 +51,13 @@ void TestsEngine::addRates(const QJsonArray& rates)
         testRate.rangeBegin = rateObject["rangeBegin"].toDouble();
         testRate.rangeEnd = rateObject["rangeEnd"].toDouble();
 
+        qDebug() << testRate.text << " " << testRate.rangeBegin << " "
+               << testRate.rangeEnd;
+
         if (rateObject.contains("description"))
             testRate.description = rateObject["description"].toString();
 
+        _rates.push_back(testRate);
     }
 }
 
