@@ -26,7 +26,7 @@ ApplicationWindow {
             mainWindow.height = 600
         }
 
-        mainLoader.setSource("testsEngine.qml") //calendar, diaryCard
+        mainLoader.setSource("diaryCard.qml") //calendar, diaryCard
     }
 
 
