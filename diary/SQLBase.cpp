@@ -766,9 +766,31 @@ void SQLBase::addTestResult(const QString& testName, const QString& testRate,
     auto time = QTime::currentTime().toString("HH:mm:ss");
 
     QString addTestResultRequest =
-            QString("INSERT INTO texts (testName, datePart, timePart, testRate, rateText) "
+            QString("INSERT INTO testsResults (testName, datePart, timePart, testRate, rateText) "
             "VALUES('%1','%2','%3','%4','%5');")
             .arg(testName, date, time, testRate, rateText);
 
     executeRequest(addTestResultRequest);
+}
+
+
+QVariantList SQLBase::getAllTestsResultsOnDate(const QString& date) const
+{
+    QString findRequest =
+            QString("SELECT * FROM testsResults WHERE datePart='%2';")
+            .arg(date);
+
+    QSqlQuery requestQuery = executeRequest(findRequest);
+    QVariantList testsResults;
+
+    while(requestQuery.next())
+    {
+        QStringList singleRecord;
+        for (int i = 1; i <= testsResultsFieldsCount; ++i) //insure <=
+            singleRecord << requestQuery.value(i).toString();
+
+        testsResults.append(singleRecord);
+    }
+
+    return testsResults;
 }

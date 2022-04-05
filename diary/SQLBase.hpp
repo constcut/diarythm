@@ -122,7 +122,8 @@ namespace diaryth {
         Q_INVOKABLE int getTotalTetsResultsByDate(const QString& date) const;
 
         //Q_INVOKABLE QVariantList getAllTestsResults(QString& name) const;
-        //Q_INVOKABLE QVariantList getAllTestsResultsByDate(QString& date) const;
+
+        Q_INVOKABLE QVariantList getAllTestsResultsOnDate(const QString& date) const;
 
         Q_INVOKABLE void addTestResult(const QString& testName, const QString& testRate,
                                        const QString& rateText) const;
@@ -165,6 +166,7 @@ namespace diaryth {
         const int audioFieldsCount = 7; //Later use walkaround with query.last() and query.at() + 1
         const int textFieldsCount = 7;
         const int cardRecordsFieldsCount = 8;
+        const int testsResultsFieldsCount = 6;
     };
 
 }
