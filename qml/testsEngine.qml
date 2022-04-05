@@ -211,7 +211,15 @@ Item {
 
                         questionsLeft.text = testsEngine.questionsLeft()
                         currentRate.text = testsEngine.testCurrentRate()
-                        testsEngineItem.loadNextQuestion()
+
+                        if (testsEngine.isTestFinished() === false)
+                            testsEngineItem.loadNextQuestion()
+                        else {
+                            console.log("Test is finished")
+                            var rateName = testsEngine.getRateName()
+                            var rateDescription = testsEngine.getRateDescription()
+                            console.log("Result: ", rateName, rateDescription)
+                        }
                     }
                 }
             } //ColumnLayout

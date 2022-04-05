@@ -217,3 +217,27 @@ qreal TestsEngine::testCurrentRate()
 
     return rate;
 }
+
+
+QString TestsEngine::getRateName()
+{
+    auto currentRate = testCurrentRate();
+
+    for (const auto& rate: _rates)
+        if (rate.isInRange(currentRate))
+            return rate.text;
+
+    return "";
+}
+
+
+QString TestsEngine::getRateDescription()
+{
+    auto currentRate = testCurrentRate();
+
+    for (const auto& rate: _rates)
+        if (rate.isInRange(currentRate))
+            return rate.description;
+
+    return "";
+}

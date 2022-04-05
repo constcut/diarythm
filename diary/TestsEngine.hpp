@@ -43,7 +43,7 @@ namespace diaryth {
 
         QString description;
 
-        bool isInRange(qreal rate)
+        bool isInRange(qreal rate) const
         {
             return rate >= rangeBegin &&
                    rate <= rangeEnd;
@@ -87,8 +87,8 @@ namespace diaryth {
         Q_INVOKABLE bool isTestFinished();
         Q_INVOKABLE qreal testCurrentRate();
 
-        //getFinalRateName
-        //getFinalRateDescription
+        Q_INVOKABLE QString getRateName();
+        Q_INVOKABLE QString getRateDescription();
 
     private:
 
