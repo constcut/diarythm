@@ -729,7 +729,7 @@ int SQLBase::getTotalTestsResults() const
 }
 
 
-int SQLBase::getTestsResulstCount(QString& name) const
+int SQLBase::getTestsResulstCount(const QString& name) const
 {
     QString requestTotal =
             QString("SELECT COUNT(resultId) FROM testsResults WHERE testName='%1';")
@@ -744,7 +744,7 @@ int SQLBase::getTestsResulstCount(QString& name) const
 }
 
 
-int SQLBase::getTotalTetsResultsByDate(QString& date) const
+int SQLBase::getTotalTetsResultsByDate(const QString& date) const
 {
     QString requestTotal =
             QString("SELECT COUNT(resultId) FROM testsResults WHERE datePart='%1';")

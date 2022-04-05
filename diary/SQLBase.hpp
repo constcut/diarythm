@@ -117,8 +117,8 @@ namespace diaryth {
 
 
         Q_INVOKABLE int getTotalTestsResults() const;
-        Q_INVOKABLE int getTestsResulstCount(QString& name) const;
-        Q_INVOKABLE int getTotalTetsResultsByDate(QString& date) const;
+        Q_INVOKABLE int getTestsResulstCount(const QString& name) const;
+        Q_INVOKABLE int getTotalTetsResultsByDate(const QString& date) const;
 
         //Q_INVOKABLE QVariantList getAllTestsResults(QString& name) const;
         //Q_INVOKABLE QVariantList getAllTestsResultsByDate(QString& name) const;
