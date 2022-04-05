@@ -657,3 +657,17 @@ int SQLBase::getTotalTests() const
 {
     return getTotalRows("testName", "tests");
 }
+
+
+bool SQLBase::checkTestNameExists(const QString& name) const
+{
+    QString checkRequest =
+            QString("SELECT * FROM tests WHERE testName='%1';").arg(name);
+
+    QSqlQuery checkQuery = executeRequest(checkRequest);
+
+    if (checkQuery.next())
+        return true;
+
+    return false;
+}
