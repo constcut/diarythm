@@ -83,6 +83,25 @@ void setPosixSignals() {
 
 
 
+void registerTestsAndCards(const diaryth::SQLBase& sqlBase)
+{
+    if (sqlBase.checkCardNameExists("DBT") == false)
+        sqlBase.addCardFromFile("DBT", ":/cards/DBT.json");
+
+    if (sqlBase.checkCardNameExists("DBT_skills") == false)
+        sqlBase.addCardFromFile("DBT_skills", ":/cards/DBT_skills.json");
+
+    if (sqlBase.checkCardNameExists("BPD") == false)
+        sqlBase.addCardFromFile("BPD", ":/cards/BPD.json");
+
+    if (sqlBase.checkTestNameExists("Beck") == false)
+        sqlBase.addTestFromFile("Beck", ":/tests/Beck.json");
+
+    if (sqlBase.checkTestNameExists("Check") == false)
+        sqlBase.addTestFromFile("Check", ":/tests/Check.json");
+}
+
+
 
 int mainInit(int argc, char *argv[])
 {
@@ -146,9 +165,9 @@ int mainInit(int argc, char *argv[])
     diaryth::TestsEngine testsEngine;
     diaryth::Recorder recorder(sqlBase);
 
-    testsEngine.parseFromFile(":/tests/Beck.json");
+    registerTestsAndCards(sqlBase);
 
-    qDebug() << "Questions count: " << testsEngine.questionsCount();
+    testsEngine.parseFromFile(":/tests/Beck.json");
 
     engine.rootContext()->setContextProperty("recorder", &recorder);
     engine.rootContext()->setContextProperty("aconfig", &config);

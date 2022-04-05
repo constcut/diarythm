@@ -49,9 +49,6 @@ void TestsEngine::addRates(const QJsonArray& rates)
         testRate.rangeBegin = rateObject["rangeBegin"].toDouble();
         testRate.rangeEnd = rateObject["rangeEnd"].toDouble();
 
-        qDebug() << testRate.text << " " << testRate.rangeBegin << " "
-               << testRate.rangeEnd;
-
         if (rateObject.contains("description"))
             testRate.description = rateObject["description"].toString();
 
