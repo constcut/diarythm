@@ -585,15 +585,33 @@ void SQLBase::addTest(const QString& name, const QString& json) const
 {
     QString base64Json = json.toLocal8Bit().toBase64();
 
-    QString addCardRequest =
+    QString addTestRequest =
             QString("INSERT INTO tests (testName, jsonText) VALUES('%1', '%2');")
             .arg(name, base64Json);
 
-    executeRequest(addCardRequest);
+    executeRequest(addTestRequest);
 }
 
 
 void SQLBase::addTestFromFile(const QString& name, const QString& filename) const
 {
     addTest(name, loadTextFromFile(filename));
+}
+
+
+void SQLBase::editTest(const QString& name, const QString& json) const
+{
+    QString base64Json = json.toLocal8Bit().toBase64();
+
+    QString updateTestRequest =
+            QString("UPDATE tests SET jsonText='%1' WHERE cardName='%2';")
+            .arg(base64Json, name);
+
+    executeRequest(updateTestRequest);
+}
+
+
+void SQLBase::editTestFromFile(const QString& name, const QString& filename) const
+{
+    editTest(name, loadTextFromFile(filename));
 }
