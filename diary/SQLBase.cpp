@@ -530,7 +530,6 @@ void SQLBase::setCardDescription(const QString& name, const QString& description
 
 
 
-
 int SQLBase::getCardRecordsMaxLocalId(const QString& date) const
 {
     return getMaxLocalId("diaryCardRecords", date);
@@ -614,4 +613,28 @@ void SQLBase::editTest(const QString& name, const QString& json) const
 void SQLBase::editTestFromFile(const QString& name, const QString& filename) const
 {
     editTest(name, loadTextFromFile(filename));
+}
+
+
+void SQLBase::setTestDescription(const QString& name, const QString& description) const
+{
+    QString updateTestRequest =
+            QString("UPDATE tests SET testDescription='%1' WHERE testName='%2';")
+            .arg(description, name);
+
+    executeRequest(updateTestRequest);
+}
+
+
+QString SQLBase::getTestDescription(const QString& name) const
+{
+    QString descriptionRequest =
+            QString("SELECT testDescription FROM tests WHERE testName='%1';").arg(name);
+
+    QSqlQuery descriptionQuery = executeRequest(descriptionRequest);
+
+    if (descriptionQuery.next())
+        return descriptionQuery.value(0).toString();
+
+    return {};
 }

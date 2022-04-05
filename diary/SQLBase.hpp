@@ -99,6 +99,9 @@ namespace diaryth {
         Q_INVOKABLE void editTest(const QString& name, const QString& json) const;
         Q_INVOKABLE void editTestFromFile(const QString& name, const QString& filename) const;
 
+        Q_INVOKABLE void setTestDescription(const QString& name, const QString& description) const;
+        Q_INVOKABLE QString getTestDescription(const QString& name) const;
+
 
     private:
 
