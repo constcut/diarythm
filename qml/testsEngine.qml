@@ -214,11 +214,14 @@ Item {
 
                         if (testsEngine.isTestFinished() === false)
                             testsEngineItem.loadNextQuestion()
-                        else {
-                            console.log("Test is finished")
+                        else
+                        {
                             var rateName = testsEngine.getRateName()
                             var rateDescription = testsEngine.getRateDescription()
-                            console.log("Result: ", rateName, rateDescription)
+
+                            testResult.text = rateName
+                            resultDescription.text = rateDescription
+                            resultDialog.open()
                         }
                     }
                 }
@@ -226,7 +229,31 @@ Item {
 
         } //Rectangle
 
+    } // main ColumnLayout
 
+    Dialog
+    {
+        x: testsEngineItem.width / 2 - width / 2
+        y: testsEngineItem.height / 2 - height / 2
+
+        id: resultDialog
+        width: 400
+        height: 200
+        ColumnLayout
+        {
+            Text {
+                text: "Test result:"
+            }
+            Text {
+                id: testResult
+            }
+            Text {
+                text: "Result description: "
+            }
+            Text {
+                id: resultDescription
+            }
+        }
     }
 
 
