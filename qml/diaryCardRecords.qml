@@ -23,12 +23,15 @@ Item {
         {
             cardRecords = sqlBase.getAllCardRecordsOnDate(cardDateText.text)
             console.log("All card records on date", cardRecords)
+
+            //+ option selected card or not
         }
         else
         {
             cardRecords = sqlBase.getAllCardRecords();
             console.log("All card records ", cardRecords)
-            // + getAll card records For Card()
+
+            //+ option selected card or not
         }
     }
 

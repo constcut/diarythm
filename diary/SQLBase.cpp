@@ -662,6 +662,30 @@ QVariantList SQLBase::getAllCardRecordsForCard(const QString& cardName) const
 }
 
 
+QVariantList SQLBase::getAllCardRecordsForCardAndDate(const QString& cardName,
+                                             const QString& cardDate) const
+{
+    int cardId = getCardId(cardName);
+
+    QString findRequest =
+            QString("SELECT * FROM diaryCardRecords WHERE cardId='%1' AND cardDate='%2';")
+            .arg(cardId).arg(cardDate);
+
+    QSqlQuery requestQuery = executeRequest(findRequest);
+    QVariantList cardRecords;
+
+    while(requestQuery.next())
+    {
+        QStringList singleRecord;
+        for (int i = 1; i <= cardRecordsFieldsCount; ++i)
+            singleRecord << requestQuery.value(i).toString();
+
+        cardRecords.append(singleRecord);
+    }
+
+    return cardRecords;
+}
+
 
 
 void SQLBase::addCardRecord(const QString& cardName, const QString& cardDate,
