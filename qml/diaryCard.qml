@@ -189,6 +189,8 @@ Item {
 
                     console.log("All group fields: ", allGroupFields)
 
+                    sqlBase.addCardRecord(allGroupFields)
+
                 }
 
             }

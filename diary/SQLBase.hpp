@@ -95,10 +95,10 @@ namespace diaryth {
         Q_INVOKABLE int getCardRecordsMaxLocalIdonDate(const QString& date) const;
 
         Q_INVOKABLE int getCardRecordsCountOnDate(const QString& cardDate) const;
-
         Q_INVOKABLE QVariantList getAllCardRecordsOnDate(const QString& cardDate) const;
 
         //addCard record
+        Q_INVOKABLE void addCardRecord(QVariantList groupFields);
 
 
         Q_INVOKABLE QStringList getAllTestsNames() const;

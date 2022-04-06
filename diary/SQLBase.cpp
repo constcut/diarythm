@@ -617,6 +617,23 @@ QVariantList SQLBase::getAllCardRecordsOnDate(const QString& cardDate) const
 }
 
 
+void SQLBase::addCardRecord(QVariantList groupFields)
+{
+    for (int i = 0; i < groupFields.size(); ++i)
+    {
+        auto fieldInfo = groupFields[i].toList();
+
+        auto fieldName = fieldInfo[0].toString();
+        auto fieldType = fieldInfo[1].toString();
+        auto fieldValue = fieldInfo[2].toString();
+
+        qDebug() << "Field# " << i << " " << fieldName << " "
+                 << fieldType << " " << fieldValue;
+    }
+}
+
+
+
 
 void SQLBase::addTest(const QString& name, const QString& json) const
 {
