@@ -644,7 +644,7 @@ void SQLBase::addCardRecord(const QString& cardName, const QString& cardDate,
         QString addCardRecordRequest = QString("INSERT INTO diaryCardRecords "
                 "(datePart, timePart, localId, cardId, cardDate, groupName, fieldName, %1) "
                 "VALUES('%2','%3','%4','%5','%6','%7','%8','%9');")
-                .arg(storeType, date, time).arg(localId, cardId)
+                .arg(storeType, date, time).arg(localId).arg(cardId)
                 .arg(cardDate, groupName, fieldName, fieldValue);
 
         executeRequest(addCardRecordRequest);

@@ -181,7 +181,7 @@ Item {
                         allGroupFields.push(fieldInfo)
                     }
 
-                    sqlBase.addCardRecord(cardName.text, dateText.text,
+                    sqlBase.addCardRecord(cardCombo.currentText, dateText.text,
                                           groupsNames.currentText, allGroupFields)
 
                     diaryCardItem.updateFields()
