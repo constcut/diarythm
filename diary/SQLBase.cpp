@@ -82,7 +82,8 @@ void SQLBase::createTablesIfNeeded() const {
                            "cardDate text NOT NULL,"
                            "groupName text NOT NULL,"
                            "fieldName text NOT NULL,"
-                           "fieldValue text);");
+                           "fieldValue integer,"
+                           "fieldText text);");
 
     executeRequest(cardRecordsTableCreate);
 
