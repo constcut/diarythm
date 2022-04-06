@@ -36,7 +36,13 @@ Item {
 
         }
 
-        console.log("Found card records: ", cardRecords)
+        resultsRepeater.model = 0
+        resultsRepeater.model = cardRecords.length
+
+        for (var i = 0; i < cardRecords.length; ++i)
+            if (resultsRepeater.itemAt(i) !== null)
+                resultsRepeater.itemAt(i).loadValues(cardRecords[i])
+
     }
 
 
