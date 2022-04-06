@@ -94,12 +94,14 @@ namespace diaryth {
         Q_INVOKABLE int getCardRecordsMaxLocalId() const;
         Q_INVOKABLE int getCardRecordsMaxLocalIdonDate(const QString& date) const;
 
+        Q_INVOKABLE void addCardRecord(const QString& cardName, const QString& cardDate,
+                                       const QString& groupName, QVariantList groupFields);
+
         Q_INVOKABLE int getCardRecordsCountOnDate(const QString& cardDate) const;
         Q_INVOKABLE QVariantList getAllCardRecordsOnDate(const QString& cardDate) const;
 
-        //addCard record
-        Q_INVOKABLE void addCardRecord(const QString& cardName, const QString& cardDate,
-                                       const QString& groupName, QVariantList groupFields);
+        Q_INVOKABLE QVariantList getAllCardRecords() const;
+        //Q_INVOKABLE QVariantList getAllCardRecordsForCard(const QString& cardName) const;
 
 
         Q_INVOKABLE QStringList getAllTestsNames() const;

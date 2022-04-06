@@ -617,6 +617,27 @@ QVariantList SQLBase::getAllCardRecordsOnDate(const QString& cardDate) const
 }
 
 
+QVariantList SQLBase::getAllCardRecords() const //May refact together ^ v
+{
+    QString findRequest =
+            QString("SELECT * FROM diaryCardRecords;");
+
+    QSqlQuery requestQuery = executeRequest(findRequest);
+    QVariantList cardRecords;
+
+    while(requestQuery.next())
+    {
+        QStringList singleRecord;
+        for (int i = 1; i <= cardRecordsFieldsCount; ++i)
+            singleRecord << requestQuery.value(i).toString();
+
+        cardRecords.append(singleRecord);
+    }
+
+    return cardRecords;
+}
+
+
 void SQLBase::addCardRecord(const QString& cardName, const QString& cardDate,
                             const QString& groupName, QVariantList groupFields)
 {

@@ -17,10 +17,18 @@ Item {
 
     function loadResults()
     {
+        var cardRecords
+
         if (useDateCheck.checked)
         {
-            var cardRecords = sqlBase.getAllCardRecordsOnDate()
+            cardRecords = sqlBase.getAllCardRecordsOnDate(cardDateText.text)
             console.log("All card records on date", cardRecords)
+        }
+        else
+        {
+            cardRecords = sqlBase.getAllCardRecords();
+            console.log("All card records ", cardRecords)
+            // + getAll card records For Card()
         }
     }
 
