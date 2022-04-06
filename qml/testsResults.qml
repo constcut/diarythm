@@ -17,7 +17,17 @@ Item {
 
     function loadResults()
     {
+        var resultsCount = sqlBase.getTestsResulstCount(allTests.currentText)
+        var resultsList = sqlBase.getAllTestsResults(allTests.currentText)
+        resultsRepeater.model = 0
+        resultsRepeater.model = resultsCount
 
+        for (var i = 0; i < resultsCount; ++i)
+        {
+            var currentResult = resultsList[i]
+            resultsRepeater.itemAt(i).loadValues(currentResult[1], currentResult[2],
+                                                 currentResult[3], currentResult[4])
+        }
     }
 
     ColumnLayout
@@ -32,6 +42,48 @@ Item {
 
             onCurrentTextChanged: {
                 testsResulstsItem.loadResults()
+            }
+        }
+
+        Repeater
+        {
+            id: resultsRepeater
+
+            RowLayout
+            {
+                function loadValues(date, time, rate, rateText)
+                {
+                    dateText.text = date
+                    timeText.text = time
+                    rateText.text = rate
+                    rateName.text = rateText
+                }
+
+
+                Text {
+                    text: "Date: "
+                }
+                Text {
+                    id: dateText
+                }
+                Text {
+                    text: "Time: "
+                }
+                Text {
+                    id: timeText
+                }
+                Text {
+                    text: "Rate: "
+                }
+                Text {
+                    id: rateText
+                }
+                Text {
+                    text: "Rate name: "
+                }
+                Text {
+                    id: rateName
+                }
             }
         }
 
