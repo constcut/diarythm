@@ -617,18 +617,36 @@ QVariantList SQLBase::getAllCardRecordsOnDate(const QString& cardDate) const
 }
 
 
-void SQLBase::addCardRecord(QVariantList groupFields)
+void SQLBase::addCardRecord(const QString& cardName, const QString& cardDate,
+                            const QString& groupName, QVariantList groupFields)
 {
+
+    int localId = getCardRecordsMaxLocalId() + 1;
+    auto date = QDate::currentDate().toString("yyyy-MM-dd");
+    auto time = QTime::currentTime().toString("HH:mm:ss");
+    int cardId = getCardId(cardName);
+
     for (int i = 0; i < groupFields.size(); ++i)
     {
         auto fieldInfo = groupFields[i].toList();
-
         auto fieldName = fieldInfo[0].toString();
         auto fieldType = fieldInfo[1].toString();
         auto fieldValue = fieldInfo[2].toString();
 
+        QString storeType = "fieldValue";
+        if (fieldType == "text" || fieldType == "real")
+            storeType = "fieldText";
+
         qDebug() << "Field# " << i << " " << fieldName << " "
                  << fieldType << " " << fieldValue;
+
+        QString addCardRecordRequest = QString("INSERT INTO diaryCardRecords "
+                "(datePart, timePart, localId, cardId, cardDate, groupName, fieldName, '%1') "
+                "VALUES('%2','3%','%4','%5','%6','%7','%8',%9');")
+                .arg(storeType, date, time).arg(localId, cardId)
+                .arg(cardDate, groupName, fieldName, fieldValue);
+
+        executeRequest(addCardRecordRequest);
     }
 }
 

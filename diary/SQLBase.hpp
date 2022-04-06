@@ -98,7 +98,8 @@ namespace diaryth {
         Q_INVOKABLE QVariantList getAllCardRecordsOnDate(const QString& cardDate) const;
 
         //addCard record
-        Q_INVOKABLE void addCardRecord(QVariantList groupFields);
+        Q_INVOKABLE void addCardRecord(const QString& cardName, const QString& cardDate,
+                                       const QString& groupName, QVariantList groupFields);
 
 
         Q_INVOKABLE QStringList getAllTestsNames() const;
