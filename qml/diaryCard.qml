@@ -237,15 +237,24 @@ Item {
                         list.push(fieldName)
                         list.push(fieldType)
 
+                        var isEmpty = false
+
                         if (fieldType == "text" || fieldType == "int" || fieldType == "real")
+                        {
                             list.push(textField.text)
+                            if (textField.text === "")
+                                isEmpty = true
+                        }
 
                         if (fieldType == "bool")
                         {
                             if (checkField.checked)
                                 list.push(1)
                             else
+                            {
                                 list.push(0)
+                                isEmpty = true
+                            }
                         }
 
                         var groupName = groupsNames.currentText
@@ -256,6 +265,9 @@ Item {
                             var enumValues = cardEngine.getEnumValues(enumName)
                             list.push(enumValues[comboField.currentIndex])
                             //Maybe for optimization can leave comboField.currentIndex and translate in sqlbase on add DCR
+
+                            if (comboField.currentIndex === 0)
+                                isEmpty = true
                         }
 
                         if (fieldType == "range")
@@ -263,8 +275,12 @@ Item {
                             var rangeMin = cardEngine.getFieldRangeMin(groupName, fieldName)
                             var rangeValue = comboField.currentIndex + rangeMin
                             list.push(rangeValue)
+
+                            if (rangeValue == 0)
+                                isEmpty = true
                         }
 
+                        list.push(isEmpty)
 
                         return list
                     }
