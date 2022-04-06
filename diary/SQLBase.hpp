@@ -173,7 +173,7 @@ namespace diaryth {
 
         const int audioFieldsCount = 7; //Later use walkaround with query.last() and query.at() + 1
         const int textFieldsCount = 7;
-        const int cardRecordsFieldsCount = 8;
+        const int cardRecordsFieldsCount = 9;
         const int testsResultsFieldsCount = 6;
     };
 
