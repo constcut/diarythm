@@ -100,6 +100,11 @@ Item {
                     }
                 }
             }
+
+            RoundButton {
+                text: "To card records"
+                onClicked: mainWindow.requestCardRecords()
+            }
         }
 
 

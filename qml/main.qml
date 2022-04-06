@@ -179,6 +179,11 @@ ApplicationWindow {
         mainLoader.focus = true
     }
 
+    function requestCardRecords() {
+        mainLoader.setSource("diaryCardRecords.qml")
+        mainLoader.focus = true
+    }
+
     //Реализовать более удобную навигацию, используя свайп
     //https://doc.qt.io/qt-5/qml-qtquick-controls2-swipeview.html
     //Возможно даже по команде загружать несколько свайпов, вместо одного Loader'a N штук
