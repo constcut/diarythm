@@ -26,7 +26,7 @@ ApplicationWindow {
             mainWindow.height = 600
         }
 
-        mainLoader.setSource("diaryCard.qml") //calendar, diaryCard,
+        mainLoader.setSource("diaryCardRecords.qml") //calendar, diaryCard,
     }
 
 

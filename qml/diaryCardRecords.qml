@@ -11,6 +11,7 @@ Item {
 
     Component.onCompleted:
     {
+        allCards.model = sqlBase.getAllCardsNames()
         loadResults()
     }
 
