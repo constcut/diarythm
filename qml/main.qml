@@ -26,7 +26,7 @@ ApplicationWindow {
             mainWindow.height = 600
         }
 
-        mainLoader.setSource("diaryCard.qml") //calendar, diaryCard
+        mainLoader.setSource("testsEngine.qml") //calendar, diaryCard,
     }
 
 
@@ -166,6 +166,11 @@ ApplicationWindow {
 
     function requestCalendar() {
         mainLoader.setSource("calendar.qml")
+        mainLoader.focus = true
+    }
+
+    function requestTestsResults() {
+        mainLoader.setSource("testsResults.qml")
         mainLoader.focus = true
     }
 

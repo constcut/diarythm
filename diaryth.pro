@@ -208,6 +208,7 @@ DISTFILES += \
     qml/patternInput.qml \
     qml/recorder.qml \
     qml/testsEngine.qml \
+    qml/testsResults.qml \
     qml/text.qml \
     res/TODO \
     Tablature.qml \

@@ -113,12 +113,21 @@ Item {
         y: 40
         x: 40
 
-        ComboBox {
-            id: allTests
-            implicitWidth: 150
+        RowLayout {
+            spacing: 10
 
-            onCurrentTextChanged: {
-                testsEngineItem.restartEngine()
+            ComboBox {
+                id: allTests
+                implicitWidth: 150
+
+                onCurrentTextChanged: {
+                    testsEngineItem.restartEngine()
+                }
+            }
+
+            RoundButton {
+                text: "Tests results"
+                onClicked: mainWindow.requestTestsResults()
             }
         }
 

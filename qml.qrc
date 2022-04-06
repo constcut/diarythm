@@ -17,5 +17,6 @@
         <file>qml/diaryCard.qml</file>
         <file>qml/testsEngine.qml</file>
         <file>qml/YearCalendar.qml</file>
+        <file>qml/testsResults.qml</file>
     </qresource>
 </RCC>
