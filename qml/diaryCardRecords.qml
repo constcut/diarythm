@@ -21,19 +21,22 @@ Item {
 
         if (useDateCheck.checked)
         {
-            cardRecords = sqlBase.getAllCardRecordsOnDate(cardDateText.text)
-            console.log("All card records on date", cardRecords)
-            console.log("And date is: ", cardDateText.text)
-
-            //+ option selected card or not
+            if (useCardCheck.checked)
+                cardRecords = sqlBase.getAllCardRecordsForCardAndDate(
+                              allCards.currentText, cardDateText.text)
+            else
+               cardRecords = sqlBase.getAllCardRecordsOnDate(cardDateText.text)
         }
         else
         {
-            cardRecords = sqlBase.getAllCardRecords();
-            console.log("All card records ", cardRecords)
+            if (useCardCheck.checked)
+                cardRecords = sqlBase.getAllCardRecordsForCard(allCards.currentText)
+            else
+                cardRecords = sqlBase.getAllCardRecords();
 
-            //+ option selected card or not
         }
+
+        console.log("Found card records: ", cardRecords)
     }
 
 
@@ -125,12 +128,11 @@ Item {
 
             RowLayout
             {
-                function loadValues(date, time)
+                function loadValues(cardRecord)
                 {
-                    dateText.text = date
-                    timeText.text = time
+                    dateText.text = cardRecord[0]
+                    timeText.text = cardRecord[1]
                 }
-
 
                 Text {
                     text: "Date: "
