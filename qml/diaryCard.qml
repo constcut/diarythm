@@ -177,11 +177,17 @@ Item {
 
                     console.log("Max local id", maxLocalId)
 
+                    var allGroupFields = []
+
                     for (var i = 0; i < fieldsRepeater.model; ++i)
                     {
                         var fieldInfo = fieldsRepeater.itemAt(i).getFieldInfo()
-                        console.log("On ", i, " we got ", fieldInfo)
+                        //console.log("On ", i, " we got ", fieldInfo)
+
+                        allGroupFields.push(fieldInfo)
                     }
+
+                    console.log("All group fields: ", allGroupFields)
 
                 }
 
