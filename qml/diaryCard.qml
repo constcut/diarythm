@@ -148,26 +148,43 @@ Item {
                 text: ".."
                 onClicked: calendarDialog.open()
             }
-            RoundButton {
+            RoundButton { //Just and example on days rotations (used if filling old dates)
                 text : "<"
                 onClicked: {
                     var theDay = calendar.selectedDate
                     theDay.setDate(theDay.getDate() - 1);
                     calendar.selectedDate = theDay
                 }
+                visible: false
             }
-            RoundButton {
+            RoundButton { //Just and example on days rotations (used if filling old dates)
                 text: ">"
                 onClicked: {
                     var theDay = calendar.selectedDate
                     theDay.setDate(theDay.getDate() + 1);
                     calendar.selectedDate = theDay
                 }
+                visible: false
             }
 
-            Button {
+            Button
+            {
                 text: "Add values"
-                //Add only not empty, maybe use localId for the same group of fields edited once
+
+                onClicked:
+                {
+                    var maxLocalId = sqlBase.getCardRecordsMaxLocalId()
+
+                    console.log("Max local id", maxLocalId)
+
+                    for (var i = 0; i < fieldsRepeater.model; ++i)
+                    {
+                        var fieldInfo = fieldsRepeater.itemAt(i).getFieldInfo()
+                        console.log("On ", i, " we got ", fieldInfo)
+                    }
+
+                }
+
             }
         }
 
@@ -192,9 +209,33 @@ Item {
 
                 Rectangle
                 {
+                    id: fieldRectangle
+
                     width: textInfo.width + 10 + textField.width
                     height: 40
 
+                    property string fieldType: ""
+                    property string fieldName: ""
+
+                    function getFieldInfo()
+                    {
+                        var list = []
+                        list.push(fieldName)
+                        list.push(fieldType)
+
+                        if (fieldType == "text")
+                            list.push(textField.text)
+
+                        if (fieldType == "bool")
+                        {
+                            if (checkField.checked)
+                                list.push(1)
+                            else
+                                list.push(0)
+                        }
+
+                        return list
+                    }
 
                     Component.onCompleted:
                     {
@@ -204,6 +245,9 @@ Item {
 
                         var fieldType = cardEngine.getFieldType(groupName, fieldName)
                         var fieldDescription = cardEngine.getFieldDescription(groupName, fieldName)
+
+                        fieldRectangle.fieldType = fieldType
+                        fieldRectangle.fieldName = fieldName
 
                         textInfo.text = fieldName
                         toolTip.text = fieldDescription
