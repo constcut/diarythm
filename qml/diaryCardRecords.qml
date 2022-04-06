@@ -41,7 +41,7 @@ Item {
 
             RoundButton {
                 text: "Back to cards"
-                onClicked: {}
+                onClicked: mainWindow.requestDiaryCard()
             }
         }
 
