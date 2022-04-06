@@ -138,19 +138,41 @@ Item {
                 {
                     dateText.text = cardRecord[0]
                     timeText.text = cardRecord[1]
+                    //cardRecord[2] - local id group inputed at the same time
+                    //cardRecord[3] - card id
+                    //cardRecord[4] - card date
+                    //cardRecord[5] - group name
+                    fieldNameText.text = cardRecord[6]
+                    fieldValueText.text = cardRecord[7]
+                    fieldText.text = cardRecord[8]
                 }
 
                 Text {
-                    text: "Date: "
+                    text: "Date:"
                 }
                 Text {
                     id: dateText
                 }
                 Text {
-                    text: "Time: "
+                    text: "Time:"
                 }
                 Text {
                     id: timeText
+                }
+                Text {
+                    text: "Field name:"
+                }
+                Text {
+                    id: fieldNameText
+                }
+                Text {
+                    text: "Value:"
+                }
+                Text {
+                    id: fieldValueText
+                }
+                Text {
+                    id: fieldText
                 }
             }
         }
