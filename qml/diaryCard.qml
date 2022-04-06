@@ -223,7 +223,7 @@ Item {
                         list.push(fieldName)
                         list.push(fieldType)
 
-                        if (fieldType == "text")
+                        if (fieldType == "text" || fieldType == "int" || fieldType == "real")
                             list.push(textField.text)
 
                         if (fieldType == "bool")
