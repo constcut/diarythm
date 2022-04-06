@@ -174,6 +174,7 @@ Item {
                 onClicked:
                 {
                     var allGroupFields = []
+
                     for (var i = 0; i < fieldsRepeater.model; ++i)
                     {
                         var fieldInfo = fieldsRepeater.itemAt(i).getFieldInfo()
@@ -184,7 +185,6 @@ Item {
                                           groupsNames.currentText, allGroupFields)
 
                     diaryCardItem.updateFields()
-
                     notifyAddedDialog.open()
                 }
 

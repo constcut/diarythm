@@ -632,6 +632,10 @@ void SQLBase::addCardRecord(const QString& cardName, const QString& cardDate,
         auto fieldName = fieldInfo[0].toString();
         auto fieldType = fieldInfo[1].toString();
         auto fieldValue = fieldInfo[2].toString();
+        auto isEmpty = fieldInfo[3].toBool();
+
+        if (isEmpty && fieldType != "enum")
+            continue;
 
         QString storeType = "fieldValue";
         if (fieldType == "text" || fieldType == "real")
