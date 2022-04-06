@@ -234,12 +234,18 @@ Item {
                                 list.push(0)
                         }
 
+                        var groupName = groupsNames.currentText
+
                         if (fieldType == "enum")
-                            list.push(comboField.currentIndex) //has to be translated
+                        {
+                            var enumName = cardEngine.getFieldEnum(groupName, fieldName)
+                            var enumValues = cardEngine.getEnumValues(enumName)
+                            list.push(enumValues[comboField.currentIndex])
+                            //Maybe for optimization can leave comboField.currentIndex and translate in sqlbase on add DCR
+                        }
 
                         if (fieldType == "range")
                         {
-                            var groupName = groupsNames.currentText
                             var rangeMin = cardEngine.getFieldRangeMin(groupName, fieldName)
                             var rangeValue = comboField.currentIndex + rangeMin
                             list.push(rangeValue)
