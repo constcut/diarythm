@@ -51,12 +51,12 @@ Item {
 
             RowLayout
             {
-                function loadValues(date, time, rate, rateText)
+                function loadValues(date, time, rate, rateInfo)
                 {
                     dateText.text = date
                     timeText.text = time
                     rateText.text = rate
-                    rateName.text = rateText
+                    rateName.text = rateInfo
                 }
 
 
