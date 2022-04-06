@@ -183,9 +183,23 @@ Item {
                     sqlBase.addCardRecord(cardName.text, dateText.text,
                                           groupsNames.currentText, allGroupFields)
 
+                    diaryCardItem.updateFields()
+
+                    notifyAddedDialog.open()
                 }
 
             }
+        }
+
+        Dialog {
+            id: notifyAddedDialog
+            width: 150
+            height: 100
+            Text {
+                text: "Record was added"
+            }
+            x: diaryCardItem.width/2 - width/2
+            y: diaryCardItem.height/2 - height/2
         }
 
 
