@@ -17,8 +17,35 @@ Item {
 
     function loadResults()
     {
-
+        if (useDateCheck.checked)
+        {
+            var cardRecords = sqlBase.getAllCardRecordsOnDate()
+            console.log("All card records on date", cardRecords)
+        }
     }
+
+
+    Dialog
+    {
+        id: calendarDialog
+
+        width: 400
+        height: 400
+
+        Quick1.Calendar
+        {
+            anchors.fill: parent
+
+            id: calendar
+
+            onSelectedDateChanged:
+            {
+                cardDateText.text = selectedDate
+                cardDateText.text = cardDateText.text.substring(0, 10)
+            }
+        }
+    }
+
 
     ColumnLayout
     {
@@ -43,6 +70,25 @@ Item {
             RoundButton {
                 text: "Back to cards"
                 onClicked: mainWindow.requestDiaryCard()
+            }
+
+            CheckBox {
+                id: useDateCheck
+                text: "Use date"
+                checked: true
+            }
+
+            Text {
+                text: "Card date: "
+            }
+
+            Text {
+                id: cardDateText
+            }
+
+            RoundButton {
+                text: ".."
+                onClicked: calendarDialog.open()
             }
         }
 
