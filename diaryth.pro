@@ -205,6 +205,7 @@ DISTFILES += \
     qml/calendar.qml \
     qml/config.qml \
     qml/diaryCard.qml \
+    qml/diaryCardRecords.qml \
     qml/patternInput.qml \
     qml/recorder.qml \
     qml/testsEngine.qml \
