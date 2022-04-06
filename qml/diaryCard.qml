@@ -234,6 +234,18 @@ Item {
                                 list.push(0)
                         }
 
+                        if (fieldType == "enum")
+                            list.push(comboField.currentIndex) //has to be translated
+
+                        if (fieldType == "range")
+                        {
+                            var groupName = groupsNames.currentText
+                            var rangeMin = cardEngine.getFieldRangeMin(groupName, fieldName)
+                            var rangeValue = comboField.currentIndex + rangeMin
+                            list.push(rangeValue)
+                        }
+
+
                         return list
                     }
 
