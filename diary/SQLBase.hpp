@@ -91,7 +91,7 @@ namespace diaryth {
 
         Q_INVOKABLE int getTotalCardRecords() const;
 
-        Q_INVOKABLE int getCardRecordsMaxLocalId(const QString& date) const;
+        Q_INVOKABLE int getCardRecordsMaxLocalId() const;
         Q_INVOKABLE int getCardRecordsMaxLocalIdonDate(const QString& date) const;
 
         Q_INVOKABLE int getCardRecordsCountOnDate(const QString& date) const;
