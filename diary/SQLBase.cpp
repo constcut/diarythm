@@ -553,7 +553,22 @@ void SQLBase::setCardDescription(const QString& name, const QString& description
 
 
 
-int SQLBase::getCardRecordsMaxLocalId(const QString& date) const
+int SQLBase::getCardRecordsMaxLocalId() const
+{
+    QString requestMaxId =
+            QString("SELECT MAX(localId) FROM diaryCardRecords;");
+
+    QSqlQuery maxIdQuery = executeRequest(requestMaxId);
+
+    if (logIfError(maxIdQuery, requestMaxId) == false
+            && maxIdQuery.next())
+            return maxIdQuery.value(0).toInt();
+
+    return 0;
+}
+
+
+int SQLBase::getCardRecordsMaxLocalIdonDate(const QString& date) const
 {
     return getMaxLocalId("diaryCardRecords", date);
 }
