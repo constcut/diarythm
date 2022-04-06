@@ -23,6 +23,7 @@ Item {
         {
             cardRecords = sqlBase.getAllCardRecordsOnDate(cardDateText.text)
             console.log("All card records on date", cardRecords)
+            console.log("And date is: ", cardDateText.text)
 
             //+ option selected card or not
         }
@@ -69,18 +70,23 @@ Item {
         {
             spacing: 10
 
+            CheckBox {
+                id: useCardCheck
+                text: "Use card"
+                checked: true
+
+                onCheckedChanged: cardRecordsItem.loadResults()
+            }
+
             ComboBox {
                 id: allCards
                 implicitWidth: 150
 
                 onCurrentTextChanged: {
-                    cardRecordsItem.loadResults()
-                }
-            }
 
-            RoundButton {
-                text: "Back to cards"
-                onClicked: mainWindow.requestDiaryCard()
+                    if (useCardCheck.checked)
+                        cardRecordsItem.loadResults()
+                }
             }
 
             CheckBox {
@@ -100,6 +106,11 @@ Item {
             RoundButton {
                 text: ".."
                 onClicked: calendarDialog.open()
+            }
+
+            RoundButton {
+                text: "Back to cards"
+                onClicked: mainWindow.requestDiaryCard()
             }
         }
 
