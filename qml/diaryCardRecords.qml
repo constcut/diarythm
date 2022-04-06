@@ -54,6 +54,9 @@ Item {
             {
                 cardDateText.text = selectedDate
                 cardDateText.text = cardDateText.text.substring(0, 10)
+
+                if (useCardCheck.checked)
+                    cardRecordsItem.loadResults()
             }
         }
     }
@@ -93,6 +96,8 @@ Item {
                 id: useDateCheck
                 text: "Use date"
                 checked: true
+
+                onCheckedChanged: cardRecordsItem.loadResults()
             }
 
             Text {
