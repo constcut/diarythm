@@ -98,10 +98,10 @@ namespace diaryth {
                                        const QString& groupName, QVariantList groupFields);
 
         Q_INVOKABLE int getCardRecordsCountOnDate(const QString& cardDate) const;
-        Q_INVOKABLE QVariantList getAllCardRecordsOnDate(const QString& cardDate) const;
 
+        Q_INVOKABLE QVariantList getAllCardRecordsOnDate(const QString& cardDate) const;
         Q_INVOKABLE QVariantList getAllCardRecords() const;
-        //Q_INVOKABLE QVariantList getAllCardRecordsForCard(const QString& cardName) const;
+        Q_INVOKABLE QVariantList getAllCardRecordsForCard(const QString& cardName) const;
 
 
         Q_INVOKABLE QStringList getAllTestsNames() const;

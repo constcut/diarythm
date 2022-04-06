@@ -598,7 +598,7 @@ int SQLBase::getCardRecordsCountOnDate(const QString& cardDate) const
 QVariantList SQLBase::getAllCardRecordsOnDate(const QString& cardDate) const
 {
     QString findRequest =
-            QString("SELECT * FROM diaryCardRecords WHERE cardDate='%2';")
+            QString("SELECT * FROM diaryCardRecords WHERE cardDate='%1';")
             .arg(cardDate);
 
     QSqlQuery requestQuery = executeRequest(findRequest);
@@ -636,6 +636,32 @@ QVariantList SQLBase::getAllCardRecords() const //May refact together ^ v
 
     return cardRecords;
 }
+
+
+QVariantList SQLBase::getAllCardRecordsForCard(const QString& cardName) const
+{
+    int cardId = getCardId(cardName);
+
+    QString findRequest =
+            QString("SELECT * FROM diaryCardRecords WHERE cardId='%1';")
+            .arg(cardId);
+
+    QSqlQuery requestQuery = executeRequest(findRequest);
+    QVariantList cardRecords;
+
+    while(requestQuery.next())
+    {
+        QStringList singleRecord;
+        for (int i = 1; i <= cardRecordsFieldsCount; ++i)
+            singleRecord << requestQuery.value(i).toString();
+
+        cardRecords.append(singleRecord);
+    }
+
+    return cardRecords;
+}
+
+
 
 
 void SQLBase::addCardRecord(const QString& cardName, const QString& cardDate,
