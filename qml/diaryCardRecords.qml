@@ -134,8 +134,8 @@ Item {
         Rectangle
         {
             id: listViewRectangle
-            width: 600
-            height: 300
+            width: 900
+            height: 400
             ListView
             {
                 id: recordsList
