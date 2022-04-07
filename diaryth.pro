@@ -206,6 +206,7 @@ DISTFILES += \
     qml/config.qml \
     qml/diaryCard.qml \
     qml/diaryCardRecords.qml \
+    qml/pageView.qml \
     qml/patternInput.qml \
     qml/recorder.qml \
     qml/testsEngine.qml \
