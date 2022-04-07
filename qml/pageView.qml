@@ -2,7 +2,8 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
 import QtQuick.Dialogs 1.1
-import QtWebKit 3.0
+import QtWebView 1.15
+
 
 Item {
 
@@ -11,7 +12,7 @@ Item {
 
     Component.onCompleted:
     {
-
+        webView.url = "https://www.google.com/"
     }
 
 
@@ -30,10 +31,11 @@ Item {
             }
         }
 
+
         WebView {
-            width: 900
-            height: 400
+            id: webView
         }
+
 
     }
 

@@ -7,6 +7,7 @@ AuralsLegacy {
     DEFINES += "AuralsLegacy=\"1\""
 }
 
+!win32: QT += webview
 
 #Doesn't work on windows
 linux:Debug:CONFIG += sanitizer sanitize_address sanitize_memory sanitize_undefined #sanitize_thread

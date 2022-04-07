@@ -33,6 +33,10 @@
 
 #include "audio/Recorder.hpp"
 
+#ifndef Q_OS_WINDOW //minGW doesn't support web view
+    #include <QtWebView>
+#endif
+
 
 
 using namespace std;
@@ -108,6 +112,11 @@ int mainInit(int argc, char *argv[])
 
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     qmlRegisterType<diaryth::ConsoleLogQML>("diaryth",1,0,"ConsoleLogView");
+
+
+    #ifndef Q_OS_WINDOW //minGW doesn't support web view
+        QtWebView::initialize();
+    #endif
 
     QGuiApplication app(argc, argv); //QApplication if widgets are used
 
