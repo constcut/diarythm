@@ -182,7 +182,8 @@ Item {
                 height: 35
                 Column {
                     Text {
-                        text: ""
+                        text: datePart + " " + timePart + " " + cardDate + " " + groupName + " " + fieldName + " " + fieldValue + fieldText
+
                     }
                 }
                 states: State {
@@ -219,7 +220,7 @@ Item {
                     //cardRecord[5] - group name
                     fieldNameText.text = cardRecord[6]
                     fieldValueText.text = cardRecord[7]
-                    fieldText.text = cardRecord[8]
+                    fieldTextData.text = cardRecord[8]
                 }
 
                 Text {
@@ -247,7 +248,7 @@ Item {
                     id: fieldValueText
                 }
                 Text {
-                    id: fieldText
+                    id: fieldTextData
                 }
             }
         }
