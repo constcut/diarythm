@@ -36,21 +36,12 @@ Item {
 
         }
 
-        resultsRepeater.model = 0
-        resultsRepeater.model = cardRecords.length
-
         rowsModel.clear()
 
         for (var i = 0; i < cardRecords.length; ++i)
-        {
-            if (resultsRepeater.itemAt(i) !== null)
-                resultsRepeater.itemAt(i).loadValues(cardRecords[i])
-
             rowsModel.append({"datePart":cardRecords[i][0], "timePart":cardRecords[i][1], "localId":cardRecords[i][2],
                              "cardId":cardRecords[i][3], "cardDate":cardRecords[i][4], "groupName":cardRecords[i][5],
                              "fieldName":cardRecords[i][6], "fieldValue":cardRecords[i][7], "fieldText":cardRecords[i][8]})
-        }
-
     }
 
 
@@ -183,7 +174,6 @@ Item {
                 Column {
                     Text {
                         text: datePart + " " + timePart + " " + cardDate + " " + groupName + " " + fieldName + " " + fieldValue + fieldText
-
                     }
                 }
                 states: State {
@@ -200,55 +190,6 @@ Item {
                     {
                         wrapper.ListView.view.currentIndex = index
                     }
-                }
-            }
-        }
-
-        Repeater
-        {
-            id: resultsRepeater
-
-            RowLayout
-            {
-                function loadValues(cardRecord)
-                {
-                    dateText.text = cardRecord[0]
-                    timeText.text = cardRecord[1]
-                    //cardRecord[2] - local id group inputed at the same time
-                    //cardRecord[3] - card id
-                    //cardRecord[4] - card date
-                    //cardRecord[5] - group name
-                    fieldNameText.text = cardRecord[6]
-                    fieldValueText.text = cardRecord[7]
-                    fieldTextData.text = cardRecord[8]
-                }
-
-                Text {
-                    text: "Date:"
-                }
-                Text {
-                    id: dateText
-                }
-                Text {
-                    text: "Time:"
-                }
-                Text {
-                    id: timeText
-                }
-                Text {
-                    text: "Field name:"
-                }
-                Text {
-                    id: fieldNameText
-                }
-                Text {
-                    text: "Value:"
-                }
-                Text {
-                    id: fieldValueText
-                }
-                Text {
-                    id: fieldTextData
                 }
             }
         }
