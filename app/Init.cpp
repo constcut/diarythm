@@ -33,7 +33,7 @@
 
 #include "audio/Recorder.hpp"
 
-#ifndef Q_OS_WINDOW //minGW doesn't support web view
+#ifndef Q_OS_WINDOWS //minGW doesn't support web view
     #include <QtWebView>
 #endif
 
@@ -114,7 +114,7 @@ int mainInit(int argc, char *argv[])
     qmlRegisterType<diaryth::ConsoleLogQML>("diaryth",1,0,"ConsoleLogView");
 
 
-    #ifndef Q_OS_WINDOW //minGW doesn't support web view
+    #ifndef Q_OS_WINDOWS //minGW doesn't support web view
         QtWebView::initialize();
     #endif
 
