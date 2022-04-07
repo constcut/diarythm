@@ -26,7 +26,7 @@ ApplicationWindow {
             mainWindow.height = 600
         }
 
-        mainLoader.setSource("pageView.qml") //calendar, diaryCard,
+        mainLoader.setSource("diaryCard.qml") //calendar, diaryCard,
     }
 
 
@@ -66,6 +66,10 @@ ApplicationWindow {
             onTriggered: {
                 mainLoader.setSource("config.qml")
             }
+        }
+        MenuItem {
+            text: "Page"
+            onTriggered: mainLoader.setSource("pageView.qml")
         }
         MenuItem {
             text: "Audio"
