@@ -1,4 +1,4 @@
-QT += sql quick multimedia core
+QT += sql quick multimedia core network
 CONFIG += c++17
 
 #CONFIG += AuralsLegacy
@@ -30,10 +30,13 @@ QMAKE_LFLAGS += -v
 #Wavelets are commented, yet no application for such amazing detalization
 
 SOURCES += \
+    app/JsonReport.cpp \
     app/AndroidTools.cpp \
     app/Config.cpp \
     app/Init.cpp \
     app/LogHandler.cpp \
+    app/RequestClient.cpp \
+    app/VisualReport.cpp \
     audio/Recorder.cpp \
     audio/features/FeatureExtractor.cpp \
     audio/features/Yin.cpp \
@@ -172,12 +175,15 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 
 HEADERS += \
+    app/JsonReport.hpp \
     app/AndroidTools.hpp \
     app/Clipboard.hpp \
     app/Config.hpp \
     app/Init.hpp \
     app/LogHandler.hpp \
+    app/RequestClient.hpp \
     app/StretchImage.hpp \
+    app/VisualReport.hpp \
     app/log.hpp \
     audio/Recorder.hpp \
     audio/features/FeatureExtractor.hpp \
@@ -202,14 +208,17 @@ DISTFILES += \
     LICENSE \
     OpenTab.qml \
     README.md \
+    qml/FullHDReport.qml \
     qml/SingleRecord.qml \
     qml/calendar.qml \
     qml/config.qml \
     qml/diaryCard.qml \
     qml/diaryCardRecords.qml \
+    qml/networkClient.qml \
     qml/pageView.qml \
     qml/patternInput.qml \
     qml/recorder.qml \
+    qml/reportVisualizer.qml \
     qml/testsEngine.qml \
     qml/testsResults.qml \
     qml/text.qml \

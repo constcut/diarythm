@@ -1,6 +1,6 @@
-import QtQuick 2.15
-import QtQuick.Controls 2.15
-import QtQuick.Layouts 1.15
+import QtQuick 2.12
+import QtQuick.Controls 2.12
+import QtQuick.Layouts 1.12
 import QtQuick.Dialogs 1.1
 import QtQuick.Controls 1.4 as Quick1
 
@@ -380,18 +380,6 @@ Item {
     }
 
 
-
-    Connections {
-        target: recorder
-
-        function onTimeUpdate(ms) {
-            timeText.text = ms
-        }
-
-        function onDbsUpdate(dbs) {
-            dbsText.text = dbs
-        }
-    }
 
 
     function keyboardEventSend(key, mode) {

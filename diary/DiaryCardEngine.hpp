@@ -45,10 +45,10 @@ namespace diaryth {
         QList<int> onWeekDays;
         QList<int> onMonthDays;
 
-        std::unordered_map<QString, CardField> fields;
+        std::unordered_map<std::string, CardField> fields;
     };
 
-    //TODO добавить новый тип names для записи нескольких значений, например список лекарств
+    //Возможно добавить новый тип names для записи нескольких значений, например список лекарств, или же делать это как множество отдельных записей
 
     class DiaryCardEngine : public QObject
     {
@@ -63,7 +63,7 @@ namespace diaryth {
         Q_INVOKABLE void parseJSON(const QString& json);
         Q_INVOKABLE void mergeJSON(const QString& json);
 
-        //Q_INVOKABLE QString exportJSON(); TODO
+        //Q_INVOKABLE QString exportJSON(); //Потребуется на этапе констркутора дневниковых карточек
 
         Q_INVOKABLE QString getCardName() const { return _cardName; }
         Q_INVOKABLE QString getCardDescription() const { return _cardDescription; }
@@ -151,8 +151,8 @@ namespace diaryth {
         QString readTextFile(const QString& filename) const;
 
 
-        std::unordered_map<QString, CardEnum> _enums;
-        std::unordered_map<QString, CardGroup> _groups;
+        std::unordered_map<std::string, CardEnum> _enums;
+        std::unordered_map<std::string, CardGroup> _groups;
 
         QString _cardName;
         QString _cardDescription;

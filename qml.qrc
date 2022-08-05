@@ -20,5 +20,8 @@
         <file>qml/testsResults.qml</file>
         <file>qml/diaryCardRecords.qml</file>
         <file>qml/pageView.qml</file>
+        <file>qml/networkClient.qml</file>
+        <file>qml/reportVisualizer.qml</file>
+        <file>qml/FullHDReport.qml</file>
     </qresource>
 </RCC>

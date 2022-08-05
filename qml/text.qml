@@ -1,6 +1,6 @@
-import QtQuick 2.15
-import QtQuick.Controls 2.15
-import QtQuick.Layouts 1.15
+import QtQuick 2.12
+import QtQuick.Controls 2.12
+import QtQuick.Layouts 1.12
 import QtQuick.Dialogs 1.1
 import QtQuick.Controls 1.4 as Quick1
 
@@ -111,7 +111,8 @@ Item {
             closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutsideParent
         }
 
-        ScrollView {
+        ScrollView
+        {
             id: view
             width: 650
             clip: true

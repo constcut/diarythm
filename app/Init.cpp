@@ -23,6 +23,10 @@
 #include "diary/DiaryCardEngine.hpp"
 #include "diary/TestsEngine.hpp"
 
+#include "app/RequestClient.hpp"
+#include "app/VisualReport.hpp"
+#include "app/JsonReport.hpp"
+
 #ifdef AuralsLegacy
     #include "audio/wave/AudioHandler.hpp"
     #include "audio/wave/WaveShape.hpp"
@@ -141,6 +145,9 @@ int mainInit(int argc, char *argv[])
     Config::getInst().checkConfig();
 
     qmlRegisterType<diaryth::ConfigTableModel>("diaryth", 1, 0, "ConfigTableModel");
+    qmlRegisterType<diaryth::VisualReport>("diaryth", 1, 0, "VisualReport");
+    qmlRegisterType<diaryth::JsonReport>("diaryth", 1, 0, "JsonReport");
+
 #ifdef AuralsLegacy
     qmlRegisterType<diaryth::WaveshapeQML>("diaryth", 1, 0, "Waveshape");
     qmlRegisterType<diaryth::SpectrographQML>("diaryth", 1, 0,"Spectrograph");
@@ -148,6 +155,9 @@ int mainInit(int argc, char *argv[])
     qmlRegisterType<diaryth::StretchImageQML>("diaryth", 1, 0,"StretchImage");
     qmlRegisterType<diaryth::CepstrumgraphQML>("diaryth", 1, 0,"Cepstrumgraph");
 #endif
+
+    qmlRegisterUncreatableMetaObject(diaryth::staticMetaObject,
+    "diaryth", 1, 0, "VisualTypes", "Error: object creation for enum not supported");
 
     QDir dir;
     if (dir.exists("records") == false) { //AudioHandler records, later they would be removed from current project
@@ -159,7 +169,7 @@ int mainInit(int argc, char *argv[])
             qDebug() << "Failed to create records directory";
     }
 
-    //Настройки //KOI8-R //ISO 8859-5 //UTF-8 //Windows-1251
+    //Настройки //KOI8-R //ISO 8859-5 //UTF-8 //Windows-1251 //UTF-8
     QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
     QQmlApplicationEngine engine;
 
@@ -173,6 +183,7 @@ int mainInit(int argc, char *argv[])
     diaryth::DiaryCardEngine cardEngine;
     diaryth::TestsEngine testsEngine;
     diaryth::Recorder recorder(sqlBase);
+    diaryth::RequestClient requestClient;
 
     registerTestsAndCards(sqlBase);
 
@@ -181,6 +192,7 @@ int mainInit(int argc, char *argv[])
     engine.rootContext()->setContextProperty("sqlBase", &sqlBase);
     engine.rootContext()->setContextProperty("cardEngine", &cardEngine);
     engine.rootContext()->setContextProperty("testsEngine", &testsEngine);
+    engine.rootContext()->setContextProperty("requestClient", &requestClient);
 
     engine.load(QUrl(QStringLiteral("qrc:/qml/main.qml")));
     if (engine.rootObjects().isEmpty())
