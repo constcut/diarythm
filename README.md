@@ -1,4 +1,4 @@
-# Diaryth
+# Diarythm
 
 Diary for psychotherapy
 
