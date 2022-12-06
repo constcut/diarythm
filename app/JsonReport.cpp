@@ -24,6 +24,8 @@ JsonReport::JsonReport(QObject *parent) : QObject(parent)
 
 void JsonReport::loadFromFile(QString filename)
 {
+    filename = "/" + filename;
+
     QFile f(filename);
     f.open(QIODevice::ReadOnly);
 
