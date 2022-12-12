@@ -1,11 +1,12 @@
 #include "AndroidTools.hpp"
+
 #include <qglobal.h>
 
 #ifdef Q_OS_ANDROID
 #include <QtAndroid>
 #include <QDebug>
 
-void permissionCB(const QtAndroid::PermissionResultMap& response) {
+void permissionCB([[maybe_unused]] const QtAndroid::PermissionResultMap& response) {
     qDebug() << "Permission CB";
 }
 #endif

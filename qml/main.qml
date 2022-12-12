@@ -17,7 +17,7 @@ ApplicationWindow
 
     Component.onCompleted:
     {
-        if (Qt.platform.os === "android")
+        if (Qt.platform.os === "android" || Qt.platform.os == "ios")
         {
             exitMenuItem.visible = false
             exitMenuItem.height = 0
@@ -28,10 +28,11 @@ ApplicationWindow
 
             mainLoader.setSource("calendar.qml") //calendar, diaryCard, networkClient
         }
-        else
+        //else
         {
+            var desktop = false;
 
-            if (Screen.desktopAvailableWidth >= 1920)
+            if (desktop) //Screen.desktopAvailableWidth >= 1920)
             {
                 mainWindow.width = 1920
                 mainWindow.height = 1061
@@ -45,14 +46,15 @@ ApplicationWindow
             }
             else
             {
-                mainWindow.width = 1370
-                mainWindow.height = 749
+                mainWindow.width = Screen.desktopAvailableWidth
+                mainWindow.height = Screen.desktopAvailableHeight
+                mainWindow.visibility = "FullScreen"
 
                 fullhdReport.visible = false
                 smallItem.visible = true
 
-                mainLoader.setSource("reportVisualizer.qml") //
-                mainLoader.item.requestFileDialog() //reportVisualizer
+                mainLoader.setSource("calendar.qml") //reportVisualizer
+                //mainLoader.item.requestFileDialog() //reportVisualizer
             }
 
             console.log("Screen.desktopAvailableHeight", Screen.desktopAvailableHeight)
@@ -98,7 +100,7 @@ ApplicationWindow
             text: ":"
             x: parent.width - width - 5
             y: 5
-            visible: false
+            visible: true
             onClicked: {
                 mainMenu.x = parent.width - mainMenu.width
                 mainMenu.open()

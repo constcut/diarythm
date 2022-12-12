@@ -23,10 +23,10 @@ using namespace diaryth;
 void RequestClient::logIn(QString username, QString password)
 {
 
-    //qDebug() << QSslSocket::supportsSsl() << QSslSocket::sslLibraryBuildVersionString() << QSslSocket::sslLibraryVersionString();
+    //Debug() << QSslSocket::supportsSsl() << QSslSocket::sslLibraryBuildVersionString() << QSslSocket::sslLibraryVersionString();
 
 
-    QString urlString = QString("https://accumerite.ru/login?login=%1&password=%2")
+    QString urlString = QString("https://127.0.0.1:5000/login?login=%1&password=%2")
                                 .arg(username, password);
 
     _lastRequest = QNetworkRequest(QUrl(urlString));
