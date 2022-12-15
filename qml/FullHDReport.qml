@@ -15,7 +15,7 @@ Item
         title: "Please choose json speech report"
         folder: shortcuts.desktop
         onAccepted: {
-            var filename = fileDialog.fileUrls[0].substring(8)
+            var filename = fileDialog.fileUrls[0] //.substring(8)
             jsonReport.loadFromFile(filename)
             chunkId.model = jsonReport.getChunksCount()
             reloadVisualReports()
@@ -295,7 +295,7 @@ Item
                         if (contentX > (contentWidth - width - 10))
                         {
                             contentX = 0
-                            console.log("Scrollback")
+
                         }
                     }
 

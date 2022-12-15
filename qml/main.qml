@@ -139,25 +139,31 @@ ApplicationWindow
                 text: "Text"
                 onTriggered: mainLoader.setSource("text.qml")
             }
-            MenuItem {
+            /*MenuItem {
                 text: "Diary card"
                 onTriggered: mainLoader.setSource("diaryCard.qml")
-            }
+            }*/
             MenuItem {
                 text: "Calendar"
                 onTriggered: mainLoader.setSource("calendar.qml")
             }
-            MenuItem {
+            /*MenuItem {
                 text: "Tests"
                 onTriggered: mainLoader.setSource("testsEngine.qml")
             }
-            /*MenuItem {
+            MenuItem {
                 text: "Net"
                 onTriggered: mainLoader.setSource("networkClient.qml")
             }*/
             MenuItem {
                 text: "Visualizer"
                 onTriggered: mainLoader.setSource("reportVisualizer.qml")
+            }
+
+            MenuItem {
+                text: "HD Visualizer"
+                onTriggered: mainLoader.setSource("FullHDReport.qml")
+                visible: Qt.platform.os !== "android"
             }
 
 
