@@ -23,16 +23,13 @@ Item
 
             flick.contentWidth = jsonReport.getFullWidth()
             visualReport1.width = jsonReport.getFullWidth()
-            //visualReport2.width =  jsonReport.getFullWidth()
             chunkId.model = jsonReport.getChunksCount()
 
             visualReport1.setParent(jsonReport)
-            //visualReport2.setParent(jsonReport)
 
             visualReport1.addPraatField("Jitter (rap)", "red", 20)
             visualReport1.addPraatField("Number of pulses", "orange", 1.2)
             visualReport1.setType(VisualTypes.PraatInfo)
-            //visualReport2.setType(VisualTypes.Pitch)
 
             fileDialog.close()
         }
@@ -59,7 +56,6 @@ Item
                     jsonReport.setZoom(jsonReport.getZoom() * 2)
                     flick.contentWidth = jsonReport.getFullWidth()
                     visualReport1.width = jsonReport.getFullWidth()
-                    //visualReport2.width =  jsonReport.getFullWidth()
                 }
             }
 
@@ -70,7 +66,7 @@ Item
 
                     flick.contentWidth = jsonReport.getFullWidth()
                     visualReport1.width = jsonReport.getFullWidth()
-                    //visualReport2.width =  jsonReport.getFullWidth()
+
                 }
             }
 
@@ -110,32 +106,6 @@ Item
 
                 }
             }
-
-
-            /*Slider
-            {
-                from : 35
-                to: item.height - 60
-                stepSize: 5
-
-                value: 190
-
-                ToolTip.visible: hovered
-                ToolTip.text: "Height " + value
-
-                onMoved:
-                {
-                    //
-                    //visualReport2.y = 5 + value
-                    //visualReport2.height = item.height - value - 70
-                    visualReport1.y = 5
-                    visualReport1.height = value
-
-                    visualReport2.y = value + 10
-                    visualReport2.height = item.height - value - 70
-                }
-            }*/ //only one now
-
 
             Button {
                 text: "Unselect"
