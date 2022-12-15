@@ -49,91 +49,31 @@ Item
     {
             y: 5
 
-            Button {
-                text: "Unselect"
-                onClicked: {
-                    jsonReport.removeAllSelections()
-                }
-
-                width: 80
-                implicitWidth: 80
-            }
-
-            Button
-            {
-                text : "Info"
-
-                width: 50
-                implicitWidth: 50
-
+            RoundButton {
+                text: "+"
                 onClicked:
                 {
-                    var events = jsonReport.getSelectedEvents()
-
-                    eventsRepeater.model = 0
-                    eventsRepeater.model = events.length + 4 //names, chunk, full, full - chunk
-
-                    var fieldsNames = jsonReport.getPraatFieldsNames();
-                    var fullText = "type, "
-
-                    for (var j = 0; j < fieldsNames.length; ++j)
-                        fullText += fieldsNames[j] + ", "
-
-                    eventsRepeater.itemAt(0).setText( fullText )
-
-                    for (var i = 0; i < events.length; ++i)
-                    {
-                        var eventLine = events[i]
-                        var eventIdx = eventLine[0]
-                        var word = jsonReport.getWordByIdx(eventIdx)
-
-                        fullText = word + " "
-
-                        for (j = 1; j < eventLine.length; ++j)
-                            fullText += eventLine[j].toString() + ", "
-
-                        eventsRepeater.itemAt(i + 1).setText( fullText )
-                    }
-
-                    var chunkInfo = jsonReport.getChunkInfo(parseInt(chunkId.currentText))
-
-                    fullText = "chunk "
-                    for (j = 0; j < chunkInfo.length; ++j)
-                        fullText += chunkInfo[j].toString() + ", "
-
-                    eventsRepeater.itemAt( events.length + 1 ).setText( fullText )
-
-                    var fullInfo = jsonReport.getFullInfo()
-
-                    fullText = "full "
-                    for (j = 0; j < fullInfo.length; ++j)
-                        fullText += fullInfo[j].toString() + ", "
-
-                    eventsRepeater.itemAt( events.length + 2 ).setText( fullText )
-
-                    fullText = "diff "
-                    for (j = 0; j < chunkInfo.length; ++j) {
-                        fullText += (fullInfo[j] - chunkInfo[j]).toFixed(3).toString() + ", "
-                    }
-
-                    eventsRepeater.itemAt( events.length + 3 ).setText( fullText )
-
-                    popup.open()
-                }
-            } //Button
-
-            Button {
-                text: "Select chunk"
-                onClicked: {
-                    jsonReport.selectChunk(parseInt(chunkId.currentText))
+                    jsonReport.setZoom(jsonReport.getZoom() * 2)
+                    flick.contentWidth = jsonReport.getFullWidth()
+                    visualReport1.width = jsonReport.getFullWidth()
+                    visualReport2.width =  jsonReport.getFullWidth()
                 }
             }
 
-            ComboBox {
-                id: chunkId
+            RoundButton {
+                text: "-"
+                onClicked: {
+                    jsonReport.setZoom(jsonReport.getZoom() / 2)
 
-                width: 40
-                implicitWidth: 40
+                    flick.contentWidth = jsonReport.getFullWidth()
+                    visualReport1.width = jsonReport.getFullWidth()
+                    visualReport2.width =  jsonReport.getFullWidth()
+                }
+            }
+
+            Button {
+                text: "Open file"
+                onClicked: fileDialog.open()
             }
 
 
@@ -220,31 +160,91 @@ Item
             }
 
 
-            RoundButton {
-                text: "+"
+            Button {
+                text: "Unselect"
+                onClicked: {
+                    jsonReport.removeAllSelections()
+                }
+
+                width: 80
+                implicitWidth: 80
+            }
+
+            Button
+            {
+                text : "Info"
+
+                width: 50
+                implicitWidth: 50
+
                 onClicked:
                 {
-                    jsonReport.setZoom(jsonReport.getZoom() * 2)
-                    flick.contentWidth = jsonReport.getFullWidth()
-                    visualReport1.width = jsonReport.getFullWidth()
-                    visualReport2.width =  jsonReport.getFullWidth()
-                }
-            }
+                    var events = jsonReport.getSelectedEvents()
 
-            RoundButton {
-                text: "-"
-                onClicked: {
-                    jsonReport.setZoom(jsonReport.getZoom() / 2)
+                    eventsRepeater.model = 0
+                    eventsRepeater.model = events.length + 4 //names, chunk, full, full - chunk
 
-                    flick.contentWidth = jsonReport.getFullWidth()
-                    visualReport1.width = jsonReport.getFullWidth()
-                    visualReport2.width =  jsonReport.getFullWidth()
+                    var fieldsNames = jsonReport.getPraatFieldsNames();
+                    var fullText = "type, "
+
+                    for (var j = 0; j < fieldsNames.length; ++j)
+                        fullText += fieldsNames[j] + ", "
+
+                    eventsRepeater.itemAt(0).setText( fullText )
+
+                    for (var i = 0; i < events.length; ++i)
+                    {
+                        var eventLine = events[i]
+                        var eventIdx = eventLine[0]
+                        var word = jsonReport.getWordByIdx(eventIdx)
+
+                        fullText = word + " "
+
+                        for (j = 1; j < eventLine.length; ++j)
+                            fullText += eventLine[j].toString() + ", "
+
+                        eventsRepeater.itemAt(i + 1).setText( fullText )
+                    }
+
+                    var chunkInfo = jsonReport.getChunkInfo(parseInt(chunkId.currentText))
+
+                    fullText = "chunk "
+                    for (j = 0; j < chunkInfo.length; ++j)
+                        fullText += chunkInfo[j].toString() + ", "
+
+                    eventsRepeater.itemAt( events.length + 1 ).setText( fullText )
+
+                    var fullInfo = jsonReport.getFullInfo()
+
+                    fullText = "full "
+                    for (j = 0; j < fullInfo.length; ++j)
+                        fullText += fullInfo[j].toString() + ", "
+
+                    eventsRepeater.itemAt( events.length + 2 ).setText( fullText )
+
+                    fullText = "diff "
+                    for (j = 0; j < chunkInfo.length; ++j) {
+                        fullText += (fullInfo[j] - chunkInfo[j]).toFixed(3).toString() + ", "
+                    }
+
+                    eventsRepeater.itemAt( events.length + 3 ).setText( fullText )
+
+                    popup.open()
                 }
-            }
+            } //Button
 
             Button {
-                text: "Open file"
-                onClicked: fileDialog.open()
+                text: "Select chunk"
+                onClicked: {
+                    jsonReport.selectChunk(parseInt(chunkId.currentText))
+                }
+            }
+
+            ComboBox {
+                id: chunkId
+
+                width: 40
+                implicitWidth: 40
             }
     }
 

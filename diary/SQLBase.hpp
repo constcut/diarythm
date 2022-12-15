@@ -19,6 +19,8 @@ namespace diaryth {
 
         QSqlQuery executeRequest(const QString& requestBody) const;
 
+        //=============Records=====================================================
+
 
         Q_INVOKABLE void addAudioRecord(const QString& date, const QString& time, int localId,
                                         const QString& name, quint64 durationMs) const;
@@ -44,6 +46,8 @@ namespace diaryth {
                                                              const QString& tagMask) const;
 
 
+        //=============Texts=====================================================
+
         Q_INVOKABLE void addText(const QString& name, const QString& text,
                                  const QString& tags, const QString& description) const;
 
@@ -68,6 +72,9 @@ namespace diaryth {
                                                            const QString& tagMask) const;
 
 
+        //=============Cards=====================================================
+
+
         Q_INVOKABLE QStringList getAllCardsNames() const;
         Q_INVOKABLE int getTotalCards() const;
 
@@ -88,6 +95,8 @@ namespace diaryth {
         Q_INVOKABLE void setCardDescription(const QString& name, const QString& description) const;
 
 
+        //=============Card=Records================================================
+
 
         Q_INVOKABLE int getTotalCardRecords() const;
 
@@ -104,6 +113,8 @@ namespace diaryth {
         Q_INVOKABLE QVariantList getAllCardRecordsForCard(const QString& cardName) const;
         Q_INVOKABLE QVariantList getAllCardRecordsForCardAndDate(const QString& cardName,
                                                                  const QString& cardDate) const;
+
+        //=============Tests================================================
 
         Q_INVOKABLE QStringList getAllTestsNames() const;
         Q_INVOKABLE int getTotalTests() const;
@@ -123,6 +134,7 @@ namespace diaryth {
         Q_INVOKABLE QString getTestDescription(const QString& name) const;
 
 
+        //=============Tests=Results===============================================
 
         Q_INVOKABLE int getTotalTestsResults() const;
         Q_INVOKABLE int getTestsResulstCount(const QString& name) const;

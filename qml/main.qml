@@ -127,10 +127,10 @@ ApplicationWindow
                 text: "Page"
                 onTriggered: mainLoader.setSource("pageView.qml")
             }
-            MenuItem {
+            /*MenuItem {
                 text: "Audio"
                 onTriggered: mainLoader.setSource("audioHandler.qml")
-            }
+            }*/
             MenuItem {
                 text: "Recorder"
                 onTriggered: mainLoader.setSource("recorder.qml")
@@ -151,10 +151,10 @@ ApplicationWindow
                 text: "Tests"
                 onTriggered: mainLoader.setSource("testsEngine.qml")
             }
-            MenuItem {
+            /*MenuItem {
                 text: "Net"
                 onTriggered: mainLoader.setSource("networkClient.qml")
-            }
+            }*/
             MenuItem {
                 text: "Visualizer"
                 onTriggered: mainLoader.setSource("reportVisualizer.qml")
