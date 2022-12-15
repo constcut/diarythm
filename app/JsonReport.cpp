@@ -24,7 +24,10 @@ JsonReport::JsonReport(QObject *parent) : QObject(parent)
 
 void JsonReport::loadFromFile(QString filename)
 {
-    filename = "/" + filename;
+    //TODO check windows, linux, iOs
+
+    if (filename.mid(0, 7) == "file://")
+        filename = filename.mid(7);
 
     QFile f(filename);
     f.open(QIODevice::ReadOnly);
@@ -34,6 +37,8 @@ void JsonReport::loadFromFile(QString filename)
         qDebug() << "Failed to open JR file " << filename;
         return;
     }
+
+    qDebug() << "JR opened " << filename;
 
     _lastFilename = filename;
 

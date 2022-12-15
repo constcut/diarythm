@@ -15,7 +15,10 @@ Item
         title: "Please choose json speech report"
         folder: shortcuts.desktop
         onAccepted: {
-            var filename = fileDialog.fileUrls[0].substring(8)
+
+            console.log("JR from qml ", fileDialog.fileUrls[0])
+
+            var filename = fileDialog.fileUrls[0] //fileDialog.fileUrls[0].substring(8)
             jsonReport.loadFromFile(filename)
 
             flick.contentWidth = jsonReport.getFullWidth()
