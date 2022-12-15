@@ -256,7 +256,7 @@ Item
     {
         id: scroll
         width: parent.width
-        height: visualReport1.height + visualReport2.height
+        height: visualReport1.height + visualReport2.height //TODO remove VR2
 
         y: 50
 
