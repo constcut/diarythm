@@ -23,16 +23,16 @@ Item
 
             flick.contentWidth = jsonReport.getFullWidth()
             visualReport1.width = jsonReport.getFullWidth()
-            visualReport2.width =  jsonReport.getFullWidth()
+            //visualReport2.width =  jsonReport.getFullWidth()
             chunkId.model = jsonReport.getChunksCount()
 
             visualReport1.setParent(jsonReport)
-            visualReport2.setParent(jsonReport)
+            //visualReport2.setParent(jsonReport)
 
             visualReport1.addPraatField("Jitter (rap)", "red", 20)
             visualReport1.addPraatField("Number of pulses", "orange", 1.2)
             visualReport1.setType(VisualTypes.PraatInfo)
-            visualReport2.setType(VisualTypes.Pitch)
+            //visualReport2.setType(VisualTypes.Pitch)
 
             fileDialog.close()
         }
@@ -59,7 +59,7 @@ Item
                     jsonReport.setZoom(jsonReport.getZoom() * 2)
                     flick.contentWidth = jsonReport.getFullWidth()
                     visualReport1.width = jsonReport.getFullWidth()
-                    visualReport2.width =  jsonReport.getFullWidth()
+                    //visualReport2.width =  jsonReport.getFullWidth()
                 }
             }
 
@@ -70,7 +70,7 @@ Item
 
                     flick.contentWidth = jsonReport.getFullWidth()
                     visualReport1.width = jsonReport.getFullWidth()
-                    visualReport2.width =  jsonReport.getFullWidth()
+                    //visualReport2.width =  jsonReport.getFullWidth()
                 }
             }
 
@@ -97,49 +97,22 @@ Item
 
                 onClicked: {
 
-                    if (firstReportType.currentIndex + 1 === VisualTypes.ReportFields)
+                    //if (firstReportType.currentIndex + 1 === VisualTypes.ReportFields)
                     {
                         configFieldsPopup.loadFromVisual(visualReport1)
                         configFieldsPopup.open()
                     }
-                    else
+                    /*else
                     {
                         configPopup.loadFromVisual(visualReport1)
                         configPopup.open()
-                    }
+                    }*/
 
                 }
             }
 
-            ComboBox {
-                id: secondReportType
-                model: ["Pitch", "Intensity", "Praat", "PraatChunkDiff", "PraatFullDiff",
-                        "Chunks", "Words", "ReportFields"]
 
-                onCurrentTextChanged: {
-                    visualReport2.setType(currentIndex + 1)
-                }
-            }
-
-            Button {
-                text: "Config"
-
-                onClicked:
-                {
-                    if (firstReportType.currentIndex + 1 === VisualTypes.ReportFields)
-                    {
-                        configFieldsPopup.loadFromVisual(visualReport2)
-                        configFieldsPopup.open()
-                    }
-                    else
-                    {
-                        configPopup.loadFromVisual(visualReport2)
-                        configPopup.open()
-                    }
-                }
-            }
-
-            Slider
+            /*Slider
             {
                 from : 35
                 to: item.height - 60
@@ -157,10 +130,11 @@ Item
                     //visualReport2.height = item.height - value - 70
                     visualReport1.y = 5
                     visualReport1.height = value
+
                     visualReport2.y = value + 10
                     visualReport2.height = item.height - value - 70
                 }
-            }
+            }*/ //only one now
 
 
             Button {
@@ -256,7 +230,7 @@ Item
     {
         id: scroll
         width: parent.width
-        height: visualReport1.height + visualReport2.height //TODO remove VR2
+        height: visualReport1.height
 
         y: 50
 
@@ -266,7 +240,7 @@ Item
             y: 0
             x: 0
             width: parent.width
-            height: visualReport1.height + visualReport2.height
+            height: visualReport1.height
             contentWidth: 3000
             contentHeight:  parent.height
             property int pressedX : 0
@@ -282,30 +256,9 @@ Item
             VisualReport
             {
                 id: visualReport1
-                height:  190
+                height:  item.height - 100
                 width: 3000
                 y: 5
-
-                MouseArea
-                {
-                    anchors.fill: parent
-                    onClicked:{
-
-                    }
-                    onDoubleClicked: {
-                        var idx = jsonReport.eventIdxOnClick(mouseX, mouseY)
-                        jsonReport.selectEvent(idx)
-                    }
-
-                }
-            } //VisualReport
-
-            VisualReport
-            {
-                id: visualReport2
-                height: 480
-                width: 3000
-                y: visualReport1.y + visualReport1.height + 5
 
                 MouseArea
                 {
